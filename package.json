@@ -1,0 +1,19 @@
+{
+  "name": "mini-terminal",
+  "version": "1.0.0",
+  "description": "一个基于文本框的简易终端",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup --config --silent"
+  },
+  "author": "BATU1579",
+  "license": "MPL-2.0",
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-external-helpers": "^7.16.7",
+    "@babel/preset-env": "^7.10.2",
+    "rollup": "^2.15.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0"
+  }
+}
