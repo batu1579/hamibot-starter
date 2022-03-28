@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-04 21:03:08
  * @LastEditor: BATU1579
- * @LastTime: 2022-03-16 15:38:59
+ * @LastTime: 2022-03-28 09:33:08
  * @FilePath: \\src\\global.js
  * @Description: 全局常量和配置项验证
  */
@@ -21,5 +21,6 @@ export var LOG_STACK = [];
 // ------------------------- configuration -------------------------
 
 export let {
-    TOKEN
+    TOKEN,
+    SHOW_CONSOLE
 } = hamibot.env;

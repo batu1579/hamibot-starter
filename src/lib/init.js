@@ -2,11 +2,11 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-04 20:58:39
  * @LastEditor: BATU1579
- * @LastTime: 2022-02-22 23:36:26
+ * @LastTime: 2022-03-28 09:32:57
  * @FilePath: \\src\\lib\\init.js
  * @Description: 脚本初始化
  */
-import { VERSION } from "../global";
+import { VERSION, SHOW_CONSOLE, SHORT_WAIT_MS } from "../global";
 
 import { Logger } from "./logger";
 
@@ -44,6 +44,15 @@ export function init() {
     } else {
         logger.verbose("Screen size: " + device.height + "x" + device.width);
     }
+
+    // show console
+    if (SHOW_CONSOLE != null ? SHOW_CONSOLE : false) {
+        console.show();
+        sleep(SHORT_WAIT_MS);
+        console.setPosition(0, 100);
+        console.setSize(device.width, device.height / 4);
+    }
+
 
     setScreenMetrics(1080, 2400);
 }
