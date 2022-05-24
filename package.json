@@ -1,19 +1,24 @@
 {
-  "name": "mini-terminal",
+  "name": "ts-script-template",
   "version": "1.0.0",
-  "description": "一个基于文本框的简易终端",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rollup --config --silent"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production"
   },
-  "author": "BATU1579",
-  "license": "MPL-2.0",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.10.2",
-    "@babel/plugin-external-helpers": "^7.16.7",
-    "@babel/preset-env": "^7.10.2",
-    "rollup": "^2.15.0",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0"
+    "@babel/core": "^7.18.0",
+    "@babel/preset-env": "^7.18.0",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "core-js": "^3.22.6",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.6.4",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
   }
 }
