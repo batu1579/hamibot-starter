@@ -5,7 +5,7 @@
 ## 使用方法
 
 1. 克隆项目以后使用 `npm install` 命令安装依赖
-2. 在 `src` 文件夹下编写代码，程序入口为 `src/index.js` 
+2. 在 `src` 文件夹下编写代码，程序入口为 `src/index.js`
 3. 使用 `npm run build` 命令打包项目，打包后的文件路径: `dict/index.js`
 
 ## 文件结构
@@ -35,4 +35,4 @@ src
 
 ## 开源协议
 
-[MIT License](https://github.com/batu1579/script-template/blob/main/LICENSE) © BATU1579
+[MPL-2.0 License](./LICENSE) © BATU1579
