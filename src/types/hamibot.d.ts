@@ -2,64 +2,88 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-24 17:21:22
  * @LastEditor: BATU1579
- * @LastTime: 2022-05-25 00:20:48
+ * @LastTime: 2022-05-25 18:43:33
  * @FilePath: \\src\\types\\hamibot.d.ts
  * @Description: hamibot 模块
  */
 
 // TODO: 添加注释并补全类型
-interface _MessageOptions {
+interface MessageOptions {
     telemetry: boolean;
-    type: string;
-    data: {
-        title: string;
-        attachments: [{
-            type: string;
-            data: string;
-        }];
-    }
+    data: MessageData
+}
+
+interface MessageData {
+    /**
+     * @description: 消息标题
+     */
+    title: string;
+
+    /**
+     * @description: 存放附件的数组
+     */
+    attachments: MessageAttachment[];
+}
+
+interface MessageAttachment {
+    /**
+     * @description: 附件支持 text, json, image 三种类型，根据实际需要选择使用
+     */
+    type: MessageAttachmentType,
+
+    /**
+     * @description: 附件内容
+     */
+    data: string;
+}
+
+declare enum MessageAttachmentType {
+    text = "text",
+    json = "json",
+    image = "image"
 }
 
 declare namespace hamibot {
     namespace env {
         /**
-         * 运行模式，可能是下列值之一：
+         * @description: 运行模式，可能是下列值之一：
          *  - `development`
          *  - `production`
          */
         let APP_ENV: string;
         /**
-         * 用户 `id`
+         * @description: 用户 `id`
          */
         let USER_ID: string;
         /**
-         * 机器人 `id`
+         * @description: 机器人 `id`
          */
         let ROBOT_ID: string;
         /**
-         * 脚本 `id`
+         * @description: 脚本 `id`
          */
         let SCRIPT_ID: string;
         /**
-         * 时间戳，例如：`2021-02-03 04:05:06`
+         * @description: 时间戳
+         * @example: "2021-02-03 04:05:06"
          */
         let TIMESTAMP: string;
     }
 
     namespace plan {
         /**
-         * 计划名称（默认为 `免费` ）
+         * @description: 计划名称（默认为 `免费` ）
          */
         let name: string;
         /**
-         * 定价模式，可以是下列值之一：
+         * @description: 定价模式，可以是下列值之一：
          *  - `free`
          *  - `flatRate`
          * （默认为 `free` ）
          */
         let mode: string;
         /**
-         * 是否处于免费试用期（默认为 `false` ）
+         * @description: 是否处于免费试用期（默认为 `false` ）
          */
         let onFreeTrial: boolean;
     }
@@ -67,7 +91,7 @@ declare namespace hamibot {
     /**
      * @description: 将信息发送到控制台的脚本消息，实现远程查看。
      * @param {string} text 消息内容
-     * @param {_MessageOptions} opts 选项
+     * @param {MessageOptions} opts 选项
      * @example
      * ```typescript
      * hamibot.postMessage(Date.now().toString(), {
@@ -95,7 +119,7 @@ declare namespace hamibot {
      * });
      * ```
      */
-    function postMessage(text: string, opts?: _MessageOptions): void
+    function postMessage(text: string, opts?: MessageOptions): void
 
     /**
      * @description: 确保 `hamibot.postMessage()` 发送成功后再退出。

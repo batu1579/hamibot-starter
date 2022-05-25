@@ -2,11 +2,11 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 00:20:15
  * @LastEditor: BATU1579
- * @LastTime: 2022-05-25 18:16:36
+ * @LastTime: 2022-05-25 18:21:22
  * @FilePath: \\src\\types\\app.d.ts
  * @Description: app 模块
  */
-declare interface EmailOptions {
+interface EmailOptions {
     /**
      * @description: 收件人的邮件地址。如果有多个收件人，则用字符串数组表示
      */
@@ -38,7 +38,7 @@ declare interface EmailOptions {
     attachments?: string;
 }
 
-declare interface IntentOptions {
+interface IntentOptions {
     /**
      * @description: 意图的 `Action` ，指意图要完成的动作，是一个字符串常量。当 `action` 以 `android.intent.action` 开头时，可以省略前缀，直接用 `SEND` 代替。参见[Action](https://developer.android.com/reference/android/content/Intent.html#standard-activity-actions)
      * @example: "android.intent.action.SEND"
@@ -89,7 +89,7 @@ declare interface IntentOptions {
 }
 
 // TODO: 补全PackageInfo的定义
-declare interface PackageInfo {
+interface PackageInfo {
 
 }
 
