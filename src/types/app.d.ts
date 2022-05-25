@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 00:20:15
  * @LastEditor: BATU1579
- * @LastTime: 2022-05-25 16:59:14
+ * @LastTime: 2022-05-25 18:16:36
  * @FilePath: \\src\\types\\app.d.ts
  * @Description: app 模块
  */
@@ -86,6 +86,11 @@ declare interface IntentOptions {
      * @description: 是否以 `root` 权限启动、发送该 `Intent`。使用该参数后，不能使用 `context.startActivity()` 等方法，而应该直接使用诸如 `app.startActivity({...})` 的方法。
      */
     root?: boolean;
+}
+
+// TODO: 补全PackageInfo的定义
+declare interface PackageInfo {
+
 }
 
 /**
@@ -195,36 +200,32 @@ declare namespace app {
      */
     function getAppName(packageName: string): string | null;
 
-    // TODO: 和大大了解具体函数定义
     /**
      * @description: 获取指定应用的详细信息。
      * @param {string} packageName 	应用包名
-     * @return {any} 应用信息
+     * @return {PackageInfo} 应用信息
      * @version 1.4.0
      */
-    function getPackageInfo(packageName: string): any;
+    function getPackageInfo(packageName: string): PackageInfo;
 
-    // TODO: 和大大了解具体函数定义
     /**
      * @description: 获取所有已安装的应用包信息。
-     * @return {any} 应用包信息数组
+     * @return {PackageInfo[]} 应用包信息数组
      * @version 1.4.0
      */
-    function getInstalledPackages(): any;
+    function getInstalledPackages(): PackageInfo[];
 
-    // TODO: 和大大了解具体函数定义
     /**
      * @description: 获取所有已安装的应用信息。
-     * @return {any} 应用信息数组
+     * @return {PackageInfo[]} 应用信息数组
      * @version 1.4.0
      */
-    function getInstalledApps(): any;
+    function getInstalledApps(): PackageInfo[];
 
-    // TODO: 和大大了解具体函数定义
     /**
      * @description: 获取指定 APK 文件的详细信息。
      * @param {string} path APK 文件路径
-     * @return {any} APK 文件的详细信息
+     * @return {PackageInfo} APK 文件的详细信息
      * @version 1.4.0
      * @example: 
     ```typescript
@@ -232,7 +233,7 @@ declare namespace app {
     hamibot.exit();
     ```
      */
-    function getApkInfo(path: string): any;
+    function getApkInfo(path: string): PackageInfo;
 
     /**
      * @description: 打开应用的详情页(设置页)。
@@ -241,7 +242,6 @@ declare namespace app {
      */
     function openAppSetting(packageName: string): boolean;
 
-    // TODO: 和大大了解具体函数定义
     /**
      * @description: 用其他应用查看文件。文件不存在的情况由查看文件的应用处理。如果找不出可以查看该文件的应用，则抛出 `ActivityNotException` 。
      * @param {string} path 文件路径
@@ -254,7 +254,6 @@ declare namespace app {
      */
     function viewFile(path: string): void;
 
-    // TODO: 和大大了解具体函数定义
     /**
      * @description: 用其他应用编辑文件。文件不存在的情况由编辑文件的应用处理。如果找不出可以编辑该文件的应用，则抛出`ActivityNotException` 。
      * @param {string} path 文件路径
@@ -262,7 +261,6 @@ declare namespace app {
      */
     function editFile(path: string): void;
 
-    // TODO: 和大大了解具体函数定义
     /**
      * @description: 卸载应用。执行后会会弹出卸载应用的提示框。如果该包名的应用未安装，由应用卸载程序处理，可能弹出"未找到应用"的提示。
      * @param {string} packageName 应用包名
@@ -275,7 +273,6 @@ declare namespace app {
      */
     function uninstall(packageName: string): void;
 
-    // TODO: 和大大了解具体函数定义
     /**
      * @description: 用浏览器打开网站 url。如果没有安装浏览器应用，则抛出 `ActivityNotException` 。
      * @param {string} url 网站的 Url，如果不以"http://"或"https://"开头则默认是"http://"。
@@ -283,7 +280,6 @@ declare namespace app {
      */
     function openUrl(url: string): void;
 
-    // TODO: 和大大了解具体函数定义
     /**
      * @description: 根据选项 options 调用邮箱应用发送邮件。这些选项均是可选的。如果没有安装邮箱应用，则抛出`ActivityNotException` 。
      * @param {EmailOptions} option 发送邮件的参数。
@@ -300,7 +296,6 @@ declare namespace app {
      */
     function sendEmail(option: EmailOptions): void;
 
-    // TODO: 和大大了解具体函数定义
     /**
      * @description: 启动 Hamibot 的特定界面。
      * @param {string} name 活动名称，可选的值为:
