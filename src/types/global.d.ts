@@ -1,3 +1,12 @@
+/*
+ * @Author: BATU1579
+ * @CreateDate: 2022-05-25 00:21:22
+ * @LastEditor: BATU1579
+ * @LastTime: 2022-05-30 17:11:48
+ * @FilePath: \\src\\types\\global.d.ts
+ * @Description: 全局函数和变量
+ */
+
 /********************************  hamibot  *********************************/
 
 /**
@@ -120,3 +129,36 @@ declare function getAppName(packageName: string): string | null;
  */
 declare function openAppSetting(packageName: string): boolean;
 
+/******************************* console *****************************/
+
+/**
+ * @description: 将信息打印到控制台，并带上换行符。 可以一次性传入多个参数，第一个参数作为主要信息，其他参数作为类似于 [printf(3)](https://man7.org/linux/man-pages/man3/printf.3.html) 中的代替值（参数都会传给 util.format()）。
+ * @param {any} data 主要信息
+ * @param {array} args 代替值
+ * @example: 
+ * ```typescript
+ * const count: number = 5;
+ * 
+ * // 打印: count: 5 到 stdout
+ * console.log('count: %d', count);
+ * 
+ * // 打印: count: 5 到 stdout
+ * console.log('count:', count);
+ * ```
+ */
+declare function log(data: any, ...args: any[]): void;
+
+/**
+ * @description: 向控制台输出信息，相当于 `log(text)` 。
+ * @param {string} text 要打印到控制台的信息
+ */
+declare function print(text: string | object): void;
+
+/**
+ * @description: 
+ * @param {string} text
+ * @return {boolean}
+ * @example: 
+ */
+// TODO 和大大了解具体函数定义
+declare function toastLog(text: string): boolean
