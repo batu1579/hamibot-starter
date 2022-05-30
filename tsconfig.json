@@ -4,10 +4,10 @@
         "module": "es2015",
         "strict": true,
         "typeRoots": [
-            "node_modules/@types",
-            "src/typings"
+            "src/types",
+            // "node_modules/@types",
         ],
         "forceConsistentCasingInFileNames": true,
         "removeComments": true,
-    },
+    }
 }
