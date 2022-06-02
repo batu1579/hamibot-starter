@@ -119,7 +119,7 @@ declare module "console" {
              * @param {string} message value 为 false 时要输出的信息
              * @example: 
              * ```typescript
-             * var a = 1 + 1;
+             * let a = 1 + 1;
              * console.assert(a == 2, '加法出错啦');
              * ```
              */
@@ -137,7 +137,7 @@ declare module "console" {
              * @example: 
              * ```typescript
              * console.time('求和');
-             * var sum = 0;
+             * let sum = 0;
              * for (let i = 0; i < 100000; i++) sum += i;
              * console.timeEnd('求和');
              * // 打印 求和: xxx ms
@@ -166,7 +166,7 @@ declare module "console" {
              * @return {any} 将输入的字符串用 `eval` 计算后的值。
              * @example: 
              * ```typescript
-             * var n = console.input('请输入一个数字:');
+             * let n = console.input('请输入一个数字:');
              * //输入123之后：
              * toast(n + 1);
              * //显示124
@@ -181,7 +181,7 @@ declare module "console" {
              * @return {string} 输入的字符串
              * @example: 
              * ```typescript
-             * var n = console.rawInput('请输入一个数字:');
+             * let n = console.rawInput('请输入一个数字:');
              * //输入123之后：
              * toast(n + 1);
              * //显示1231

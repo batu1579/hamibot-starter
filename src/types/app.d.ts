@@ -193,7 +193,7 @@ declare module "app" {
              * @return {string | null} 如果该找不到该应用，返回 null；如果该名称对应多个应用，则只返回其中某一个的包名。
              * @example: 
              * ```typescript
-             * var name = app.getPackageName('Hamibot'); // 返回 com.hamibot.hamibot
+             * let name = app.getPackageName('Hamibot'); // 返回 com.hamibot.hamibot
              * ```
              */
             getPackageName(appName: string): string | null;
@@ -204,7 +204,7 @@ declare module "app" {
              * @return {string | null} 应用的名称，如果该找不到该应用，返回 null。
              * @example: 
              * ```typescript
-             * var name = app.getAppName('com.hamibot.hamibot'); // 返回 Hamibot
+             * let name = app.getAppName('com.hamibot.hamibot'); // 返回 Hamibot
              * ```
              */
             getAppName(packageName: string): string | null;
@@ -317,7 +317,7 @@ declare module "app" {
              * @example: 
              * ```typescript
              * //打开应用来查看图片文件
-             * var i = app.intent({
+             * let i = app.intent({
              *     action: 'VIEW',
              *     type: 'image/png',
              *     data: 'file:///sdcard/1.png',

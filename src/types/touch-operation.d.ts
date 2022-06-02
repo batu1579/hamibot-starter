@@ -45,7 +45,7 @@ declare module "touch-operation" {
          * @example: 
          * ```typescript
          * //循环100次
-         * for (var i = 0; i < 100; i++) {
+         * for (let i = 0; i < 100; i++) {
          *     //点击位置(500, 1000), 每次用时1毫秒
          *     press(500, 1000, 1);
          * }
@@ -87,7 +87,7 @@ declare module "touch-operation" {
          * @description: `RootAutomator` 是一个使用 root 权限来模拟触摸的对象，用它可以完成触摸与多点触摸，并且这些动作的执行没有延迟。一个脚本中最好只存在一个 `RootAutomator` ，并且保证脚本结束退出他。可以在 `exit` 事件中退出 `RootAutomator` 。
          * @example: 
          * ```typescript
-         * var ra = new RootAutomator();
+         * let ra = new RootAutomator();
          * events.on('exit', function() {
          *     ra.exit();
          * });
@@ -105,7 +105,7 @@ declare module "touch-operation" {
              * @param {number} [id] 多点触摸 id，默认为 1，可以通过 `setDefaultId` 指定。
              * @example: 
              * ```typescript
-             * var ra = new RootAutomator();
+             * let ra = new RootAutomator();
              * //让"手指1"点击位置(100, 100)
              * ra.tap(100, 100, 1);
              * //让"手指2"点击位置(200, 200);
