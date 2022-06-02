@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-24 17:21:22
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-02 16:21:11
+ * @LastTime: 2022-06-02 22:04:19
  * @FilePath: \\src\\types\\hamibot.d.ts
  * @Description: hamibot 模块
  */
@@ -25,34 +25,34 @@ declare module "hamibot" {
              *  - `development` - 开发模式
              *  - `production` - 生产模式
              */
-                APP_ENV: "development" | "production";
+                readonly APP_ENV: "development" | "production";
 
                 /**
                  * @description: 用户 `id`
                  */
-                USER_ID: string;
+                readonly USER_ID: string;
 
                 /**
                  * @description: 机器人 `id`
                  */
-                ROBOT_ID: string;
+                readonly ROBOT_ID: string;
 
                 /**
                  * @description: 脚本 `id`
                  */
-                SCRIPT_ID: string;
+                readonly SCRIPT_ID: string;
 
                 /**
                  * @description: 时间戳
                  * @example: "2021-02-03 04:05:06"
                  */
-                TIMESTAMP: string;
+                readonly TIMESTAMP: string;
 
                 /**
                  * @description: 配置项的数据
                  * - 建议（：使用前手动检查数据
                  */
-                [prop: string]: any;
+                readonly [prop: string]: any;
             }
 
             /**
@@ -67,18 +67,18 @@ declare module "hamibot" {
                 /**
                  * @description: 计划名称（默认为 `免费` ）
                  */
-                name: string;
+                readonly name: string;
                 /**
                  * @description: 定价模式，可以是下列值之一：
                  *  - `free`
                  *  - `flatRate`
                  * （默认为 `free` ）
                  */
-                mode: "free" | "flatRate";
+                readonly mode: "free" | "flatRate";
                 /**
                  * @description: 是否处于免费试用期（默认为 `false` ）
                  */
-                onFreeTrial: boolean;
+                readonly onFreeTrial: boolean;
             }
 
             /**

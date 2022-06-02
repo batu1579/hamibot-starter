@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 00:20:15
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-01 15:35:27
+ * @LastTime: 2022-06-02 22:05:05
  * @FilePath: \\src\\types\\app.d.ts
  * @Description: app 模块
  */
@@ -144,13 +144,13 @@ declare module "app" {
              * @description: 当前软件版本号。
              * @example: 100
              */
-            versionCode: number;
+            readonly versionCode: number;
 
             /**
              * @description: 当前软件的版本名称。
              * @example: "1.0.2"
              */
-            versionName: string;
+            readonly versionName: string;
 
             /**
              * @description: 通过应用名称启动应用。如果该名称对应多个应用，则只启动其中某一个。
