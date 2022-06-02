@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 17:07:59
  * @LastEditor: BATU1579
- * @LastTime: 2022-05-31 00:38:55
+ * @LastTime: 2022-06-01 14:15:23
  * @FilePath: \\src\\types\\console.d.ts
  * @Description: 
  */
@@ -231,9 +231,34 @@ declare module "console" {
 
             /**
              * @description: 向控制台输出信息，相当于 `console.log(text)` 。
-             * @param {string} text 要打印到控制台的信息
+             * @param {string | object} text 要打印到控制台的信息
              */
             print(text: string | object): void;
         }
+
+        // 声明全局函数
+
+        /**
+         * @description: 将信息打印到控制台，并带上换行符。 可以一次性传入多个参数，第一个参数作为主要信息，其他参数作为类似于 [printf(3)](https://man7.org/linux/man-pages/man3/printf.3.html) 中的代替值（参数都会传给 util.format()）。
+         * @param {any} data 主要信息
+         * @param {array} args 代替值
+         * @example: 
+         * ```typescript
+         * const count: number = 5;
+         * 
+         * // 打印: count: 5 到 stdout
+         * console.log('count: %d', count);
+         * 
+         * // 打印: count: 5 到 stdout
+         * console.log('count:', count);
+         * ```
+         */
+        function log(data: any, ...args: any[]): void;
+
+        /**
+         * @description: 向控制台输出信息，相当于 `log(text)` 。
+         * @param {string} text 要打印到控制台的信息
+         */
+        function print(text: string | object): void;
     }
 }

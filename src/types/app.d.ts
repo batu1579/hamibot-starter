@@ -2,13 +2,12 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 00:20:15
  * @LastEditor: BATU1579
- * @LastTime: 2022-05-30 18:25:53
+ * @LastTime: 2022-06-01 15:35:27
  * @FilePath: \\src\\types\\app.d.ts
  * @Description: app 模块
  */
 declare module "app" {
     global {
-        let app: App;
 
         interface EmailOptions {
             /**
@@ -132,6 +131,8 @@ declare module "app" {
              */
             getQueryParameters(key: string): string[];
         }
+
+        let app: App;
 
         /**
          * @description: `app` 模块提供一系列函数，用于使用其他应用、与其他应用交互。例如发送意图、打开文件、发送邮件等。
@@ -396,5 +397,60 @@ declare module "app" {
              */
             getUriForFile(path: string): Uri;
         }
+
+        // 声明全局函数
+
+        /**
+         * @description: 通过应用名称启动应用。如果该名称对应多个应用，则只启动其中某一个。
+         * @param {string} appName 应用名称
+         * @return {boolean} 如果该名称对应的应用不存在，则返回 false; 否则返回 true。
+         * @example:
+         * ```typescript
+         * // 启动 Hamibot
+         * app.launchApp('Hamibot');
+         * ```
+         */
+        function launchApp(appName: string): boolean;
+
+        /**
+         * @description: 通过应用包名启动应用。
+         * @param {string} packageName 应用包名
+         * @return {boolean} 如果该包名对应的应用不存在，则返回 false；否则返回 true。
+         * @example:
+         * ```typescript
+         * // 启动 Hamibot
+         * app.launch('com.hamibot.hamibot');
+         * ```
+         */
+        function launch(packageName: string): boolean;
+
+        /**
+         * @description: 获取应用名称对应的已安装的应用的包名。
+         * @param {string} appName 应用名称
+         * @return {string | null} 如果该找不到该应用，返回 null；如果该名称对应多个应用，则只返回其中某一个的包名。
+         * @example: 
+         * ```typescript
+         * let name = app.getPackageName('Hamibot'); // 返回 com.hamibot.hamibot
+         * ```
+         */
+        function getPackageName(appName: string): string | null;
+
+        /**
+         * @description: 获取应用包名对应的已安装的应用的名称。
+         * @param {string} packageName
+         * @return {string | null} 应用的名称，如果该找不到该应用，返回 null。
+         * @example: 
+         * ```typescript
+         * let name = app.getAppName('com.hamibot.hamibot'); // 返回 Hamibot
+         * ```
+         */
+        function getAppName(packageName: string): string | null;
+
+        /**
+         * @description: 打开应用的详情页(设置页)。
+         * @param {string} packageName 应用包名
+         * @return {boolean} 如果找不到该应用，返回 false; 否则返回 true。
+         */
+        function openAppSetting(packageName: string): boolean;
     }
 }
