@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-31 13:19:44
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-02 20:34:57
+ * @LastTime: 2022-06-03 02:15:09
  * @FilePath: \\src\\types\\widget-operation.d.ts
  * @Description: 控件操作
  */
@@ -749,7 +749,7 @@ declare module "widget-operation" {
 
             /**
              * @description: 返回第 `i + 1` 个子控件。如果 `i` 大于控件数目或者小于 0 ，则抛出异常。
-             * - **注意！：由于布局捕捉的问题，该函数可能返回 `null` ，也就是可能获取不到某个子控件。
+             * - **注意！：由于布局捕捉的问题，该函数可能返回 `null` ，也就是可能获取不到某个子控件。**
              * @param {number} i 子控件索引
              * @return {UiObject | null} 指定的子控件
              * @example: 
@@ -897,7 +897,7 @@ declare module "widget-operation" {
 
             /**
              * @description: 根据 `selector` 所确定的条件在该控件集合的控件、子控件、孙控件...中找到所有符合条件的控件并返回找到的控件集合。
-             * - **注意！：此方法递归地遍历控件集合里所有的控件以及他们的子控件。和数组的filter函数不同。
+             * - **注意！：此方法递归地遍历控件集合里所有的控件以及他们的子控件。和数组的filter函数不同。**
              * @param {UiSelector} selector 规定筛选条件的选择器
              * @return {UiCollection} 根据选择器查找到的控件集合
              * @example: 
