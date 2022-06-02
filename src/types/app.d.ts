@@ -303,7 +303,7 @@ declare module "app" {
             /**
              * @description: 启动 Hamibot 的特定界面。
              * @param {string} name 活动名称，可选的值为:
-             *      - `console` 日志界面
+             * - `console` - 日志界面
              * @example: 
              * ```typescript
              * app.startActivity('console');

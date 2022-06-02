@@ -10,18 +10,6 @@
 declare module "console" {
     global {
 
-        /**
-         * @description: 日志级别
-         */
-        enum LogLevel {
-            DEBUG = "DEBUG",
-            INFO = "INFO",
-            WARN = "WARN",
-            ERROR = "ERROR",
-            FATAL = "FATAL",
-            OFF = "OFF"
-        }
-
         interface LogConfig {
             /**
              * @description: 日志文件路径，将会把日志写入该文件中
@@ -34,9 +22,16 @@ declare module "console" {
             maxFileSize?: number;
 
             /**
-             * @description: 写入的日志级别，默认为"ALL"（所有日志），可以为"OFF"(关闭), "DEBUG", "INFO", "WARN", "ERROR", "FATAL"等。
+             * @description: 写入的日志级别。可选值：
+             * - `ALL` - 所有日志（默认）
+             * - `OFF` - 关闭
+             * - `DEBUG` - 调试级别
+             * - `INFO` - 信息级别
+             * - `WARN` - 告警级别
+             * - `ERROR` - 错误级别
+             * - `FATAL` - 严重错误级别
              */
-            rootLevel?: LogConfig;
+            rootLevel?: "ALL" | "OFF" | "DEBUG" | "INFO" | "WARN" | "ERROR" | "FATAL";
 
             /**
              * @description: 日志备份文件最大数量，默认为 5。

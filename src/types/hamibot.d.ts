@@ -13,13 +13,19 @@ declare module "hamibot" {
          * @description: 运行在 Hamibot 的脚本，可以使用额外的环境信息和功能。
          */
         namespace hamibot {
+
+            /**
+             * @description: 包含环境信息和开发者自定义的脚本配置（参见 [在脚本中使用配置](https://docs.hamibot.com/tutorials/tutorial-config#%E5%9C%A8%E8%84%9A%E6%9C%AC%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE)）
+             */
+            let env: HamibotEnv;
+
             interface HamibotEnv {
                 /**
-             * @description: 运行模式，可能是下列值之一：
-             *  - `development`
-             *  - `production`
+             * @description: 运行模式，可选值：
+             *  - `development` - 开发模式
+             *  - `production` - 生产模式
              */
-                APP_ENV: string;
+                APP_ENV: "development" | "production";
 
                 /**
                  * @description: 用户 `id`
@@ -50,6 +56,11 @@ declare module "hamibot" {
             }
 
             /**
+             * @description: 脚本的定价计划信息，可用来区分版本。
+             */
+            let plan: PricePlan;
+
+            /**
              * @description: 脚本定价计划
              */
             interface PricePlan {
@@ -63,7 +74,7 @@ declare module "hamibot" {
                  *  - `flatRate`
                  * （默认为 `free` ）
                  */
-                mode: string;
+                mode: "free" | "flatRate";
                 /**
                  * @description: 是否处于免费试用期（默认为 `false` ）
                  */
@@ -102,34 +113,18 @@ declare module "hamibot" {
              */
             interface MessageAttachment {
                 /**
-                 * @description: 附件支持 text, json, image 三种类型，根据实际需要选择使用
+                 * @description: 附件类型，根据实际需要选择使用。可选值：
+                 * - `text` - 文本类型
+                 * - `json` - JSON类型
+                 * - `image` - 图片类型
                  */
-                type: MessageAttachmentType;
+                type: "text" | "json" | "image";
 
                 /**
                  * @description: 附件内容
                  */
                 data: string;
             }
-
-            /**
-             * @description: 附件的可选类型
-             */
-            enum MessageAttachmentType {
-                text = "text",
-                json = "json",
-                image = "image"
-            }
-
-            /**
-             * @description: 包含环境信息和开发者自定义的脚本配置（参见 [在脚本中使用配置](https://docs.hamibot.com/tutorials/tutorial-config#%E5%9C%A8%E8%84%9A%E6%9C%AC%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE)）
-             */
-            let env: HamibotEnv;
-
-            /**
-             * @description: 脚本的定价计划信息，可用来区分版本。
-             */
-            let plan: PricePlan;
 
             /**
              * @description: 将信息发送到控制台的脚本消息，实现远程查看。
