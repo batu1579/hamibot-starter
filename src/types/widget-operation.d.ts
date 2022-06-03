@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-31 13:19:44
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-03 02:15:09
+ * @LastTime: 2022-06-03 16:37:39
  * @FilePath: \\src\\types\\widget-operation.d.ts
  * @Description: 控件操作
  */
@@ -91,7 +91,7 @@ declare module "widget-operation" {
             function serWindowFilter(filter: (window: AccessibilityWindowInfo) => boolean): void;
         }
 
-        let automator: SimpleActionAutomator;
+        const automator: SimpleActionAutomator;
 
         interface SimpleActionAutomator {
             /**

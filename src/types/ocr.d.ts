@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 01:16:42
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-03 01:57:44
+ * @LastTime: 2022-06-03 16:36:11
  * @FilePath: \\src\\types\\ocr.d.ts
  * @Description: 
  */
@@ -17,7 +17,7 @@ declare module "ocr" {
          * @description: 文字识别（OCR）可以将图片中的文字信息转换为可编辑文本。
          * @author linkecoding
          */
-        let ocr: OCR;
+        const ocr: OCR;
 
         interface OCR {
             /**

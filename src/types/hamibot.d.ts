@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-24 17:21:22
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-02 22:04:19
+ * @LastTime: 2022-06-03 16:36:03
  * @FilePath: \\src\\types\\hamibot.d.ts
  * @Description: hamibot 模块
  */
@@ -17,7 +17,7 @@ declare module "hamibot" {
             /**
              * @description: 包含环境信息和开发者自定义的脚本配置（参见 [在脚本中使用配置](https://docs.hamibot.com/tutorials/tutorial-config#%E5%9C%A8%E8%84%9A%E6%9C%AC%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE)）
              */
-            let env: HamibotEnv;
+            const env: HamibotEnv;
 
             interface HamibotEnv {
                 /**
@@ -58,7 +58,7 @@ declare module "hamibot" {
             /**
              * @description: 脚本的定价计划信息，可用来区分版本。
              */
-            let plan: PricePlan;
+            const plan: PricePlan;
 
             /**
              * @description: 脚本定价计划

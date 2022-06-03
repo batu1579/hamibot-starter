@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 01:38:14
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-03 02:16:38
+ * @LastTime: 2022-06-03 16:33:05
  * @FilePath: \\src\\types\\base64.d.ts
  * @Description: base64 模块
  */
@@ -18,7 +18,7 @@ declare module "base64" {
         /**
          * @description: Base64 编码和解码器。Base64 常用于在通常处理文本数据的场合，表示、传输、存储一些二进制数据，包括 MIME 的电子邮件及 XML 的一些复杂数据。
          */
-        let base64: Base64;
+        const base64: Base64;
 
         interface Base64 {
             /**

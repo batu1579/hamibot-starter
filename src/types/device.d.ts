@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 01:55:44
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-03 02:46:23
+ * @LastTime: 2022-06-03 16:34:58
  * @FilePath: \\src\\types\\device.d.ts
  * @Description: device 模块
  */
@@ -11,7 +11,7 @@ declare module "device" {
         /**
          * @description: `device` 模块提供了与设备有关的信息与操作，例如获取设备宽高，内存使用率，IMEI，调整设备亮度、音量等。此模块的部分函数，例如调整音量，需要"修改系统设置"的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。
          */
-        let device: Device;
+        const device: Device;
 
         interface Device {
             /**

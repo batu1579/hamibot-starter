@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 00:20:15
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-02 22:05:05
+ * @LastTime: 2022-06-03 16:32:33
  * @FilePath: \\src\\types\\app.d.ts
  * @Description: app 模块
  */
@@ -132,7 +132,7 @@ declare module "app" {
             getQueryParameters(key: string): string[];
         }
 
-        let app: App;
+        const app: App;
 
         /**
          * @description: `app` 模块提供一系列函数，用于使用其他应用、与其他应用交互。例如发送意图、打开文件、发送邮件等。
