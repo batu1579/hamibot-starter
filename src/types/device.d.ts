@@ -17,92 +17,92 @@ declare module "device" {
             /**
              * @description: 设备屏幕分辨率宽度。例如 1080。
              */
-            width: number;
+            readonly width: number;
 
             /**
              * @description: 设备屏幕分辨率高度。例如 1920。
              */
-            height: number;
+            readonly height: number;
 
             /**
              * @description: 修订版本号，或者诸如 "M4-rc20" 的标识。
              */
-            buildId: string;
+            readonly buildId: string;
 
             /**
              * @description: 设备的主板(?)型号。例如 "goldfish" 。
              */
-            broad: string;
+            readonly broad: string;
 
             /**
              * @description: 与产品或硬件相关的厂商品牌，如 "Xiaomi" , "Huawei" 等。
              */
-            brand: string;
+            readonly brand: string;
 
             /**
              * @description: 设备在工业设计中的名称。
              */
-            device: string;
+            readonly device: string;
 
             /**
              * @description: 设备型号。
              */
-            model: string;
+            readonly model: string;
 
             /**
              * @description: 产品完整名称
              */
-            product: string;
+            readonly product: string;
 
             /**
              * @description: 设备 Bootloader 的版本。
              */
-            bootloader: string;
+            readonly bootloader: string;
 
             /**
              * @description: 设备的硬件名称(来自内核命令行或者/proc)。
              */
-            hardware: string;
+            readonly hardware: string;
 
             /**
              * @description: 构建(build)的唯一标识码。
              */
-            fingerprint: string;
+            readonly fingerprint: string;
 
             /**
              * @description: 硬件序列号。
              */
-            serial: string;
+            readonly serial: string;
 
             /**
              * @description: 安卓系统 API 版本。例如安卓 4.4 的 sdkInt 为 19。
              */
-            sdkInt: number;
+            readonly sdkInt: number;
 
             /**
              * @description: 源代码管理生成的内部值。例如，git 提交的散列值。
              */
-            incremental: string;
+            readonly incremental: string;
 
             /**
              * @description: Android 系统版本号。例如 "5.0" , "7.1.1" 。
              */
-            releases: string;
+            readonly releases: string;
 
             /**
              * @description: 产品构建所基于的操作系统。
              */
-            baseOS: string;
+            readonly baseOS: string;
 
             /**
              * @description: 安全补丁程序级别。
              */
-            securityPatch: string;
+            readonly securityPatch: string;
 
             /**
              * @description: 开发代号，例如发行版是 "REL" 。
              */
-            codename: string;
+            readonly codename: string;
 
             /**
              * @description: 获取设备的 IMEI
