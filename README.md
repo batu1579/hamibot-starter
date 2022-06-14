@@ -6,7 +6,7 @@
 
 1. 克隆项目以后使用 `npm install` 命令安装依赖
 2. 在 `src` 文件夹下编写代码，程序入口为 `src/index.ts`
-3. 使用 `npm run build` 命令打包项目，打包后的文件路径: `dict/bundle.js`
+3. 使用 `npm run build` 命令打包项目，打包后的文件路径: `dist/bundle.js`
 
 ## 特性
 

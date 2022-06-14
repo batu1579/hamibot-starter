@@ -18,7 +18,7 @@ declare module "widget-operation" {
          * auto("fast");
          * ```
          */
-        function auto(mode: "fast" | "normal"): void;
+        function auto(mode?: "fast" | "normal"): void;
 
         // TODO: 补全常用属性
         interface AccessibilityWindowInfo {
