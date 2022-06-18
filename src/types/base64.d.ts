@@ -2,18 +2,12 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 01:38:14
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-03 16:33:05
+ * @LastTime: 2022-06-03 20:18:58
  * @FilePath: \\src\\types\\base64.d.ts
  * @Description: base64 模块
  */
 declare module "base64" {
     global {
-
-        // TODO: 补全其他支持的编码
-        /**
-         * @description: 可选的编码
-         */
-        type encode = "utf-8" | "gbk";
 
         /**
          * @description: Base64 编码和解码器。Base64 常用于在通常处理文本数据的场合，表示、传输、存储一些二进制数据，包括 MIME 的电子邮件及 XML 的一些复杂数据。
