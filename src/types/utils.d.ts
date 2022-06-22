@@ -10,7 +10,7 @@ declare module "utils" {
     global {
         // TODO: 补全其他支持的编码
         /**
-         * @description: 可选的编码
+         * @description: 可选的编码。
          */
         type encode = "utf-8" | "gbk";
     }

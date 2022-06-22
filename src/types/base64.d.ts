@@ -17,9 +17,9 @@ declare module "base64" {
         interface Base64 {
             /**
              * @description: 将字符串进行 Base64 编码。
-             * @param {string} str 目标字符串
-             * @param {string} [encoding] 字符串编码
-             * @return {string} 编码后的字符串
+             * @param {string} str 目标字符串。
+             * @param {string} [encoding] 字符串编码。
+             * @return {string} 编码后的字符串。
              * @since 1.4.0
              * @example: 
              * ```typescript
@@ -30,9 +30,9 @@ declare module "base64" {
 
             /**
              * @description: 将字符串进行 Base64 编码。
-             * @param {string} str 目标字符串
-             * @param {string} [encoding] 字符串编码
-             * @return {string} 编码后的字符串
+             * @param {string} str 目标字符串。
+             * @param {string} [encoding] 字符串编码。
+             * @return {string} 编码后的字符串。
              * @since 1.4.0
              * @example: 
              * ```typescript
@@ -43,9 +43,9 @@ declare module "base64" {
 
             /**
              * @description: 将字符串进行 Base64 解码。
-             * @param {string} str 目标字符串
-             * @param {string} [encoding] 字符串编码
-             * @return {string} 解码后的字符串
+             * @param {string} str 目标字符串。
+             * @param {string} [encoding] 字符串编码。
+             * @return {string} 解码后的字符串。
              * @since 1.4.0
              * @example: 
              * ```typescript
@@ -56,9 +56,9 @@ declare module "base64" {
 
             /**
              * @description: 将字符串进行 Base64 解码。
-             * @param {string} str 目标字符串
-             * @param {string} [encoding] 字符串编码
-             * @return {string} 解码后的字符串
+             * @param {string} str 目标字符串。
+             * @param {string} [encoding] 字符串编码。
+             * @return {string} 解码后的字符串。
              * @since 1.4.0
              * @example: 
              * ```typescript

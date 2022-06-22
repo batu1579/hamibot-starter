@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 00:20:15
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-03 16:32:33
+ * @LastTime: 2022-06-23 04:13:19
  * @FilePath: \\src\\types\\app.d.ts
  * @Description: app 模块
  */
@@ -11,39 +11,39 @@ declare module "app" {
 
         interface EmailOptions {
             /**
-             * @description: 收件人的邮件地址。如果有多个收件人，则用字符串数组表示
+             * @description: 收件人的邮件地址。如果有多个收件人，则用字符串数组表示。
              */
             email?: string | string[];
 
             /**
-             * @description: 抄送收件人的邮件地址。如果有多个抄送收件人，则用字符串数组表示
+             * @description: 抄送收件人的邮件地址。如果有多个抄送收件人，则用字符串数组表示。
              */
             cc?: string | string[];
 
             /**
-             * @description: 密送收件人的邮件地址。如果有多个密送收件人，则用字符串数组表示
+             * @description: 密送收件人的邮件地址。如果有多个密送收件人，则用字符串数组表示。
              */
             bcc?: string | string[];
 
             /**
-             * @description: 邮件主题(标题)
+             * @description: 邮件主题(标题)。
              */
             subject?: string;
 
             /**
-             * @description: 邮件正文
+             * @description: 邮件正文。
              */
             text?: string;
 
             /**
-             * @description: 附件的路径
+             * @description: 附件的路径。
              */
             attachments?: string;
         }
 
         interface IntentOptions {
             /**
-             * @description: 意图的 `Action` ，指意图要完成的动作，是一个字符串常量。当 `action` 以 `android.intent.action` 开头时，可以省略前缀，直接用 `SEND` 代替。参见[Action](https://developer.android.com/reference/android/content/Intent.html#standard-activity-actions)
+             * @description: 意图的 `Action` ，指意图要完成的动作，是一个字符串常量。当 `action` 以 `android.intent.action` 开头时，可以省略前缀，直接用 `SEND` 代替。参见[Action](https://developer.android.com/reference/android/content/Intent.html#standard-activity-actions)。
              * @example: "android.intent.action.SEND"
              */
             action?: string;
@@ -66,12 +66,12 @@ declare module "app" {
             category?: string[];
 
             /**
-             * @description: 目标包名
+             * @description: 目标包名。
              */
             packageName?: string;
 
             /**
-             * @description: 目标 `Activity` 或 `Service` 等组件的名称
+             * @description: 目标 `Activity` 或 `Service` 等组件的名称。
              */
             className?: string;
 
@@ -97,7 +97,7 @@ declare module "app" {
         }
 
         /**
-         * @description: Uri对象的详细信息参见 [android.net.Uri](https://developer.android.com/reference/android/net/Uri)
+         * @description: Uri对象的详细信息参见 [android.net.Uri](https://developer.android.com/reference/android/net/Uri)。
          */
         interface Uri {
             /**
@@ -114,20 +114,20 @@ declare module "app" {
 
             /**
              * @description: 从此 URI 的颁发机构获取端口。例如，如果权限为 `google.com:80` ，则此方法将返回 80。
-             * @return {number} 此 URI 的端口，如果无效或不存在，则为 -1
+             * @return {number} 此 URI 的端口，如果无效或不存在，则为 -1。
              */
             getPort(): number;
 
             /**
              * @description: 从此 URI 获取已解码的查询组件。查询位于查询分隔符 （`？`） 之后，片段分隔符 （`#`） 之前。此方法将返回`http://www.google.com/search?q=android` 中的 `q=android`。
-             * @return {string | null} 已解码的查询，如果没有，则为null
+             * @return {string | null} 已解码的查询，如果没有，则为null。
              */
             getQuery(): string | null;
 
             /**
-             * @description: 使用给定键在查询字符串中搜索参数值
-             * @param {string} key 要查找的键值对
-             * @return {array} 解码值列表
+             * @description: 使用给定键在查询字符串中搜索参数值。
+             * @param {string} key 要查找的键值对。
+             * @return {array} 解码值列表。
              */
             getQueryParameters(key: string): string[];
         }
@@ -154,8 +154,8 @@ declare module "app" {
 
             /**
              * @description: 通过应用名称启动应用。如果该名称对应多个应用，则只启动其中某一个。
-             * @param {string} appName 应用名称
-             * @return {boolean} 如果该名称对应的应用不存在，则返回 false; 否则返回 true。
+             * @param {string} appName 应用名称。
+             * @return {boolean} 如果该名称对应的应用不存在，则返回 `false` ; 否则返回 `true` 。
              * @example:
              * ```typescript
              * // 启动 Hamibot
@@ -166,8 +166,8 @@ declare module "app" {
 
             /**
              * @description: 通过应用包名启动应用。
-             * @param {string} packageName 应用包名
-             * @return {boolean} 如果该包名对应的应用不存在，则返回 false；否则返回 true。
+             * @param {string} packageName 应用包名。
+             * @return {boolean} 如果该包名对应的应用不存在，则返回 `false` ；否则返回 `true` 。
              * @example:
              * ```typescript
              * // 启动 Hamibot
@@ -178,8 +178,8 @@ declare module "app" {
 
             /**
              * @description: 通过应用包名启动应用。
-             * @param {string} packageName 应用包名
-             * @return {boolean} 如果该包名对应的应用不存在，则返回 false；否则返回 true。
+             * @param {string} packageName 应用包名。
+             * @return {boolean} 如果该包名对应的应用不存在，则返回 `false` ；否则返回 `true` 。
              * @example:
              * ```typescript
              * // 启动 Hamibot
@@ -190,8 +190,8 @@ declare module "app" {
 
             /**
              * @description: 获取应用名称对应的已安装的应用的包名。
-             * @param {string} appName 应用名称
-             * @return {string | null} 如果该找不到该应用，返回 null；如果该名称对应多个应用，则只返回其中某一个的包名。
+             * @param {string} appName 应用名称。
+             * @return {string | null} 如果该找不到该应用，返回 `null` ；如果该名称对应多个应用，则只返回其中某一个的包名。
              * @example: 
              * ```typescript
              * let name = app.getPackageName('Hamibot'); // 返回 com.hamibot.hamibot
@@ -201,8 +201,8 @@ declare module "app" {
 
             /**
              * @description: 获取应用包名对应的已安装的应用的名称。
-             * @param {string} packageName
-             * @return {string | null} 应用的名称，如果该找不到该应用，返回 null。
+             * @param {string} packageName。
+             * @return {string | null} 应用的名称，如果该找不到该应用，返回 `null` 。
              * @example: 
              * ```typescript
              * let name = app.getAppName('com.hamibot.hamibot'); // 返回 Hamibot
@@ -212,30 +212,30 @@ declare module "app" {
 
             /**
              * @description: 获取指定应用的详细信息。
-             * @param {string} packageName 	应用包名
-             * @return {PackageInfo} 应用信息
+             * @param {string} packageName 	应用包名。
+             * @return {PackageInfo} 应用信息。
              * @since 1.4.0
              */
             getPackageInfo(packageName: string): PackageInfo;
 
             /**
              * @description: 获取所有已安装的应用包信息。
-             * @return {array} 应用包信息数组
+             * @return {array} 应用包信息数组。
              * @since 1.4.0
              */
             getInstalledPackages(): PackageInfo[];
 
             /**
              * @description: 获取所有已安装的应用信息。
-             * @return {array} 应用信息数组
+             * @return {array} 应用信息数组。
              * @since 1.4.0
              */
             getInstalledApps(): PackageInfo[];
 
             /**
              * @description: 获取指定 APK 文件的详细信息。
-             * @param {string} path APK 文件路径
-             * @return {PackageInfo} APK 文件的详细信息
+             * @param {string} path APK 文件路径。
+             * @return {PackageInfo} APK 文件的详细信息。
              * @since 1.4.0
              * @example: 
             ```typescript
@@ -247,14 +247,14 @@ declare module "app" {
 
             /**
              * @description: 打开应用的详情页(设置页)。
-             * @param {string} packageName 应用包名
-             * @return {boolean} 如果找不到该应用，返回 false; 否则返回 true。
+             * @param {string} packageName 应用包名。
+             * @return {boolean} 如果找不到该应用，返回 `false` ; 否则返回 `true` 。
              */
             openAppSetting(packageName: string): boolean;
 
             /**
              * @description: 用其他应用查看文件。文件不存在的情况由查看文件的应用处理。如果找不出可以查看该文件的应用，则抛出 `ActivityNotException` 。
-             * @param {string} path 文件路径
+             * @param {string} path 文件路径。
              * @example: 
              * ```typescript
              * // 查看文本文件
@@ -265,13 +265,13 @@ declare module "app" {
 
             /**
              * @description: 用其他应用编辑文件。文件不存在的情况由编辑文件的应用处理。如果找不出可以编辑该文件的应用，则抛出`ActivityNotException` 。
-             * @param {string} path 文件路径
+             * @param {string} path 文件路径。
              */
             editFile(path: string): void;
 
             /**
              * @description: 卸载应用。执行后会会弹出卸载应用的提示框。如果该包名的应用未安装，由应用卸载程序处理，可能弹出"未找到应用"的提示。
-             * @param {string} packageName 应用包名
+             * @param {string} packageName 应用包名。
              * @example: 
              * ```typescript
              * // 卸载 QQ
@@ -303,7 +303,7 @@ declare module "app" {
 
             /**
              * @description: 启动 Hamibot 的特定界面。
-             * @param {string} name 活动名称，可选的值为:
+             * @param {string} name 活动名称，可选的值为:。
              * - `console` - 日志界面
              * @example: 
              * ```typescript
@@ -313,8 +313,8 @@ declare module "app" {
             startActivity(name: string): void;
 
             /**
-             * @description: 根据选项，构造一个意图 `Intent` 对象。需要注意的是，除非应用专门暴露 `Activity` 出来，否则在没有 `root` 权限的情况下使用 `Intent` 是无法跳转到特定 `Activity` 、应用的特定界面的。例如我们能通过 `Intent` 跳转到QQ的分享界面，是因为QQ对外暴露了分享的 `Activity` ；而在没有 `root` 权限的情况下，我们无法通过 `Intent` 跳转到QQ的设置界面，因为QQ并没有暴露这个 `Activity` 。更多信息，参见 [Intent](https://developer.android.com/guide/components/intents-filters.html#Types)
-             * @param {IntentOptions} options 意图选项
+             * @description: 根据选项，构造一个意图 `Intent` 对象。需要注意的是，除非应用专门暴露 `Activity` 出来，否则在没有 `root` 权限的情况下使用 `Intent` 是无法跳转到特定 `Activity` 、应用的特定界面的。例如我们能通过 `Intent` 跳转到QQ的分享界面，是因为QQ对外暴露了分享的 `Activity` ；而在没有 `root` 权限的情况下，我们无法通过 `Intent` 跳转到QQ的设置界面，因为QQ并没有暴露这个 `Activity` 。更多信息，参见 [Intent](https://developer.android.com/guide/components/intents-filters.html#Types)。
+             * @param {IntentOptions} options 意图选项。
              * @example: 
              * ```typescript
              * //打开应用来查看图片文件
@@ -330,7 +330,7 @@ declare module "app" {
 
             /**
              * @description: 根据选项构造一个 `Intent` ，并启动该 `Activity` 。
-             * @param {IntentOptions} options 意图选项
+             * @param {IntentOptions} options 意图选项。
              * @example: 
              * ```typescript
              * app.startActivity({
@@ -344,19 +344,19 @@ declare module "app" {
 
             /**
              * @description: 根据选项构造一个 `Intent` ，并启动该服务。
-             * @param {IntentOptions} options 意图选项
+             * @param {IntentOptions} options 意图选项。
              */
             startService(options: IntentOptions): void;
 
             /**
              * @description: 根据选项构造一个 `Intent` ，并发送该广播。
-             * @param {IntentOptions} options 意图选项
+             * @param {IntentOptions} options 意图选项。
              */
             sendBroadcast(options: IntentOptions): void;
 
             /**
              * @description: 发送特定名称的广播可以触发 Hamibot 的布局分析，方便脚本调试。
-             * @param {string} name 特定的广播名称，包括：
+             * @param {string} name 特定的广播名称，包括：。
              *      - inspect_layout_hierarchy 布局层次分析
              *      - inspect_layout_bounds 布局范围
              * @example: 
@@ -368,8 +368,8 @@ declare module "app" {
 
             /**
              * @description: 根据选项构造一个 `Intent` ，转换为对应的 `shell` 的 `Intent` 命令的参数。
-             * @param {IntentOptions} options 意图选项
-             * @return {string} `Intent` 命令参数字符串
+             * @param {IntentOptions} options 意图选项。
+             * @return {string} `Intent` 命令参数字符串。
              * @example: 
              * ```typescript
              * shell(
@@ -385,14 +385,14 @@ declare module "app" {
 
             /**
              * @description: 解析 uri 字符串并返回相应的 `Uri` 对象。即使 `Uri` 格式错误，该函数也会返回一个 `Uri` 对象。需要注意的是，在高版本 Android 上，由于系统限制直接在 `Uri` 暴露文件的绝对路径，因此如果 uri 字符串是文件 `file://...` ，返回的 Uri 会是诸如 `content://...` 的形式。
-             * @param {string} uri 一个代表 `Uri` 的字符串，例如 `file:///sdcard/1.txt` 或者 `https://hamibot.com`
+             * @param {string} uri 一个代表 `Uri` 的字符串，例如 `file:///sdcard/1.txt` 或者 `https://hamibot.com`。
              * @return {Uri} 解析的 `Uri` 对象，但如果访问该对象的 scheme, path 等值可能因解析失败而返回 `null` 。
              */
             parseUri(uri: string): Uri;
 
             /**
              * @description: 从一个文件路径创建一个 `Uri` 对象。需要注意的是，在高版本 Android 上，由于系统限制直接在 `Uri` 暴露文件的绝对路径，因此返回的 `Uri` 会是诸如 `content://...` 的形式。
-             * @param {string} path 文件路径，例如"/sdcard/1.txt"
+             * @param {string} path 文件路径，例如"/sdcard/1.txt"。
              * @return {Uri} 指向该文件的 Uri 的对象。
              */
             getUriForFile(path: string): Uri;
@@ -402,7 +402,7 @@ declare module "app" {
 
         /**
          * @description: 通过应用名称启动应用。如果该名称对应多个应用，则只启动其中某一个。
-         * @param {string} appName 应用名称
+         * @param {string} appName 应用名称。
          * @return {boolean} 如果该名称对应的应用不存在，则返回 false; 否则返回 true。
          * @example:
          * ```typescript
@@ -414,7 +414,7 @@ declare module "app" {
 
         /**
          * @description: 通过应用包名启动应用。
-         * @param {string} packageName 应用包名
+         * @param {string} packageName 应用包名。
          * @return {boolean} 如果该包名对应的应用不存在，则返回 false；否则返回 true。
          * @example:
          * ```typescript
@@ -426,7 +426,7 @@ declare module "app" {
 
         /**
          * @description: 获取应用名称对应的已安装的应用的包名。
-         * @param {string} appName 应用名称
+         * @param {string} appName 应用名称。
          * @return {string | null} 如果该找不到该应用，返回 null；如果该名称对应多个应用，则只返回其中某一个的包名。
          * @example: 
          * ```typescript
@@ -437,7 +437,7 @@ declare module "app" {
 
         /**
          * @description: 获取应用包名对应的已安装的应用的名称。
-         * @param {string} packageName
+         * @param {string} packageName。
          * @return {string | null} 应用的名称，如果该找不到该应用，返回 null。
          * @example: 
          * ```typescript
@@ -448,7 +448,7 @@ declare module "app" {
 
         /**
          * @description: 打开应用的详情页(设置页)。
-         * @param {string} packageName 应用包名
+         * @param {string} packageName 应用包名。
          * @return {boolean} 如果找不到该应用，返回 false; 否则返回 true。
          */
         function openAppSetting(packageName: string): boolean;

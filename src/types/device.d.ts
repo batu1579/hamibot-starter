@@ -50,7 +50,7 @@ declare module "device" {
             readonly model: string;
 
             /**
-             * @description: 产品完整名称
+             * @description: 产品完整名称。
              */
             readonly product: string;
 
@@ -105,14 +105,14 @@ declare module "device" {
             readonly codename: string;
 
             /**
-             * @description: 获取设备的 IMEI
-             * @return {string} 设备的 IMEI
+             * @description: 获取设备的 IMEI。
+             * @return {string} 设备的 IMEI。
              */
             getIMEI(): string;
 
             /**
              * @description: 获取设备的 Android ID 。Android ID 为一个用 16 进制字符串表示的 64 位整数，在设备第一次使用时随机生成，之后不会更改，除非恢复出厂设置。
-             * @return {string} 设备的 Android ID
+             * @return {string} 设备的 Android ID。
              */
             getAndroidId(): string;
 
@@ -124,7 +124,7 @@ declare module "device" {
             getMacAddress(): string | null;
 
             /**
-             * @description: 获取当前屏幕亮度
+             * @description: 获取当前屏幕亮度。
              * @return {number} 当前的(手动)亮度。范围为 0~255。
              */
             getBrightness(): number;
@@ -138,14 +138,14 @@ declare module "device" {
             /**
              * @description: 设置当前手动亮度。如果当前是自动亮度模式，该函数不会影响屏幕的亮度。
              * - **注意！：此函数需要"修改系统设置"的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。**
-             * @param {number} b 要设置的亮度，范围 0~255
+             * @param {number} b 要设置的亮度，范围 0~255。
              */
             setBrightness(b: number): void;
 
             /**
              * @description: 设置当前亮度模式。
              * - **注意！：此函数需要"修改系统设置"的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。**
-             * @param {number} mode 亮度模式，0 为手动亮度，1 为自动亮度
+             * @param {number} mode 亮度模式，0 为手动亮度，1 为自动亮度。
              */
             setBrightnessMode(mode: number): void;
 
@@ -188,45 +188,45 @@ declare module "device" {
             /**
              * @description: 设置当前媒体音量。
              * - **注意！：此函数需要"修改系统设置"的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。**
-             * @param {number} volume 目标音量
+             * @param {number} volume 目标音量。
              */
             setMusicVolume(volume: number): void;
 
             /**
              * @description: 设置当前通知音量。
              * - **注意！：此函数需要"修改系统设置"的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。**
-             * @param {number} volume 目标音量
+             * @param {number} volume 目标音量。
              */
             setNotificationVolume(volume: number): void;
 
             /**
              * @description: 设置当前闹钟音量。
              * - **注意！：此函数需要"修改系统设置"的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。**
-             * @param {number} volume 目标音量
+             * @param {number} volume 目标音量。
              */
             setAlarmVolume(volume: number): void;
 
             /**
              * @description: 获取当前电量百分比。
-             * @return {number} 当前电量(0.0 ~ 100.0 的浮点数)
+             * @return {number} 当前电量(0.0 ~ 100.0 的浮点数)。
              */
             getBattery(): number;
 
             /**
              * @description: 检查设备是否正在充电。
-             * @return {boolean} 正在充电返回 `true` 否则返回 `false`
+             * @return {boolean} 正在充电返回 `true` 否则返回 `false`。
              */
             isCharging(): boolean;
 
             /**
              * @description: 获取设备内存总量。
-             * @return {number} 设备内存总量(单位字节(Byte), 1MB = 1024 * 1024B。)
+             * @return {number} 设备内存总量(单位字节(Byte), 1MB = 1024 * 1024B。)。
              */
             getTotalMem(): number;
 
             /**
              * @description: 获取设备当前可用的内存。
-             * @return {number} 设备当前可用的内存(单位字节(Byte), 1MB = 1024 * 1024B。)
+             * @return {number} 设备当前可用的内存(单位字节(Byte), 1MB = 1024 * 1024B。)。
              * @example: 
              */
             getAcailMem(): number;
@@ -270,7 +270,7 @@ declare module "device" {
 
             /**
              * @description: 使设备震动一段时间。
-             * @param {number} millis 震动时间，单位毫秒
+             * @param {number} millis 震动时间，单位毫秒。
              */
             vibrate(millis: number): void;
 

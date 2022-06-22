@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 16:14:41
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-03 17:55:59
+ * @LastTime: 2022-06-22 12:25:58
  * @FilePath: \\src\\types\\engines.d.ts
  * @Description: 
  */
@@ -15,7 +15,7 @@ declare module "engines" {
 
         interface Engines {
             /**
-             * @description: 在新的脚本环境中运行脚本 `script` 。所谓新的脚本环境，指定是，脚本中的变量和原脚本的变量是不共享的，并且，脚本会在新的线程中运行。用字符串来编写脚本非常不方便，可以结合函数的 `toString()` 的方法来执行特定函数
+             * @description: 在新的脚本环境中运行脚本 `script` 。所谓新的脚本环境，指定是，脚本中的变量和原脚本的变量是不共享的，并且，脚本会在新的线程中运行。用字符串来编写脚本非常不方便，可以结合函数的 `toString()` 的方法来执行特定函数。
              * @param {string} name 要运行的脚本名称。这个名称和文件名称无关，只是在任务管理中显示的名称。
              * @param {string} script 要运行的脚本内容。
              * @param {ExecutionConfig} [config] 运行配置项。
@@ -67,7 +67,7 @@ declare module "engines" {
             execScriptFile(path: string, config?: ExecutionConfig): ScriptExecution;
 
             /**
-             * @description: 在新的脚本环境中运行录制文件(.auto)
+             * @description: 在新的脚本环境中运行录制文件(.auto)。
              * @param {string} path 要运行的录制文件路径。
              * @param {ExecutionConfig} config 运行配置项。
              * @return {ScriptExecution} 返回一个 `ScriptExectuion` 对象。
@@ -90,7 +90,7 @@ declare module "engines" {
 
             /**
              * @description: 获取当前脚本的脚本引擎对象( `ScriptEngine` )。该对象可以通过 `execArgv` 来获取他的运行参数，包括外部参数、 `intent` 等。普通脚本的运行参数通常为空，通过定时任务的广播启动的则可以获取到启动的 `intent` 。
-             * @return {ScriptEngine} 当前脚本的脚本引擎对象
+             * @return {ScriptEngine} 当前脚本的脚本引擎对象。
              * @example: 
              * ```typescript
              * log(engines.myEngine().execArgv);
@@ -106,21 +106,21 @@ declare module "engines" {
         }
 
         /**
-         * @description: 脚本运行配置项
+         * @description: 脚本运行配置项。
          */
         interface ExecutionConfig {
             /**
-             * @description: 延迟执行的时间（单位毫秒），默认为 0。
+             * @description: 延迟执行的时间，单位毫秒（默认为 0）。
              */
             delay: number;
 
             /**
-             * @description: 循环运行次数，默认为 1 。0 为无限循环。
+             * @description: 循环运行次数（默认为 1 ），0 为无限循环。
              */
             loopTimes: number;
 
             /**
-             * @description: 循环运行时两次运行之间的时间间隔（单位毫秒），默认为 0。
+             * @description: 循环运行时两次运行之间的时间间隔，单位毫秒（默认为 0）。
              */
             interval: number;
 
@@ -135,15 +135,15 @@ declare module "engines" {
          */
         interface ScriptExecution {
             /**
-             * @description: 获取执行该脚本的脚本引擎对象( `ScriptEngine` )
-             * @return {ScriptEngine} 执行该脚本的脚本引擎对象
+             * @description: 获取执行该脚本的脚本引擎对象( `ScriptEngine` )。
+             * @return {ScriptEngine} 执行该脚本的脚本引擎对象。
              * @example: 
              */
             getEngine(): ScriptEngine;
 
             /**
-             * @description: 获取该脚本的运行配置( `ScriptConfig` )
-             * @return {ScriptConfig} 该脚本的运行配置
+             * @description: 获取该脚本的运行配置( `ScriptConfig` )。
+             * @return {ScriptConfig} 该脚本的运行配置。
              */
             getConfig(): ScriptConfig;
         }
@@ -165,7 +165,7 @@ declare module "engines" {
 
             /**
              * @description: 获取当前脚本引擎正在执行的脚本对象。
-             * @return {ScriptSource} 当前脚本引擎正在执行的脚本对象
+             * @return {ScriptSource} 当前脚本引擎正在执行的脚本对象。
              * @example: 
              * ```typescript
              * log(engines.myEngine().getSource());
@@ -175,8 +175,8 @@ declare module "engines" {
 
             /**
              * @description: 向该脚本引擎发送一个事件，该事件可以在该脚本引擎对应的脚本的 `events` 模块监听到并在脚本主线程执行事件处理。
-             * @param {string} eventName 事件名称
-             * @param {array} args 事件参数
+             * @param {string} eventName 事件名称。
+             * @param {array} args 事件参数。
              * @example: 
              * ```typescript
              * // receiver.js
@@ -201,17 +201,17 @@ declare module "engines" {
 
         interface ScriptConfig {
             /**
-             * @description: 延迟执行的时间(毫秒)
+             * @description: 延迟执行的时间，单位毫秒。
              */
             readonly delay: number;
 
             /**
-             * @description: 循环运行时两次运行之间的时间间隔(毫秒)
+             * @description: 循环运行时两次运行之间的时间间隔，单位毫秒。
              */
             readonly interval: number;
 
             /**
-             * @description: 循环运行次数
+             * @description: 循环运行次数。
              */
             readonly loopTimes: number;
 

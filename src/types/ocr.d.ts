@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 01:16:42
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-03 16:36:11
+ * @LastTime: 2022-06-23 04:39:59
  * @FilePath: \\src\\types\\ocr.d.ts
  * @Description: 
  */
@@ -22,8 +22,8 @@ declare module "ocr" {
         interface OCR {
             /**
              * @description: 识别图片中的文字。
-             * @param {Images} img 要识别的图片
-             * @return {OcrResult}
+             * @param {Images} img 要识别的图片。
+             * @return {OcrResult} OCR 识别结果。
              * @since 1.2.2
              * @example: 
              * ```typescript
@@ -40,8 +40,8 @@ declare module "ocr" {
 
             /**
              * @description: 识别图片中的文字，只返回文本结果。
-             * @param {Images} img 要识别的图片
-             * @return {OcrResult}
+             * @param {Images} img 要识别的图片。
+             * @return {OcrResult} OCR 识别结果。
              * @since 1.2.2
              * @example: 
              * ```typescript
