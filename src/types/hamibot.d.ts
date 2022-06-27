@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-24 17:21:22
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-03 16:36:03
+ * @LastTime: 2022-06-23 05:07:25
  * @FilePath: \\src\\types\\hamibot.d.ts
  * @Description: hamibot 模块
  */
@@ -231,5 +231,11 @@ declare module "hamibot" {
          * @return {boolean} 如果找不到该应用，返回 false; 否则返回 true。
          */
         function openAppSetting(packageName: string): boolean
+
+        /**
+         * @description: 立即停止脚本运行。
+         * - **注意！：此函数是通过抛出 `ScriptInterrupttedException` 来实现的，因此如果用 `try...catch` 把 `exit()` 函数的异常捕捉，则脚本不会立即停止，仍会运行几行后再停止。**
+         */
+        function exit(): void;
     }
 }
