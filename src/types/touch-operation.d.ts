@@ -6,7 +6,7 @@
  * @FilePath: \\src\\types\\touch-operation.d.ts
  * @Description: 触摸操作模块
  */
-declare module "touch-operation" {
+declare module 'touch-operation' {
     global {
 
         // 声明全局函数
@@ -100,7 +100,7 @@ declare module "touch-operation" {
          */
         class RootAutomator {
             /**
-             * @description: 点击位置 (x, y) 。其中 `id` 是一个整数值，用于区分多点触摸，不同的 `id` 表示不同的"手指"。如果不需要多点触摸，则不需要 `id` 这个参数。 多点触摸通常用于手势或游戏操作，例如模拟双指捏合、双指上滑等。
+             * @description: 点击位置 (x, y) 。其中 `id` 是一个整数值，用于区分多点触摸，不同的 `id` 表示不同的'手指'。如果不需要多点触摸，则不需要 `id` 这个参数。 多点触摸通常用于手势或游戏操作，例如模拟双指捏合、双指上滑等。
              * - **注意！： 某些情况下可能存在 tap 点击无反应的情况，这时可以用 `RootAutomator.press()` 函数代替。**
              * - **注意！：此函数需要 root 权限。**
              * @param {number} x 横坐标。
@@ -109,9 +109,9 @@ declare module "touch-operation" {
              * @example: 
              * ```typescript
              * let ra = new RootAutomator();
-             * //让"手指1"点击位置(100, 100)
+             * //让'手指1'点击位置(100, 100)
              * ra.tap(100, 100, 1);
-             * //让"手指2"点击位置(200, 200);
+             * //让'手指2'点击位置(200, 200);
              * ra.tap(200, 200, 2);
              * ra.exit();
              * ```

@@ -6,7 +6,7 @@
  * @FilePath: \\src\\types\\ocr.d.ts
  * @Description: 
  */
-declare module "ocr" {
+declare module 'ocr' {
     global {
         // TODO: 补全属性和方法
         interface OcrResult {

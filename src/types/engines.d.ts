@@ -6,7 +6,7 @@
  * @FilePath: \\src\\types\\engines.d.ts
  * @Description: 
  */
-declare module "engines" {
+declare module 'engines' {
     global {
         /**
          * @description: `engines` 模块包含了一些与脚本环境、脚本运行、脚本引擎有关的函数，包括运行其他脚本，关闭脚本等。
@@ -23,7 +23,7 @@ declare module "engines" {
              * @example: 
              * ```typescript
              * // 每隔3秒运行一次脚本，循环10次
-             * engines.execScript('hello world', "toast('hello world')", {
+             * engines.execScript('hello world', 'toast('hello world')', {
              *     loopTimes: 10,
              *     interval: 3000,
              * });
@@ -42,7 +42,7 @@ declare module "engines" {
              * // 把运行脚本封装成一个函数来传递变量
              * function exec(action, args) {
              *     args = args || {};
-             *     engines.execScript(action.name, action.name + "(" + JSON.stringify(args) + ");\n" + action.toString());
+             *     engines.execScript(action.name, action.name + '(' + JSON.stringify(args) + ');\n' + action.toString());
              * }
              * // 要执行的函数，是一个简单的加法
              * function add(args) {
@@ -61,7 +61,7 @@ declare module "engines" {
              * @return {ScriptExecution} 返回一个 `ScriptExectuion` 对象。
              * @example: 
              * ```typescript
-             * engines.execScriptFile("/sdcard/脚本/1.js");
+             * engines.execScriptFile('/sdcard/脚本/1.js');
              * ```
              */
             execScriptFile(path: string, config?: ExecutionConfig): ScriptExecution;
@@ -73,7 +73,7 @@ declare module "engines" {
              * @return {ScriptExecution} 返回一个 `ScriptExectuion` 对象。
              * @example: 
              * ```typescript
-             * engines.execAutoFile("/sdcard/脚本/1.auto");
+             * engines.execAutoFile('/sdcard/脚本/1.auto');
              * ```
              */
             execAutoFile(path: string, config?: ExecutionConfig): ScriptExecution;
@@ -181,7 +181,7 @@ declare module "engines" {
              * ```typescript
              * // receiver.js
              * // 监听say事件
-             * events.on("say", function(words) {
+             * events.on('say', function(words) {
              *     toastLog(words);
              * });
              * // 保持脚本运行
@@ -189,11 +189,11 @@ declare module "engines" {
              * 
              * // 同一目录另一脚本
              * //运行脚本
-             * let e = engines.execScriptFile("./receiver.js");
+             * let e = engines.execScriptFile('./receiver.js');
              * // 等待脚本启动
              * sleep(2000);
              * // 向该脚本发送事件
-             * e.getEngine().emit("say", "你好");
+             * e.getEngine().emit('say', '你好');
              * ```
              */
             emit(eventName: string, ...args: any[]): void;

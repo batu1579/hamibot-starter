@@ -7,7 +7,7 @@
  * @Description: 
  */
 
-declare module "console" {
+declare module 'console' {
     global {
 
         interface LogConfig {
@@ -31,7 +31,7 @@ declare module "console" {
              * - `ERROR` - 错误级别
              * - `FATAL` - 严重错误级别
              */
-            rootLevel?: "ALL" | "OFF" | "DEBUG" | "INFO" | "WARN" | "ERROR" | "FATAL";
+            rootLevel?: 'ALL' | 'OFF' | 'DEBUG' | 'INFO' | 'WARN' | 'ERROR' | 'FATAL';
 
             /**
              * @description: 日志备份文件最大数量（默认为 5）。
@@ -221,7 +221,7 @@ declare module "console" {
              * @param {LogConfig} config 日志配置。
              * @example: 
              * ```typescript
-             * // 把日志保存到"/sdcard/1.txt"
+             * // 把日志保存到'/sdcard/1.txt'
              * console.setGlobalLogConfig({
              *     file: '/sdcard/1.txt',
              * });

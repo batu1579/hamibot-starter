@@ -6,7 +6,7 @@
  * @FilePath: \\src\\types\\base64.d.ts
  * @Description: base64 模块
  */
-declare module "base64" {
+declare module 'base64' {
     global {
 
         /**

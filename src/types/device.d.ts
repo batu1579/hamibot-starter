@@ -6,10 +6,10 @@
  * @FilePath: \\src\\types\\device.d.ts
  * @Description: device 模块
  */
-declare module "device" {
+declare module 'device' {
     global {
         /**
-         * @description: `device` 模块提供了与设备有关的信息与操作，例如获取设备宽高，内存使用率，IMEI，调整设备亮度、音量等。此模块的部分函数，例如调整音量，需要"修改系统设置"的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。
+         * @description: `device` 模块提供了与设备有关的信息与操作，例如获取设备宽高，内存使用率，IMEI，调整设备亮度、音量等。此模块的部分函数，例如调整音量，需要'修改系统设置'的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。
          */
         const device: Device;
 
@@ -25,17 +25,17 @@ declare module "device" {
             readonly height: number;
 
             /**
-             * @description: 修订版本号，或者诸如 "M4-rc20" 的标识。
+             * @description: 修订版本号，或者诸如 'M4-rc20' 的标识。
              */
             readonly buildId: string;
 
             /**
-             * @description: 设备的主板(?)型号。例如 "goldfish" 。
+             * @description: 设备的主板(?)型号。例如 'goldfish' 。
              */
             readonly broad: string;
 
             /**
-             * @description: 与产品或硬件相关的厂商品牌，如 "Xiaomi" , "Huawei" 等。
+             * @description: 与产品或硬件相关的厂商品牌，如 'Xiaomi' , 'Huawei' 等。
              */
             readonly brand: string;
 
@@ -85,7 +85,7 @@ declare module "device" {
             readonly incremental: string;
 
             /**
-             * @description: Android 系统版本号。例如 "5.0" , "7.1.1" 。
+             * @description: Android 系统版本号。例如 '5.0' , '7.1.1' 。
              */
             readonly releases: string;
 
@@ -100,7 +100,7 @@ declare module "device" {
             readonly securityPatch: string;
 
             /**
-             * @description: 开发代号，例如发行版是 "REL" 。
+             * @description: 开发代号，例如发行版是 'REL' 。
              */
             readonly codename: string;
 
@@ -137,14 +137,14 @@ declare module "device" {
 
             /**
              * @description: 设置当前手动亮度。如果当前是自动亮度模式，该函数不会影响屏幕的亮度。
-             * - **注意！：此函数需要"修改系统设置"的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。**
+             * - **注意！：此函数需要'修改系统设置'的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。**
              * @param {number} b 要设置的亮度，范围 0~255。
              */
             setBrightness(b: number): void;
 
             /**
              * @description: 设置当前亮度模式。
-             * - **注意！：此函数需要"修改系统设置"的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。**
+             * - **注意！：此函数需要'修改系统设置'的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。**
              * @param {number} mode 亮度模式，0 为手动亮度，1 为自动亮度。
              */
             setBrightnessMode(mode: number): void;
@@ -187,21 +187,21 @@ declare module "device" {
 
             /**
              * @description: 设置当前媒体音量。
-             * - **注意！：此函数需要"修改系统设置"的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。**
+             * - **注意！：此函数需要'修改系统设置'的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。**
              * @param {number} volume 目标音量。
              */
             setMusicVolume(volume: number): void;
 
             /**
              * @description: 设置当前通知音量。
-             * - **注意！：此函数需要"修改系统设置"的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。**
+             * - **注意！：此函数需要'修改系统设置'的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。**
              * @param {number} volume 目标音量。
              */
             setNotificationVolume(volume: number): void;
 
             /**
              * @description: 设置当前闹钟音量。
-             * - **注意！：此函数需要"修改系统设置"的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。**
+             * - **注意！：此函数需要'修改系统设置'的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。**
              * @param {number} volume 目标音量。
              */
             setAlarmVolume(volume: number): void;
@@ -233,7 +233,7 @@ declare module "device" {
 
             /**
              * @description: 检查设备屏幕是否是亮着的。
-             * - **注意！：类似于 vivo xplay 系列的息屏时钟不属于"屏幕亮着"的情况，虽然屏幕确实亮着但只能显示时钟而且不可交互，此时 `isScreenOn()` 也会返回 `false` 。**
+             * - **注意！：类似于 vivo xplay 系列的息屏时钟不属于'屏幕亮着'的情况，虽然屏幕确实亮着但只能显示时钟而且不可交互，此时 `isScreenOn()` 也会返回 `false` 。**
              * @return {boolean} 如果屏幕亮着，返回 `true` ; 否则返回 `false` 。
              */
             isScreenOn(): boolean;
@@ -251,7 +251,7 @@ declare module "device" {
             /**
              * @description: 保持屏幕常亮。如果此函数调用时屏幕没有点亮，则会唤醒屏幕。可以使用 `device.cancelKeepingAwake()` 来取消屏幕常亮。
              * - **注意！：此函数无法阻止用户使用锁屏键等正常关闭屏幕，只能使得设备在无人操作的情况下保持屏幕常亮。**
-             * - **注意！：在某些设备上，如果不加参数 `timeout` ，只能在 Hamibot 的界面保持屏幕常亮，在其他界面会自动失效，这是因为设备的省电策略造成的。建议使用比较长的时长来代替"一直保持屏幕常亮"的功能，例如 `device.keepScreenOn(3600 * 1000)` 。**
+             * - **注意！：在某些设备上，如果不加参数 `timeout` ，只能在 Hamibot 的界面保持屏幕常亮，在其他界面会自动失效，这是因为设备的省电策略造成的。建议使用比较长的时长来代替'一直保持屏幕常亮'的功能，例如 `device.keepScreenOn(3600 * 1000)` 。**
              * @param {number} [timeout] 屏幕保持常亮的时间, 单位毫秒。如果不加此参数，则一直保持屏幕常亮。
              */
             keepScreenOn(timeout?: number): void;

@@ -7,7 +7,7 @@
  * @Description: hamibot 模块
  */
 
-declare module "hamibot" {
+declare module 'hamibot' {
     global {
         /**
          * @description: 运行在 Hamibot 的脚本，可以使用额外的环境信息和功能。
@@ -25,7 +25,7 @@ declare module "hamibot" {
              *  - `development` - 开发模式
              *  - `production` - 生产模式
              */
-                readonly APP_ENV: "development" | "production";
+                readonly APP_ENV: 'development' | 'production';
 
                 /**
                  * @description: 用户 `id`。
@@ -44,7 +44,7 @@ declare module "hamibot" {
 
                 /**
                  * @description: 时间戳。
-                 * @example: "2021-02-03 04:05:06"
+                 * @example: '2021-02-03 04:05:06'
                  */
                 readonly TIMESTAMP: string;
 
@@ -74,7 +74,7 @@ declare module "hamibot" {
                  *  - `flatRate`
                  * （默认为 `free` ）
                  */
-                readonly mode: "free" | "flatRate";
+                readonly mode: 'free' | 'flatRate';
                 /**
                  * @description: 是否处于免费试用期（默认为 `false` ）。
                  */
@@ -118,7 +118,7 @@ declare module "hamibot" {
                  * - `json` - JSON类型
                  * - `image` - 图片类型
                  */
-                type: "text" | "json" | "image";
+                type: 'text' | 'json' | 'image';
 
                 /**
                  * @description: 附件内容。

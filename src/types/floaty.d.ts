@@ -6,7 +6,7 @@
  * @FilePath: \\src\\types\\floaty.d.ts
  * @Description: 
  */
-declare module "floaty" {
+declare module 'floaty' {
     global {
         /**
          * @description: floaty 模块提供了悬浮窗的相关函数，可以在屏幕上显示自定义悬浮窗，控制悬浮窗大小、位置等。悬浮窗在脚本停止运行时会自动关闭，因此，要保持悬浮窗不被关闭，可以用一个空的 `setInterval` 来实现。

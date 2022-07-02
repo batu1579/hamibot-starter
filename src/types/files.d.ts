@@ -1,4 +1,4 @@
-declare module "files" {
+declare module 'files' {
     global {
         /**
          * @description: `files` 模块提供了一些常见的文件处理，包括文件读写、移动、复制、删掉等。一次性的文件读写可以直接使用 `files.read()` , `files.write()` , `files.append()` 等方便的函数，但如果需要频繁读写或随机读写，则因该使用 `open()` 函数打开一个文件对象来操作文件，并在操作完毕后调用 `close()` 函数关闭文件。
@@ -42,7 +42,7 @@ declare module "files" {
              * @return {string} 连接后的路径。
              * @example: 
              * ```typescript
-             * log(files.join("/sdcard/", "1.txt")) // /sdcard/1.txt
+             * log(files.join('/sdcard/', '1.txt')) // /sdcard/1.txt
              * ```
              */
             join(parent: string, child: string): string;
@@ -74,7 +74,7 @@ declare module "files" {
             exists(path: string): boolean;
 
             /**
-             * @description: 确保路径 `path` 所在的文件夹存在。如果该路径所在文件夹不存在，则创建该文件夹。例如对于路径"/sdcard/Download/ABC/1.txt"，如果/Download/文件夹不存在，则会先创建 Download，再创建 ABC 文件夹。
+             * @description: 确保路径 `path` 所在的文件夹存在。如果该路径所在文件夹不存在，则创建该文件夹。例如对于路径'/sdcard/Download/ABC/1.txt'，如果/Download/文件夹不存在，则会先创建 Download，再创建 ABC 文件夹。
              * @param {string} path 文件夹路径。
              */
             ensureDir(path: string): void;
@@ -128,7 +128,7 @@ declare module "files" {
              * @example: 
              * ```typescript
              * // 写入文件
-             * files.write('/sdcard/1.txt', "some text");
+             * files.write('/sdcard/1.txt', 'some text');
              * // 用其他应用查看文件
              * app.viewFile('/sdcard/1.txt');
              * ```
@@ -143,7 +143,7 @@ declare module "files" {
              * @example: 
              * ```typescript
              * // 写入文件
-             * files.write('/sdcard/1.txt', "some text");
+             * files.write('/sdcard/1.txt', 'some text');
              * // 用其他应用查看文件
              * app.viewFile('/sdcard/1.txt');
              * ```
@@ -165,7 +165,7 @@ declare module "files" {
              * @example: 
              * ```typescript
              * // 在文件后追加文本
-             * files.append('/sdcard/1.txt', "some text");
+             * files.append('/sdcard/1.txt', 'some text');
              * // 用其他应用查看文件
              * app.viewFile('/sdcard/1.txt');
              * ```
@@ -180,7 +180,7 @@ declare module "files" {
              * @example: 
              * ```typescript
              * // 在文件后追加文本
-             * files.append('/sdcard/1.txt', "some text");
+             * files.append('/sdcard/1.txt', 'some text');
              * // 用其他应用查看文件
              * app.viewFile('/sdcard/1.txt');
              * ```
@@ -202,7 +202,7 @@ declare module "files" {
              * @example: 
              * ```typescript
              * // 把 1.txt 文件从 sd 卡根目录复制到 Download 文件夹
-             * files.copy("/sdcard/1.txt", "/sdcard/Download/1.txt");
+             * files.copy('/sdcard/1.txt', '/sdcard/Download/1.txt');
              * ```
              */
             copy(fromPath: string, toPath: string): boolean;
@@ -215,7 +215,7 @@ declare module "files" {
              * @example: 
              * ```typescript
              * // 把 1.txt 文件从 sd 卡根目录移动到 Download 文件夹
-             * files.move("/sdcard/1.txt", "/sdcard/Download/1.txt");
+             * files.move('/sdcard/1.txt', '/sdcard/Download/1.txt');
              * ```
              */
             move(fromPath: string, toPath: string): boolean;
@@ -228,7 +228,7 @@ declare module "files" {
              * @example: 
              * ```typescript
              * // 将 sd 卡根目录下的 1.txt 文件重命名为 2.txt
-             * files.rename("/sdcard/1.txt", "2.txt");
+             * files.rename('/sdcard/1.txt', '2.txt');
              * ```
              */
             rename(path: string, newName: string): boolean;
@@ -241,7 +241,7 @@ declare module "files" {
              * @example: 
              * ```typescript
              * // 将 sd 卡根目录下的 1.txt 文件重命名为 2.txt
-             * files.renameWithoutExtension("/sdcard/1.txt", "2");
+             * files.renameWithoutExtension('/sdcard/1.txt', '2');
              * ```
              */
             renameWithoutExtension(path: string, newName: string): boolean;
@@ -252,8 +252,8 @@ declare module "files" {
              * @return {string} 文件名。
              * @example: 
              * ```typescript
-             * // 返回 "1.txt"
-             * files.getName("/sdcard/1.txt");
+             * // 返回 '1.txt'
+             * files.getName('/sdcard/1.txt');
              * ```
              */
             getName(path: string): string;
@@ -264,7 +264,7 @@ declare module "files" {
              * @return {string} 文件名。
              * @example: 
              * ```typescript
-             * // 返回 "1"
+             * // 返回 '1'
              * files.getNameWithoutExtension('/sdcard/1.txt');
              * ```
              */
@@ -276,8 +276,8 @@ declare module "files" {
              * @return {string} 文件扩展名。
              * @example: 
              * ```typescript
-             * // 返回 "txt"
-             * files.getExtension("/sdcard/1.txt");
+             * // 返回 'txt'
+             * files.getExtension('/sdcard/1.txt');
              * ```
              */
             getExtension(path: string): string;
@@ -304,12 +304,12 @@ declare module "files" {
             getSdcardPath(): string;
 
             /**
-             * @description: 获取脚本的 "当前工作文件夹路径"。
+             * @description: 获取脚本的 '当前工作文件夹路径'。
              * @return {string | null} 如果脚本本身为脚本文件，则返回这个脚本文件所在目录；否则返回null获取其他设定路径。
              * @example: 
              * ```typescript
-             * // 脚本文件路径："/sdcard/脚本/1.js"
-             * // 返回 "/sdcard/脚本/"
+             * // 脚本文件路径：'/sdcard/脚本/1.js'
+             * // 返回 '/sdcard/脚本/'
              * files.cwd()
              * ```
              */
@@ -321,9 +321,9 @@ declare module "files" {
              * @return {string} 转换后的绝对路径。
              * @example: 
              * ```typescript
-             * // 脚本文件路径："/sdcard/脚本/1.js"
-             * // 返回 "/sdcard/脚本/1.png"
-             * files.path("./1.png")
+             * // 脚本文件路径：'/sdcard/脚本/1.js'
+             * // 返回 '/sdcard/脚本/1.png'
+             * files.path('./1.png')
              * ```
              */
             path(relativePath: string): string;
@@ -363,7 +363,7 @@ declare module "files" {
              * @param {number} [bufferSize] 文件读写的缓冲区大小。
              * @return {ReadableTextFile} 打开的文件对象。
              */
-            open(path: string, mode?: "r", encoding?: encode, bufferSize?: number): ReadableTextFile;
+            open(path: string, mode?: 'r', encoding?: encode, bufferSize?: number): ReadableTextFile;
 
             /**
              * @description: 打开一个文件。根据打开模式返回不同的文件对象。
@@ -378,7 +378,7 @@ declare module "files" {
              * @param {number} [bufferSize] 文件读写的缓冲区大小。
              * @return {ReadableTextFile} 打开的文件对象。
              */
-            open(path: string, mode?: "r", encoding?: string, bufferSize?: number): ReadableTextFile;
+            open(path: string, mode?: 'r', encoding?: string, bufferSize?: number): ReadableTextFile;
 
             /**
              * @description: 打开一个文件。根据打开模式返回不同的文件对象。
@@ -393,7 +393,7 @@ declare module "files" {
              * @param {number} [bufferSize] 文件读写的缓冲区大小。
              * @return {WritableTextFile} 打开的文件对象。
              */
-            open(path: string, mode?: "w" | "a" | "rw", encoding?: encode, bufferSize?: number): PWritableTextFile;
+            open(path: string, mode?: 'w' | 'a' | 'rw', encoding?: encode, bufferSize?: number): PWritableTextFile;
 
             /**
              * @description: 打开一个文件。根据打开模式返回不同的文件对象。
@@ -408,7 +408,7 @@ declare module "files" {
              * @param {number} [bufferSize] 文件读写的缓冲区大小。
              * @return {WritableTextFile} 打开的文件对象。
              */
-            open(path: string, mode?: "w" | "a" | "rw", encoding?: string, bufferSize?: number): PWritableTextFile;
+            open(path: string, mode?: 'w' | 'a' | 'rw', encoding?: string, bufferSize?: number): PWritableTextFile;
         }
 
         
@@ -483,6 +483,67 @@ declare module "files" {
             close(): void;
         }
 
+        // 声明全局函数
+        /**
+         * @description: 打开一个文件。根据打开模式返回不同的文件对象。
+         * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
+         * @param {string} path 文件路径。
+         * @param {string} [mode] 文件打开模式(默认为 `r` )，可选的值为:
+         * - `r` - 只读文本模式。该模式下只能对文件执行 **文本** 读取操作。
+         * - `w` - 只写文本模式。该模式下只能对文件执行 **文本** 覆盖写入操作。
+         * - `a` - 附加文本模式。该模式下将会把写入的文本附加到文件末尾。
+         * - `rw` - 随机读写文本模式。该模式下将会把写入的文本附加到文件末尾。目前暂不支持二进制模式，随机读写模式。
+         * @param {encode} [encoding] 字符编码(默认为 utf-8)。
+         * @param {number} [bufferSize] 文件读写的缓冲区大小。
+         * @return {ReadableTextFile} 打开的文件对象。
+         */
+        function open(path: string, mode?: 'r', encoding?: encode, bufferSize?: number): ReadableTextFile;
+
+        /**
+         * @description: 打开一个文件。根据打开模式返回不同的文件对象。
+         * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
+         * @param {string} path 文件路径。
+         * @param {string} [mode] 文件打开模式(默认为 `r` )，可选的值为:
+         * - `r` - 只读文本模式。该模式下只能对文件执行 **文本** 读取操作。
+         * - `w` - 只写文本模式。该模式下只能对文件执行 **文本** 覆盖写入操作。
+         * - `a` - 附加文本模式。该模式下将会把写入的文本附加到文件末尾。
+         * - `rw` - 随机读写文本模式。该模式下将会把写入的文本附加到文件末尾。目前暂不支持二进制模式，随机读写模式。
+         * @param {encode} [encoding] 字符编码(默认为 utf-8)。
+         * @param {number} [bufferSize] 文件读写的缓冲区大小。
+         * @return {ReadableTextFile} 打开的文件对象。
+         */
+        function open(path: string, mode?: 'r', encoding?: string, bufferSize?: number): ReadableTextFile;
+
+        /**
+         * @description: 打开一个文件。根据打开模式返回不同的文件对象。
+         * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
+         * @param {string} path 文件路径。
+         * @param {string} [mode] 文件打开模式(默认为 `r` )，可选的值为:
+         * - `r` - 只读文本模式。该模式下只能对文件执行 **文本** 读取操作。
+         * - `w` - 只写文本模式。该模式下只能对文件执行 **文本** 覆盖写入操作。
+         * - `a` - 附加文本模式。该模式下将会把写入的文本附加到文件末尾。
+         * - `rw` - 随机读写文本模式。该模式下将会把写入的文本附加到文件末尾。目前暂不支持二进制模式，随机读写模式。
+         * @param {encode} [encoding] 字符编码(默认为 utf-8)。
+         * @param {number} [bufferSize] 文件读写的缓冲区大小。
+         * @return {WritableTextFile} 打开的文件对象。
+         */
+        function open(path: string, mode?: 'w' | 'a' | 'rw', encoding?: encode, bufferSize?: number): PWritableTextFile;
+
+        /**
+         * @description: 打开一个文件。根据打开模式返回不同的文件对象。
+         * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
+         * @param {string} path 文件路径。
+         * @param {string} [mode] 文件打开模式(默认为 `r` )，可选的值为:
+         * - `r` - 只读文本模式。该模式下只能对文件执行 **文本** 读取操作。
+         * - `w` - 只写文本模式。该模式下只能对文件执行 **文本** 覆盖写入操作。
+         * - `a` - 附加文本模式。该模式下将会把写入的文本附加到文件末尾。
+         * - `rw` - 随机读写文本模式。该模式下将会把写入的文本附加到文件末尾。目前暂不支持二进制模式，随机读写模式。
+         * @param {encode} [encoding] 字符编码(默认为 utf-8)。
+         * @param {number} [bufferSize] 文件读写的缓冲区大小。
+         * @return {WritableTextFile} 打开的文件对象。
+         */
+        function open(path: string, mode?: 'w' | 'a' | 'rw', encoding?: string, bufferSize?: number): PWritableTextFile;
+
         type byte = number;
 
         // TODO: 验证每个方法是否都不可用
@@ -490,6 +551,6 @@ declare module "files" {
             [K in keyof Array<T> as K extends JSArrayFunction ? never : K]: Array<T>[K]
         }
 
-        type JSArrayFunction = "push" | "pop" | "unshift" | "shift" | "valueOf" | "indexOf" | "splice" | "slice" | "sort" | "concat" | "reverse" | "join" | "forEach" | "filter" | "map" | "reduce" | "find" | "every" | "some" | "lastIndexOf" | "reduceRight" | "findIndex" | "fill" | "keys" | "values" | "copyWithin"
+        type JSArrayFunction = 'push' | 'pop' | 'unshift' | 'shift' | 'valueOf' | 'indexOf' | 'splice' | 'slice' | 'sort' | 'concat' | 'reverse' | 'join' | 'forEach' | 'filter' | 'map' | 'reduce' | 'find' | 'every' | 'some' | 'lastIndexOf' | 'reduceRight' | 'findIndex' | 'fill' | 'keys' | 'values' | 'copyWithin'
     }
 }

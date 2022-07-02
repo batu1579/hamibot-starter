@@ -7,7 +7,7 @@
  * @Description: 全局函数和变量
  */
 
-declare module "global" {
+declare module 'global' {
     global {
         /**
          * @description: 暂停脚本运行 `n` 毫秒的时间。
@@ -35,14 +35,14 @@ declare module "global" {
         function currentActivity(): string;
 
         /**
-         * @description: 设置剪贴板内容。此剪贴板即系统剪贴板，在一般应用的输入框中"粘贴"既可使用。
+         * @description: 设置剪贴板内容。此剪贴板即系统剪贴板，在一般应用的输入框中'粘贴'既可使用。
          * @param {string} text 剪贴板内容。
          */
         function setClip(text: string): void;
 
         /**
          * @description: 以气泡显示信息 `message` 几秒。(具体时间取决于安卓系统，一般都是 2 秒)。
-         * - **注意！：信息的显示是"异步"执行的，并且，不会等待信息消失程序才继续执行。如果在循环中执行该命令，可能出现脚本停止运行后仍然有不断的气泡信息出现的情况。
+         * - **注意！：信息的显示是'异步'执行的，并且，不会等待信息消失程序才继续执行。如果在循环中执行该命令，可能出现脚本停止运行后仍然有不断的气泡信息出现的情况。
          * @param {string} message 要显示的信息。
          */
         function toast(message: string): void;
@@ -67,7 +67,7 @@ declare module "global" {
          * @example: 
          * ```typescript
          * // 等待当前界面为微信
-         * waitForPackage("com.tencent.mm");
+         * waitForPackage('com.tencent.mm');
          * ```
          */
         function waitForPackage(package: string, period?: number): void;
@@ -99,7 +99,7 @@ declare module "global" {
 
         /**
          * @description: 表示此脚本需要 Hamibot 版本达到指定版本才能运行。调用该函数时会判断运行脚本的 Hamibot 的版本号，如果没有达到要求则抛出异常。可以通过 `app.autojs.versionCode` 和 `app.autojs.versionName` 获取当前的 Hamibot 版本号和版本。
-         * @param {string | number} version Hamibot 的版本或版本号。可以是整数表示版本号，例如 250 也可以是字符串格式表示的版本，例如"3.0.0 Beta", "3.1.0 Alpha4", "3.2.0"等。
+         * @param {string | number} version Hamibot 的版本或版本号。可以是整数表示版本号，例如 250 也可以是字符串格式表示的版本，例如'3.0.0 Beta', '3.1.0 Alpha4', '3.2.0'等。
          * @deprecated
          */
         function requiresAutojsVersion(version: string | number): void;
@@ -118,7 +118,7 @@ declare module "global" {
              * runtime.requestPermissions(['access_fine_location']);
              * ```
              */
-            requestPermissions(permissions: Array<"access_fine_location" | "record_audio">): void;
+            requestPermissions(permissions: Array<'access_fine_location' | 'record_audio'>): void;
 
             /**
              * @description: 动态申请安卓的权限。您可以通过 APK 编辑器来增加 Hamibot 以及 Hamibot 打包的应用的权限。

@@ -6,7 +6,7 @@
  * @FilePath: \\src\\types\\widget-operation.d.ts
  * @Description: 控件操作
  */
-declare module "widget-operation" {
+declare module 'widget-operation' {
     global {
         /**
          * @description: 检查无障碍服务是否已经启用，如果没有启用则抛出异常并跳转到无障碍服务启用界面，同时设置无障碍模式为 mode。建议使用 `auto.waitFor()` 和 `auto.setMode()` 代替该函数，因为 `auto()` 函数如果无障碍服务未启动会停止脚本；而 `auto.waitFor()` 则会在在无障碍服务启动后继续运行。
@@ -15,10 +15,10 @@ declare module "widget-operation" {
          * - `normal` - 正常模式。
          * @example: 
          * ```typescript
-         * auto("fast");
+         * auto('fast');
          * ```
          */
-        function auto(mode?: "fast" | "normal"): void;
+        function auto(mode?: 'fast' | 'normal'): void;
 
         // TODO: 补全常用属性
         interface AccessibilityWindowInfo {
@@ -37,15 +37,15 @@ declare module "widget-operation" {
              * - `fast` - 快速模式。该模式下会启用控件缓存，从而选择器获取屏幕控件更快。对于需要快速的控件操作的脚本可以使用该模式，一般脚本则没有必要使用该函数。
              * - `normal` - 正常模式。
              */
-            function setMode(mode: "fast" | "normal"): void;
+            function setMode(mode: 'fast' | 'normal'): void;
 
-            type flags = "findOnUiThread" | "useUsageStats" | "useShell";
+            type flags = 'findOnUiThread' | 'useUsageStats' | 'useShell';
 
             /**
              * @description: 启用有关 automator 的一些特性。
              * @param {string | string[]} flags 标志，来启用和禁用某些特性，可选值：。
              * - `findOnUiThread` - 使用该特性后，选择器搜索时会在主进程进行。该特性用于解决线程安全问题导致的次生问题，不过目前貌似已知问题并不是线程安全问题。
-             * - `useUsageStats` - 使用该特性后，将会以"使用情况统计"服务的结果来检测当前正在运行的应用包名（需要授予"查看使用情况统计"权限)。如果觉得 `currentPackage()` 返回的结果不太准确，可以尝试该特性。
+             * - `useUsageStats` - 使用该特性后，将会以'使用情况统计'服务的结果来检测当前正在运行的应用包名（需要授予'查看使用情况统计'权限)。如果觉得 `currentPackage()` 返回的结果不太准确，可以尝试该特性。
              * - `useShell` - 使用该特性后，将使用 shell 命令获取当前正在运行的应用的包名、活动名称，但是需要 root 权限。
              * @example: 
              * ```typescript
@@ -58,7 +58,7 @@ declare module "widget-operation" {
              * @description: 启用有关 automator 的一些特性。
              * @param {string | string[]} flags 标志，来启用和禁用某些特性，可选值：。
              * - `findOnUiThread` - 使用该特性后，选择器搜索时会在主进程进行。该特性用于解决线程安全问题导致的次生问题，不过目前貌似已知问题并不是线程安全问题。
-             * - `useUsageStats` - 使用该特性后，将会以"使用情况统计"服务的结果来检测当前正在运行的应用包名（需要授予"查看使用情况统计"权限)。如果觉得 `currentPackage()` 返回的结果不太准确，可以尝试该特性。
+             * - `useUsageStats` - 使用该特性后，将会以'使用情况统计'服务的结果来检测当前正在运行的应用包名（需要授予'查看使用情况统计'权限)。如果觉得 `currentPackage()` 返回的结果不太准确，可以尝试该特性。
              * - `useShell` - 使用该特性后，将使用 shell 命令获取当前正在运行的应用的包名、活动名称，但是需要 root 权限。
              * @example: 
              * ```typescript
@@ -111,7 +111,7 @@ declare module "widget-operation" {
 
         interface SimpleActionAutomator {
             /**
-             * @description: 该函数可以点击大部分包含文字的按钮。例如微信主界面下方的"微信", "联系人", "发现", "我"的按钮。通常与 `while` 同时使用以便点击按钮直至成功。当不指定参数 `i` 时则会尝试点击屏幕上出现的所有文字 `text` 并返回是否全部点击成功。
+             * @description: 该函数可以点击大部分包含文字的按钮。例如微信主界面下方的'微信', '联系人', '发现', '我'的按钮。通常与 `while` 同时使用以便点击按钮直至成功。当不指定参数 `i` 时则会尝试点击屏幕上出现的所有文字 `text` 并返回是否全部点击成功。
              * @param {string} text 要点击的文本。
              * @param {number} [i] 如果相同的文本在屏幕中出现多次，则 `i` 表示要点击第 `i + 1` 个文本, `i` 从 0 开始计算。
              * @return {boolean} 是否点击成功。当屏幕中并未包含该文本，或者该文本所在区域不能点击时返回 `false` ，否则返回 `true` 。文本所在区域指的是，从文本处向其父视图寻找，直至发现一个可点击的部件为止。
@@ -189,15 +189,15 @@ declare module "widget-operation" {
         }
 
         type commonClassName = (
-            "TextView" |
-            "ImageView" |
-            "Button" |
-            "EditText" |
-            "AbsListView" |
-            "LinearLayout" |
-            "FrameLayout" |
-            "RelativeLayout" |
-            "android.support.v7.widget.RecyclerView"
+            'TextView' |
+            'ImageView' |
+            'Button' |
+            'EditText' |
+            'AbsListView' |
+            'LinearLayout' |
+            'FrameLayout' |
+            'RelativeLayout' |
+            'android.support.v7.widget.RecyclerView'
         );
 
         /**
@@ -221,24 +221,24 @@ declare module "widget-operation" {
              * );
              * ```
              */
-            algorithm(algorithm: "DFS" | "BFS"): this;
+            algorithm(algorithm: 'DFS' | 'BFS'): this;
 
             /**
-             * @description: 为当前选择器附加控件 `text` 等于字符串 `str` 的筛选条件。控件的 `text` (文本)属性是文本控件上的显示的文字，例如微信左上角的"微信"文本。
+             * @description: 为当前选择器附加控件 `text` 等于字符串 `str` 的筛选条件。控件的 `text` (文本)属性是文本控件上的显示的文字，例如微信左上角的'微信'文本。
              * @param {string} str 控件文本。
              * @return {this} 返回选择器自身以便链式调用。
              */
             text(str: string): this;
 
             /**
-             * @description: 为当前选择器附加控件 `text` 需要包含字符串 `str` 的筛选条件。这是一个比较有用的条件，例如 QQ 动态页和微博发现页上方的"大家都在搜...."的控件可以用 `textContains("大家都在搜").findOne()` 来获取。
+             * @description: 为当前选择器附加控件 `text` 需要包含字符串 `str` 的筛选条件。这是一个比较有用的条件，例如 QQ 动态页和微博发现页上方的'大家都在搜....'的控件可以用 `textContains('大家都在搜').findOne()` 来获取。
              * @param {string} str 要包含的字符串。
              * @return {this} 。
              */
             textContains(str: string): this;
 
             /**
-             * @description: 为当前选择器附加控件 `text` 需要以 `prefix` 开头的筛选条件。这也是一个比较有用的条件，例如要找出 Hamibot 脚本列表中名称以"QQ"开头的脚本的代码为 `textStartsWith("QQ").find()` 。
+             * @description: 为当前选择器附加控件 `text` 需要以 `prefix` 开头的筛选条件。这也是一个比较有用的条件，例如要找出 Hamibot 脚本列表中名称以'QQ'开头的脚本的代码为 `textStartsWith('QQ').find()` 。
              * @param {string} prefix 前缀字符串。
              * @return {this} 返回选择器自身以便链式调用。
              */
@@ -252,7 +252,7 @@ declare module "widget-operation" {
             textEndsWith(suffix: string): this;
 
             /**
-             * @description: 为当前选择器附加控件 `text` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches("\\d+")` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以"/"开头和结束，也即不能写诸如 `textMatches("/\\d+/")` 的表达式，否则会被开头的"/"和结尾的"/"会被忽略。
+             * @description: 为当前选择器附加控件 `text` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
              * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
              * @param {RegExp | string} reg 要满足的正则表达式。
              * @return {this} 返回选择器自身以便链式调用。
@@ -288,7 +288,7 @@ declare module "widget-operation" {
             descEndsWith(suffix: string): this;
 
             /**
-             * @description: 为当前选择器附加控件 `desc` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches("\\d+")` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以"/"开头和结束，也即不能写诸如 `textMatches("/\\d+/")` 的表达式，否则会被开头的"/"和结尾的"/"会被忽略。
+             * @description: 为当前选择器附加控件 `desc` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
              * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
              * @param {RegExp | string} regex 要满足的正则表达式。
              * @return {this} 返回选择器自身以便链式调用。
@@ -298,7 +298,7 @@ declare module "widget-operation" {
             /**
              * @description: 为当前选择器附加 `id` 等于 `resId` 的筛选条件。控件的 `id` 属性 **通常** 是可以用来确定控件的唯一标识，如果一个控件有 `id` ，那么使用 `id` 来找到他是最好的方法。不过，在列表中会出现多个控件的 `id` 相同的情况。
              * - **注意！：在 QQ 界面经常会出现多个 `id` 为 `name` 的控件，在微信上则每个版本的 `id` 都会变化。对于这些软件而言比较难用 `id` 定位控件。**
-             * @param {string} resId 控件的 `id` ，以"包名:id/"开头，例如 `com.tencent.mm:id/send_btn` 。也可以不指定包名，这时会以当前正在运行的应用的包名来补全 `id` 。例如 `id("send_btn")` ,在 QQ 界面相当于 `id("com.tencent.mobileqq:id/send_btn")` 。
+             * @param {string} resId 控件的 `id` ，以'包名:id/'开头，例如 `com.tencent.mm:id/send_btn` 。也可以不指定包名，这时会以当前正在运行的应用的包名来补全 `id` 。例如 `id('send_btn')` ,在 QQ 界面相当于 `id('com.tencent.mobileqq:id/send_btn')` 。
              * @return {this} 返回选择器自身以便链式调用。
              */
             id(resId: string): this;
@@ -325,7 +325,7 @@ declare module "widget-operation" {
             idEndsWith(suffix: string): this;
 
             /**
-             * @description: 附加 `id` 需要满足正则表达式。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches("\\d+")` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以"/"开头和结束，也即不能写诸如 `textMatches("/\\d+/")` 的表达式，否则会被开头的"/"和结尾的"/"会被忽略。
+             * @description: 附加 `id` 需要满足正则表达式。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
              * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
              * @param {RegExp} reg `id` 要满足的正则表达式。
              * @return {this} 返回选择器自身以便链式调用。
@@ -337,14 +337,14 @@ declare module "widget-operation" {
             idMatches(reg: RegExp | string): this;
 
             /**
-             * @description: 为当前选择器附加控件 `className` 等于字符串 `str` 的筛选条件。控件的 `className` (类名)表示一个控件的类别，例如文本控件的类名为 `android.widget.TextView` 。如果一个控件的类名以 `android.widget.` 开头，则可以省略这部分，例如文本控件可以直接用 `className("TextView")` 的选择器。
+             * @description: 为当前选择器附加控件 `className` 等于字符串 `str` 的筛选条件。控件的 `className` (类名)表示一个控件的类别，例如文本控件的类名为 `android.widget.TextView` 。如果一个控件的类名以 `android.widget.` 开头，则可以省略这部分，例如文本控件可以直接用 `className('TextView')` 的选择器。
              * @param {string} str 控件 `className` 属性。
              * @return {this} 返回选择器自身以便链式调用。
              */
             className(str: commonClassName): this;
 
             /**
-             * @description: 为当前选择器附加控件 `className` 等于字符串 `str` 的筛选条件。控件的 `className` (类名)表示一个控件的类别，例如文本控件的类名为 `android.widget.TextView` 。如果一个控件的类名以 `android.widget.` 开头，则可以省略这部分，例如文本控件可以直接用 `className("TextView")` 的选择器。
+             * @description: 为当前选择器附加控件 `className` 等于字符串 `str` 的筛选条件。控件的 `className` (类名)表示一个控件的类别，例如文本控件的类名为 `android.widget.TextView` 。如果一个控件的类名以 `android.widget.` 开头，则可以省略这部分，例如文本控件可以直接用 `className('TextView')` 的选择器。
              * @param {string} str 控件 `className` 属性。
              * @return {this} 返回选择器自身以便链式调用。
              */
@@ -372,7 +372,7 @@ declare module "widget-operation" {
             classNameEndsWith(suffix: string): this;
 
             /**
-             * @description: 为当前选择器附加控件 `className` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches("\\d+")` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以"/"开头和结束，也即不能写诸如 `textMatches("/\\d+/")` 的表达式，否则会被开头的"/"和结尾的"/"会被忽略。
+             * @description: 为当前选择器附加控件 `className` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
              * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
              * @param {RegExp} reg 要满足的正则表达式。
              * @return {this} 返回选择器自身以便链式调用。
@@ -408,7 +408,7 @@ declare module "widget-operation" {
             packageNameEndsWith(suffix: string): this;
 
             /**
-             * @description: 为当前选择器附加控件 `packageName` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches("\\d+")` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以"/"开头和结束，也即不能写诸如 `textMatches("/\\d+/")` 的表达式，否则会被开头的"/"和结尾的"/"会被忽略。
+             * @description: 为当前选择器附加控件 `packageName` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
              * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
              * @param {RegExp | string} reg 要满足的正则表达式。
              * @return {this} 返回选择器自身以便链式调用。
@@ -445,7 +445,7 @@ declare module "widget-operation" {
             boundsInside(left: number, top: number, right: number, bottom: number): this;
 
             /**
-             * @description: 为当前选择器附加控件 `bounds` 需要包含 `left` , `top` , `right` , `buttom` 构成的范围"的条件。这个条件用于限制控件的范围必须包含所给定的范围。
+             * @description: 为当前选择器附加控件 `bounds` 需要包含 `left` , `top` , `right` , `buttom` 构成的范围'的条件。这个条件用于限制控件的范围必须包含所给定的范围。
              * @param {number} left 范围左边缘与屏幕左边的距离。
              * @param {number} top 范围上边缘与屏幕上边的距离。
              * @param {number} right 范围右边缘与屏幕左边的距离。
@@ -477,7 +477,7 @@ declare module "widget-operation" {
              * @example: 
              * ```typescript
              * // 查找不能点击的图片
-             * className("ImageView").clickable(false).find()
+             * className('ImageView').clickable(false).find()
              * ```
              */
             clickable(b?: boolean): this;
@@ -497,7 +497,7 @@ declare module "widget-operation" {
             checkable(b?: boolean): this;
 
             /**
-             * @description: 为当前选择器附加控件是否已选中的条件。被选中指的是，例如 QQ 聊天界面点击下方的"表情按钮"时，会出现自己收藏的表情，这时"表情按钮"便处于选中状态，其 `selected` 属性为 `true` 。
+             * @description: 为当前选择器附加控件是否已选中的条件。被选中指的是，例如 QQ 聊天界面点击下方的'表情按钮'时，会出现自己收藏的表情，这时'表情按钮'便处于选中状态，其 `selected` 属性为 `true` 。
              * @param {boolean} [b] 控件是否被选（默认为 `true` ）。
              * @return {this} 返回选择器自身以便链式调用。
              */
@@ -517,7 +517,7 @@ declare module "widget-operation" {
              * @example: 
              * ```typescript
              * // 滑动 Hamibot 的脚本列表
-             * classNameEndsWith("RecyclerView")
+             * classNameEndsWith('RecyclerView')
              * .scrollable()
              * .findOne()
              * .scrollForward();
@@ -611,7 +611,7 @@ declare module "widget-operation" {
              * @description: 等待屏幕上出现符合条件的控件；在满足该条件的控件出现之前，该函数会一直保持阻塞。
              * @example: 
              * ```typescript
-             * // 等待包含"你好"的文本控件出现
+             * // 等待包含'你好'的文本控件出现
              * textContains('你好').waitFor();
              * ```
              */
@@ -698,10 +698,10 @@ declare module "widget-operation" {
              * @return {boolean} 操作是否成功。
              * @example: 
              * ```typescript
-             * // 文本框中的内容为 "123456789"
+             * // 文本框中的内容为 '123456789'
              * let et = className('EditText').findOne();
              * 
-             * // 选中 "4567" 的文字
+             * // 选中 '4567' 的文字
              * et.setSelection(3, 7)
              * 
              * // 把光标设置在第一个字符的后面
@@ -725,7 +725,7 @@ declare module "widget-operation" {
             scrollBackward(): boolean;
 
             /**
-             * @description: 对控件执行"选中"操作。"选中"和 `isSelected()` 的属性相关，但该操作十分少用。
+             * @description: 对控件执行'选中'操作。'选中'和 `isSelected()` 的属性相关，但该操作十分少用。
              * @return {boolean} 操作是否成功。
              */
             select(): boolean;
@@ -818,7 +818,7 @@ declare module "widget-operation" {
             id(): string | null;
 
             /**
-             * @description: 获取控件的文本，如果控件没有文本，返回""。
+             * @description: 获取控件的文本，如果控件没有文本，返回''。
              * @return {string} 控件的文本。
              */
             text(): string;
@@ -1073,10 +1073,10 @@ declare module "widget-operation" {
              * @return {boolean} 操作是否成功。
              * @example: 
              * ```typescript
-             * // 文本框中的内容为 "123456789"
+             * // 文本框中的内容为 '123456789'
              * let et = className('EditText').findOne();
              * 
-             * // 选中 "4567" 的文字
+             * // 选中 '4567' 的文字
              * et.setSelection(3, 7)
              * 
              * // 把光标设置在第一个字符的后面
@@ -1100,7 +1100,7 @@ declare module "widget-operation" {
             scrollBackward(): boolean;
 
             /**
-             * @description: 对集合内的所有控件执行"选中"操作。"选中"和 `isSelected()` 的属性相关，但该操作十分少用。
+             * @description: 对集合内的所有控件执行'选中'操作。'选中'和 `isSelected()` 的属性相关，但该操作十分少用。
              * @return {boolean} 操作是否成功。
              */
             select(): boolean;
@@ -1182,13 +1182,13 @@ declare module "widget-operation" {
         // 声明全局函数
 
         /**
-         * @description: 创建一个新的选择器。但一般情况不需要使用该函数，因为可以直接用相应条件的语句创建选择器。由于历史遗留原因，本不应该这样设计(不应该让id(), text()等作为全局函数，而是应该用By.id(), By.text())，但为了后向兼容性只能保留这个设计。这样的 API 设计会污染全局变量，后续可能会支持 "去掉这些全局函数而使用 By.***" 的选项。
+         * @description: 创建一个新的选择器。但一般情况不需要使用该函数，因为可以直接用相应条件的语句创建选择器。由于历史遗留原因，本不应该这样设计(不应该让id(), text()等作为全局函数，而是应该用By.id(), By.text())，但为了后向兼容性只能保留这个设计。这样的 API 设计会污染全局变量，后续可能会支持 '去掉这些全局函数而使用 By.***' 的选项。
          * @return {UiSelector} 新的选择器。
          */
         function selector(): UiSelector;
 
         /**
-         * @description: 该函数可以点击大部分包含文字的按钮。例如微信主界面下方的"微信", "联系人", "发现", "我"的按钮。通常与 `while` 同时使用以便点击按钮直至成功。当不指定参数 `i` 时则会尝试点击屏幕上出现的所有文字 text 并返回是否全部点击成功。
+         * @description: 该函数可以点击大部分包含文字的按钮。例如微信主界面下方的'微信', '联系人', '发现', '我'的按钮。通常与 `while` 同时使用以便点击按钮直至成功。当不指定参数 `i` 时则会尝试点击屏幕上出现的所有文字 text 并返回是否全部点击成功。
          * @param {string} text 要点击的文本。
          * @param {number} [i] 如果相同的文本在屏幕中出现多次，则 `i` 表示要点击第 `i + 1` 个文本, `i` 从 0 开始计算。
          * @return {boolean} 是否点击成功。当屏幕中并未包含该文本，或者该文本所在区域不能点击时返回 `false` ，否则返回 `true` 。文本所在区域指的是，从文本处向其父视图寻找，直至发现一个可点击的部件为止。
@@ -1280,24 +1280,24 @@ declare module "widget-operation" {
          * );
          * ```
          */
-        function algorithm(algorithm: "DFS" | "BFS"): UiSelector;
+        function algorithm(algorithm: 'DFS' | 'BFS'): UiSelector;
 
         /**
-         * @description: 为当前选择器附加控件 `text` 等于字符串 `str` 的筛选条件。控件的 `text` (文本)属性是文本控件上的显示的文字，例如微信左上角的"微信"文本。
+         * @description: 为当前选择器附加控件 `text` 等于字符串 `str` 的筛选条件。控件的 `text` (文本)属性是文本控件上的显示的文字，例如微信左上角的'微信'文本。
          * @param {string} str 控件文本。
          * @return {UiSelector} 返回选择器自身以便链式调用。
          */
         function text(str: string): UiSelector;
 
         /**
-         * @description: 为当前选择器附加控件 `text` 需要包含字符串 `str` 的筛选条件。这是一个比较有用的条件，例如 QQ 动态页和微博发现页上方的"大家都在搜...."的控件可以用 `textContains("大家都在搜").findOne()` 来获取。
+         * @description: 为当前选择器附加控件 `text` 需要包含字符串 `str` 的筛选条件。这是一个比较有用的条件，例如 QQ 动态页和微博发现页上方的'大家都在搜....'的控件可以用 `textContains('大家都在搜').findOne()` 来获取。
          * @param {string} str 要包含的字符串。
          * @return {UiSelector} 。
          */
         function textContains(str: string): UiSelector;
 
         /**
-         * @description: 为当前选择器附加控件 `text` 需要以 `prefix` 开头的筛选条件。这也是一个比较有用的条件，例如要找出 Hamibot 脚本列表中名称以"QQ"开头的脚本的代码为 `textStartsWith("QQ").find()` 。
+         * @description: 为当前选择器附加控件 `text` 需要以 `prefix` 开头的筛选条件。这也是一个比较有用的条件，例如要找出 Hamibot 脚本列表中名称以'QQ'开头的脚本的代码为 `textStartsWith('QQ').find()` 。
          * @param {string} prefix 前缀字符串。
          * @return {UiSelector} 返回选择器自身以便链式调用。
          */
@@ -1311,7 +1311,7 @@ declare module "widget-operation" {
         function textEndsWith(suffix: string): UiSelector;
 
         /**
-         * @description: 为当前选择器附加控件 `text` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches("\\d+")` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以"/"开头和结束，也即不能写诸如 `textMatches("/\\d+/")` 的表达式，否则会被开头的"/"和结尾的"/"会被忽略。
+         * @description: 为当前选择器附加控件 `text` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
          * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
          * @param {RegExp | string} reg 要满足的正则表达式。
          * @return {UiSelector} 返回选择器自身以便链式调用。
@@ -1347,7 +1347,7 @@ declare module "widget-operation" {
         function descEndsWith(suffix: string): UiSelector;
 
         /**
-         * @description: 为当前选择器附加控件 `desc` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches("\\d+")` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以"/"开头和结束，也即不能写诸如 `textMatches("/\\d+/")` 的表达式，否则会被开头的"/"和结尾的"/"会被忽略。
+         * @description: 为当前选择器附加控件 `desc` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
          * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
          * @param {RegExp | string} regex 要满足的正则表达式。
          * @return {UiSelector} 返回选择器自身以便链式调用。
@@ -1357,7 +1357,7 @@ declare module "widget-operation" {
         /**
          * @description: 为当前选择器附加 `id` 等于 `resId` 的筛选条件。控件的 `id` 属性 **通常** 是可以用来确定控件的唯一标识，如果一个控件有 `id` ，那么使用 `id` 来找到他是最好的方法。不过，在列表中会出现多个控件的 `id` 相同的情况。
          * - **注意！：在 QQ 界面经常会出现多个 `id` 为 `name` 的控件，在微信上则每个版本的 `id` 都会变化。对于这些软件而言比较难用 `id` 定位控件。**
-         * @param {string} resId 控件的 `id` ，以"包名:id/"开头，例如 `com.tencent.mm:id/send_btn` 。也可以不指定包名，这时会以当前正在运行的应用的包名来补全 `id` 。例如 `id("send_btn")` ,在 QQ 界面相当于 `id("com.tencent.mobileqq:id/send_btn")` 。
+         * @param {string} resId 控件的 `id` ，以'包名:id/'开头，例如 `com.tencent.mm:id/send_btn` 。也可以不指定包名，这时会以当前正在运行的应用的包名来补全 `id` 。例如 `id('send_btn')` ,在 QQ 界面相当于 `id('com.tencent.mobileqq:id/send_btn')` 。
          * @return {UiSelector} 返回选择器自身以便链式调用。
          */
         function id(resId: string): UiSelector;
@@ -1384,7 +1384,7 @@ declare module "widget-operation" {
         function idEndsWith(suffix: string): UiSelector;
 
         /**
-         * @description: 附加 `id` 需要满足正则表达式。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches("\\d+")` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以"/"开头和结束，也即不能写诸如 `textMatches("/\\d+/")` 的表达式，否则会被开头的"/"和结尾的"/"会被忽略。
+         * @description: 附加 `id` 需要满足正则表达式。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
          * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
          * @param {RegExp} reg `id` 要满足的正则表达式。
          * @return {UiSelector} 返回选择器自身以便链式调用。
@@ -1396,14 +1396,14 @@ declare module "widget-operation" {
         function idMatches(reg: RegExp | string): UiSelector;
 
         /**
-         * @description: 为当前选择器附加控件 `className` 等于字符串 `str` 的筛选条件。控件的 `className` (类名)表示一个控件的类别，例如文本控件的类名为 `android.widget.TextView` 。如果一个控件的类名以 `android.widget.` 开头，则可以省略这部分，例如文本控件可以直接用 `className("TextView")` 的选择器。
+         * @description: 为当前选择器附加控件 `className` 等于字符串 `str` 的筛选条件。控件的 `className` (类名)表示一个控件的类别，例如文本控件的类名为 `android.widget.TextView` 。如果一个控件的类名以 `android.widget.` 开头，则可以省略这部分，例如文本控件可以直接用 `className('TextView')` 的选择器。
          * @param {string} str 控件 `className` 属性。
          * @return {UiSelector} 返回选择器自身以便链式调用。
          */
         function className(str: commonClassName): UiSelector;
 
         /**
-         * @description: 为当前选择器附加控件 `className` 等于字符串 `str` 的筛选条件。控件的 `className` (类名)表示一个控件的类别，例如文本控件的类名为 `android.widget.TextView` 。如果一个控件的类名以 `android.widget.` 开头，则可以省略这部分，例如文本控件可以直接用 `className("TextView")` 的选择器。
+         * @description: 为当前选择器附加控件 `className` 等于字符串 `str` 的筛选条件。控件的 `className` (类名)表示一个控件的类别，例如文本控件的类名为 `android.widget.TextView` 。如果一个控件的类名以 `android.widget.` 开头，则可以省略这部分，例如文本控件可以直接用 `className('TextView')` 的选择器。
          * @param {string} str 控件 `className` 属性。
          * @return {UiSelector} 返回选择器自身以便链式调用。
          */
@@ -1431,7 +1431,7 @@ declare module "widget-operation" {
         function classNameEndsWith(suffix: string): UiSelector;
 
         /**
-         * @description: 为当前选择器附加控件 `className` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches("\\d+")` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以"/"开头和结束，也即不能写诸如 `textMatches("/\\d+/")` 的表达式，否则会被开头的"/"和结尾的"/"会被忽略。
+         * @description: 为当前选择器附加控件 `className` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
          * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
          * @param {RegExp} reg 要满足的正则表达式。
          * @return {UiSelector} 返回选择器自身以便链式调用。
@@ -1467,7 +1467,7 @@ declare module "widget-operation" {
         function packageNameEndsWith(suffix: string): UiSelector;
 
         /**
-         * @description: 为当前选择器附加控件 `packageName` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches("\\d+")` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以"/"开头和结束，也即不能写诸如 `textMatches("/\\d+/")` 的表达式，否则会被开头的"/"和结尾的"/"会被忽略。
+         * @description: 为当前选择器附加控件 `packageName` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` (也即 Java 正则表达式的形式)，例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
          * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
          * @param {RegExp | string} reg 要满足的正则表达式。
          * @return {UiSelector} 返回选择器自身以便链式调用。
@@ -1504,7 +1504,7 @@ declare module "widget-operation" {
         function boundsInside(left: number, top: number, right: number, bottom: number): UiSelector;
 
         /**
-         * @description: 为当前选择器附加控件 `bounds` 需要包含 `left` , `top` , `right` , `buttom` 构成的范围"的条件。这个条件用于限制控件的范围必须包含所给定的范围。
+         * @description: 为当前选择器附加控件 `bounds` 需要包含 `left` , `top` , `right` , `buttom` 构成的范围'的条件。这个条件用于限制控件的范围必须包含所给定的范围。
          * @param {number} left 范围左边缘与屏幕左边的距离。
          * @param {number} top 范围上边缘与屏幕上边的距离。
          * @param {number} right 范围右边缘与屏幕左边的距离。
@@ -1536,7 +1536,7 @@ declare module "widget-operation" {
          * @example: 
          * ```typescript
          * // 查找不能点击的图片
-         * className("ImageView").clickable(false).find()
+         * className('ImageView').clickable(false).find()
          * ```
          */
         function clickable(b?: boolean): UiSelector;
@@ -1556,7 +1556,7 @@ declare module "widget-operation" {
         function checkable(b?: boolean): UiSelector;
 
         /**
-         * @description: 为当前选择器附加控件是否已选中的条件。被选中指的是，例如 QQ 聊天界面点击下方的"表情按钮"时，会出现自己收藏的表情，这时"表情按钮"便处于选中状态，其 `selected` 属性为 `true` 。
+         * @description: 为当前选择器附加控件是否已选中的条件。被选中指的是，例如 QQ 聊天界面点击下方的'表情按钮'时，会出现自己收藏的表情，这时'表情按钮'便处于选中状态，其 `selected` 属性为 `true` 。
          * @param {boolean} [b] 控件是否被选（默认为 `true` ）。
          * @return {UiSelector} 返回选择器自身以便链式调用。
          */
@@ -1576,7 +1576,7 @@ declare module "widget-operation" {
          * @example: 
          * ```typescript
          * // 滑动 Hamibot 的脚本列表
-         * classNameEndsWith("RecyclerView")
+         * classNameEndsWith('RecyclerView')
          * .scrollable()
          * .findOne()
          * .scrollForward();
@@ -1671,7 +1671,7 @@ declare module "widget-operation" {
          * @description: 等待屏幕上出现符合条件的控件；在满足该条件的控件出现之前，该函数会一直保持阻塞。
          * @example: 
          * ```typescript
-         * // 等待包含"你好"的文本控件出现
+         * // 等待包含'你好'的文本控件出现
          * textContains('你好').waitFor();
          * ```
          */

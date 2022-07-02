@@ -6,7 +6,7 @@
  * @FilePath: \\src\\types\\app.d.ts
  * @Description: app 模块
  */
-declare module "app" {
+declare module 'app' {
     global {
 
         interface EmailOptions {
@@ -44,19 +44,19 @@ declare module "app" {
         interface IntentOptions {
             /**
              * @description: 意图的 `Action` ，指意图要完成的动作，是一个字符串常量。当 `action` 以 `android.intent.action` 开头时，可以省略前缀，直接用 `SEND` 代替。参见[Action](https://developer.android.com/reference/android/content/Intent.html#standard-activity-actions)。
-             * @example: "android.intent.action.SEND"
+             * @example: 'android.intent.action.SEND'
              */
             action?: string;
 
             /**
              * @description: 意图的 `MimeType` ，表示和该意图直接相关的数据的类型。比如 `text/plain` 为纯文本类型。
-             * @example: "text/plain"
+             * @example: 'text/plain'
              */
             type?: string;
 
             /**
              * @description: 意图的 `Data` ，表示和该意图直接相关的数据，是一个 `Uri` , 可以是文件路径或者 `Url` 等。例如要打开一个文件, `action` 为 `android.intent.action.VIEW` , data 为 `file:///sdcard/1.txt` 。
-             * @example: "file:///sdcard/1.txt"
+             * @example: 'file:///sdcard/1.txt'
              */
             data?: string;
 
@@ -81,7 +81,7 @@ declare module "app" {
             extras?: object;
 
             /**
-             * @description: `Intent` 的标识，字符串数组，例如: ["activity_new_task", "grant_read_uri_permission"] 。参见 [Flags](https://developer.android.com/reference/android/content/Intent.html#setFlags%28int%29)。
+             * @description: `Intent` 的标识，字符串数组，例如: ['activity_new_task', 'grant_read_uri_permission'] 。参见 [Flags](https://developer.android.com/reference/android/content/Intent.html#setFlags%28int%29)。
              */
             flags?: string[];
 
@@ -148,7 +148,7 @@ declare module "app" {
 
             /**
              * @description: 当前软件的版本名称。
-             * @example: "1.0.2"
+             * @example: '1.0.2'
              */
             readonly versionName: string;
 
@@ -270,7 +270,7 @@ declare module "app" {
             editFile(path: string): void;
 
             /**
-             * @description: 卸载应用。执行后会会弹出卸载应用的提示框。如果该包名的应用未安装，由应用卸载程序处理，可能弹出"未找到应用"的提示。
+             * @description: 卸载应用。执行后会会弹出卸载应用的提示框。如果该包名的应用未安装，由应用卸载程序处理，可能弹出'未找到应用'的提示。
              * @param {string} packageName 应用包名。
              * @example: 
              * ```typescript
@@ -282,7 +282,7 @@ declare module "app" {
 
             /**
              * @description: 用浏览器打开网站 url。如果没有安装浏览器应用，则抛出 `ActivityNotException` 。
-             * @param {string} url 网站的 Url，如果不以"http://"或"https://"开头则默认是"http://"。
+             * @param {string} url 网站的 Url，如果不以'http://'或'https://'开头则默认是'http://'。
              */
             openUrl(url: string): void;
 
@@ -392,7 +392,7 @@ declare module "app" {
 
             /**
              * @description: 从一个文件路径创建一个 `Uri` 对象。需要注意的是，在高版本 Android 上，由于系统限制直接在 `Uri` 暴露文件的绝对路径，因此返回的 `Uri` 会是诸如 `content://...` 的形式。
-             * @param {string} path 文件路径，例如"/sdcard/1.txt"。
+             * @param {string} path 文件路径，例如'/sdcard/1.txt'。
              * @return {Uri} 指向该文件的 Uri 的对象。
              */
             getUriForFile(path: string): Uri;
