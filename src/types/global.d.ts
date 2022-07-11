@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 00:21:22
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-24 01:09:57
+ * @LastTime: 2022-07-12 03:05:01
  * @FilePath: \\src\\types\\global.d.ts
  * @Description: 全局函数和变量
  */
@@ -105,6 +105,7 @@ declare module 'global' {
         function requiresAutojsVersion(version: string | number): void;
 
         const runtime: Runtime;
+
         interface Runtime {
             /**
              * @description: 动态申请安卓的权限。您可以通过 APK 编辑器来增加 Hamibot 以及 Hamibot 打包的应用的权限。

@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-24 17:21:22
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-23 05:07:25
+ * @LastTime: 2022-07-12 03:37:27
  * @FilePath: \\src\\types\\hamibot.d.ts
  * @Description: hamibot 模块
  */
@@ -177,7 +177,7 @@ declare module 'hamibot' {
          * launchApp('Hamibot');
          * ```
          */
-        function launchApp(appName: string): boolean
+        function launchApp(appName: string): boolean;
 
         /**
          * @description: 通过应用包名启动应用。
@@ -189,7 +189,7 @@ declare module 'hamibot' {
          * launch('com.hamibot.hamibot');
          * ```
          */
-        function launch(packageName: string): boolean
+        function launch(packageName: string): boolean;
 
         /**
          * @description: 通过应用包名启动应用。
@@ -201,7 +201,7 @@ declare module 'hamibot' {
          * launchPackage('com.hamibot.hamibot');
          * ```
          */
-        function launchPackage(packageName: string): boolean
+        function launchPackage(packageName: string): boolean;
 
         /**
          * @description: 获取应用名称对应的已安装的应用的包名。
@@ -212,7 +212,7 @@ declare module 'hamibot' {
          * let name = getPackageName('Hamibot'); // 返回 com.hamibot.hamibot
          * ```
          */
-        function getPackageName(appName: string): string | null
+        function getPackageName(appName: string): string | null;
 
         /**
          * @description: 获取应用包名对应的已安装的应用的名称。
@@ -223,14 +223,14 @@ declare module 'hamibot' {
          * let name = getAppName('com.hamibot.hamibot'); // 返回 Hamibot
          * ```
          */
-        function getAppName(packageName: string): string | null
+        function getAppName(packageName: string): string | null;
 
         /**
          * @description: 打开应用的详情页(设置页)。
          * @param {string} packageName 应用包名。
          * @return {boolean} 如果找不到该应用，返回 false; 否则返回 true。
          */
-        function openAppSetting(packageName: string): boolean
+        function openAppSetting(packageName: string): boolean;
 
         /**
          * @description: 立即停止脚本运行。

@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 16:14:41
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-22 12:25:58
+ * @LastTime: 2022-07-12 03:04:06
  * @FilePath: \\src\\types\\engines.d.ts
  * @Description: 
  */
@@ -112,22 +112,22 @@ declare module 'engines' {
             /**
              * @description: 延迟执行的时间，单位毫秒（默认为 0）。
              */
-            delay: number;
+            delay?: number;
 
             /**
              * @description: 循环运行次数（默认为 1 ），0 为无限循环。
              */
-            loopTimes: number;
+            loopTimes?: number;
 
             /**
              * @description: 循环运行时两次运行之间的时间间隔，单位毫秒（默认为 0）。
              */
-            interval: number;
+            interval?: number;
 
             /**
              * @description: 指定脚本运行的目录。这些路径会用于 require 时寻找模块文件。
              */
-            path: string | string[];
+            path?: string | string[];
         }
 
         /**

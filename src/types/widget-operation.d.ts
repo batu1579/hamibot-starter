@@ -544,7 +544,7 @@ declare module 'widget-operation' {
              * - **注意！：如果屏幕上有多个满足条件的控件，`findOne()` 会返回根据指定的搜索算法（默认为 `DFS` ）找到的第一个控件。**
              * @return {UiObject} 根据选择器查找到的控件。
              */
-            findOne(): UiObject
+            findOne(): UiObject;
 
             /**
              * @description: 根据当前的选择器所确定的筛选条件，对屏幕上的控件进行搜索，直到屏幕上出现满足条件的一个控件为止，并返回该控件；如果在 `timeout` 毫秒的时间内没有找到符合条件的控件，则终止搜索并返回 `null` 。
@@ -1604,7 +1604,7 @@ declare module 'widget-operation' {
          * @return {UiObject} 根据选择器查找到的控件。
          * @example: 
          */
-        function findOne(): UiObject
+        function findOne(): UiObject;
 
         /**
          * @description: 根据当前的选择器所确定的筛选条件，对屏幕上的控件进行搜索，直到屏幕上出现满足条件的一个控件为止，并返回该控件；如果在 `timeout` 毫秒的时间内没有找到符合条件的控件，则终止搜索并返回 `null` 。
