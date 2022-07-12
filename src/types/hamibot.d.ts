@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-24 17:21:22
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-12 03:37:27
+ * @LastTime: 2022-07-12 15:33:10
  * @FilePath: \\src\\types\\hamibot.d.ts
  * @Description: hamibot 模块
  */
@@ -90,7 +90,7 @@ declare module 'hamibot' {
                 /**
                  * @description: 消息数据。
                  */
-                data: MessageData | object;
+                data: MessageData | Object;
             }
 
             /**

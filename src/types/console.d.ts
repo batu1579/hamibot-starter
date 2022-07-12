@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 17:07:59
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-22 12:48:28
+ * @LastTime: 2022-07-12 15:33:14
  * @FilePath: \\src\\types\\console.d.ts
  * @Description: 
  */
@@ -231,9 +231,9 @@ declare module 'console' {
 
             /**
              * @description: 向控制台输出信息，相当于 `console.log(text)` 。
-             * @param {string | object} text 要打印到控制台的信息。
+             * @param {Object} text 要打印到控制台的信息。
              */
-            print(text: string | object): void;
+            print(text: Object): void;
         }
 
         // 声明全局函数
@@ -259,6 +259,6 @@ declare module 'console' {
          * @description: 向控制台输出信息，相当于 `log(text)` 。
          * @param {string} text 要打印到控制台的信息。
          */
-        function print(text: string | object): void;
+        function print(text: Object): void;
     }
 }

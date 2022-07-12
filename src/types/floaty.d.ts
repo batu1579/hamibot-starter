@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-19 09:21:11
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-22 01:22:51
+ * @LastTime: 2022-07-12 15:38:33
  * @FilePath: \\src\\types\\floaty.d.ts
  * @Description: 
  */
@@ -17,7 +17,7 @@ declare module 'floaty' {
             /**
              * @description: 指定悬浮窗的布局，创建并显示一个悬浮窗。该悬浮窗自带关闭、调整大小、调整位置按键，可根据需要调用 `setAdjustEnabled()` 函数来显示或隐藏。
              * - **注意！：因为脚本运行的线程不是 UI 线程，而所有对控件的修改操作需要在 UI 线程执行**
-             * @param {XMLDocument} layout 悬浮窗界面的 XML 或者 View。更多信息参见 [UI 模块](https://docs.hamibot.com/reference/ui)的说明。
+             * @param {object} layout 悬浮窗界面的 XML 或者 View。更多信息参见 [UI 模块](https://docs.hamibot.com/reference/ui)的说明。
              * @return {FloatyWindow} 悬浮窗对象。
              * @example:
              * ```typescript
@@ -49,12 +49,12 @@ declare module 'floaty' {
              * }, 5000);
              * ```
              */
-            window(layout: XMLDocument): FloatyWindow;
+            window(layout: object): FloatyWindow;
 
             /**
              * @description: 指定悬浮窗的布局，创建并显示一个原始悬浮窗。与 `floaty.window()` 函数不同的是，该悬浮窗不会增加任何额外设施（例如调整大小、位置按钮），您可以根据自己需要编写任何布局。而且，该悬浮窗支持完全全屏，可以覆盖状态栏，因此可以做护眼模式之类的应用。
              * - **注意！：因为脚本运行的线程不是 UI 线程，而所有对控件的修改操作需要在 UI 线程执行**
-             * @param {XMLDocument} layout。
+             * @param {object} layout。
              * @return {*}。
              * @example:
              * ```typescript
@@ -72,7 +72,7 @@ declare module 'floaty' {
              * }, 2000);
              * ```
              */
-            rawWindow(layout: XMLDocument): FloatyRawWindow;
+            rawWindow(layout: object): FloatyRawWindow;
 
             /**
              * @description: 关闭所有本脚本的悬浮窗。

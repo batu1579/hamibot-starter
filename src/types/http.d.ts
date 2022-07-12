@@ -61,7 +61,7 @@ declare module 'http' {
             /**
              * @description: 对地址 `url` 进行一次 HTTP POST 请求。如果没有回调函数，则在请求完成或失败时返回此次请求的响应。其中 POST 数据可以是字符串或键值对。具体含义取决于 `options.contentType` 的值。默认为'application/x-www-form-urlencoded', 这种方式是 JQuery 的 ajax 函数的默认方式。
              * @param {string} url 请求的 URL 地址，需要以'http://'或'https://'开头。如果 `url` 没有以'http://'开头，则默认为'http://'。
-             * @param {string} data POST 数据。
+             * @param {Object} data POST 数据。
              * @param {RequestOptions} [options] 请求选项。
              * @param {function} [callback] 回调函数，可选，其参数是一个 `Response` 对象。如果不加回调函数，则该请求将阻塞、同步地执行。
              * @return {Response} 请求的响应对象
@@ -83,12 +83,12 @@ declare module 'http' {
              * }
              * ```
              */
-            post(url: string, data: string | object, options?: RequestOptions, callback?: (res: Response) => any): Response;
+            post(url: string, data: Object, options?: RequestOptions, callback?: (res: Response) => any): Response;
 
             /**
              * @description: 以 JSON 格式向目标 `Url` 发起 POST 请求。如果没有回调函数，则在请求完成或失败时返回此次请求的响应。JSON 格式指的是，将会调用 `JSON.stringify()` 把 `data` 对象转换为 JSON 字符串，并在 HTTP 头部信息中把'Content-Type'属性置为'application/json'。这种方式是 AngularJS 的 ajax 函数的默认方式。
              * @param {string} url 请求的 URL 地址，需要以'http://'或'https://'开头。如果 `url` 没有以'http://'开头，则默认为'http://'。
-             * @param {string} data POST 数据。
+             * @param {object} data POST 数据。
              * @param {RequestOptions} [options] 请求选项。
              * @param {function} [callback] 回调函数，可选，其参数是一个 `Response` 对象。如果不加回调函数，则该请求将阻塞、同步地执行。
              * @return {Response} 请求的响应对象
@@ -235,7 +235,7 @@ declare module 'http' {
              * }
              * ```
              */
-            readonly headers: Headers;
+            readonly headers: object;
 
             /**
              * @description: 当前响应的内容。
