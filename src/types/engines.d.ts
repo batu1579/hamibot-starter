@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 16:14:41
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-12 03:04:06
+ * @LastTime: 2022-07-12 15:19:19
  * @FilePath: \\src\\types\\engines.d.ts
  * @Description: 
  */
@@ -133,7 +133,7 @@ declare module 'engines' {
         /**
          * @description: 执行脚本时返回的对象，可以通过他获取执行的引擎、配置等，也可以停止这个执行。
          */
-        interface ScriptExecution {
+        class ScriptExecution {
             /**
              * @description: 获取执行该脚本的脚本引擎对象( `ScriptEngine` )。
              * @return {ScriptEngine} 执行该脚本的脚本引擎对象。
@@ -151,7 +151,7 @@ declare module 'engines' {
         /**
          * @description: 脚本引擎对象。
          */
-        interface ScriptEngine {
+        class ScriptEngine {
             /**
              * @description: 停止脚本引擎的执行。
              */
@@ -199,7 +199,7 @@ declare module 'engines' {
             emit(eventName: string, ...args: any[]): void;
         }
 
-        interface ScriptConfig {
+        class ScriptConfig {
             /**
              * @description: 延迟执行的时间，单位毫秒。
              */
@@ -226,7 +226,7 @@ declare module 'engines' {
         /**
          * @description: 脚本引擎正在执行的脚本对象。
          */
-        interface ScriptSource {
+        class ScriptSource {
             [prop: string]: any;
         }
     }

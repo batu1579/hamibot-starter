@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 00:20:15
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-23 04:13:19
+ * @LastTime: 2022-07-12 15:16:38
  * @FilePath: \\src\\types\\app.d.ts
  * @Description: app 模块
  */
@@ -99,7 +99,7 @@ declare module 'app' {
         /**
          * @description: Uri对象的详细信息参见 [android.net.Uri](https://developer.android.com/reference/android/net/Uri)。
          */
-        interface Uri {
+        class Uri {
             /**
              * @description: 从颁发机构获取此URI的主机。例如，如果为 `bob@google.com` ，此方法将返回 `google.com` 。
              * @return {string | null} 此URI的主机，如果不存在，则为 `null` 。
