@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-15 04:24:25
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-27 10:31:51
+ * @LastTime: 2022-07-12 19:58:33
  * @FilePath: \\README.md
  * @Description: 
 -->
@@ -47,12 +47,40 @@
         app.d.ts
         global.d.ts
         hamibot.d.ts
+        ...
 ```
 
 ## TODO List
 
-- [ ] 将所有的预制函数使用 `typescript` 重写
-- [ ] 添加声明文件 [12/27]
+- [ ] 添加声明文件 [17/26]
+  - [x] Hamibot
+  - [x] App
+  - [x] Console
+  - [x] 触摸操作
+  - [x] 控件操作
+  - [x] 文字识别 OCR
+  - [x] Base64
+  - [x] Device
+  - [x] Engines
+  - [x] Files
+  - [x] Floaty
+  - [x] Globals
+  - [x] HTTP
+  - [x] Keys
+  - [x] Media
+  - [ ] Sensors
+  - [x] Storages
+  - [ ] Threads
+  - [x] Timers
+  - [ ] Dialogs
+  - [ ] Events
+  - [ ] Images
+  - [ ] shell
+  - [ ] UI
+  - [ ] Util
+  - [ ] Canvans
+- [ ] 使用 `Eslint` 在提交前统一代码风格
+- [ ] 将所有的预制函数使用 `TypeScript` 重写
 
 ## 开源协议
 
