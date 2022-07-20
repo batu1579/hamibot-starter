@@ -1,6 +1,6 @@
 {
     "name": "script-template",
-    "version": "1.10.2",
+    "version": "1.10.3",
     "description": "一个用来快速开始编写脚本的模板",
     "main": "index.js",
     "scripts": {

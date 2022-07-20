@@ -930,9 +930,9 @@ declare module 'app' {
             /**
              * @description: 解析 uri 字符串并返回相应的 `Uri` 对象。即使 `Uri` 格式错误，该函数也会返回一个 `Uri` 对象。需要注意的是，在高版本 Android 上，由于系统限制直接在 `Uri` 暴露文件的绝对路径，因此如果 uri 字符串是文件 `file://...` ，返回的 Uri 会是诸如 `content://...` 的形式。
              * @param {string} uri 一个代表 `Uri` 的字符串，例如 `file:///sdcard/1.txt` 或者 `https://hamibot.com`。
-             * @return {Uri} 解析的 `Uri` 对象，但如果访问该对象的 scheme, path 等值可能因解析失败而返回 `null` 。
+             * @return {Uri | null} 解析的 `Uri` 对象，但如果访问该对象的 scheme, path 等值可能因解析失败而返回 `null` 。
              */
-            parseUri(uri: string): Uri;
+            parseUri(uri: string): Uri | null;
 
             /**
              * @description: 从一个文件路径创建一个 `Uri` 对象。需要注意的是，在高版本 Android 上，由于系统限制直接在 `Uri` 暴露文件的绝对路径，因此返回的 `Uri` 会是诸如 `content://...` 的形式。
