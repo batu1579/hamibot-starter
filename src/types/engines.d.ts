@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 16:14:41
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-12 15:19:19
+ * @LastTime: 2022-07-21 01:39:05
  * @FilePath: \\src\\types\\engines.d.ts
  * @Description: 
  */
@@ -57,7 +57,7 @@ declare module 'engines' {
             /**
              * @description: 在新的脚本环境中运行脚本文件 path。
              * @param {string} path 要运行的脚本路径。
-             * @param {ExecutionConfig} config 运行配置项。
+             * @param {ExecutionConfig} [config] 运行配置项。
              * @return {ScriptExecution} 返回一个 `ScriptExectuion` 对象。
              * @example: 
              * ```typescript
@@ -69,7 +69,7 @@ declare module 'engines' {
             /**
              * @description: 在新的脚本环境中运行录制文件(.auto)。
              * @param {string} path 要运行的录制文件路径。
-             * @param {ExecutionConfig} config 运行配置项。
+             * @param {ExecutionConfig} [config] 运行配置项。
              * @return {ScriptExecution} 返回一个 `ScriptExectuion` 对象。
              * @example: 
              * ```typescript
@@ -176,7 +176,7 @@ declare module 'engines' {
             /**
              * @description: 向该脚本引擎发送一个事件，该事件可以在该脚本引擎对应的脚本的 `events` 模块监听到并在脚本主线程执行事件处理。
              * @param {string} eventName 事件名称。
-             * @param {array} args 事件参数。
+             * @param {array} [args] 事件参数。
              * @example: 
              * ```typescript
              * // receiver.js

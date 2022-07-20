@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-12 16:11:48
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-12 17:43:47
+ * @LastTime: 2022-07-21 01:38:52
  * @FilePath: \\src\\types\\timers.d.ts
  * @Description: 定时器模块
  */
@@ -34,7 +34,7 @@ declare module 'timers' {
          * 
          * 当多次调用 `setImmediate()` 时， `callback` 函数会按照它们被创建的顺序依次执行。 每次事件循环迭代都会处理整个回调队列。 如果一个立即定时器是被一个正在执行的回调排入队列的，则该定时器直到下一次事件循环迭代才会被触发。
          * @param {Function} callback 在 Looper 循环的当前回合结束时要调用的函数。
-         * @param {array} args 当调用 `callback` 时要传入的可选参数。
+         * @param {array} [args] 当调用 `callback` 时要传入的可选参数。
          * @return {ImmediateID} 返回一个用于 `clearImmediate()` 的 id。
          */
         function setImmediate(callback: Function, ...args: any[]): ImmediateID;
