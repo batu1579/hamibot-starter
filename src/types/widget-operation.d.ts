@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-31 13:19:44
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-22 12:27:22
+ * @LastTime: 2022-07-21 01:37:52
  * @FilePath: \\src\\types\\widget-operation.d.ts
  * @Description: 控件操作
  */
@@ -10,7 +10,7 @@ declare module 'widget-operation' {
     global {
         /**
          * @description: 检查无障碍服务是否已经启用，如果没有启用则抛出异常并跳转到无障碍服务启用界面，同时设置无障碍模式为 mode。建议使用 `auto.waitFor()` 和 `auto.setMode()` 代替该函数，因为 `auto()` 函数如果无障碍服务未启动会停止脚本；而 `auto.waitFor()` 则会在在无障碍服务启动后继续运行。
-         * @param {string} mode 无障碍模式（默认为 `normal` ），可选值：。
+         * @param {string} [mode] 无障碍模式（默认为 `normal` ），可选的值为:
          * - `fast` - 快速模式。该模式下会启用控件缓存，从而选择器获取屏幕控件更快。对于需要快速的控件操作的脚本可以使用该模式，一般脚本则没有必要使用该函数。
          * - `normal` - 正常模式。
          * @example: 
@@ -21,6 +21,9 @@ declare module 'widget-operation' {
         function auto(mode?: 'fast' | 'normal'): void;
 
         // TODO: 补全常用属性
+        /**
+         * @description: 更多信息参见 [AccessibilityWindowInfo](https://www.apiref.com/android-zh/android/view/accessibility/AccessibilityWindowInfo.html)
+         */
         interface AccessibilityWindowInfo {
             [prop: string]: any;
         }
@@ -33,7 +36,7 @@ declare module 'widget-operation' {
 
             /**
              * @description: 设置无障碍模式为 mode。
-             * @param {string} mode 无障碍模式（默认为 `normal` ），可选值：。
+             * @param {string} mode 无障碍模式（默认为 `normal` ），可选的值为:
              * - `fast` - 快速模式。该模式下会启用控件缓存，从而选择器获取屏幕控件更快。对于需要快速的控件操作的脚本可以使用该模式，一般脚本则没有必要使用该函数。
              * - `normal` - 正常模式。
              */
@@ -43,7 +46,7 @@ declare module 'widget-operation' {
 
             /**
              * @description: 启用有关 automator 的一些特性。
-             * @param {string | string[]} flags 标志，来启用和禁用某些特性，可选值：。
+             * @param {string | string[]} flags 标志，来启用和禁用某些特性，可选的值为:
              * - `findOnUiThread` - 使用该特性后，选择器搜索时会在主进程进行。该特性用于解决线程安全问题导致的次生问题，不过目前貌似已知问题并不是线程安全问题。
              * - `useUsageStats` - 使用该特性后，将会以'使用情况统计'服务的结果来检测当前正在运行的应用包名（需要授予'查看使用情况统计'权限)。如果觉得 `currentPackage()` 返回的结果不太准确，可以尝试该特性。
              * - `useShell` - 使用该特性后，将使用 shell 命令获取当前正在运行的应用的包名、活动名称，但是需要 root 权限。
@@ -56,7 +59,7 @@ declare module 'widget-operation' {
 
             /**
              * @description: 启用有关 automator 的一些特性。
-             * @param {string | string[]} flags 标志，来启用和禁用某些特性，可选值：。
+             * @param {string | string[]} flags 标志，来启用和禁用某些特性，可选的值为:
              * - `findOnUiThread` - 使用该特性后，选择器搜索时会在主进程进行。该特性用于解决线程安全问题导致的次生问题，不过目前貌似已知问题并不是线程安全问题。
              * - `useUsageStats` - 使用该特性后，将会以'使用情况统计'服务的结果来检测当前正在运行的应用包名（需要授予'查看使用情况统计'权限)。如果觉得 `currentPackage()` 返回的结果不太准确，可以尝试该特性。
              * - `useShell` - 使用该特性后，将使用 shell 命令获取当前正在运行的应用的包名、活动名称，但是需要 root 权限。
@@ -207,7 +210,7 @@ declare module 'widget-operation' {
         class UiSelector {
             /**
              * @description: 指定选择器的搜索算法。广度优先在控件所在层次较低时，或者布局的层次不多时，通常能更快找到控件。
-             * @param {string} algorithm 搜索算法（默认为 `DFS` ），可选值：。
+             * @param {string} algorithm 搜索算法（默认为 `DFS` ），可选的值为:
              * - `DFS` - 深度优先算法
              * - `BFS` - 广度优先算法
              * @return {this} 返回选择器自身以便链式调用。
@@ -1266,7 +1269,7 @@ declare module 'widget-operation' {
 
         /**
          * @description: 指定选择器的搜索算法。广度优先在控件所在层次较低时，或者布局的层次不多时，通常能更快找到控件。
-         * @param {string} algorithm 搜索算法（默认为 `DFS` ），可选值：。
+         * @param {string} algorithm 搜索算法（默认为 `DFS` ），可选的值为:
          * - `DFS` - 深度优先算法
          * - `BFS` - 广度优先算法
          * @return {UiSelector} 返回选择器自身以便链式调用。

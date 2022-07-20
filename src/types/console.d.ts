@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 17:07:59
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-12 15:33:14
+ * @LastTime: 2022-07-21 01:34:35
  * @FilePath: \\src\\types\\console.d.ts
  * @Description: 
  */
@@ -22,7 +22,7 @@ declare module 'console' {
             maxFileSize?: number;
 
             /**
-             * @description: 写入的日志级别（默认为 `ALL` ）。可选值：。
+             * @description: 写入的日志级别（默认为 `ALL` ），可选的值为:
              * - `ALL` - 所有日志
              * - `OFF` - 关闭
              * - `DEBUG` - 调试级别
@@ -66,7 +66,7 @@ declare module 'console' {
             /**
              * @description: 将信息打印到控制台，并带上换行符。 可以一次性传入多个参数，第一个参数作为主要信息，其他参数作为类似于 [printf(3)](https://man7.org/linux/man-pages/man3/printf.3.html) 中的代替值（参数都会传给 util.format()）。
              * @param {any} [data] 主要信息。
-             * @param {array} args 要填充的数据。
+             * @param {array} [args] 要填充的数据。
              * @example: 
              * ```typescript
              * const count: number = 5;
@@ -83,28 +83,28 @@ declare module 'console' {
             /**
              * @description: 与 console.log 类似，但输出结果以灰色字体显示。输出优先级低于 log，用于输出观察性质的信息。
              * @param {any} [data] 主要信息。
-             * @param {array} args 要填充的数据。
+             * @param {array} [args] 要填充的数据。
              */
             verbose(data?: any, ...args: any[]): void;
 
             /**
              * @description: 与 console.log 类似，但输出结果以绿色字体显示。输出优先级高于 log, 用于输出重要信息。
              * @param {any} [data] 主要信息。
-             * @param {array} args 要填充的数据。
+             * @param {array} [args] 要填充的数据。
              */
             info(data?: any, ...args: any[]): void;
 
             /**
              * @description: 与 console.log 类似，但输出结果以蓝色字体显示。输出优先级高于 info, 用于输出警告信息。
              * @param {any} [data] 主要信息。
-             * @param {array} args 要填充的数据。
+             * @param {array} [args] 要填充的数据。
              */
             warn(data?: any, ...args: any[]): void;
 
             /**
              * @description: 与 console.log 类似，但输出结果以红色字体显示。输出优先级高于 warn, 用于输出错误信息。
              * @param {any} [data] 主要信息。
-             * @param {array} args 要填充的数据。
+             * @param {array} [args] 要填充的数据。
              */
             error(data?: any, ...args: any[]): void;
 
@@ -143,7 +143,7 @@ declare module 'console' {
             /**
              * @description: 与 `console.log` 类似，同时会打印出调用这个函数所在的调用栈信息（即当前运行的文件、行数等信息）。
              * @param {any} [data] 主要信息。
-             * @param {array} args 要填充的数据。
+             * @param {array} [args] 要填充的数据。
              * @example: 
              * ```typescript
              * console.trace('Show me');
@@ -157,7 +157,7 @@ declare module 'console' {
             /**
              * @description: 与 `console.log` 一样输出信息，并在控制台显示输入框等待输入。按控制台的确认按钮后会将输入的字符串用 `eval` 计算后返回。 **部分机型可能会有控制台不显示输入框的情况，属于 bug。**。
              * @param {any} [data] 主要信息。
-             * @param {array} args 要填充的数据。
+             * @param {array} [args] 要填充的数据。
              * @return {any} 将输入的字符串用 `eval` 计算后的值。
              * @example: 
              * ```typescript
@@ -172,7 +172,7 @@ declare module 'console' {
             /**
              * @description: 与 `console.log` 一样输出信息，并在控制台显示输入框等待输入。按控制台的确认按钮后会将输入的字符串直接返回。 **部分机型可能会有控制台不显示输入框的情况，属于 bug。**。
              * @param {any} [data] 主要信息。
-             * @param {array} args 要填充的数据。
+             * @param {array} [args] 要填充的数据。
              * @return {string} 输入的字符串。
              * @example: 
              * ```typescript
@@ -241,7 +241,7 @@ declare module 'console' {
         /**
          * @description: 将信息打印到控制台，并带上换行符。 可以一次性传入多个参数，第一个参数作为主要信息，其他参数作为类似于 [printf(3)](https://man7.org/linux/man-pages/man3/printf.3.html) 中的代替值（参数都会传给 util.format()）。
          * @param {any} data 主要信息。
-         * @param {array} args 代替值。
+         * @param {array} [args] 代替值。
          * @example: 
          * ```typescript
          * const count: number = 5;

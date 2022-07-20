@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-24 17:21:22
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-12 15:33:10
+ * @LastTime: 2022-07-20 04:14:12
  * @FilePath: \\src\\types\\hamibot.d.ts
  * @Description: hamibot 模块
  */
@@ -21,7 +21,7 @@ declare module 'hamibot' {
 
             interface HamibotEnv {
                 /**
-             * @description: 运行模式，可选值：。
+             * @description: 运行模式，可选的值为:
              *  - `development` - 开发模式
              *  - `production` - 生产模式
              */
@@ -113,7 +113,7 @@ declare module 'hamibot' {
              */
             interface MessageAttachment {
                 /**
-                 * @description: 附件类型，根据实际需要选择使用。可选值：。
+                 * @description: 附件类型，根据实际需要选择使用，可选的值为:
                  * - `text` - 文本类型
                  * - `json` - JSON类型
                  * - `image` - 图片类型

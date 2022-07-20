@@ -1,7 +1,7 @@
 /*
  * @Author: Hamibot hello@hamibot.com
  * @Date: 2022-06-09 13:31:43
- * @LastEditors: Hamibot hello@hamibot.com
+ * @LastEditors: BATU1579
  * @LastEditTime: 2022-06-10 09:53:27
  * @FilePath: \\src\\types\\http.d.ts
  * @Description: 
@@ -20,7 +20,7 @@ declare module 'http' {
              * @description: 对地址 `url` 进行一次 HTTP GET 请求。如果没有回调函数，则在请求完成或失败时返回此次请求的响应。
              * @param {string} url 请求的 URL 地址，需要以'http://'或'https://'开头。如果 `url` 没有以'http://'开头，则默认为'http://'。
              * @param {RequestOptions} [options] 请求选项。
-             * @param {function} [callback] 回调函数，可选，其参数是一个 `Response` 对象。如果不加回调函数，则该请求将阻塞、同步地执行。
+             * @param {function} [callback] 回调函数，其参数是一个 `Response` 对象。如果不加回调函数，则该请求将阻塞、同步地执行。
              * @return {Response} 请求的响应对象
              * @example:
              * ```typescript
@@ -63,7 +63,7 @@ declare module 'http' {
              * @param {string} url 请求的 URL 地址，需要以'http://'或'https://'开头。如果 `url` 没有以'http://'开头，则默认为'http://'。
              * @param {Object} data POST 数据。
              * @param {RequestOptions} [options] 请求选项。
-             * @param {function} [callback] 回调函数，可选，其参数是一个 `Response` 对象。如果不加回调函数，则该请求将阻塞、同步地执行。
+             * @param {function} [callback] 回调函数，其参数是一个 `Response` 对象。如果不加回调函数，则该请求将阻塞、同步地执行。
              * @return {Response} 请求的响应对象
              * @example:
              * ```typescript
@@ -90,7 +90,7 @@ declare module 'http' {
              * @param {string} url 请求的 URL 地址，需要以'http://'或'https://'开头。如果 `url` 没有以'http://'开头，则默认为'http://'。
              * @param {object} data POST 数据。
              * @param {RequestOptions} [options] 请求选项。
-             * @param {function} [callback] 回调函数，可选，其参数是一个 `Response` 对象。如果不加回调函数，则该请求将阻塞、同步地执行。
+             * @param {function} [callback] 回调函数，其参数是一个 `Response` 对象。如果不加回调函数，则该请求将阻塞、同步地执行。
              * @return {Response} 请求的响应对象
              * @example:
              * ```typescript
@@ -114,7 +114,7 @@ declare module 'http' {
              * @param {string} url 请求的 URL 地址，需要以'http://'或'https://'开头。如果 `url` 没有以'http://'开头，则默认为'http://'。
              * @param {FileOptions} files POST 数据。
              * @param {RequestOptions} [options] 请求选项。
-             * @param {function} [callback] 回调函数，可选，其参数是一个 `Response` 对象。如果不加回调函数，则该请求将阻塞、同步地执行。
+             * @param {function} [callback] 回调函数，其参数是一个 `Response` 对象。如果不加回调函数，则该请求将阻塞、同步地执行。
              * @return {Response} 请求的响应对象
              * @example:
              * ```typescript
@@ -148,7 +148,7 @@ declare module 'http' {
              * - **注意！：该函数是 get, post, postJson 等函数的基础函数。因此除非是 PUT, DELET 等请求，或者需要更高定制的 HTTP 请求，否则直接使用 get, post, postJson 等函数会更加方便**
              * @param {string} url 请求的 URL 地址，需要以'http://'或'https://'开头。如果 `url` 没有以'http://'开头，则默认为'http://'。
              * @param {RequestOptions} [options] 请求选项。
-             * @param {function} [callback] 回调函数，可选，其参数是一个 `Response` 对象。如果不加回调函数，则该请求将阻塞、同步地执行。
+             * @param {function} [callback] 回调函数，其参数是一个 `Response` 对象。如果不加回调函数，则该请求将阻塞、同步地执行。
              * @return {Response} 请求的响应对象
              * @example: 
              */

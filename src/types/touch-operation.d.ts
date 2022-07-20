@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-30 18:17:34
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-22 12:22:51
+ * @LastTime: 2022-07-21 01:22:56
  * @FilePath: \\src\\types\\touch-operation.d.ts
  * @Description: 触摸操作模块
  */
@@ -71,13 +71,13 @@ declare module 'touch-operation' {
          * @description: 模拟手势操作。例如 `gesture(1000, [0, 0], [500, 500], [500, 1000])` 为模拟一个从 (0, 0)到 (500, 500) 到 (500, 100) 的手势操作，时长为 2 秒。
          * - **注意！：此函数只有 Android 7.0 及以上才有效 !**
          * @param {number} duration 手势的时长。
-         * @param {array} points 手势滑动路径的一系列坐标。
+         * @param {array} [points] 手势滑动路径的一系列坐标。
          */
         function gesture(duration: number, ...points: [number, number][]): void;
 
         /**
          * @description: 同时模拟多个手势。
-         * @param {array} gesture `[delay, duration, [横坐标, 纵坐标]]` , `delay` 为延迟多久(毫秒)才执行该手势；`duration` 为手势执行时长；坐标数组为手势经过的点的坐标。
+         * @param {array} [gesture] `[delay, duration, [横坐标, 纵坐标]]` , `delay` 为延迟多久(毫秒)才执行该手势；`duration` 为手势执行时长；坐标数组为手势经过的点的坐标。
          * - **注意！：此函数只有 Android 7.0 及以上才有效 !**
          * @example: 
          * ```typescript
