@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-12 04:23:34
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-12 15:54:53
+ * @LastTime: 2022-07-21 02:13:41
  * @FilePath: \\src\\types\\media.d.ts
  * @Description: 多媒体模块
  */
@@ -50,7 +50,7 @@ declare module 'media' {
              * @example:
              * ```typescript
              * // 传递第三个参数为 true 以循环播放音乐
-             * media.playMusic("/sdcard/1.mp3", 1, true);
+             * media.playMusic('/sdcard/1.mp3', 1, true);
              * // 等待三次播放的时间
              * sleep(media.getMusicDuration() * 3);
              * ```

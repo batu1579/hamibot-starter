@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-11 19:29:25
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-12 04:58:41
+ * @LastTime: 2022-07-21 02:13:40
  * @FilePath: \\src\\types\\keys.d.ts
  * @Description: 模拟物理按键模块
  */
@@ -129,7 +129,7 @@ declare module 'keys' {
          * @param {string} text 要输入的文字，只能为英文或英文符号。
          * @example:
          * ```typescript
-         * Text("aaa"): void;
+         * Text('aaa'): void;
          * ```
          */
         function Text(text: string): void;
@@ -144,98 +144,98 @@ declare module 'keys' {
          * KeyCode(29);
          * 
          * // 按下 A 键
-         * KeyCode("KEYCODE_A")
+         * KeyCode('KEYCODE_A')
          * ```
          */
         function KeyCode(code: number | KeyCode): void;
 
         // TODO: 转换成枚举类型
         type KeyCode = (
-            "KEYCODE_MENU" |
-            "KEYCODE_SOFT_RIGHT" |
-            "KEYCODE_HOME" |
-            "KEYCODE_BACK" |
-            "KEYCODE_CALL" |
-            "KEYCODE_ENDCALL" |
-            "KEYCODE_0" |
-            "KEYCODE_1" |
-            "KEYCODE_2" |
-            "KEYCODE_3" |
-            "KEYCODE_4" |
-            "KEYCODE_5" |
-            "KEYCODE_6" |
-            "KEYCODE_7" |
-            "KEYCODE_8" |
-            "KEYCODE_9" |
-            "KEYCODE_STAR" |
-            "KEYCODE_POUND" |
-            "KEYCODE_DPAD_UP" |
-            "KEYCODE_DPAD_DOWN" |
-            "KEYCODE_DPAD_LEFT" |
-            "KEYCODE_DPAD_RIGHT" |
-            "KEYCODE_DPAD_CENTER" |
-            "KEYCODE_VOLUME_UP" |
-            "KEYCODE_VOLUME_DOWN" |
-            "KEYCODE_POWER" |
-            "KEYCODE_CAMERA" |
-            "KEYCODE_CLEAR" |
-            "KEYCODE_A" |
-            "KEYCODE_B" |
-            "KEYCODE_C" |
-            "KEYCODE_D" |
-            "KEYCODE_E" |
-            "KEYCODE_F" |
-            "KEYCODE_G" |
-            "KEYCODE_H" |
-            "KEYCODE_I" |
-            "KEYCODE_J" |
-            "KEYCODE_K" |
-            "KEYCODE_L" |
-            "KEYCODE_M" |
-            "KEYCODE_N" |
-            "KEYCODE_O" |
-            "KEYCODE_P" |
-            "KEYCODE_Q" |
-            "KEYCODE_R" |
-            "KEYCODE_S" |
-            "KEYCODE_T" |
-            "KEYCODE_U" |
-            "KEYCODE_V" |
-            "KEYCODE_W" |
-            "KEYCODE_X" |
-            "KEYCODE_Y" |
-            "KEYCODE_Z" |
-            "KEYCODE_COMMA" |
-            "KEYCODE_PERIOD" |
-            "KEYCODE_ALT_LEFT" |
-            "KEYCODE_ALT_RIGHT" |
-            "KEYCODE_SHIFT_LEFT" |
-            "KEYCODE_SHIFT_RIGHT" |
-            "KEYCODE_TAB" |
-            "KEYCODE_SPACE" |
-            "KEYCODE_SYM" |
-            "KEYCODE_EXPLORER" |
-            "KEYCODE_ENVELOPE" |
-            "KEYCODE_ENTER" |
-            "KEYCODE_DEL" |
-            "KEYCODE_GRAVE" |
-            "KEYCODE_MINUS" |
-            "KEYCODE_EQUALS" |
-            "KEYCODE_LEFT_BRACKET" |
-            "KEYCODE_RIGHT_BRACKET" |
-            "KEYCODE_BACKSLASH" |
-            "KEYCODE_SEMICOLON" |
-            "KEYCODE_APOSTROPHE" |
-            "KEYCODE_SLASH" |
-            "KEYCODE_AT" |
-            "KEYCODE_NUM" |
-            "KEYCODE_HEADSETHOOK" |
-            "KEYCODE_FOCUS" |
-            "KEYCODE_PLUS" |
-            "KEYCODE_MENU" |
-            "KEYCODE_NOTIFICATION" |
-            "KEYCODE_SEARCH" |
-            "TAG_LAST_KEYCODE"
+            'KEYCODE_MENU' |
+            'KEYCODE_SOFT_RIGHT' |
+            'KEYCODE_HOME' |
+            'KEYCODE_BACK' |
+            'KEYCODE_CALL' |
+            'KEYCODE_ENDCALL' |
+            'KEYCODE_0' |
+            'KEYCODE_1' |
+            'KEYCODE_2' |
+            'KEYCODE_3' |
+            'KEYCODE_4' |
+            'KEYCODE_5' |
+            'KEYCODE_6' |
+            'KEYCODE_7' |
+            'KEYCODE_8' |
+            'KEYCODE_9' |
+            'KEYCODE_STAR' |
+            'KEYCODE_POUND' |
+            'KEYCODE_DPAD_UP' |
+            'KEYCODE_DPAD_DOWN' |
+            'KEYCODE_DPAD_LEFT' |
+            'KEYCODE_DPAD_RIGHT' |
+            'KEYCODE_DPAD_CENTER' |
+            'KEYCODE_VOLUME_UP' |
+            'KEYCODE_VOLUME_DOWN' |
+            'KEYCODE_POWER' |
+            'KEYCODE_CAMERA' |
+            'KEYCODE_CLEAR' |
+            'KEYCODE_A' |
+            'KEYCODE_B' |
+            'KEYCODE_C' |
+            'KEYCODE_D' |
+            'KEYCODE_E' |
+            'KEYCODE_F' |
+            'KEYCODE_G' |
+            'KEYCODE_H' |
+            'KEYCODE_I' |
+            'KEYCODE_J' |
+            'KEYCODE_K' |
+            'KEYCODE_L' |
+            'KEYCODE_M' |
+            'KEYCODE_N' |
+            'KEYCODE_O' |
+            'KEYCODE_P' |
+            'KEYCODE_Q' |
+            'KEYCODE_R' |
+            'KEYCODE_S' |
+            'KEYCODE_T' |
+            'KEYCODE_U' |
+            'KEYCODE_V' |
+            'KEYCODE_W' |
+            'KEYCODE_X' |
+            'KEYCODE_Y' |
+            'KEYCODE_Z' |
+            'KEYCODE_COMMA' |
+            'KEYCODE_PERIOD' |
+            'KEYCODE_ALT_LEFT' |
+            'KEYCODE_ALT_RIGHT' |
+            'KEYCODE_SHIFT_LEFT' |
+            'KEYCODE_SHIFT_RIGHT' |
+            'KEYCODE_TAB' |
+            'KEYCODE_SPACE' |
+            'KEYCODE_SYM' |
+            'KEYCODE_EXPLORER' |
+            'KEYCODE_ENVELOPE' |
+            'KEYCODE_ENTER' |
+            'KEYCODE_DEL' |
+            'KEYCODE_GRAVE' |
+            'KEYCODE_MINUS' |
+            'KEYCODE_EQUALS' |
+            'KEYCODE_LEFT_BRACKET' |
+            'KEYCODE_RIGHT_BRACKET' |
+            'KEYCODE_BACKSLASH' |
+            'KEYCODE_SEMICOLON' |
+            'KEYCODE_APOSTROPHE' |
+            'KEYCODE_SLASH' |
+            'KEYCODE_AT' |
+            'KEYCODE_NUM' |
+            'KEYCODE_HEADSETHOOK' |
+            'KEYCODE_FOCUS' |
+            'KEYCODE_PLUS' |
+            'KEYCODE_MENU' |
+            'KEYCODE_NOTIFICATION' |
+            'KEYCODE_SEARCH' |
+            'TAG_LAST_KEYCODE'
         )
     }
 }

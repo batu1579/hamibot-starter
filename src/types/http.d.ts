@@ -177,7 +177,7 @@ declare module 'http' {
             );
 
             /**
-             * @description: HTTP 头部信息中的"Content-Type", 表示 HTTP 请求的内容类型。例如"text/plain", "application/json"。更多信息参见 [Content-Type](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type) 。
+             * @description: HTTP 头部信息中的'Content-Type', 表示 HTTP 请求的内容类型。例如'text/plain', 'application/json'。更多信息参见 [Content-Type](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type) 。
              */
             contentType: string;
 

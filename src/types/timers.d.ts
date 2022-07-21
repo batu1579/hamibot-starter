@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-12 16:11:48
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-21 01:38:52
+ * @LastTime: 2022-07-21 02:13:42
  * @FilePath: \\src\\types\\timers.d.ts
  * @Description: 定时器模块
  */
@@ -76,13 +76,13 @@ declare module 'timers' {
         function clearImmediate(id: ImmediateID | number): void;
 
         class ImmediateID extends Number {
-            private _id: "ImmediateID";
+            private _id: 'ImmediateID';
         }
         class TimeoutID extends Number {
-            private _id: "TimeoutID";
+            private _id: 'TimeoutID';
         }
         class IntervalID extends Number {
-            private _id: "IntervalID";
+            private _id: 'IntervalID';
         }
     }
 }
