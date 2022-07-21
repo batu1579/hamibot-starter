@@ -184,7 +184,7 @@ declare module 'http' {
             /**
              * @description: HTTP 请求的内容。可以是一个字符串，也可以是一个字节数组；或者是一个以 [BufferedSink](https://github.com/square/okio/blob/master/okio/src/main/java/okio/BufferedSink.java) 为参数的函数。
              */
-            body: string | byte[] | Function;
+            body: string | ByteArray | Function;
         }
 
         // TODO: 检查多文件传输的情况
@@ -262,7 +262,7 @@ declare module 'http' {
             /**
              * @description: 以字节数组形式返回响应内容
              */
-            bytes(): byte[];
+            bytes(): ByteArray;
 
             /**
              * @description: 以字符串形式返回响应内容

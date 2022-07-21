@@ -107,7 +107,7 @@ declare module 'files' {
              * @description: 读取文件 path 的所有内容并返回一个字节数组。如果文件不存在，则抛出 `FileNotFoundException` 。
              * - **注意！：该数组是 Java 的数组，不具有 JavaScript 数组的 `forEach()` , `slice()` 等函数。**
              * @param {string} path 文件路径。
-             * @return {JavaArray<byte>} 16 进制数组。
+             * @return {JavaByteArray} 16 进制数组。
              * @example: 
              * typescript
              * let data = files.readBytes('/sdcard/1.png');
@@ -118,7 +118,7 @@ declare module 'files' {
              * log(sb.toString());
              * ```
              */
-            readBytes(path: string): JavaArray<byte>;
+            readBytes(path: string): JavaByteArray;
 
             /**
              * @description: 把 text 写入到文件 path 中。如果文件存在则覆盖，不存在则创建。
@@ -153,9 +153,9 @@ declare module 'files' {
             /**
              * @description: 把 `bytes` 写入到文件 `path` 中。如果文件存在则覆盖，不存在则创建。
              * @param {string} path 文件路径。
-             * @param {array} bytes 字节数组，要写入的二进制数据。
+             * @param {ByteArray} bytes 字节数组，要写入的二进制数据。
              */
-            writeBytes(path: string, bytes: byte[]): void;
+            writeBytes(path: string, bytes: ByteArray): void;
 
             /**
              * @description: 把 `text` 追加到文件 `path` 的末尾。如果文件不存在则创建。
@@ -190,9 +190,9 @@ declare module 'files' {
             /**
              * @description: 把 `bytes` 追加到文件 `path` 的末尾。如果文件不存在则创建。
              * @param {string} path 文件路径。
-             * @param {array} bytes 字节数组，要写入的二进制数据。
+             * @param {ByteArray} bytes 字节数组，要写入的二进制数据。
              */
-            appendBytes(path: string, bytes: byte[]): void;
+            appendBytes(path: string, bytes: ByteArray): void;
 
             /**
              * @description: 复制文件。
@@ -544,13 +544,13 @@ declare module 'files' {
          */
         function open(path: string, mode?: 'w' | 'a' | 'rw', encoding?: string, bufferSize?: number): PWritableTextFile;
 
-        type byte = number;
+        type ByteArray = Uint8Array | number[];
+
+        type JavaByteArray = {
+            [K in keyof Uint8Array as K extends JSArrayFunction ? never : K]: Uint8Array[K]
+        };
 
         // TODO: 验证每个方法是否都不可用
-        type JavaArray<T> = {
-            [K in keyof Array<T> as K extends JSArrayFunction ? never : K]: Array<T>[K]
-        }
-
         type JSArrayFunction = 'push' | 'pop' | 'unshift' | 'shift' | 'valueOf' | 'indexOf' | 'splice' | 'slice' | 'sort' | 'concat' | 'reverse' | 'join' | 'forEach' | 'filter' | 'map' | 'reduce' | 'find' | 'every' | 'some' | 'lastIndexOf' | 'reduceRight' | 'findIndex' | 'fill' | 'keys' | 'values' | 'copyWithin'
     }
 }
