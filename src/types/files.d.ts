@@ -543,8 +543,6 @@ declare module 'files' {
          * @return {WritableTextFile} 打开的文件对象。
          */
         function open(path: string, mode?: 'w' | 'a' | 'rw', encoding?: string, bufferSize?: number): PWritableTextFile;
-
-        type ByteArray = Uint8Array | number[];
     }
 
     type JavaByteArray = {
