@@ -2,48 +2,13 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 17:07:59
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-21 01:34:35
+ * @LastTime: 2022-07-23 08:51:22
  * @FilePath: \\src\\types\\console.d.ts
  * @Description: 
  */
 
 declare module 'console' {
     global {
-
-        interface LogConfig {
-            /**
-             * @description: 日志文件路径，将会把日志写入该文件中。
-             */
-            file?: string;
-
-            /**
-             * @description: 最大文件大小，单位字节（默认为 512 * 1024）。
-             */
-            maxFileSize?: number;
-
-            /**
-             * @description: 写入的日志级别（默认为 `ALL` ），可选的值为:
-             * - `ALL` - 所有日志
-             * - `OFF` - 关闭
-             * - `DEBUG` - 调试级别
-             * - `INFO` - 信息级别
-             * - `WARN` - 告警级别
-             * - `ERROR` - 错误级别
-             * - `FATAL` - 严重错误级别
-             */
-            rootLevel?: 'ALL' | 'OFF' | 'DEBUG' | 'INFO' | 'WARN' | 'ERROR' | 'FATAL';
-
-            /**
-             * @description: 日志备份文件最大数量（默认为 5）。
-             */
-            maxBackupSize?: number;
-
-            /**
-             * @description: 日志写入格式，参见 [PatternLayout](http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html)。
-             */
-            filePattern?: string;
-        }
-
         /**
          * @description: 控制台模块提供了一个和 Web 浏览器中相似的用于调试的控制台。用于输出一些调试信息、中间结果等。 console 模块中的一些函数也可以直接作为全局函数使用，例如 log, print 等。
          */
@@ -260,5 +225,39 @@ declare module 'console' {
          * @param {string} text 要打印到控制台的信息。
          */
         function print(text: Object): void;
+    }
+
+    interface LogConfig {
+        /**
+         * @description: 日志文件路径，将会把日志写入该文件中。
+         */
+        file?: string;
+
+        /**
+         * @description: 最大文件大小，单位字节（默认为 512 * 1024）。
+         */
+        maxFileSize?: number;
+
+        /**
+         * @description: 写入的日志级别（默认为 `ALL` ），可选的值为:
+         * - `ALL` - 所有日志
+         * - `OFF` - 关闭
+         * - `DEBUG` - 调试级别
+         * - `INFO` - 信息级别
+         * - `WARN` - 告警级别
+         * - `ERROR` - 错误级别
+         * - `FATAL` - 严重错误级别
+         */
+        rootLevel?: 'ALL' | 'OFF' | 'DEBUG' | 'INFO' | 'WARN' | 'ERROR' | 'FATAL';
+
+        /**
+         * @description: 日志备份文件最大数量（默认为 5）。
+         */
+        maxBackupSize?: number;
+
+        /**
+         * @description: 日志写入格式，参见 [PatternLayout](http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html)。
+         */
+        filePattern?: string;
     }
 }

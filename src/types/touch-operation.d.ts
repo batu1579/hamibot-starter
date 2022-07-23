@@ -2,15 +2,12 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-30 18:17:34
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-21 01:22:56
+ * @LastTime: 2022-07-23 09:29:34
  * @FilePath: \\src\\types\\touch-operation.d.ts
  * @Description: 触摸操作模块
  */
 declare module 'touch-operation' {
     global {
-
-        // 声明全局函数
-
         /**
          * @description: 设置脚本坐标点击所适合的屏幕宽高。如果脚本运行时，屏幕宽度不一致会自动放缩坐标。例如在 1920*1080 的设备中，某个操作的代码为 `setScreenMetrics(1080, 1920);` 那么在其他设备上 Hamibot 会自动放缩坐标以便脚本仍然有效。例如在 540 * 960 的屏幕中 `click(800, 200)` 实际上会点击位置(400, 100)。
          * @param {number} width 屏幕宽度，单位像素。

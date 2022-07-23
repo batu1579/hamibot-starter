@@ -155,49 +155,6 @@ declare module 'http' {
             request(url: string, options?: RequestOptions, callback?: (res: Response) => any): Response;
         }
 
-        interface RequestOptions {
-            /**
-             * @description: 键值对形式的 HTTP 头部信息。有关 HTTP 头部信息，参见 [HTTP Headers](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers)。
-             */
-            headers: object;
-
-            /**
-             * @description: HTTP 请求方法。
-             */
-            method: (
-                'GET' |
-                'POST' |
-                'PUT' |
-                'DELETE' |
-                'PATCH' |
-                'OPTIONS' |
-                'HEAD' |
-                'TRACE' |
-                'CONNECT'
-            );
-
-            /**
-             * @description: HTTP 头部信息中的'Content-Type', 表示 HTTP 请求的内容类型。例如'text/plain', 'application/json'。更多信息参见 [Content-Type](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type) 。
-             */
-            contentType: string;
-
-            /**
-             * @description: HTTP 请求的内容。可以是一个字符串，也可以是一个字节数组；或者是一个以 [BufferedSink](https://github.com/square/okio/blob/master/okio/src/main/java/okio/BufferedSink.java) 为参数的函数。
-             */
-            body: string | ByteArray | Function;
-        }
-
-        // TODO: 检查多文件传输的情况
-        interface FileOptions {
-            file: (
-                ReadableTextFile |
-                PWritableTextFile |
-                [string, string] |
-                [string, string, string]
-            );
-            [prop: string]: any;
-        }
-
         /**
          * @description: HTTP 请求的响应。
          */
@@ -257,27 +214,70 @@ declare module 'http' {
              */
             readonly method: string;
         }
+    }
 
-        interface ResponseBody {
-            /**
-             * @description: 以字节数组形式返回响应内容
-             */
-            bytes(): ByteArray;
+    interface RequestOptions {
+        /**
+         * @description: 键值对形式的 HTTP 头部信息。有关 HTTP 头部信息，参见 [HTTP Headers](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers)。
+         */
+        headers: object;
 
-            /**
-             * @description: 以字符串形式返回响应内容
-             */
-            string(): string;
+        /**
+         * @description: HTTP 请求方法。
+         */
+        method: (
+            'GET' |
+            'POST' |
+            'PUT' |
+            'DELETE' |
+            'PATCH' |
+            'OPTIONS' |
+            'HEAD' |
+            'TRACE' |
+            'CONNECT'
+        );
 
-            /**
-             * @description: 把响应内容作为 JSON 格式的数据并调用 JSON.parse，返回解析后的对象
-             */
-            json(): object;
+        /**
+         * @description: HTTP 头部信息中的'Content-Type', 表示 HTTP 请求的内容类型。例如'text/plain', 'application/json'。更多信息参见 [Content-Type](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type) 。
+         */
+        contentType: string;
 
-            /**
-             * @description: 当前响应的内容类型
-             */
-            readonly contentType: string;
-        }
+        /**
+         * @description: HTTP 请求的内容。可以是一个字符串，也可以是一个字节数组；或者是一个以 [BufferedSink](https://github.com/square/okio/blob/master/okio/src/main/java/okio/BufferedSink.java) 为参数的函数。
+         */
+        body: string | ByteArray | Function;
+    }
+
+    // TODO: 检查多文件传输的情况
+    interface FileOptions {
+        file: (
+            ReadableTextFile |
+            PWritableTextFile |
+            [string, string] |
+            [string, string, string]
+        );
+        [prop: string]: any;
+    }
+
+    interface ResponseBody {
+        /**
+         * @description: 以字节数组形式返回响应内容
+         */
+        bytes(): ByteArray;
+
+        /**
+         * @description: 以字符串形式返回响应内容
+         */
+        string(): string;
+
+        /**
+         * @description: 把响应内容作为 JSON 格式的数据并调用 JSON.parse，返回解析后的对象
+         */
+        json(): object;
+
+        /**
+         * @description: 当前响应的内容类型
+         */
+        readonly contentType: string;
     }
 }

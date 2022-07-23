@@ -2,17 +2,12 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 01:16:42
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-23 04:39:59
+ * @LastTime: 2022-07-23 09:24:24
  * @FilePath: \\src\\types\\ocr.d.ts
  * @Description: 
  */
 declare module 'ocr' {
     global {
-        // TODO: 补全属性和方法
-        interface OcrResult {
-            [prop: string]: any;
-        }
-
         /**
          * @description: 文字识别（OCR）可以将图片中的文字信息转换为可编辑文本。
          * @author linkecoding
@@ -22,7 +17,7 @@ declare module 'ocr' {
         interface OCR {
             /**
              * @description: 识别图片中的文字。
-             * @param {Images} img 要识别的图片。
+             * @param {Image} img 要识别的图片。
              * @return {OcrResult} OCR 识别结果。
              * @since 1.2.2
              * @example: 
@@ -36,11 +31,11 @@ declare module 'ocr' {
              * log(res);
              * ```
              */
-            recognize(img: Images): OcrResult;
+            recognize(img: Image): OcrResult;
 
             /**
              * @description: 识别图片中的文字，只返回文本结果。
-             * @param {Images} img 要识别的图片。
+             * @param {Image} img 要识别的图片。
              * @return {OcrResult} OCR 识别结果。
              * @since 1.2.2
              * @example: 
@@ -54,7 +49,12 @@ declare module 'ocr' {
              * log(res);
              * ```
              */
-            recognizeText(img: Images): OcrResult;
+            recognizeText(img: Image): OcrResult;
         }
+    }
+
+    // TODO: 补全属性和方法
+    interface OcrResult {
+        [prop: string]: any;
     }
 }

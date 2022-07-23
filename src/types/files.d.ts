@@ -545,12 +545,12 @@ declare module 'files' {
         function open(path: string, mode?: 'w' | 'a' | 'rw', encoding?: string, bufferSize?: number): PWritableTextFile;
 
         type ByteArray = Uint8Array | number[];
-
-        type JavaByteArray = {
-            [K in keyof Uint8Array as K extends JSArrayFunction ? never : K]: Uint8Array[K]
-        };
-
-        // TODO: 验证每个方法是否都不可用
-        type JSArrayFunction = 'push' | 'pop' | 'unshift' | 'shift' | 'valueOf' | 'indexOf' | 'splice' | 'slice' | 'sort' | 'concat' | 'reverse' | 'join' | 'forEach' | 'filter' | 'map' | 'reduce' | 'find' | 'every' | 'some' | 'lastIndexOf' | 'reduceRight' | 'findIndex' | 'fill' | 'keys' | 'values' | 'copyWithin'
     }
+
+    type JavaByteArray = {
+        [K in keyof Uint8Array as K extends JSArrayFunction ? never : K]: Uint8Array[K]
+    };
+
+    // TODO: 验证每个方法是否都不可用
+    type JSArrayFunction = 'push' | 'pop' | 'unshift' | 'shift' | 'valueOf' | 'indexOf' | 'splice' | 'slice' | 'sort' | 'concat' | 'reverse' | 'join' | 'forEach' | 'filter' | 'map' | 'reduce' | 'find' | 'every' | 'some' | 'lastIndexOf' | 'reduceRight' | 'findIndex' | 'fill' | 'keys' | 'values' | 'copyWithin'
 }

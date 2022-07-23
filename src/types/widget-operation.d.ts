@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-31 13:19:44
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-21 01:37:52
+ * @LastTime: 2022-07-23 09:41:45
  * @FilePath: \\src\\types\\widget-operation.d.ts
  * @Description: 控件操作
  */
@@ -20,14 +20,6 @@ declare module 'widget-operation' {
          */
         function auto(mode?: 'fast' | 'normal'): void;
 
-        // TODO: 补全常用属性
-        /**
-         * @description: 更多信息参见 [AccessibilityWindowInfo](https://www.apiref.com/android-zh/android/view/accessibility/AccessibilityWindowInfo.html)
-         */
-        interface AccessibilityWindowInfo {
-            [prop: string]: any;
-        }
-
         namespace auto {
             /**
              * @description: 检查无障碍服务是否已经启用，如果没有启用则跳转到无障碍服务启用界面，并等待无障碍服务启动；当无障碍服务启动后脚本会继续运行。因为该函数是阻塞的，因此除非是有协程特性，否则不能在 ui 模式下运行该函数，建议在 ui 模式下使用 `auto()` 函数。
@@ -41,8 +33,6 @@ declare module 'widget-operation' {
              * - `normal` - 正常模式。
              */
             function setMode(mode: 'fast' | 'normal'): void;
-
-            type flags = 'findOnUiThread' | 'useUsageStats' | 'useShell';
 
             /**
              * @description: 启用有关 automator 的一些特性。
@@ -190,18 +180,6 @@ declare module 'widget-operation' {
              */
             input(i: number, text: string): boolean;
         }
-
-        type commonClassName = (
-            'TextView' |
-            'ImageView' |
-            'Button' |
-            'EditText' |
-            'AbsListView' |
-            'LinearLayout' |
-            'FrameLayout' |
-            'RelativeLayout' |
-            'android.support.v7.widget.RecyclerView'
-        );
 
         /**
          * @description: UiSelector 即选择器，用于通过各种条件选取屏幕上的控件，再对这些控件进行点击、长按等动作。
@@ -1693,4 +1671,26 @@ declare module 'widget-operation' {
          */
         function filter(f: (i: UiObject) => boolean): UiSelector;
     }
+
+    // TODO: 补全常用属性
+    /**
+     * @description: 更多信息参见 [AccessibilityWindowInfo](https://www.apiref.com/android-zh/android/view/accessibility/AccessibilityWindowInfo.html)
+     */
+    interface AccessibilityWindowInfo {
+        [prop: string]: any;
+    }
+
+    type flags = 'findOnUiThread' | 'useUsageStats' | 'useShell';
+
+    type commonClassName = (
+        'TextView' |
+        'ImageView' |
+        'Button' |
+        'EditText' |
+        'AbsListView' |
+        'LinearLayout' |
+        'FrameLayout' |
+        'RelativeLayout' |
+        'android.support.v7.widget.RecyclerView'
+    );
 }
