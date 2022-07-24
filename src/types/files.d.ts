@@ -331,7 +331,7 @@ declare module 'files' {
             /**
              * @description: 列出文件夹 `path` 下的满足条件的文件和文件夹的名称的数组。如果不加 `filter` 参数，则返回所有文件和文件夹。
              * @param {string} path 路径。
-             * @param {function} [filter] 过滤函数，接收一个string参数（文件名），返回一个boolean值。
+             * @param {function} [filter] 用于过滤的回调函数。参数为string（文件名），返回值为 boolean 。
              * @return {array} 满足条件的文件和文件夹的名称。
              * @example: 
              * ```typescript
