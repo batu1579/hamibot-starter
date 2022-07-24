@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 20:18:32
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-23 09:30:31
+ * @LastTime: 2022-07-24 02:58:03
  * @FilePath: \\src\\types\\utils.d.ts
  * @Description: 
  */
@@ -24,6 +24,15 @@ declare module 'utils' {
         }
         class IntervalID extends Number {
             private _id: 'IntervalID';
+        }
+
+        // TODO: 想办法替换成长整数
+        class Long extends Number {
+            
+        }
+
+        class Double extends Number {
+
         }
     }
 }
