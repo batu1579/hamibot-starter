@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-15 04:24:25
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-12 19:58:33
+ * @LastTime: 2022-07-24 20:15:31
  * @FilePath: \\README.md
  * @Description: 
 -->
@@ -29,6 +29,15 @@
 ## 注意事项
 
 1. 编写 UI 或悬浮窗时请记得将文件扩展名修改成 `tsx` 。
+2. 有时候函数的返回值可能会根据某个参数或者设置而改变，此时如果你十分确定不会出现问题，请使用断言，例如：
+
+```typescript
+// 类型断言
+let xxx = sensors.register("xxx") as SensorEventEmitter;
+
+// 非空断言（推荐，因为有的类型被隐藏了，想要使用还需要手动导入。）
+let yyyy = sensors.register("yyy")!;
+```
 
 ## 文件结构
 
@@ -52,7 +61,7 @@
 
 ## TODO List
 
-- [ ] 添加声明文件 [17/26]
+- [ ] 添加声明文件 [19/26]
   - [x] Hamibot
   - [x] App
   - [x] Console
@@ -68,9 +77,9 @@
   - [x] HTTP
   - [x] Keys
   - [x] Media
-  - [ ] Sensors
+  - [x] Sensors
   - [x] Storages
-  - [ ] Threads
+  - [x] Threads
   - [x] Timers
   - [ ] Dialogs
   - [ ] Events
@@ -81,6 +90,10 @@
   - [ ] Canvans
 - [ ] 使用 `Eslint` 在提交前统一代码风格
 - [ ] 将所有的预制函数使用 `TypeScript` 重写
+- [ ] 检查泛型注释
+- [ ] 检查回调函数注释
+- [ ] 检查注释中的类和方法是否使用行内代码格式
+- [ ] 统一函数类型（Function、function）
 
 ## 开源协议
 
