@@ -1,5 +1,8 @@
 {
     "compilerOptions": {
+        "lib": [
+            "ES2015"
+        ],
         "target": "es2015",
         "module": "es2015",
         "strict": true,
@@ -7,6 +10,7 @@
             "src/types",
             // "node_modules/@types",
         ],
+        "outDir": "build",
         "forceConsistentCasingInFileNames": true,
         "removeComments": true,
         "jsx": "preserve",
