@@ -21,7 +21,7 @@ declare module 'base64' {
              * @param {string} [encoding] 字符串编码。
              * @return {string} 编码后的字符串。
              * @since 1.4.0
-             * @example: 
+             * @example
              * ```typescript
              * log(base64.encode('Hamibot')); // => SGFtaWJvdA==
              * ```
@@ -34,7 +34,7 @@ declare module 'base64' {
              * @param {string} [encoding] 字符串编码。
              * @return {string} 编码后的字符串。
              * @since 1.4.0
-             * @example: 
+             * @example
              * ```typescript
              * log(base64.encode('Hamibot')); // => SGFtaWJvdA==
              * ```
@@ -47,7 +47,7 @@ declare module 'base64' {
              * @param {string} [encoding] 字符串编码。
              * @return {string} 解码后的字符串。
              * @since 1.4.0
-             * @example: 
+             * @example
              * ```typescript
              * log(base64.decode('SGFtaWJvdA==')); // => Hamibot
              * ```
@@ -60,7 +60,7 @@ declare module 'base64' {
              * @param {string} [encoding] 字符串编码。
              * @return {string} 解码后的字符串。
              * @since 1.4.0
-             * @example: 
+             * @example
              * ```typescript
              * log(base64.decode('SGFtaWJvdA==')); // => Hamibot
              * ```

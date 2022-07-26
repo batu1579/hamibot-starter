@@ -20,7 +20,7 @@ declare module 'ocr' {
              * @param {Image} img 要识别的图片。
              * @return {OcrResult} OCR 识别结果。
              * @since 1.2.2
-             * @example: 
+             * @example
              * ```typescript
              * if (!requestScreenCapture()) {
              *     toastLog('没有授予 Hamibot 屏幕截图权限');
@@ -38,7 +38,7 @@ declare module 'ocr' {
              * @param {Image} img 要识别的图片。
              * @return {OcrResult} OCR 识别结果。
              * @since 1.2.2
-             * @example: 
+             * @example
              * ```typescript
              * if (!requestScreenCapture()) {
              *     toastLog('没有授予 Hamibot 屏幕截图权限');

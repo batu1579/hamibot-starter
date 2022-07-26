@@ -20,7 +20,7 @@ declare module 'engines' {
              * @param {string} script 要运行的脚本内容。
              * @param {ExecutionConfig} [config] 运行配置项。
              * @return {ScriptExecution} 返回一个 `ScriptExectuion` 对象。
-             * @example: 
+             * @example
              * ```typescript
              * // 每隔3秒运行一次脚本，循环10次
              * engines.execScript('hello world', 'toast('hello world')', {
@@ -28,7 +28,7 @@ declare module 'engines' {
              *     interval: 3000,
              * });
              * ```
-             * @example:
+             * @example
              * ```typescript
              * // 使用函数的 `toString()` 的方法来执行特定函数
              * function helloWorld() {
@@ -37,7 +37,7 @@ declare module 'engines' {
              * }
              * engines.execScript('hello world', 'helloWorld();\n' + helloWorld.toString());
              * ```
-             * @example:
+             * @example
              * ```typescript
              * // 把运行脚本封装成一个函数来传递变量
              * function exec(action, args) {
@@ -59,7 +59,7 @@ declare module 'engines' {
              * @param {string} path 要运行的脚本路径。
              * @param {ExecutionConfig} [config] 运行配置项。
              * @return {ScriptExecution} 返回一个 `ScriptExectuion` 对象。
-             * @example: 
+             * @example
              * ```typescript
              * engines.execScriptFile('/sdcard/脚本/1.js');
              * ```
@@ -71,7 +71,7 @@ declare module 'engines' {
              * @param {string} path 要运行的录制文件路径。
              * @param {ExecutionConfig} [config] 运行配置项。
              * @return {ScriptExecution} 返回一个 `ScriptExectuion` 对象。
-             * @example: 
+             * @example
              * ```typescript
              * engines.execAutoFile('/sdcard/脚本/1.auto');
              * ```
@@ -91,7 +91,7 @@ declare module 'engines' {
             /**
              * @description: 获取当前脚本的脚本引擎对象( `ScriptEngine` )。该对象可以通过 `execArgv` 来获取他的运行参数，包括外部参数、 `intent` 等。普通脚本的运行参数通常为空，通过定时任务的广播启动的则可以获取到启动的 `intent` 。
              * @return {ScriptEngine} 当前脚本的脚本引擎对象。
-             * @example: 
+             * @example
              * ```typescript
              * log(engines.myEngine().execArgv);
              * ```
@@ -137,7 +137,6 @@ declare module 'engines' {
             /**
              * @description: 获取执行该脚本的脚本引擎对象( `ScriptEngine` )。
              * @return {ScriptEngine} 执行该脚本的脚本引擎对象。
-             * @example: 
              */
             getEngine(): ScriptEngine;
 
@@ -166,7 +165,7 @@ declare module 'engines' {
             /**
              * @description: 获取当前脚本引擎正在执行的脚本对象。
              * @return {ScriptSource} 当前脚本引擎正在执行的脚本对象。
-             * @example: 
+             * @example
              * ```typescript
              * log(engines.myEngine().getSource());
              * ```
@@ -177,7 +176,7 @@ declare module 'engines' {
              * @description: 向该脚本引擎发送一个事件，该事件可以在该脚本引擎对应的脚本的 `events` 模块监听到并在脚本主线程执行事件处理。
              * @param {string} eventName 事件名称。
              * @param {array} [args] 事件参数。
-             * @example: 
+             * @example
              * ```typescript
              * // receiver.js
              * // 监听say事件
@@ -188,7 +187,7 @@ declare module 'engines' {
              * setInterval(()=>{}, 1000);
              * 
              * // 同一目录另一脚本
-             * //运行脚本
+             * // 运行脚本
              * let e = engines.execScriptFile('./receiver.js');
              * // 等待脚本启动
              * sleep(2000);

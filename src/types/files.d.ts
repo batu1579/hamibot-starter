@@ -10,7 +10,7 @@ declare module 'files' {
              * @description: 检查路径 `path` 是否是文件。
              * @param {string} path 文件路径。
              * @return {boolean} 是文件则返回 `true` ，否则返回 `false`。
-             * @example: 
+             * @example
              * ```typescript
              * log(files.isDir('/sdcard/文件.txt')); // true
              * ```
@@ -21,7 +21,7 @@ declare module 'files' {
              * @description: 检查路径 `path` 是否是文件夹。
              * @param {string} path 文件夹路径。
              * @return {boolean} 是文件夹则返回 `true` ，否则返回 `false`。
-             * @example: 
+             * @example
              * ```typescript
              * log(files.isDir('/sdcard/文件夹')); // true
              * ```
@@ -40,7 +40,7 @@ declare module 'files' {
              * @param {string} parent 父目录路径。
              * @param {string} child 子目录路径。
              * @return {string} 连接后的路径。
-             * @example: 
+             * @example
              * ```typescript
              * log(files.join('/sdcard/', '1.txt')) // /sdcard/1.txt
              * ```
@@ -51,7 +51,7 @@ declare module 'files' {
              * @description: 创建一个文件或文件夹。
              * @param {string} path 文件或文件夹路径。
              * @return {boolean} 创建成功则返回 `true` ，否则返回 `false` 。如果文件或文件夹已经存在，则直接返回 `false` 。
-             * @example: 
+             * @example
              * ```typescript
              * files.create('/sdcard/新文件夹/');
              * ```
@@ -62,7 +62,6 @@ declare module 'files' {
              * @description: 创建一个文件或文件夹并返回是否创建成功。如果文件所在文件夹不存在，则先创建他所在的一系列文件夹。
              * @param {string} path 文件或文件夹路径。
              * @return {boolean} 创建成功则返回 `true` ，否则返回 `false` 。如果文件或文件夹已经存在，则直接返回 `false` 。
-             * @example: 
              */
             createWithDirs(path: string): boolean;
 
@@ -84,7 +83,7 @@ declare module 'files' {
              * @param {string} path 文件路径。
              * @param {string} [encoding] 字符编码(默认为 utf-8)。
              * @return {string} 读取的文件内容。
-             * @example: 
+             * @example
              * ```typescript
              * log(files.read('/sdcard/1.txt'));
              * ```
@@ -96,7 +95,7 @@ declare module 'files' {
              * @param {string} path 文件路径。
              * @param {string} [encoding] 字符编码(默认为 utf-8)。
              * @return {string} 读取的文件内容。
-             * @example: 
+             * @example
              * ```typescript
              * log(files.read('/sdcard/1.txt'));
              * ```
@@ -108,8 +107,8 @@ declare module 'files' {
              * - **注意！：该数组是 Java 的数组，不具有 JavaScript 数组的 `forEach()` , `slice()` 等函数。**
              * @param {string} path 文件路径。
              * @return {JavaByteArray} 16 进制数组。
-             * @example: 
-             * typescript
+             * @example
+             * ```typescript
              * let data = files.readBytes('/sdcard/1.png');
              * let sb = new java.lang.StringBuilder();
              * for (let i = 0; i < data.length; i++) {
@@ -125,7 +124,7 @@ declare module 'files' {
              * @param {string} path 文件路径。
              * @param {string} text 要写入的文本内容。
              * @param {string} [encoding] 字符编码(默认为 utf-8)。
-             * @example: 
+             * @example
              * ```typescript
              * // 写入文件
              * files.write('/sdcard/1.txt', 'some text');
@@ -140,7 +139,7 @@ declare module 'files' {
              * @param {string} path 文件路径。
              * @param {string} text 要写入的文本内容。
              * @param {string} [encoding] 字符编码(默认为 utf-8)。
-             * @example: 
+             * @example
              * ```typescript
              * // 写入文件
              * files.write('/sdcard/1.txt', 'some text');
@@ -162,7 +161,7 @@ declare module 'files' {
              * @param {string} path 文件路径。
              * @param {string} text 要写入的文本内容。
              * @param {string} [encoding] 字符编码(默认为 utf-8)。
-             * @example: 
+             * @example
              * ```typescript
              * // 在文件后追加文本
              * files.append('/sdcard/1.txt', 'some text');
@@ -177,7 +176,7 @@ declare module 'files' {
              * @param {string} path 文件路径。
              * @param {string} text 要写入的文本内容。
              * @param {string} [encoding] 字符编码(默认为 utf-8)。
-             * @example: 
+             * @example
              * ```typescript
              * // 在文件后追加文本
              * files.append('/sdcard/1.txt', 'some text');
@@ -199,7 +198,7 @@ declare module 'files' {
              * @param {string} fromPath 要复制的 **原文件** 路径。
              * @param {string} toPath 复制到的 **新文件** 路径。
              * @return {boolean} 是否复制成功。
-             * @example: 
+             * @example
              * ```typescript
              * // 把 1.txt 文件从 sd 卡根目录复制到 Download 文件夹
              * files.copy('/sdcard/1.txt', '/sdcard/Download/1.txt');
@@ -212,7 +211,7 @@ declare module 'files' {
              * @param {string} fromPath 要移动的 **原文件** 路径。
              * @param {string} toPath 移动到的 **新文件** 路径。
              * @return {boolean} 是否移动成功。
-             * @example: 
+             * @example
              * ```typescript
              * // 把 1.txt 文件从 sd 卡根目录移动到 Download 文件夹
              * files.move('/sdcard/1.txt', '/sdcard/Download/1.txt');
@@ -225,7 +224,7 @@ declare module 'files' {
              * @param {string} path 要重命名的 **原文件** 路径。
              * @param {string} newName 要重命名的 **新文件名**。
              * @return {boolean} 是否重命名成功。
-             * @example: 
+             * @example
              * ```typescript
              * // 将 sd 卡根目录下的 1.txt 文件重命名为 2.txt
              * files.rename('/sdcard/1.txt', '2.txt');
@@ -238,7 +237,7 @@ declare module 'files' {
              * @param {string} path 要重命名的 **原文件** 路径。
              * @param {string} newName 要重命名的 **新文件名** (不带扩展名)。
              * @return {boolean} 是否重命名成功。
-             * @example: 
+             * @example
              * ```typescript
              * // 将 sd 卡根目录下的 1.txt 文件重命名为 2.txt
              * files.renameWithoutExtension('/sdcard/1.txt', '2');
@@ -250,7 +249,7 @@ declare module 'files' {
              * @description: 获取路径中的文件名。
              * @param {string} path 文件路径。
              * @return {string} 文件名。
-             * @example: 
+             * @example
              * ```typescript
              * // 返回 '1.txt'
              * files.getName('/sdcard/1.txt');
@@ -262,7 +261,7 @@ declare module 'files' {
              * @description: 获取路径中的文件名（不含拓展名）。
              * @param {string} path 文件路径。
              * @return {string} 文件名。
-             * @example: 
+             * @example
              * ```typescript
              * // 返回 '1'
              * files.getNameWithoutExtension('/sdcard/1.txt');
@@ -274,7 +273,7 @@ declare module 'files' {
              * @description: 获取路径中文件的拓展名。
              * @param {string} path 文件路径。
              * @return {string} 文件扩展名。
-             * @example: 
+             * @example
              * ```typescript
              * // 返回 'txt'
              * files.getExtension('/sdcard/1.txt');
@@ -306,7 +305,7 @@ declare module 'files' {
             /**
              * @description: 获取脚本的 '当前工作文件夹路径'。
              * @return {string | null} 如果脚本本身为脚本文件，则返回这个脚本文件所在目录；否则返回null获取其他设定路径。
-             * @example: 
+             * @example
              * ```typescript
              * // 脚本文件路径：'/sdcard/脚本/1.js'
              * // 返回 '/sdcard/脚本/'
@@ -319,7 +318,7 @@ declare module 'files' {
              * @description: 将相对路径转换为绝对路径。
              * @param {string} relativePath 相对路径。
              * @return {string} 转换后的绝对路径。
-             * @example: 
+             * @example
              * ```typescript
              * // 脚本文件路径：'/sdcard/脚本/1.js'
              * // 返回 '/sdcard/脚本/1.png'
@@ -333,12 +332,12 @@ declare module 'files' {
              * @param {string} path 路径。
              * @param {function} [filter] 用于过滤的回调函数。参数为string（文件名），返回值为 boolean 。
              * @return {array} 满足条件的文件和文件夹的名称。
-             * @example: 
+             * @example
              * ```typescript
              * // 列出 sdcard 目录下所有文件和文件夹
              * log(files.listDir('/sdcard/'));
              * ```
-             * @example:
+             * @example
              * ```typescript
              * // 列出脚本目录下所有 js 脚本文件
              * let dir = '/sdcard/脚本'

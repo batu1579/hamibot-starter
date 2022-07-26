@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-30 18:17:34
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-23 09:29:34
+ * @LastTime: 2022-07-26 10:12:00
  * @FilePath: \\src\\types\\touch-operation.d.ts
  * @Description: 触摸操作模块
  */
@@ -12,10 +12,11 @@ declare module 'touch-operation' {
          * @description: 设置脚本坐标点击所适合的屏幕宽高。如果脚本运行时，屏幕宽度不一致会自动放缩坐标。例如在 1920*1080 的设备中，某个操作的代码为 `setScreenMetrics(1080, 1920);` 那么在其他设备上 Hamibot 会自动放缩坐标以便脚本仍然有效。例如在 540 * 960 的屏幕中 `click(800, 200)` 实际上会点击位置(400, 100)。
          * @param {number} width 屏幕宽度，单位像素。
          * @param {number} height 屏幕高度，单位像素。
-         * @example: 
+         * @example
          * ```typescript
+         * // 在 540 * 960 的屏幕中,实际点击位置为(400, 100)。
          * setScreenMetrics(1080, 1920);
-         * click(800, 200);  // 在 540 * 960 的屏幕中,实际点击位置为(400, 100)。
+         * click(800, 200);
          * ```
          */
         function setScreenMetrics(width: number, height: number): void;
@@ -42,11 +43,11 @@ declare module 'touch-operation' {
          * @param {number} x 要按住的横坐标。
          * @param {number} y 要按住的纵坐标。
          * @param {number} duration 按住时长，单位毫秒。
-         * @example: 
+         * @example
          * ```typescript
-         * //循环100次
+         * // 循环100次
          * for (let i = 0; i < 100; i++) {
-         *     //点击位置(500, 1000), 每次用时1毫秒
+         *     // 点击位置(500, 1000), 每次用时1毫秒
          *     press(500, 1000, 1);
          * }
          * ```
@@ -76,7 +77,7 @@ declare module 'touch-operation' {
          * @description: 同时模拟多个手势。
          * @param {array} [gesture] `[delay, duration, [横坐标, 纵坐标]]` , `delay` 为延迟多久(毫秒)才执行该手势；`duration` 为手势执行时长；坐标数组为手势经过的点的坐标。
          * - **注意！：此函数只有 Android 7.0 及以上才有效 !**
-         * @example: 
+         * @example
          * ```typescript
          * gestures([0, 500, [800, 300], [500, 1000]], [0, 500, [300, 1500], [500, 1000]]);
          * ```
@@ -85,13 +86,13 @@ declare module 'touch-operation' {
 
         /**
          * @description: `RootAutomator` 是一个使用 root 权限来模拟触摸的对象，用它可以完成触摸与多点触摸，并且这些动作的执行没有延迟。一个脚本中最好只存在一个 `RootAutomator` ，并且保证脚本结束退出他。可以在 `exit` 事件中退出 `RootAutomator` 。
-         * @example: 
+         * @example
          * ```typescript
          * let ra = new RootAutomator();
          * events.on('exit', function() {
          *     ra.exit();
          * });
-         * //执行一些点击操作
+         * // 执行一些点击操作
          * ...
          * ```
          */
@@ -103,12 +104,12 @@ declare module 'touch-operation' {
              * @param {number} x 横坐标。
              * @param {number} y 纵坐标。
              * @param {number} [id] 多点触摸 id（默认为 1），可以通过 `setDefaultId` 指定。
-             * @example: 
+             * @example
              * ```typescript
              * let ra = new RootAutomator();
-             * //让'手指1'点击位置(100, 100)
+             * // 让'手指1'点击位置(100, 100)
              * ra.tap(100, 100, 1);
-             * //让'手指2'点击位置(200, 200);
+             * // 让'手指2'点击位置(200, 200);
              * ra.tap(200, 200, 2);
              * ra.exit();
              * ```
@@ -172,7 +173,7 @@ declare module 'touch-operation' {
          * - **注意！：此函数需要 root 权限。**
          * @param {number} x 要点击的横坐标。
          * @param {number} y 要点击的纵坐标。
-         * @example: 
+         * @example
          * ```typescript
          * Tap(100, 100);
          * sleep(500);

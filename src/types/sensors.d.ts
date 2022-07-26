@@ -26,7 +26,7 @@ declare module 'sensors' {
              * - `sensors.delay.normal` - 正常频率。
              * @return {AccelerometerEventEmitter | null} 传感器的监听器。
              * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example: 
+             * @example
              * ```typescript
              * console.show();
              * // 注册传感器监听
@@ -35,7 +35,7 @@ declare module 'sensors' {
              *     toast('不支持重力传感器');
              *     exit();
              * }
-             * //监听数据
+             * // 监听数据
              * sensor.on('change', (gx, gy, gz) => {
              *     log('重力加速度: %d, %d, %d', gx, gy, gz);
              * });
@@ -53,7 +53,7 @@ declare module 'sensors' {
              * - `sensors.delay.normal` - 正常频率。
              * @return {OrientationEventEmitter | null} 传感器的监听器。
              * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example: 
+             * @example
              * ```typescript
              * console.show();
              * // 注册传感器监听
@@ -62,7 +62,7 @@ declare module 'sensors' {
              *     toast('不支持重力传感器');
              *     exit();
              * }
-             * //监听数据
+             * // 监听数据
              * sensor.on('change', (gx, gy, gz) => {
              *     log('重力加速度: %d, %d, %d', gx, gy, gz);
              * });
@@ -80,7 +80,7 @@ declare module 'sensors' {
              * - `sensors.delay.normal` - 正常频率。
              * @return {GyroscopeEventEmitter | null} 传感器的监听器。
              * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example: 
+             * @example
              * ```typescript
              * console.show();
              * // 注册传感器监听
@@ -89,7 +89,7 @@ declare module 'sensors' {
              *     toast('不支持重力传感器');
              *     exit();
              * }
-             * //监听数据
+             * // 监听数据
              * sensor.on('change', (gx, gy, gz) => {
              *     log('重力加速度: %d, %d, %d', gx, gy, gz);
              * });
@@ -107,7 +107,7 @@ declare module 'sensors' {
              * - `sensors.delay.normal` - 正常频率。
              * @return {MagneticFieldEventEmitter | null} 传感器的监听器。
              * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example: 
+             * @example
              * ```typescript
              * console.show();
              * // 注册传感器监听
@@ -116,7 +116,7 @@ declare module 'sensors' {
              *     toast('不支持重力传感器');
              *     exit();
              * }
-             * //监听数据
+             * // 监听数据
              * sensor.on('change', (gx, gy, gz) => {
              *     log('重力加速度: %d, %d, %d', gx, gy, gz);
              * });
@@ -134,7 +134,7 @@ declare module 'sensors' {
              * - `sensors.delay.normal` - 正常频率。
              * @return {GravityEventEmitter | null} 传感器的监听器。
              * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example: 
+             * @example
              * ```typescript
              * console.show();
              * // 注册传感器监听
@@ -143,7 +143,7 @@ declare module 'sensors' {
              *     toast('不支持重力传感器');
              *     exit();
              * }
-             * //监听数据
+             * // 监听数据
              * sensor.on('change', (gx, gy, gz) => {
              *     log('重力加速度: %d, %d, %d', gx, gy, gz);
              * });
@@ -161,7 +161,7 @@ declare module 'sensors' {
              * - `sensors.delay.normal` - 正常频率。
              * @return {LinearAccelerationEventEmitter | null} 传感器的监听器。
              * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example: 
+             * @example
              * ```typescript
              * console.show();
              * // 注册传感器监听
@@ -170,7 +170,7 @@ declare module 'sensors' {
              *     toast('不支持重力传感器');
              *     exit();
              * }
-             * //监听数据
+             * // 监听数据
              * sensor.on('change', (gx, gy, gz) => {
              *     log('重力加速度: %d, %d, %d', gx, gy, gz);
              * });
@@ -188,7 +188,7 @@ declare module 'sensors' {
              * - `sensors.delay.normal` - 正常频率。
              * @return {AmbientTemperatureEventEmitter | null} 传感器的监听器。
              * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example: 
+             * @example
              * ```typescript
              * console.show();
              * // 注册传感器监听
@@ -197,7 +197,7 @@ declare module 'sensors' {
              *     toast('不支持重力传感器');
              *     exit();
              * }
-             * //监听数据
+             * // 监听数据
              * sensor.on('change', (gx, gy, gz) => {
              *     log('重力加速度: %d, %d, %d', gx, gy, gz);
              * });
@@ -215,7 +215,7 @@ declare module 'sensors' {
              * - `sensors.delay.normal` - 正常频率。
              * @return {LightEventEmitter | null} 传感器的监听器。
              * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example: 
+             * @example
              * ```typescript
              * console.show();
              * // 注册传感器监听
@@ -224,7 +224,7 @@ declare module 'sensors' {
              *     toast('不支持重力传感器');
              *     exit();
              * }
-             * //监听数据
+             * // 监听数据
              * sensor.on('change', (gx, gy, gz) => {
              *     log('重力加速度: %d, %d, %d', gx, gy, gz);
              * });
@@ -242,7 +242,7 @@ declare module 'sensors' {
              * - `sensors.delay.normal` - 正常频率。
              * @return {PressureEventEmitter | null} 传感器的监听器。
              * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example: 
+             * @example
              * ```typescript
              * console.show();
              * // 注册传感器监听
@@ -251,7 +251,7 @@ declare module 'sensors' {
              *     toast('不支持重力传感器');
              *     exit();
              * }
-             * //监听数据
+             * // 监听数据
              * sensor.on('change', (gx, gy, gz) => {
              *     log('重力加速度: %d, %d, %d', gx, gy, gz);
              * });
@@ -269,7 +269,7 @@ declare module 'sensors' {
              * - `sensors.delay.normal` - 正常频率。
              * @return {ProximityEventEmitter | null} 传感器的监听器。
              * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example: 
+             * @example
              * ```typescript
              * console.show();
              * // 注册传感器监听
@@ -278,7 +278,7 @@ declare module 'sensors' {
              *     toast('不支持重力传感器');
              *     exit();
              * }
-             * //监听数据
+             * // 监听数据
              * sensor.on('change', (gx, gy, gz) => {
              *     log('重力加速度: %d, %d, %d', gx, gy, gz);
              * });
@@ -296,7 +296,7 @@ declare module 'sensors' {
              * - `sensors.delay.normal` - 正常频率。
              * @return {RelativeHumidityEventEmitter | null} 传感器的监听器。
              * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example: 
+             * @example
              * ```typescript
              * console.show();
              * // 注册传感器监听
@@ -305,7 +305,7 @@ declare module 'sensors' {
              *     toast('不支持重力传感器');
              *     exit();
              * }
-             * //监听数据
+             * // 监听数据
              * sensor.on('change', (gx, gy, gz) => {
              *     log('重力加速度: %d, %d, %d', gx, gy, gz);
              * });
@@ -323,7 +323,7 @@ declare module 'sensors' {
              * - `sensors.delay.normal` - 正常频率。
              * @return {SensorsEventEmitter | null} 传感器的监听器。
              * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example: 
+             * @example
              * ```typescript
              * console.show();
              * // 注册传感器监听
@@ -332,7 +332,7 @@ declare module 'sensors' {
              *     toast('不支持重力传感器');
              *     exit();
              * }
-             * //监听数据
+             * // 监听数据
              * sensor.on('change', (gx, gy, gz) => {
              *     log('重力加速度: %d, %d, %d', gx, gy, gz);
              * });
@@ -343,14 +343,14 @@ declare module 'sensors' {
             /**
              * @description: 注销该传感器监听器。被注销的监听器将不再能监听传感器数据。
              * @param {SensorEventEmitter} emitter 要注销的监听器对象。
-             * @example: 
+             * @example
              * ```typescript
-             * //注册一个传感器监听器
+             * // 注册一个传感器监听器
              * let sensor = sensors.register('gravity');
              * if (sensor == null) {
              *     exit();
              * }
-             * //2秒后注销该监听器
+             * // 2秒后注销该监听器
              * setTimeout(() => {
              *     sensors.unregister(sensor);
              * }, 2000);
@@ -367,15 +367,15 @@ declare module 'sensors' {
              * @description: 绑定当事件发生时的行为。
              * @param {string} eventName 事件名称（ `unsupported_sensor` ）。
              * @param {function} listener 当事件发生时要执行的回调函数。参数为 string （不支持的传感器名称），返回值为 any 。
-             * @example: 
+             * @example
              * ```typescript
-             * //忽略不支持的传感器
+             * // 忽略不支持的传感器
              * sensors.ignoresUnsupportedSensor = true;
-             * //监听有不支持的传感器时的事件
+             * // 监听有不支持的传感器时的事件
              * sensors.on('unsupported_sensor', function(sensorName) {
              *     toastLog('不支持的传感器: ' + sensorName);
              * });
-             * //随便注册一个不存在的传感器。
+             * // 随便注册一个不存在的传感器。
              * log(sensors.register('aaabbb'));
              * ```
              */
@@ -383,16 +383,17 @@ declare module 'sensors' {
 
             /**
              * @description: 表示是否忽略不支持的传感器。如果该值被设置为 `true` ，则函数 `sensors.register()` 即使对不支持的传感器也会返回一个无任何数据的虚拟传感器监听，也就是 `sensors.register()` 不会返回 `null` 从而避免非空判断，并且此时会触发 `sensors` 的 `unsupported_sensor` 事件。
-             * @example: 
+             * @example
              * ```typescript
-             * //忽略不支持的传感器
+             * // 忽略不支持的传感器
              * sensors.ignoresUnsupportedSensor = true;
-             * //监听有不支持的传感器时的事件
+             * // 监听有不支持的传感器时的事件
              * sensors.on('unsupported_sensor', function(sensorName) {
              *     toastLog('不支持的传感器: ' + sensorName);
              * });
-             * //随便注册一个不存在的传感器。
+             * // 随便注册一个不存在的传感器。
              * log(sensors.register('aaabbb'));
+             * ```
              */
             ignoresUnsupportedSensor: boolean;
 

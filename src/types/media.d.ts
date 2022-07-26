@@ -12,7 +12,7 @@ declare module 'media' {
         /**
          * @description: media 模块提供多媒体编程的支持。目前仅支持音乐播放和媒体文件扫描。后续会结合 UI 加入视频播放等功能。
          * - **注意！：使用该模块播放音乐时是在后台异步播放的，在脚本结束后会自动结束播放，因此可能需要插入诸如 `sleep()` 的语句来使脚本保持运行。**
-         * @example:
+         * @example
          * ```typescript
          * // 播放音乐
          * media.playMusic('/sdcard/1.mp3');
@@ -26,7 +26,7 @@ declare module 'media' {
             /**
              * @description: 扫描路径 path 的媒体文件，将它加入媒体库中；或者如果该文件以及被删除，则通知媒体库移除该文件。媒体库包括相册、音乐库等，因此该函数可以用于把某个图片文件加入相册。
              * @param {string} path 媒体文件路径。
-             * @example:
+             * @example
              * ```typescript
              * // 请求截图
              * requestScreenCapture(false);
@@ -47,7 +47,7 @@ declare module 'media' {
              * @param {string} path 音乐文件路径。
              * @param {number} [volume] 播放音量，为 0~1 的浮点数（默认为 1）。
              * @param {boolean} [looping] 是否循环播放，如果为 `true` 则循环播放（默认为 `false` ）。
-             * @example:
+             * @example
              * ```typescript
              * // 传递第三个参数为 true 以循环播放音乐
              * media.playMusic('/sdcard/1.mp3', 1, true);
@@ -60,7 +60,7 @@ declare module 'media' {
             /**
              * @description: 把当前播放进度调整到时间 `msec` 的位置。如果当前没有在播放音乐，则调用函数没有任何效果。
              * @param {number} msec 音乐进度，单位毫秒。
-             * @example:
+             * @example
              * ```typescript
              * // 播放音乐
              * media.playMusic('/sdcard/1.mp3');

@@ -127,7 +127,7 @@ declare module 'keys' {
          * @description: 输入文字text。
          * - **注意！：此函数依赖于 root 权限。**
          * @param {string} text 要输入的文字，只能为英文或英文符号。
-         * @example:
+         * @example
          * ```typescript
          * Text('aaa'): void;
          * ```
@@ -138,7 +138,7 @@ declare module 'keys' {
          * @description: 模拟按下物理按键。
          * - **注意！：此函数依赖于 root 权限。**
          * @param {number | KeyCode} code
-         * @example:
+         * @example
          * ```typescript
          * // 按下 A 键
          * KeyCode(29);

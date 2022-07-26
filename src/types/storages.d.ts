@@ -24,7 +24,7 @@ declare module 'storages' {
              * - **注意！：本地存储的名称比较重要，尽量使用含有域名、作者邮箱等唯一信息的名称来避免冲突。**
              * @param {string} name 本地存储名称
              * @return {Storage} 创建的本地存储对象
-             * @example:
+             * @example
              * ```typescript
              * let storage = storages.create('12345678@qq.com:ABC');
              * ```

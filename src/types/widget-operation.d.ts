@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-31 13:19:44
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-24 12:40:19
+ * @LastTime: 2022-07-26 10:13:53
  * @FilePath: \\src\\types\\widget-operation.d.ts
  * @Description: 控件操作
  */
@@ -13,7 +13,7 @@ declare module 'widget-operation' {
          * @param {string} [mode] 无障碍模式（默认为 `normal` ），可选的值为:
          * - `fast` - 快速模式。该模式下会启用控件缓存，从而选择器获取屏幕控件更快。对于需要快速的控件操作的脚本可以使用该模式，一般脚本则没有必要使用该函数。
          * - `normal` - 正常模式。
-         * @example: 
+         * @example
          * ```typescript
          * auto('fast');
          * ```
@@ -40,7 +40,7 @@ declare module 'widget-operation' {
              * - `findOnUiThread` - 使用该特性后，选择器搜索时会在主进程进行。该特性用于解决线程安全问题导致的次生问题，不过目前貌似已知问题并不是线程安全问题。
              * - `useUsageStats` - 使用该特性后，将会以'使用情况统计'服务的结果来检测当前正在运行的应用包名（需要授予'查看使用情况统计'权限)。如果觉得 `currentPackage()` 返回的结果不太准确，可以尝试该特性。
              * - `useShell` - 使用该特性后，将使用 shell 命令获取当前正在运行的应用的包名、活动名称，但是需要 root 权限。
-             * @example: 
+             * @example
              * ```typescript
              * auto.setFlags(['findOnUiThread', 'useShell']);
              * ```
@@ -53,7 +53,7 @@ declare module 'widget-operation' {
              * - `findOnUiThread` - 使用该特性后，选择器搜索时会在主进程进行。该特性用于解决线程安全问题导致的次生问题，不过目前貌似已知问题并不是线程安全问题。
              * - `useUsageStats` - 使用该特性后，将会以'使用情况统计'服务的结果来检测当前正在运行的应用包名（需要授予'查看使用情况统计'权限)。如果觉得 `currentPackage()` 返回的结果不太准确，可以尝试该特性。
              * - `useShell` - 使用该特性后，将使用 shell 命令获取当前正在运行的应用的包名、活动名称，但是需要 root 权限。
-             * @example: 
+             * @example
              * ```typescript
              * auto.setFlags(['findOnUiThread', 'useShell']);
              * ```
@@ -95,7 +95,6 @@ declare module 'widget-operation' {
              * - **注意！： setWindowFilter 函数会影响 `auto.windowRoots` 的结果。**
              * - **注意！： 该函数需要 Android 5.0 以上才有效。**
              * @param {function} filter 用于过滤的回调函数。参数为窗口([AccessibilityWindowInfo](https://developer.android.com/reference/android/view/accessibility/AccessibilityWindowInfo))，返回值为 Boolean 。
-             * @example: 
              */
             function setWindowFilter(filter: (window: AccessibilityWindowInfo) => boolean): void;
         }
@@ -108,7 +107,7 @@ declare module 'widget-operation' {
              * @param {string} text 要点击的文本。
              * @param {number} [i] 如果相同的文本在屏幕中出现多次，则 `i` 表示要点击第 `i + 1` 个文本, `i` 从 0 开始计算。
              * @return {boolean} 是否点击成功。当屏幕中并未包含该文本，或者该文本所在区域不能点击时返回 `false` ，否则返回 `true` 。文本所在区域指的是，从文本处向其父视图寻找，直至发现一个可点击的部件为止。
-             * @example: 
+             * @example
              * ```typescript
              * while (!click('扫一扫'));
              * ```
@@ -183,7 +182,6 @@ declare module 'widget-operation' {
 
         /**
          * @description: UiSelector 即选择器，用于通过各种条件选取屏幕上的控件，再对这些控件进行点击、长按等动作。
-         * @example: 
          */
         class UiSelector {
             /**
@@ -192,7 +190,7 @@ declare module 'widget-operation' {
              * - `DFS` - 深度优先算法
              * - `BFS` - 广度优先算法
              * @return {this} 返回选择器自身以便链式调用。
-             * @example: 
+             * @example
              * ```typescript
              * log(
              *     selector()
@@ -310,7 +308,7 @@ declare module 'widget-operation' {
              * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
              * @param {RegExp} reg `id` 要满足的正则表达式。
              * @return {this} 返回选择器自身以便链式调用。
-             * @example: 
+             * @example
              * ```typescript
              * idMatches('[a-zA-Z]+');
              * ```
@@ -414,7 +412,7 @@ declare module 'widget-operation' {
              * @param {number} right。
              * @param {number} bottom。
              * @return {this} 返回选择器自身以便链式调用。
-             * @example: 
+             * @example
              * ```typescript
              * // 在屏幕上半部分寻找文本控件 TextView
              * let w = className('TextView')
@@ -432,7 +430,7 @@ declare module 'widget-operation' {
              * @param {number} right 范围右边缘与屏幕左边的距离。
              * @param {number} bottom 范围下边缘与屏幕上边的距离。
              * @return {this} 返回选择器自身以便链式调用。
-             * @example: 
+             * @example
              * ```typescript
              * // 寻找在点(500, 300)上的可点击控件
              * let w = boundsContains(500, 300, 500, 300)
@@ -455,7 +453,7 @@ declare module 'widget-operation' {
              * @description: 为当前选择器附加控件是否可点击的条件。但并非所有 `clickable` 为 `false` 的控件都真的不能点击，这取决于控件的实现。对于自定义控件(例如显示类名为 `android.view.View` 的控件)很多的 `clickable` 属性都为 `false` 都却能点击。
              * @param {boolean} [b] 控件是否可点击（默认为 `true` ）。
              * @return {this} 返回选择器自身以便链式调用。
-             * @example: 
+             * @example
              * ```typescript
              * // 查找不能点击的图片
              * className('ImageView').clickable(false).find()
@@ -495,13 +493,14 @@ declare module 'widget-operation' {
              * @description: 为当前选择器附加控件是否可滑动的条件。滑动包括上下滑动和左右滑动。可以用这个条件来寻找可滑动控件来滑动界面。
              * @param {boolean} [b] 控件是否可滑动（默认为 `true` ）。
              * @return {this} 返回选择器自身以便链式调用。
-             * @example: 
+             * @example
              * ```typescript
              * // 滑动 Hamibot 的脚本列表
              * classNameEndsWith('RecyclerView')
              * .scrollable()
              * .findOne()
              * .scrollForward();
+             * ```
              */
             scrollable(b?: boolean): this;
 
@@ -531,15 +530,15 @@ declare module 'widget-operation' {
              * @description: 根据当前的选择器所确定的筛选条件，对屏幕上的控件进行搜索，直到屏幕上出现满足条件的一个控件为止，并返回该控件；如果在 `timeout` 毫秒的时间内没有找到符合条件的控件，则终止搜索并返回 `null` 。
              * @param {number} timeout 搜索的超时时间，单位毫秒。
              * @return {UiObject | null} 根据选择器查找到的控件。
-             * @example: 
+             * @example
              * ```typescript
-             * //启动 Hamibot
+             * // 启动 Hamibot
              * launchApp('Hamibot');
-             * //在6秒内找出日志图标的控件
+             * // 在6秒内找出日志图标的控件
              * let w = id('action_log').findOne(6000);
-             * //如果找到控件则点击
+             * // 如果找到控件则点击
              * if (w != null) w.click();
-             * //否则提示没有找到
+             * // 否则提示没有找到
              * else toast('没有找到日志图标');
              * ```
              */
@@ -561,7 +560,7 @@ declare module 'widget-operation' {
             /**
              * @description: 根据当前的选择器所确定的筛选条件，对屏幕上的控件进行搜索，找到所有满足条件的控件集合并返回。这个搜索只进行一次，并不保证一定会找到，因而会出现返回的控件集合为空的情况。不同于 `findOne()` 或者 `findOnce()` 只找到一个控件并返回一个控件， `find()` 函数会找出所有满足条件的控件并返回一个控件集合。之后可以对控件集合进行操作。可以通过 `empty()` 函数判断找到的是否为空。
              * @return {UiCollection} 根据选择器查找到的控件集合。
-             * @example: 
+             * @example
              * ```typescript
              * let c = className('AbsListView').find();
              * if (c.empty()) toast('没找到╭(╯^╰)╮');
@@ -580,7 +579,7 @@ declare module 'widget-operation' {
             /**
              * @description: 判断屏幕上是否存在控件符合选择器所确定的条件。
              * @return {boolean} 屏幕上是否存在选择器限定的控件。
-             * @example: 
+             * @example
              * ```typescript
              * // 如果有跳过按钮则点击
              * if (text('跳过').exists()) text('跳过').findOne().click();
@@ -590,7 +589,7 @@ declare module 'widget-operation' {
 
             /**
              * @description: 等待屏幕上出现符合条件的控件；在满足该条件的控件出现之前，该函数会一直保持阻塞。
-             * @example: 
+             * @example
              * ```typescript
              * // 等待包含'你好'的文本控件出现
              * textContains('你好').waitFor();
@@ -602,7 +601,7 @@ declare module 'widget-operation' {
              * @description: 为当前选择器附加自定义的过滤条件。
              * @param {function} f 用于过滤的回调函数。参数为 UiObject ，返回值为 boolean 。
              * @return {this} 返回选择器自身以便链式调用。
-             * @example: 
+             * @example
              * ```typescript
              * // 找出屏幕上所有文本长度为 10 的文本控件
              * let uc = className('TextView')
@@ -640,12 +639,12 @@ declare module 'widget-operation' {
              * @description: 对输入框文本的选中内容进行复制。可以通过 `setSelection()` 函数来设置输入框选中的内容。
              * - **注意！：该函数只能用于输入框控件，并且该控件有选中的文本。**
              * @return {boolean} 操作是否成功。
-             * @example: 
+             * @example
              * ```typescript
              * let et = className('EditText').findOne();
-             * //选中前两个字
+             * // 选中前两个字
              * et.setSelection(0, 2);
-             * //对选中内容进行复制
+             * // 对选中内容进行复制
              * if (et.copy()) toast('复制成功');
              * else toast('复制失败');
              * ```
@@ -663,12 +662,13 @@ declare module 'widget-operation' {
              * @description: 对输入框控件进行粘贴操作，把剪贴板内容粘贴到输入框中。
              * - **注意！：该函数只能用于输入框控件，并且该控件有选中的文本。**
              * @return {boolean} 操作是否成功。
-             * @example: 
+             * @example
              * ```typescript
-             * //设置剪贴板内容为“你好”
+             * // 设置剪贴板内容为“你好”
              * setClip('你好');
              * let et = className('EditText').findOne();
              * et.paste();
+             * ```
              */
             paste(): boolean;
 
@@ -677,7 +677,7 @@ declare module 'widget-operation' {
              * @param {number} start 选中内容起始位置。
              * @param {number} end 选中内容结束位置(不包括)。
              * @return {boolean} 操作是否成功。
-             * @example: 
+             * @example
              * ```typescript
              * // 文本框中的内容为 '123456789'
              * let et = className('EditText').findOne();
@@ -726,7 +726,7 @@ declare module 'widget-operation' {
             /**
              * @description: 获取该控件的所有子控件组成的控件集合。可以用于遍历一个控件的子控件。
              * @return {UiCollection} 所有子控件组成的控件集合。
-             * @example: 
+             * @example
              * ```typescript
              * className('AbsListView')
              * .findOne()
@@ -749,7 +749,7 @@ declare module 'widget-operation' {
              * - **注意！：由于布局捕捉的问题，该函数可能返回 `null` ，也就是可能获取不到某个子控件。**
              * @param {number} i 子控件索引。
              * @return {UiObject | null} 指定的子控件。
-             * @example: 
+             * @example
              * ```typescript
              * let list = className('AbsListView').findOne();
              * for (var i = 0; i < list.childCount(); i++) {
@@ -769,7 +769,7 @@ declare module 'widget-operation' {
             /**
              * @description: 返回控件在屏幕上的范围，其值是一个 `Rect` 对象。如果一个控件本身无法通过 `click()` 点击，那么我们可以利用 `bounds()` 函数获取其坐标，再利用坐标点击。
              * @return {Rect} 返回控件在屏幕上的范围。
-             * @example: 
+             * @example
              * ```typescript
              * var b = desc('打开侧拉菜单')
              *     .findOne()
@@ -814,7 +814,7 @@ declare module 'widget-operation' {
              * @description: 根据选择器 `selector` 在该控件的子控件、孙控件...中搜索符合该选择器条件的控件，并返回找到的第一个控件；如果没有找到符合条件的控件则返回 `null` 。
              * @param {UiSelector} selector 用来匹配的选择器。
              * @return {UiObject | null} 根据选择器查找到的子控件。
-             * @example: 
+             * @example
              * ```typescript
              * // 酷安动态列表
              * // 找出动态列表
@@ -919,7 +919,7 @@ declare module 'widget-operation' {
 
         /**
          * @description: `UiCollection` , 控件集合, 通过选择器的 `find()` 、 `untilFind()` 方法返回的对象。 `UiCollection` 继承自数组，实际上是一个 `UiObject` 的数组，因此可以使用数组的函数和属性，例如使用 `length` 属性获取 `UiCollection` 的大小，使用 `forEach()` 函数来遍历 `UiCollection` 。 如果想要对该集合的所有元素进行操作，可以直接在集合上调用相应的函数，例如 `uc.click()` ，该代码会对集合上所有 `UiObject` 执行点击操作并返回是否全部点击成功。因此， `UiCollection` 具有所有 `UiObject` 对控件操作的函数，包括 `click()` , `longClick()` , `scrollForward()` 等等，不再赘述。
-         * @example: 
+         * @example
          * ```typescript
          * className('TextView')
          *     .find()
@@ -927,7 +927,7 @@ declare module 'widget-operation' {
          *         if (tv.text() != '') log(tv.text());
          *     });
          * ```
-         * @example:
+         * @example
          * ```typescript
          * let uc = className('TextView').find();
          * for (let i = 0; i < uc.length; i++) {
@@ -973,7 +973,7 @@ declare module 'widget-operation' {
              * - **注意！：此方法递归地遍历控件集合里所有的控件以及他们的子控件。和数组的filter函数不同。**
              * @param {UiSelector} selector 规定筛选条件的选择器。
              * @return {UiCollection} 根据选择器查找到的控件集合。
-             * @example: 
+             * @example
              * ```typescript
              * let names = id('name').find();
              * let clickableNames = names.find(clickable());
@@ -1015,12 +1015,12 @@ declare module 'widget-operation' {
              * @description: 对集合内的所有输入框文本的选中内容进行复制。可以通过 `setSelection()` 函数来设置输入框选中的内容。
              * - **注意！：该函数只能用于输入框控件，并且该控件有选中的文本。**
              * @return {boolean} 操作是否成功。
-             * @example: 
+             * @example
              * ```typescript
              * let et = className('EditText').findOne();
-             * //选中前两个字
+             * // 选中前两个字
              * et.setSelection(0, 2);
-             * //对选中内容进行复制
+             * // 对选中内容进行复制
              * if (et.copy()) toast('复制成功');
              * else toast('复制失败');
              * ```
@@ -1038,12 +1038,13 @@ declare module 'widget-operation' {
              * @description: 对集合内的所有输入框控件进行粘贴操作，把剪贴板内容粘贴到输入框中。
              * - **注意！：该函数只能用于输入框控件，并且该控件有选中的文本。**
              * @return {boolean} 操作是否成功。
-             * @example: 
+             * @example
              * ```typescript
-             * //设置剪贴板内容为“你好”
+             * // 设置剪贴板内容为“你好”
              * setClip('你好');
              * let et = className('EditText').findOne();
              * et.paste();
+             * ```
              */
             paste(): boolean;
 
@@ -1052,7 +1053,7 @@ declare module 'widget-operation' {
              * @param {number} start 选中内容起始位置。
              * @param {number} end 选中内容结束位置(不包括)。
              * @return {boolean} 操作是否成功。
-             * @example: 
+             * @example
              * ```typescript
              * // 文本框中的内容为 '123456789'
              * let et = className('EditText').findOne();
@@ -1173,7 +1174,7 @@ declare module 'widget-operation' {
          * @param {string} text 要点击的文本。
          * @param {number} [i] 如果相同的文本在屏幕中出现多次，则 `i` 表示要点击第 `i + 1` 个文本, `i` 从 0 开始计算。
          * @return {boolean} 是否点击成功。当屏幕中并未包含该文本，或者该文本所在区域不能点击时返回 `false` ，否则返回 `true` 。文本所在区域指的是，从文本处向其父视图寻找，直至发现一个可点击的部件为止。
-         * @example: 
+         * @example
          * ```typescript
          * while (!click('扫一扫'));
          * ```
@@ -1251,7 +1252,7 @@ declare module 'widget-operation' {
          * - `DFS` - 深度优先算法
          * - `BFS` - 广度优先算法
          * @return {UiSelector} 返回选择器自身以便链式调用。
-         * @example: 
+         * @example
          * ```typescript
          * log(
          *     selector()
@@ -1369,7 +1370,7 @@ declare module 'widget-operation' {
          * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
          * @param {RegExp} reg `id` 要满足的正则表达式。
          * @return {UiSelector} 返回选择器自身以便链式调用。
-         * @example: 
+         * @example
          * ```typescript
          * idMatches('[a-zA-Z]+');
          * ```
@@ -1473,7 +1474,7 @@ declare module 'widget-operation' {
          * @param {number} right。
          * @param {number} bottom。
          * @return {UiSelector} 返回选择器自身以便链式调用。
-         * @example: 
+         * @example
          * ```typescript
          * // 在屏幕上半部分寻找文本控件 TextView
          * let w = className('TextView')
@@ -1491,7 +1492,7 @@ declare module 'widget-operation' {
          * @param {number} right 范围右边缘与屏幕左边的距离。
          * @param {number} bottom 范围下边缘与屏幕上边的距离。
          * @return {UiSelector} 返回选择器自身以便链式调用。
-         * @example: 
+         * @example
          * ```typescript
          * // 寻找在点(500, 300)上的可点击控件
          * let w = boundsContains(500, 300, 500, 300)
@@ -1514,7 +1515,7 @@ declare module 'widget-operation' {
          * @description: 为当前选择器附加控件是否可点击的条件。但并非所有 `clickable` 为 `false` 的控件都真的不能点击，这取决于控件的实现。对于自定义控件(例如显示类名为 `android.view.View` 的控件)很多的 `clickable` 属性都为 `false` 都却能点击。
          * @param {boolean} [b] 控件是否可点击（默认为 `true` ）。
          * @return {UiSelector} 返回选择器自身以便链式调用。
-         * @example: 
+         * @example
          * ```typescript
          * // 查找不能点击的图片
          * className('ImageView').clickable(false).find()
@@ -1554,13 +1555,14 @@ declare module 'widget-operation' {
          * @description: 为当前选择器附加控件是否可滑动的条件。滑动包括上下滑动和左右滑动。可以用这个条件来寻找可滑动控件来滑动界面。
          * @param {boolean} [b] 控件是否可滑动（默认为 `true` ）。
          * @return {UiSelector} 返回选择器自身以便链式调用。
-         * @example: 
+         * @example
          * ```typescript
          * // 滑动 Hamibot 的脚本列表
          * classNameEndsWith('RecyclerView')
          * .scrollable()
          * .findOne()
          * .scrollForward();
+         * ```
          */
         function scrollable(b?: boolean): UiSelector;
 
@@ -1583,7 +1585,6 @@ declare module 'widget-operation' {
          * - **注意！：如果屏幕上一直没有出现所描述的控件，则该函数会阻塞，直至所描述的控件出现为止。因此此函数不会返回 `null` 。如果想要只在屏幕上搜索一次而不是一直搜索，请使用 `findOnce()` 。**
          * - **注意！：如果屏幕上有多个满足条件的控件，`findOne()` 会返回根据指定的搜索算法（默认为 `DFS` ）找到的第一个控件。**
          * @return {UiObject} 根据选择器查找到的控件。
-         * @example: 
          */
         function findOne(): UiObject;
 
@@ -1591,15 +1592,15 @@ declare module 'widget-operation' {
          * @description: 根据当前的选择器所确定的筛选条件，对屏幕上的控件进行搜索，直到屏幕上出现满足条件的一个控件为止，并返回该控件；如果在 `timeout` 毫秒的时间内没有找到符合条件的控件，则终止搜索并返回 `null` 。
          * @param {number} timeout 搜索的超时时间，单位毫秒。
          * @return {UiObject | null} 根据选择器查找到的控件。
-         * @example: 
+         * @example
          * ```typescript
-         * //启动 Hamibot
+         * // 启动 Hamibot
          * launchApp('Hamibot');
-         * //在6秒内找出日志图标的控件
+         * // 在6秒内找出日志图标的控件
          * let w = id('action_log').findOne(6000);
-         * //如果找到控件则点击
+         * // 如果找到控件则点击
          * if (w != null) w.click();
-         * //否则提示没有找到
+         * // 否则提示没有找到
          * else toast('没有找到日志图标');
          * ```
          */
@@ -1621,7 +1622,7 @@ declare module 'widget-operation' {
         /**
          * @description: 根据当前的选择器所确定的筛选条件，对屏幕上的控件进行搜索，找到所有满足条件的控件集合并返回。这个搜索只进行一次，并不保证一定会找到，因而会出现返回的控件集合为空的情况。不同于 `findOne()` 或者 `findOnce()` 只找到一个控件并返回一个控件， `find()` 函数会找出所有满足条件的控件并返回一个控件集合。之后可以对控件集合进行操作。可以通过 `empty()` 函数判断找到的是否为空。
          * @return {UiCollection} 根据选择器查找到的控件集合。
-         * @example: 
+         * @example
          * ```typescript
          * let c = className('AbsListView').find();
          * if (c.empty()) toast('没找到╭(╯^╰)╮');
@@ -1640,7 +1641,7 @@ declare module 'widget-operation' {
         /**
          * @description: 判断屏幕上是否存在控件符合选择器所确定的条件。
          * @return {boolean} 屏幕上是否存在选择器限定的控件。
-         * @example: 
+         * @example
          * ```typescript
          * // 如果有跳过按钮则点击
          * if (text('跳过').exists()) text('跳过').findOne().click();
@@ -1650,7 +1651,7 @@ declare module 'widget-operation' {
 
         /**
          * @description: 等待屏幕上出现符合条件的控件；在满足该条件的控件出现之前，该函数会一直保持阻塞。
-         * @example: 
+         * @example
          * ```typescript
          * // 等待包含'你好'的文本控件出现
          * textContains('你好').waitFor();
@@ -1662,7 +1663,7 @@ declare module 'widget-operation' {
          * @description: 为当前选择器附加自定义的过滤条件。
          * @param {function} f 用于过滤的回调函数。参数为 UiObject ，返回值为 boolean 。
          * @return {UiSelector} 返回选择器自身以便链式调用。
-         * @example: 
+         * @example
          * ```typescript
          * // 找出屏幕上所有文本长度为 10 的文本控件
          * let uc = className('TextView')

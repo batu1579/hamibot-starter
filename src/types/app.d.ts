@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 00:20:15
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-23 09:20:41
+ * @LastTime: 2022-07-26 10:25:30
  * @FilePath: \\src\\types\\app.d.ts
  * @Description: app 模块
  */
@@ -18,13 +18,13 @@ declare module 'app' {
         interface App {
             /**
              * @description: 当前软件版本号。
-             * @example: 100
+             * @example 100
              */
             readonly versionCode: number;
 
             /**
              * @description: 当前软件的版本名称。
-             * @example: '1.0.2'
+             * @example '1.0.2'
              */
             readonly versionName: string;
 
@@ -32,7 +32,7 @@ declare module 'app' {
              * @description: 通过应用名称启动应用。如果该名称对应多个应用，则只启动其中某一个。
              * @param {string} appName 应用名称。
              * @return {boolean} 如果该名称对应的应用不存在，则返回 `false` ; 否则返回 `true` 。
-             * @example:
+             * @example
              * ```typescript
              * // 启动 Hamibot
              * app.launchApp('Hamibot');
@@ -44,7 +44,7 @@ declare module 'app' {
              * @description: 通过应用包名启动应用。
              * @param {string} packageName 应用包名。
              * @return {boolean} 如果该包名对应的应用不存在，则返回 `false` ；否则返回 `true` 。
-             * @example:
+             * @example
              * ```typescript
              * // 启动 Hamibot
              * app.launch('com.hamibot.hamibot');
@@ -56,7 +56,7 @@ declare module 'app' {
              * @description: 通过应用包名启动应用。
              * @param {string} packageName 应用包名。
              * @return {boolean} 如果该包名对应的应用不存在，则返回 `false` ；否则返回 `true` 。
-             * @example:
+             * @example
              * ```typescript
              * // 启动 Hamibot
              * app.launchPackage('com.hamibot.hamibot');
@@ -68,7 +68,7 @@ declare module 'app' {
              * @description: 获取应用名称对应的已安装的应用的包名。
              * @param {string} appName 应用名称。
              * @return {string | null} 如果该找不到该应用，返回 `null` ；如果该名称对应多个应用，则只返回其中某一个的包名。
-             * @example: 
+             * @example
              * ```typescript
              * let name = app.getPackageName('Hamibot'); // 返回 com.hamibot.hamibot
              * ```
@@ -79,7 +79,7 @@ declare module 'app' {
              * @description: 获取应用包名对应的已安装的应用的名称。
              * @param {string} packageName。
              * @return {string | null} 应用的名称，如果该找不到该应用，返回 `null` 。
-             * @example: 
+             * @example
              * ```typescript
              * let name = app.getAppName('com.hamibot.hamibot'); // 返回 Hamibot
              * ```
@@ -113,11 +113,11 @@ declare module 'app' {
              * @param {string} path APK 文件路径。
              * @return {PackageInfo} APK 文件的详细信息。
              * @since 1.4.0
-             * @example: 
-            ```typescript
-            log(app.getApkInfo('/storage/emulated/0/com.hamibot.hamibot.apk'));
-            hamibot.exit();
-            ```
+             * @example
+             * ```typescript
+             * log(app.getApkInfo('/storage/emulated/0/com.hamibot.hamibot.apk'));
+             * hamibot.exit();
+             * ```
              */
             getApkInfo(path: string): PackageInfo;
 
@@ -131,7 +131,7 @@ declare module 'app' {
             /**
              * @description: 用其他应用查看文件。文件不存在的情况由查看文件的应用处理。如果找不出可以查看该文件的应用，则抛出 `ActivityNotException` 。
              * @param {string} path 文件路径。
-             * @example: 
+             * @example
              * ```typescript
              * // 查看文本文件
              * app.viewFile('/sdcard/1.txt');
@@ -148,7 +148,7 @@ declare module 'app' {
             /**
              * @description: 卸载应用。执行后会会弹出卸载应用的提示框。如果该包名的应用未安装，由应用卸载程序处理，可能弹出'未找到应用'的提示。
              * @param {string} packageName 应用包名。
-             * @example: 
+             * @example
              * ```typescript
              * // 卸载 QQ
              * app.uninstall('com.tencent.mobileqq');
@@ -165,15 +165,15 @@ declare module 'app' {
             /**
              * @description: 根据选项 options 调用邮箱应用发送邮件。这些选项均是可选的。如果没有安装邮箱应用，则抛出`ActivityNotException` 。
              * @param {EmailOptions} option 发送邮件的参数。
-             * @example: 
-            ``` typescript
-            // 发送邮件给 hamibot@example.com
-            app.sendEmail({
-            email: ['hamibot@example.com'],
-            subject: '这是一个邮件标题',
-            text: '这是邮件正文',
-            });
-            ```
+             * @example
+             * ``` typescript
+             * // 发送邮件给 hamibot@example.com
+             * app.sendEmail({
+             *     email: ['hamibot@example.com'],
+             *     subject: '这是一个邮件标题',
+             *     text: '这是邮件正文',
+             * });
+             * ```
              */
             sendEmail(option: EmailOptions): void;
 
@@ -181,7 +181,7 @@ declare module 'app' {
              * @description: 启动 Hamibot 的特定界面。
              * @param {string} name 活动名称，可选的值为:
              * - `console` - 日志界面
-             * @example: 
+             * @example
              * ```typescript
              * app.startActivity('console');
              * ```
@@ -191,9 +191,9 @@ declare module 'app' {
             /**
              * @description: 根据选项，构造一个意图 `Intent` 对象。需要注意的是，除非应用专门暴露 `Activity` 出来，否则在没有 `root` 权限的情况下使用 `Intent` 是无法跳转到特定 `Activity` 、应用的特定界面的。例如我们能通过 `Intent` 跳转到QQ的分享界面，是因为QQ对外暴露了分享的 `Activity` ；而在没有 `root` 权限的情况下，我们无法通过 `Intent` 跳转到QQ的设置界面，因为QQ并没有暴露这个 `Activity` 。更多信息，参见 [Intent](https://developer.android.com/guide/components/intents-filters.html#Types)。
              * @param {IntentOptions} options 意图选项。
-             * @example: 
+             * @example
              * ```typescript
-             * //打开应用来查看图片文件
+             * // 打开应用来查看图片文件
              * let i = app.intent({
              *     action: 'VIEW',
              *     type: 'image/png',
@@ -207,7 +207,7 @@ declare module 'app' {
             /**
              * @description: 根据选项构造一个 `Intent` ，并启动该 `Activity` 。
              * @param {IntentOptions} options 意图选项。
-             * @example: 
+             * @example
              * ```typescript
              * app.startActivity({
              *     action: 'SEND',
@@ -235,7 +235,7 @@ declare module 'app' {
              * @param {string} name 特定的广播名称，包括：。
              *      - inspect_layout_hierarchy 布局层次分析
              *      - inspect_layout_bounds 布局范围
-             * @example: 
+             * @example
              * ```typescript
              * app.sendBroadcast('inspect_layout_bounds');
              * ```
@@ -246,7 +246,7 @@ declare module 'app' {
              * @description: 根据选项构造一个 `Intent` ，转换为对应的 `shell` 的 `Intent` 命令的参数。
              * @param {IntentOptions} options 意图选项。
              * @return {string} `Intent` 命令参数字符串。
-             * @example: 
+             * @example
              * ```typescript
              * shell(
              *     'am start ' + app.intentToShell({
@@ -280,7 +280,7 @@ declare module 'app' {
          * @description: 通过应用名称启动应用。如果该名称对应多个应用，则只启动其中某一个。
          * @param {string} appName 应用名称。
          * @return {boolean} 如果该名称对应的应用不存在，则返回 false; 否则返回 true。
-         * @example:
+         * @example
          * ```typescript
          * // 启动 Hamibot
          * app.launchApp('Hamibot');
@@ -292,7 +292,7 @@ declare module 'app' {
          * @description: 通过应用包名启动应用。
          * @param {string} packageName 应用包名。
          * @return {boolean} 如果该包名对应的应用不存在，则返回 false；否则返回 true。
-         * @example:
+         * @example
          * ```typescript
          * // 启动 Hamibot
          * app.launch('com.hamibot.hamibot');
@@ -304,7 +304,7 @@ declare module 'app' {
          * @description: 通过应用包名启动应用。
          * @param {string} packageName 应用包名。
          * @return {boolean} 如果该包名对应的应用不存在，则返回 false；否则返回 true。
-         * @example:
+         * @example
          * ```typescript
          * // 启动 Hamibot
          * launchPackage('com.hamibot.hamibot');
@@ -316,7 +316,7 @@ declare module 'app' {
          * @description: 获取应用名称对应的已安装的应用的包名。
          * @param {string} appName 应用名称。
          * @return {string | null} 如果该找不到该应用，返回 null；如果该名称对应多个应用，则只返回其中某一个的包名。
-         * @example: 
+         * @example
          * ```typescript
          * let name = app.getPackageName('Hamibot'); // 返回 com.hamibot.hamibot
          * ```
@@ -327,7 +327,7 @@ declare module 'app' {
          * @description: 获取应用包名对应的已安装的应用的名称。
          * @param {string} packageName。
          * @return {string | null} 应用的名称，如果该找不到该应用，返回 null。
-         * @example: 
+         * @example
          * ```typescript
          * let name = app.getAppName('com.hamibot.hamibot'); // 返回 Hamibot
          * ```
@@ -377,19 +377,19 @@ declare module 'app' {
     interface IntentOptions {
         /**
          * @description: 意图的 `Action` ，指意图要完成的动作，是一个字符串常量。当 `action` 以 `android.intent.action` 开头时，可以省略前缀，直接用 `SEND` 代替。参见[Action](https://developer.android.com/reference/android/content/Intent.html#standard-activity-actions)。
-         * @example: 'android.intent.action.SEND'
+         * @example 'android.intent.action.SEND'
          */
         action?: string;
 
         /**
          * @description: 意图的 `MimeType` ，表示和该意图直接相关的数据的类型。比如 `text/plain` 为纯文本类型。
-         * @example: 'text/plain'
+         * @example 'text/plain'
          */
         type?: string;
 
         /**
          * @description: 意图的 `Data` ，表示和该意图直接相关的数据，是一个 `Uri` , 可以是文件路径或者 `Url` 等。例如要打开一个文件, `action` 为 `android.intent.action.VIEW` , data 为 `file:///sdcard/1.txt` 。
-         * @example: 'file:///sdcard/1.txt'
+         * @example 'file:///sdcard/1.txt'
          */
         data?: string;
 

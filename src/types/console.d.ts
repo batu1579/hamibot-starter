@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 17:07:59
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-23 08:51:22
+ * @LastTime: 2022-07-26 10:19:26
  * @FilePath: \\src\\types\\console.d.ts
  * @Description: 
  */
@@ -32,14 +32,14 @@ declare module 'console' {
              * @description: 将信息打印到控制台，并带上换行符。 可以一次性传入多个参数，第一个参数作为主要信息，其他参数作为类似于 [printf(3)](https://man7.org/linux/man-pages/man3/printf.3.html) 中的代替值（参数都会传给 util.format()）。
              * @param {any} [data] 主要信息。
              * @param {array} [args] 要填充的数据。
-             * @example: 
+             * @example
              * ```typescript
              * const count: number = 5;
              * 
-             * // 打印: count: 5 到 stdout
+             * // 打印 'count: 5' 到 stdout
              * console.log('count: %d', count);
              * 
-             * // 打印: count: 5 到 stdout
+             * // 打印 'count: 5' 到 stdout
              * console.log('count:', count);
              * ```
              */
@@ -77,7 +77,7 @@ declare module 'console' {
              * @description: 断言。如果 value 为 false 则输出错误信息 message 并停止脚本运行。
              * @param {any} value 要断言的布尔值。
              * @param {string} message value 为 false 时要输出的信息。
-             * @example: 
+             * @example
              * ```typescript
              * let a = 1 + 1;
              * console.assert(a == 2, '加法出错啦');
@@ -94,13 +94,13 @@ declare module 'console' {
             /**
              * @description: 停止之前通过调用 `console.time()` 启动的定时器，并打印结果到控制台。 调用 `console.timeEnd()` 后定时器会被删除。如果不存在标签指定的定时器则会打印 `NaNms` 。
              * @param {string} label 计时器标签。
-             * @example: 
+             * @example
+             * // 打印 求和: xxx ms
              * ```typescript
              * console.time('求和');
              * let sum = 0;
              * for (let i = 0; i < 100000; i++) sum += i;
              * console.timeEnd('求和');
-             * // 打印 求和: xxx ms
              * ```
              */
             timeEnd(label: string): void;
@@ -109,12 +109,12 @@ declare module 'console' {
              * @description: 与 `console.log` 类似，同时会打印出调用这个函数所在的调用栈信息（即当前运行的文件、行数等信息）。
              * @param {any} [data] 主要信息。
              * @param {array} [args] 要填充的数据。
-             * @example: 
+             * @example
              * ```typescript
-             * console.trace('Show me');
              * // 打印: (堆栈跟踪会根据被调用的跟踪的位置而变化)
              * // Show me
              * //  at <test>:7
+             * console.trace('Show me');
              * ```
              */
             trace(data?: any, ...args: any[]): void;
@@ -124,12 +124,12 @@ declare module 'console' {
              * @param {any} [data] 主要信息。
              * @param {array} [args] 要填充的数据。
              * @return {any} 将输入的字符串用 `eval` 计算后的值。
-             * @example: 
+             * @example
              * ```typescript
              * let n = console.input('请输入一个数字:');
-             * //输入123之后：
+             * // 输入123之后：
              * toast(n + 1);
-             * //显示124
+             * // 显示124
              * ```
              */
             input(data?: any, ...args: any[]): any;
@@ -139,12 +139,12 @@ declare module 'console' {
              * @param {any} [data] 主要信息。
              * @param {array} [args] 要填充的数据。
              * @return {string} 输入的字符串。
-             * @example: 
+             * @example
              * ```typescript
              * let n = console.rawInput('请输入一个数字:');
-             * //输入123之后：
+             * // 输入123之后：
              * toast(n + 1);
-             * //显示1231
+             * // 显示1231
              * ```
              */
             rawInput(data?: any, ...args: any[]): string;
@@ -154,12 +154,12 @@ declare module 'console' {
              * - 建议（：在显示控制台后等待一段时间后在进行调整，否则可能会设置失败。
              * @param {number} w 宽度。
              * @param {number} h 高度。
-             * @example: 
+             * @example
              * ```typescript
              * console.show();
              * // 在显示控制台后等待一段时间
              * sleep(300);
-             * //设置控制台大小为屏幕的四分之一
+             * // 设置控制台大小为屏幕的四分之一
              * console.setSize(device.width / 2, device.height / 2);
              * ```
              */
@@ -170,7 +170,7 @@ declare module 'console' {
              * - 建议（：在显示控制台后等待一段时间后在进行调整，否则可能会设置失败。
              * @param {number} x 横坐标。
              * @param {number} y 纵坐标。
-             * @example: 
+             * @example
              * ```typescript
              * console.show();
              * // 在显示控制台后等待一段时间
@@ -184,7 +184,7 @@ declare module 'console' {
              * @description: 设置日志保存的路径和配置。
              * - **注意！: 该函数会影响所有脚本的日志记录。**
              * @param {LogConfig} config 日志配置。
-             * @example: 
+             * @example
              * ```typescript
              * // 把日志保存到'/sdcard/1.txt'
              * console.setGlobalLogConfig({
@@ -207,14 +207,14 @@ declare module 'console' {
          * @description: 将信息打印到控制台，并带上换行符。 可以一次性传入多个参数，第一个参数作为主要信息，其他参数作为类似于 [printf(3)](https://man7.org/linux/man-pages/man3/printf.3.html) 中的代替值（参数都会传给 util.format()）。
          * @param {any} data 主要信息。
          * @param {array} [args] 代替值。
-         * @example: 
+         * @example
          * ```typescript
          * const count: number = 5;
          * 
-         * // 打印: count: 5 到 stdout
+         * // 打印 'count: 5' 到 stdout
          * console.log('count: %d', count);
          * 
-         * // 打印: count: 5 到 stdout
+         * // 打印 'count: 5' 到 stdout
          * console.log('count:', count);
          * ```
          */

@@ -23,7 +23,7 @@ declare module 'threads' {
              * - **注意！：通过 `threads.start()` 启动的所有线程会在脚本被强制停止时自动停止。**
              * @param {Function} action
              * @return {Thread} 新建的线程对象。
-             * @example:
+             * @example
              * ```typescript
              * // 启动新线程
              * threads.start(function() {
@@ -72,7 +72,7 @@ declare module 'threads' {
 
         /**
          * @description: 线程对象， `threads.start()` 返回的对象，用于获取和控制线程的状态，与其他线程交互等。 `Thread` 对象提供了和 `timers` 模块一样的 API，例如 `setTimeout()` ,  `setInterval()` 等，用于在该线程执行相应的定时回调，从而使线程之间可以直接交互。
-         * @example:
+         * @example
          * ```typescript
          * let thread = threads.start(function() {
          *     // 在子线程执行的定时器
@@ -104,7 +104,7 @@ declare module 'threads' {
             /**
              * @description: 等待线程执行完成。如果 `timeout` 为 0，则会一直等待直至该线程执行完成；否则最多等待 `timeout` 毫秒的时间。
              * @param {number} [timeout] 等待时间，单位毫秒。
-             * @example:
+             * @example
              * ```typescript
              * var sum = 0;
              * // 启动子线程计算1加到10000
@@ -128,7 +128,7 @@ declare module 'threads' {
 
             /**
              * @description: 等待线程开始执行。调用 `threads.start()` 以后线程仍然需要一定时间才能开始执行，因此调用此函数会等待线程开始执行；如果线程已经处于执行状态则立即返回。
-             * @example:
+             * @example
              * ```typescript
              * var thread = threads.start(function() {
              *     // do something
@@ -179,7 +179,7 @@ declare module 'threads' {
              * @description: 取消一个由 `setInterval()` 创建的循环定时任务。
              * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
              * @param {IntervalID} id 一个 `setInterval()` 返回的 id。
-             * @example:
+             * @example
              * ```typescript
              * // 每5秒就发出一次hello
              * let id = setInterval(function() {
@@ -195,7 +195,7 @@ declare module 'threads' {
              * @description: 取消一个由 `setTimeout()` 创建的定时任务。
              * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
              * @param {TimeoutID} id 一个 `setTimeout()` 返回的 id。
-             * @example:
+             * @example
              * ```typescript
              * // 每5秒就发出一次hello
              * let id = setInterval(function() {

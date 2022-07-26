@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-19 09:21:11
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-12 15:38:33
+ * @LastTime: 2022-07-26 10:07:48
  * @FilePath: \\src\\types\\floaty.d.ts
  * @Description: 
  */
@@ -19,7 +19,7 @@ declare module 'floaty' {
              * - **注意！：因为脚本运行的线程不是 UI 线程，而所有对控件的修改操作需要在 UI 线程执行**
              * @param {object} layout 悬浮窗界面的 XML 或者 View。更多信息参见 [UI 模块](https://docs.hamibot.com/reference/ui)的说明。
              * @return {FloatyWindow} 悬浮窗对象。
-             * @example:
+             * @example
              * ```typescript
              * // 在屏幕上显示悬浮文字，并在两秒后消失。
              * let w = floaty.window(
@@ -31,7 +31,7 @@ declare module 'floaty' {
              *     w.close();
              * }, 2000);
              * ```
-             * @example:
+             * @example
              * ```typescript
              * // 创建悬浮窗并修改文本
              * let w = floaty.window(
@@ -54,9 +54,9 @@ declare module 'floaty' {
             /**
              * @description: 指定悬浮窗的布局，创建并显示一个原始悬浮窗。与 `floaty.window()` 函数不同的是，该悬浮窗不会增加任何额外设施（例如调整大小、位置按钮），您可以根据自己需要编写任何布局。而且，该悬浮窗支持完全全屏，可以覆盖状态栏，因此可以做护眼模式之类的应用。
              * - **注意！：因为脚本运行的线程不是 UI 线程，而所有对控件的修改操作需要在 UI 线程执行**
-             * @param {object} layout。
-             * @return {*}。
-             * @example:
+             * @param {object} layout 悬浮窗布局。
+             * @return {FloatyRawWindow} 新建的悬浮窗。
+             * @example
              * ```typescript
              * // 在屏幕上显示悬浮文字，并在两秒后消失。
              * let w = floaty.rawWindow(
@@ -141,7 +141,7 @@ declare module 'floaty' {
             /**
              * @description: 设置悬浮窗是否可触摸。
              * @param {boolean} touchable 如果为 true, 则悬浮窗将接收到触摸、点击等事件并且无法继续传递到悬浮窗下面；如果为 false, 悬浮窗上的触摸、点击等事件将被直接传递到悬浮窗下面。
-             * @example: 
+             * @example
              * ```typescript
              * let w = floaty.rawWindow(
              *     <frame gravity='center' bg='#44ffcc00' />
@@ -180,7 +180,7 @@ declare module 'floaty' {
              * @description: 设置悬浮窗宽高。如果设置为 -1 ，则为占满全屏；设置为 -2 则为根据悬浮窗内容大小而定。
              * @param {number} width 悬浮窗宽度。
              * @param {number} height 悬浮窗高度。
-             * @example:
+             * @example
              * ```typescript
              * // 创建并显示全屏悬浮窗，5秒后消失
              * let w = floaty.rawWindow(
@@ -194,6 +194,7 @@ declare module 'floaty' {
              * setTimeout(() => {
              *     w.close();
              * }, 5000);
+             * ```
              */
             setSize(width: number, height: number): void;
 

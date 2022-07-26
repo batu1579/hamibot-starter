@@ -22,14 +22,14 @@ declare module 'http' {
              * @param {RequestOptions} [options] 请求选项。
              * @param {function} [callback] 回调函数。参数为 `Response` 对象。返回值为 any 。如果不加回调函数，则该请求将阻塞、同步地执行。
              * @return {Response} 请求的响应对象
-             * @example:
+             * @example
              * ```typescript
              * console.show();
              * let r = http.get('www.baidu.com');
              * log('code = ' + r.statusCode);
              * log('html = ' + r.body.string());
              * ```
-             * @example:
+             * @example
              * ```typescript
              * // 使用回调函数显示响应信息
              * console.show();
@@ -42,7 +42,7 @@ declare module 'http' {
              *     log('html = ' + res.body.string());
              * });
              * ```
-             * @example:
+             * @example
              * ```typescript
              * // 设置 HTTP 头部信息
              * console.show();
@@ -65,7 +65,7 @@ declare module 'http' {
              * @param {RequestOptions} [options] 请求选项。
              * @param {function} [callback] 回调函数。参数为 `Response` 对象。返回值为 any 。如果不加回调函数，则该请求将阻塞、同步地执行。
              * @return {Response} 请求的响应对象
-             * @example:
+             * @example
              * ```typescript
              * // 模拟表单提交登录淘宝
              * var url = 'https://login.taobao.com/member/login.jhtml';
@@ -92,7 +92,7 @@ declare module 'http' {
              * @param {RequestOptions} [options] 请求选项。
              * @param {function} [callback] 回调函数。参数为 `Response` 对象。返回值为 any 。如果不加回调函数，则该请求将阻塞、同步地执行。
              * @return {Response} 请求的响应对象
-             * @example:
+             * @example
              * ```typescript
              * // 调用图灵机器人接口
              * let url = 'http://www.tuling123.com/openapi/api';
@@ -116,7 +116,7 @@ declare module 'http' {
              * @param {RequestOptions} [options] 请求选项。
              * @param {function} [callback] 回调函数。参数为 `Response` 对象。返回值为 any 。如果不加回调函数，则该请求将阻塞、同步地执行。
              * @return {Response} 请求的响应对象
-             * @example:
+             * @example
              * ```typescript
              * // 文件类型
              * let res = http.postMultipart(url, {
@@ -124,7 +124,7 @@ declare module 'http' {
              * });
              * log(res.body.string());
              * ```
-             * @example:
+             * @example
              * ```typescript
              * // [fileName, filePath]
              * let res = http.postMultipart(url, {
@@ -132,7 +132,7 @@ declare module 'http' {
              * });
              * log(res.body.string());
              * ```
-             * @example:
+             * @example
              * ```typescript
              * // [fileName, mimeType, filePath]
              * var res = http.postMultipart(url, {
@@ -150,7 +150,6 @@ declare module 'http' {
              * @param {RequestOptions} [options] 请求选项。
              * @param {function} [callback] 回调函数。参数为 `Response` 对象。返回值为 any 。如果不加回调函数，则该请求将阻塞、同步地执行。
              * @return {Response} 请求的响应对象
-             * @example: 
              */
             request(url: string, options?: RequestOptions, callback?: (res: Response) => any): Response;
         }
@@ -166,7 +165,7 @@ declare module 'http' {
 
             /**
              * @description: 当前响应的 HTTP 状态信息。例如'OK', 'Bad Request', 'Forbidden'。有关 HTTP 状态码的信息，参见 [HTTP 响应代码](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status)。
-             * @example:
+             * @example
              * ```typescript
              * let res = http.get('www.baidu.com');
              * if (res.statusCode >= 200 && res.statusCode < 300) {
@@ -182,7 +181,7 @@ declare module 'http' {
 
             /**
              * @description: 当前响应的 HTTP 头部信息。该对象的键是响应头名称，值是各自的响应头值。
-             * @example:
+             * @example
              * ```typescript
              * console.show();
              * let res = http.get('www.qq.com');

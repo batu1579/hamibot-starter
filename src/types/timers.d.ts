@@ -42,7 +42,7 @@ declare module 'timers' {
         /**
          * @description: 取消一个由 `setInterval()` 创建的循环定时任务。
          * @param {IntervalID} id 一个 `setInterval()` 返回的 id。
-         * @example:
+         * @example
          * ```typescript
          * // 每5秒就发出一次hello
          * let id = setInterval(function() {
@@ -57,7 +57,7 @@ declare module 'timers' {
         /**
          * @description: 取消一个由 `setTimeout()` 创建的定时任务。
          * @param {TimeoutID} id 一个 `setTimeout()` 返回的 id。
-         * @example:
+         * @example
          * ```typescript
          * // 每5秒就发出一次hello
          * let id = setInterval(function() {

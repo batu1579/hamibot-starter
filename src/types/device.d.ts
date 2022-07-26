@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 01:55:44
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-03 16:34:58
+ * @LastTime: 2022-07-26 10:19:06
  * @FilePath: \\src\\types\\device.d.ts
  * @Description: device 模块
  */
@@ -227,7 +227,6 @@ declare module 'device' {
             /**
              * @description: 获取设备当前可用的内存。
              * @return {number} 设备当前可用的内存(单位字节(Byte), 1MB = 1024 * 1024B。)。
-             * @example: 
              */
             getAcailMem(): number;
 

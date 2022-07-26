@@ -99,7 +99,7 @@ declare module 'hamibot' {
 
         /**
          * @description: 时间戳。
-         * @example: '2021-02-03 04:05:06'
+         * @example '2021-02-03 04:05:06'
          */
         readonly TIMESTAMP: string;
 
