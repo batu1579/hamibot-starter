@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-31 13:19:44
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-26 10:13:53
+ * @LastTime: 2022-07-26 11:57:54
  * @FilePath: \\src\\types\\widget-operation.d.ts
  * @Description: 控件操作
  */
@@ -94,7 +94,7 @@ declare module 'widget-operation' {
              * - **注意！： 如果 `WindowFilter` 返回的结果均为 `false` ，则选择器的搜索结果将为空。**
              * - **注意！： setWindowFilter 函数会影响 `auto.windowRoots` 的结果。**
              * - **注意！： 该函数需要 Android 5.0 以上才有效。**
-             * @param {function} filter 用于过滤的回调函数。参数为窗口([AccessibilityWindowInfo](https://developer.android.com/reference/android/view/accessibility/AccessibilityWindowInfo))，返回值为 Boolean 。
+             * @param {function} filter 用于过滤的回调函数。参数为窗口([AccessibilityWindowInfo](https://developer.android.com/reference/android/view/accessibility/AccessibilityWindowInfo))，返回值为 Boolean （是否符合过滤条件）。
              */
             function setWindowFilter(filter: (window: AccessibilityWindowInfo) => boolean): void;
         }
@@ -599,7 +599,7 @@ declare module 'widget-operation' {
 
             /**
              * @description: 为当前选择器附加自定义的过滤条件。
-             * @param {function} f 用于过滤的回调函数。参数为 UiObject ，返回值为 boolean 。
+             * @param {function} f 用于过滤的回调函数。参数为 UiObject ，返回值为 boolean （是否符合过滤条件）。
              * @return {this} 返回选择器自身以便链式调用。
              * @example
              * ```typescript
@@ -1661,7 +1661,7 @@ declare module 'widget-operation' {
 
         /**
          * @description: 为当前选择器附加自定义的过滤条件。
-         * @param {function} f 用于过滤的回调函数。参数为 UiObject ，返回值为 boolean 。
+         * @param {function} f 用于过滤的回调函数。参数为 UiObject ，返回值为 boolean （是否符合过滤条件）。
          * @return {UiSelector} 返回选择器自身以便链式调用。
          * @example
          * ```typescript
