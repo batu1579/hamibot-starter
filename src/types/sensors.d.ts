@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-12 04:55:37
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-26 11:25:44
+ * @LastTime: 2022-07-31 00:47:55
  * @FilePath: \\src\\types\\sensors.d.ts
  * @Description: 传感器模块
  */
@@ -379,7 +379,7 @@ declare module 'sensors' {
              * log(sensors.register('aaabbb'));
              * ```
              */
-            on(eventName: 'unsupported_sensor', listener: (sensorName: string) => any): void;
+            on(eventName: 'unsupported_sensor', listener: (sensorName: string) => any): this;
 
             /**
              * @description: 表示是否忽略不支持的传感器。如果该值被设置为 `true` ，则函数 `sensors.register()` 即使对不支持的传感器也会返回一个无任何数据的虚拟传感器监听，也就是 `sensors.register()` 不会返回 `null` 从而避免非空判断，并且此时会触发 `sensors` 的 `unsupported_sensor` 事件。
@@ -413,7 +413,7 @@ declare module 'sensors' {
              * @param {string} eventName 事件名称（ `change` ）。当传感器数据改变时触发该事件。该事件触发的最高频繁由 `sensors.register()` 指定的 `delay` 参数决定。
              * @param {array} [args] 传感器参数。
              */
-            on(eventName: 'change', ...args: any[]): void;
+            on(eventName: 'change', ...args: any[]): SensorEventEmitter;
         } & BaseSensorEventEmitter;
     }
 
@@ -429,7 +429,7 @@ declare module 'sensors' {
 
     class BaseSensorEventEmitter extends EventEmitter {
         /**
-         * @description: 绑定当事件发生时的行为。
+         * @description: 当传感器精度发生变化时触发的事件。
          * @param {string} eventName 事件名称（ `accuracy_change` ）。
          * @param {number} accuracy 表示传感器精度，可选的值为:
          * - `-1` - 传感器未连接。
@@ -438,16 +438,16 @@ declare module 'sensors' {
          * - `2` - 中精度。
          * - `3` - 高精度。
          */
-        on(eventName: 'accuracy_change', accuracy: number): void;
+        on(eventName: 'accuracy_change', accuracy: number): this;
     }
 
     type AddChangeEventListener<T> = {
         /**
-         * @description: 绑定当事件发生时的行为。
+         * @description: 当传感器数值变化时触发的事件。
          * @param {string} eventName 事件名称（ `change` ）。当传感器数据改变时触发该事件。该事件触发的最高频繁由 `sensors.register()` 指定的 `delay` 参数决定。
          * @param {T} listener 当事件发生时要执行的回调函数。
          */
-        on(eventName: 'change', listener: T): void;
+        on(eventName: 'change', listener: T): AddChangeEventListener<T>;
     } & BaseSensorEventEmitter;
 
     type AccelerometerEventEmitter = AddChangeEventListener<AccelerometerListener>;
