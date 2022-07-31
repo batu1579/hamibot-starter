@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-24 16:55:58
  * @LastEditor: BATU1579
- * @LastTime: 2022-05-24 17:07:47
+ * @LastTime: 2022-08-01 02:23:14
  * @FilePath: \\webpack.config.js
  * @Description: https://blog.csdn.net/Zong_0915/article/details/115831373
  */
@@ -18,7 +18,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         // 打包后文件的名称
-        filename: "bundle.js"
+        filename: "index.js"
     },
 
     // 指定webpack打包的时候要使用的模块

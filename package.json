@@ -1,15 +1,16 @@
 {
-    "name": "script-template",
+    "name": "hamibot-starter",
     "version": "1.13.2",
-    "description": "一个用来快速开始编写脚本的模板",
+    "description": "一个用来快速开始编写 HamiBot 脚本的模板",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "webpack --mode production"
     },
-    "keywords": [],
-    "author": "",
+    "keywords": ["hamibot", "autojs"],
+    "author": "batu1579",
     "license": "MPL-2.0",
+    "repository": "http://github.com/batu1579/hamibot-starter.git",
     "devDependencies": {
         "@babel/core": "^7.18.0",
         "@babel/preset-env": "^7.18.0",
