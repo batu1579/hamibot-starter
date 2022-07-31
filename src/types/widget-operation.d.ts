@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-31 13:19:44
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-26 11:57:54
+ * @LastTime: 2022-07-31 20:17:36
  * @FilePath: \\src\\types\\widget-operation.d.ts
  * @Description: 控件操作
  */
@@ -45,7 +45,7 @@ declare module 'widget-operation' {
              * auto.setFlags(['findOnUiThread', 'useShell']);
              * ```
              */
-            function setFlags(flags: flags | flags[]): void;
+            function setFlags(flags: Flags | Flags[]): void;
 
             /**
              * @description: 启用有关 automator 的一些特性。
@@ -320,7 +320,7 @@ declare module 'widget-operation' {
              * @param {string} str 控件 `className` 属性。
              * @return {this} 返回选择器自身以便链式调用。
              */
-            className(str: commonClassName): this;
+            className(str: CommonClassName): this;
 
             /**
              * @description: 为当前选择器附加控件 `className` 等于字符串 `str` 的筛选条件。控件的 `className` (类名)表示一个控件的类别，例如文本控件的类名为 `android.widget.TextView` 。如果一个控件的类名以 `android.widget.` 开头，则可以省略这部分，例如文本控件可以直接用 `className('TextView')` 的选择器。
@@ -1382,7 +1382,7 @@ declare module 'widget-operation' {
          * @param {string} str 控件 `className` 属性。
          * @return {UiSelector} 返回选择器自身以便链式调用。
          */
-        function className(str: commonClassName): UiSelector;
+        function className(str: CommonClassName): UiSelector;
 
         /**
          * @description: 为当前选择器附加控件 `className` 等于字符串 `str` 的筛选条件。控件的 `className` (类名)表示一个控件的类别，例如文本控件的类名为 `android.widget.TextView` 。如果一个控件的类名以 `android.widget.` 开头，则可以省略这部分，例如文本控件可以直接用 `className('TextView')` 的选择器。
@@ -1681,9 +1681,9 @@ declare module 'widget-operation' {
         [prop: string]: any;
     }
 
-    type flags = 'findOnUiThread' | 'useUsageStats' | 'useShell';
+    type Flags = 'findOnUiThread' | 'useUsageStats' | 'useShell';
 
-    type commonClassName = (
+    type CommonClassName = (
         'TextView' |
         'ImageView' |
         'Button' |

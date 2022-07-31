@@ -191,7 +191,7 @@ declare module 'dialogs' {
              * @description: 显示一个单选列表对话框，等待用户选择。
              * @param {string} title 对话框的标题。
              * @param {string} items 对话框的选项列表，是一个字符串数组。
-             * @param {number} index 对话框的初始选项的位置（默认为 0）。
+             * @param {number} [index] 对话框的初始选项的位置（默认为 0）。
              * @param {function} [callback] 回调函数。当用户点击确定时被调用,一般用于 ui 模式。参数为 number （用户选择的选项索引），返回值为 any 。
              * @return {number | Promise<number>} 返回用户选择的选项索引( `0` ~ `item.length - 1` )。如果用户取消了选择，返回 `-1` 。
              */
@@ -201,7 +201,7 @@ declare module 'dialogs' {
              * @description: 显示一个多选列表对话框，等待用户选择，返回用户选择的选项索引的数组。
              * @param {string} title 对话框的标题。
              * @param {string} items 对话框的选项列表，是一个字符串数组。
-             * @param {number} indices 选项列表中初始选中的项目索引的数组（默认为空数组）。
+             * @param {number} [indices] 选项列表中初始选中的项目索引的数组（默认为空数组）。
              * @param {Function} [callback]  回调函数，可选。当用户点击确定时被调用,一般用于 ui 模式。
              * @return {number[] | Promise<number[]>} 如果用户取消了选择，返回[]。在 ui 模式下该函数返回一个 Promise 。
              */
@@ -330,7 +330,7 @@ declare module 'dialogs' {
 
             /**
              * @description: 对话框显示时会触发的事件。
-             * @param {string} event 事件名称（ `show` ）。
+             * @param {string} eventName 事件名称（ `show` ）。
              * @param {function} listener 当事件发生时要执行的回调函数。参数为 Dialog （自定义的对话框），返回值为 any 。
              * @return {this} 返回对话框对象自身以便链式调用。
              * @example
@@ -342,12 +342,12 @@ declare module 'dialogs' {
              * }).show();
              * ```
              */
-            on(event: 'show', listener: (dialog: Dialog) => any): this;
+            on(eventName: 'show', listener: (dialog: Dialog) => any): this;
 
             /**
              * @description: 对话框被取消时会触发的事件。
              * - **注意！：一个对话框可能按取消按钮、返回键取消或者点击对话框以外区域取消。**
-             * @param {string} event 事件名称（ `cancel` ）。
+             * @param {string} eventName 事件名称（ `cancel` ）。
              * @param {function} listener 当事件发生时要执行的回调函数。参数为 Dialog （自定义的对话框），返回值为 any 。
              * @return {this} 返回对话框对象自身以便链式调用。
              * @example
@@ -361,12 +361,12 @@ declare module 'dialogs' {
              * }).show();
              * ```
              */
-            on(event: 'cancel', listener: (dialog: Dialog) => any): this;
+            on(eventName: 'cancel', listener: (dialog: Dialog) => any): this;
 
             /**
              * @description: 对话框消失时会触发的事件。对话框被取消或者手动调用 `dialog.dismiss()` 函数都会触发该事件。
              * - **注意！：一个对话框可能按取消按钮、返回键取消或者点击对话框以外区域取消。**
-             * @param {string} event 事件名称（ `dismiss` ）。
+             * @param {string} eventName 事件名称（ `dismiss` ）。
              * @param {function} listener 当事件发生时要执行的回调函数。参数为 Dialog （自定义的对话框），返回值为 any 。
              * @return {this} 返回对话框对象自身以便链式调用。
              * @example
@@ -384,11 +384,11 @@ declare module 'dialogs' {
              * }, 5000);
              * ```
              */
-            on(event: 'dismiss', listener: (dialog: Dialog) => any): this;
+            on(eventName: 'dismiss', listener: (dialog: Dialog) => any): this;
 
             /**
              * @description: 确定按钮按下时触发的事件。
-             * @param {string} event 事件名称（ `positive` ）。
+             * @param {string} eventName 事件名称（ `positive` ）。
              * @param {function} listener 当事件发生时要执行的回调函数。参数为 Dialog （自定义的对话框），返回值为 any 。
              * @return {this} 返回对话框对象自身以便链式调用。
              * @example
@@ -402,11 +402,11 @@ declare module 'dialogs' {
              * }).show();
              * ```
              */
-            on(event: 'positive', listener: (dialog: Dialog) => any): this;
+            on(eventName: 'positive', listener: (dialog: Dialog) => any): this;
 
             /**
              * @description: 取消按钮按下时触发的事件。
-             * @param {string} event 事件名称（ `negative` ）。
+             * @param {string} eventName 事件名称（ `negative` ）。
              * @param {function} listener 当事件发生时要执行的回调函数。参数为 Dialog （自定义的对话框），返回值为 any 。
              * @return {this} 返回对话框对象自身以便链式调用。
              * @example
@@ -420,11 +420,11 @@ declare module 'dialogs' {
              * }).show();
              * ```
              */
-            on(event: 'negative', listener: (dialog: Dialog) => any): this;
+            on(eventName: 'negative', listener: (dialog: Dialog) => any): this;
 
             /**
              * @description: 中性按钮按下时触发的事件。
-             * @param {string} event 事件名称（ `neutral` ）。
+             * @param {string} eventName 事件名称（ `neutral` ）。
              * @param {function} listener 当事件发生时要执行的回调函数。参数为 Dialog （自定义的对话框），返回值为 any 。
              * @return {this} 返回对话框对象自身以便链式调用。
              * @example
@@ -439,11 +439,11 @@ declare module 'dialogs' {
              * }).show();
              * ```
              */
-            on(event: 'neutral', listener: (dialog: Dialog) => any): this;
+            on(eventName: 'neutral', listener: (dialog: Dialog) => any): this;
 
             /**
              * @description: 任意按钮按下时触发的事件。
-             * @param {string} event 事件名称（ `any` ）。
+             * @param {string} eventName 事件名称（ `any` ）。
              * @param {function} listener 当事件发生时要执行的回调函数。
              * @return {this} 返回对话框对象自身以便链式调用。
              * @example
@@ -462,12 +462,12 @@ declare module 'dialogs' {
              * }).show();
              * ```
              */
-            on(event: 'any', listener: DialogAnyListener): this;
+            on(eventName: 'any', listener: DialogAnyListener): this;
 
             /**
              * @description: 对话框列表的项目被点击选中时触发的事件。
              * - **`注意！：此事件只在 itemsSelectMode` 为 `select` 时触发。**
-             * @param {string} event 事件名称（ `item_select` ）。
+             * @param {string} eventName 事件名称（ `item_select` ）。
              * @param {function} listener 当事件发生时要执行的回调函数。
              * @return {this} 返回对话框对象自身以便链式调用。
              * @example
@@ -483,12 +483,12 @@ declare module 'dialogs' {
              * }).show();
              * ```
              */
-            on(event: 'item_select', listener: DialogItemSelectListener): this;
+            on(eventName: 'item_select', listener: DialogItemSelectListener): this;
 
             /**
              * @description: 对话框列表的项目被点击选中时触发的事件。
              * - **`注意！：此事件只在 itemsSelectMode` 为 `singleChoice` 时触发。**
-             * @param {string} event 事件名称（ `single_choice` ）。
+             * @param {string} eventName 事件名称（ `single_choice` ）。
              * @param {function} listener 当事件发生时要执行的回调函数。
              * @return {this} 返回对话框对象自身以便链式调用。
              * @example
@@ -504,12 +504,12 @@ declare module 'dialogs' {
              * }).show();
              * ```
              */
-            on(event: 'single_choice', listener: DialogItemSelectListener): this;
+            on(eventName: 'single_choice', listener: DialogItemSelectListener): this;
 
             /**
              * @description: 对话框列表的项目被点击选中时触发的事件。
              * - **`注意！：此事件只在 itemsSelectMode` 为 `multiChoice` 时触发。**
-             * @param {string} event 事件名称（ `multi_choice` ）。
+             * @param {string} eventName 事件名称（ `multi_choice` ）。
              * @param {function} listener 当事件发生时要执行的回调函数。
              * @return {this} 返回对话框对象自身以便链式调用。
              * @example
@@ -525,11 +525,11 @@ declare module 'dialogs' {
              * }).show();
              * ```
              */
-            on(event: 'multi_choice', listener: DialogMultiChoiceListener): this;
+            on(eventName: 'multi_choice', listener: DialogMultiChoiceListener): this;
 
             /**
              * @description: 带有输入框的对话框点击确定时触发的事件。
-             * @param {string} event 事件名称（ `input` ）。
+             * @param {string} eventName 事件名称（ `input` ）。
              * @param {function} listener 当事件发生时要执行的回调函数。
              * @return {this} 返回对话框对象自身以便链式调用。
              * @example
@@ -544,11 +544,11 @@ declare module 'dialogs' {
              * }).show();
              * ```
              */
-            on(event: 'input', listener: DialogInputListener): this;
+            on(eventName: 'input', listener: DialogInputListener): this;
 
             /**
              * @description: 带有输入框的对话框中的文本发生变化时触发的事件。
-             * @param {string} event 事件名称（ `input_change` ）。
+             * @param {string} eventName 事件名称（ `input_change` ）。
              * @param {function} listener 当事件发生时要执行的回调函数。
              * @return {this} 返回对话框对象自身以便链式调用。
              * @example
@@ -563,11 +563,11 @@ declare module 'dialogs' {
              * }).show();
              * ```
              */
-            on(event: 'input_change', listener: DialogInputChangeListener): this;
+            on(eventName: 'input_change', listener: DialogInputChangeListener): this;
 
             /**
              * @description: 对话框中的复选框发生变化时触发的事件。
-             * @param {string} event 事件名称（ `check` ）。
+             * @param {string} eventName 事件名称（ `check` ）。
              * @param {function} listener 当事件发生时要执行的回调函数。
              * @return {this} 返回对话框对象自身以便链式调用。
              * @example
@@ -591,7 +591,7 @@ declare module 'dialogs' {
              * }).show();
              * ```
              */
-            on(event: 'check', listener: DialogCheckListener): this;
+            on(eventName: 'check', listener: DialogCheckListener): this;
 
             /**
              * @description: 显示配置好的对话框。
@@ -746,6 +746,7 @@ declare module 'dialogs' {
     }
 
     /**
+     * @callback DialogAnyListener
      * @description: 当任意按钮按下事件发生时要执行的回调函数。
      * @param {string} action 被点击的按钮，可选的值为：
 	 * - `positive` - 确定按钮。
@@ -768,6 +769,7 @@ declare module 'dialogs' {
     ) => any;
 
     /**
+     * @callback DialogItemSelectListener
      * @description: 当对话框列表的项目被点击选中时要执行的回调函数。
      * @param {number} index 被选中的项目索引，从 0 开始。
      * @param {any} item 被选中的项目。
@@ -789,6 +791,7 @@ declare module 'dialogs' {
     ) => any;
 
     /**
+     * @callback DialogMultiChoiceListener
      * @description: 当对话框多选列表的项目被选中时要执行的回调函数。
      * @param {number} indices 被选中的项目的索引的数组。
      * @param {string} items 被选中的项目的数组。
@@ -801,6 +804,7 @@ declare module 'dialogs' {
     ) => any;
 
     /**
+     * @callback DialogInputListener
      * @description: 当带有输入框的对话框点击确定时要执行的回调函数。
      * @param {string} text 输入框的内容。
      * @param {Dialog} dialog 自定义的对话框对象。
@@ -817,6 +821,7 @@ declare module 'dialogs' {
     ) => any;
 
     /**
+     * @callback DialogInputChangeListener
      * @description: 当带有输入框的对话框中的文本发生变化时要执行的回调函数。
      * @param {string} text 输入框的内容。
      * @param {Dialog} dialog 自定义的对话框对象。
@@ -833,6 +838,7 @@ declare module 'dialogs' {
     ) => any;
 
     /**
+     * @callback DialogCheckListener
      * @description: 对话框中的复选框发生变化时要执行的回调函数。
      * @param {boolean} checked 当前复选框状态，勾选为 `true` 。
      * @param {Dialog} dialog 自定义的对话框对象。
