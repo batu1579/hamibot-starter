@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-15 04:24:25
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-24 20:15:31
+ * @LastTime: 2022-07-31 22:37:19
  * @FilePath: \\README.md
  * @Description: 
 -->
@@ -22,9 +22,9 @@
 
 ## 特性
 
-1. 通过声明文件提供 `hamibot` 完整的代码提示和文档，能够减少键入次数和查询官方文档的时间（未完成）
-2. 提供常用的代码片段，直接调用可以辅助更快完成开发，并让你能专注于核心功能
-3. 完整的类型检查（未完成）
+1. 通过声明文件提供 `hamibot` 完整的代码提示和文档，能够减少键入次数和查询官方文档的时间（未完成）。
+2. 提供常用的代码片段，直接调用可以辅助更快完成开发，并让你能专注于核心功能。
+3. 完整的类型检查（未完成）。
 
 ## 注意事项
 
@@ -61,30 +61,8 @@ let yyyy = sensors.register("yyy")!;
 
 ## TODO List
 
-- [ ] 添加声明文件 [19/26]
-  - [x] Hamibot
-  - [x] App
-  - [x] Console
-  - [x] 触摸操作
-  - [x] 控件操作
-  - [x] 文字识别 OCR
-  - [x] Base64
-  - [x] Device
-  - [x] Engines
-  - [x] Files
-  - [x] Floaty
-  - [x] Globals
-  - [x] HTTP
-  - [x] Keys
-  - [x] Media
-  - [x] Sensors
-  - [x] Storages
-  - [x] Threads
-  - [x] Timers
-  - [ ] Dialogs
-  - [ ] Events
+- [ ] 添加声明文件 [22/26]
   - [ ] Images
-  - [ ] shell
   - [ ] UI
   - [ ] Util
   - [ ] Canvans
@@ -93,6 +71,7 @@ let yyyy = sensors.register("yyy")!;
 - [ ] 检查泛型注释
 - [ ] 检查回调函数注释
 - [ ] 检查注释中的类和方法是否使用行内代码格式
+- [ ] 检查注释中的示例代码是否都能够运行
 - [ ] 统一函数类型（Function、function）
 
 ## 开源协议
