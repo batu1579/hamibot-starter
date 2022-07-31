@@ -599,6 +599,78 @@ declare module 'dialogs' {
              */
             show(): ShowedDialog;
         }
+
+        /**
+         * @description: 显示一个只包含'确定'按钮的提示对话框。直至用户点击确定脚本才继续运行。
+         * @param {string} title 对话框的标题。
+         * @param {string} [content] 对话框的内容（默认为空）。
+         * @param {Function} [callback] 回调函数。当用户点击确定时被调用,一般用于 ui 模式。
+         * @return {void | Promise<void>}  ui 模式下该函数返回一个 Promise 。
+         * @example
+         * ```typescript
+         * dialogs.alert('出现错误~', '出现未知错误，请联系脚本作者');
+         * ```
+         * @example
+         * ```typescript
+         * 'ui';
+         * alert('嘿嘿嘿').then(() => {
+         *     // 当点击确定后会执行这里
+         * });
+         * ```
+         */
+        function alert(title: string, content?: string, callback?: Function): void | Promise<void>;
+
+        /**
+         * @description: 显示一个包含'确定'和'取消'按钮的提示对话框。
+         * @param {string} title 对话框的标题。
+         * @param {string} [content] 对话框的内容（默认为空）。
+         * @param {Function} [callback] 回调函数。当用户点击确定时被调用,一般用于 ui 模式。参数为 boolean （用户点击的选项，点击确定则为 `true` ），返回值为 any 。
+         * @return {boolean | Promise<boolean>} 如果用户点击确定则返回 `true` ，否则返回 `false` 。在 ui 模式下该函数返回一个 Promise 。
+         * @example
+         * ```typescript
+         * let clear = confirm('要清除所有缓存吗?');
+         * if (clear) {
+         *     alert('清除成功!');
+         * }
+         * ```
+         * @example
+         * ```typescript
+         * 'ui';
+         * confirm('确定吗').then((value) => {
+         *   // 当点击确定后会执行这里。
+         * });
+         * ```
+         */
+        function confirm(title: string, content?: string, callback?: (confirmed: boolean) => any): boolean | Promise<boolean>;
+
+        /**
+         * @description: 显示一个包含输入框的对话框，等待用户输入内容 。
+         * @param {string} title 对话框的标题。
+         * @param {string} [prefill] 对话框的内容（默认为空）。
+         * @param {function} [callback] 回调函数。当用户点击确定时被调用,一般用于 ui 模式。参数为 string （用户输入的内容），返回值为 any 。
+         * @return {string | null | Promise<string | null>} 在用户点击确定时将输入的字符串返回。如果用户取消了输入，返回 `null` 。在 ui 模式下该函数返回一个 Promise 。
+         * @example
+         * ```typescript
+         * var name = dialogs.rawInput('请输入您的名字', '小明');
+         * alert('您的名字是' + name);
+         * ```
+         * @example
+         * ```typescript
+         * 'ui';
+         * // ui 模式下
+         * dialogs.rawInput('请输入您的名字', '小明').then((name) => {
+         *     alert('您的名字是' + name);
+         * });
+         * ```
+         * @example
+         * ```typescript
+         * // 使用回调函数
+         * dialogs.rawInput('请输入您的名字', '小明', (name) => {
+         *     alert('您的名字是' + name);
+         * });
+         * ```
+         */
+        function rawInput(title: string, prefill?: string, callback?: (userInput: string | null) => any): string | null | Promise<string | null>;
     }
 
     interface DialogProperties {
