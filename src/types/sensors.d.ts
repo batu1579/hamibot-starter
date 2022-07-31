@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-12 04:55:37
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-31 00:47:55
+ * @LastTime: 2022-08-01 01:17:56
  * @FilePath: \\src\\types\\sensors.d.ts
  * @Description: 传感器模块
  */
@@ -427,7 +427,7 @@ declare module 'sensors' {
         readonly normal: number
     }
 
-    class BaseSensorEventEmitter extends EventEmitter {
+    type BaseSensorEventEmitter = EventEmitter & {
         /**
          * @description: 当传感器精度发生变化时触发的事件。
          * @param {string} eventName 事件名称（ `accuracy_change` ）。
@@ -438,7 +438,7 @@ declare module 'sensors' {
          * - `2` - 中精度。
          * - `3` - 高精度。
          */
-        on(eventName: 'accuracy_change', accuracy: number): this;
+        on(eventName: 'accuracy_change', accuracy: number): BaseSensorEventEmitter;
     }
 
     type AddChangeEventListener<T> = {
