@@ -2,9 +2,9 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 17:07:59
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-01 01:22:06
+ * @LastTime: 2022-08-01 02:33:23
  * @FilePath: \\src\\types\\console.d.ts
- * @Description: 
+ * @Description: 控制台模块
  */
 
 declare module 'console' {

@@ -2,9 +2,9 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 01:16:42
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-23 09:24:24
+ * @LastTime: 2022-08-01 02:35:27
  * @FilePath: \\src\\types\\ocr.d.ts
- * @Description: 
+ * @Description: 文字识别模块
  */
 declare module 'ocr' {
     global {

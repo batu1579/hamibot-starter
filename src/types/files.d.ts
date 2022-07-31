@@ -1,3 +1,11 @@
+/*
+ * @Author: BATU1579
+ * @CreateDate: 2022-07-23 09:05:08
+ * @LastEditor: BATU1579
+ * @LastTime: 2022-08-01 02:34:08
+ * @FilePath: \\src\\types\\files.d.ts
+ * @Description: 文件操作模块
+ */
 declare module 'files' {
     global {
         /**

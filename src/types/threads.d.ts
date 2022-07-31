@@ -2,9 +2,9 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-12 19:58:53
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-24 20:01:37
+ * @LastTime: 2022-08-01 02:35:49
  * @FilePath: \\src\\types\\threads.d.ts
- * @Description: 
+ * @Description: 多线程模块
  */
 declare module 'threads' {
     global {

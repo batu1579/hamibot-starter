@@ -2,9 +2,9 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 16:14:41
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-21 01:39:05
+ * @LastTime: 2022-08-01 02:33:56
  * @FilePath: \\src\\types\\engines.d.ts
- * @Description: 
+ * @Description: 脚本引擎模块
  */
 declare module 'engines' {
     global {

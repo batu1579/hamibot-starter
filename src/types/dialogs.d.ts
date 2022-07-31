@@ -1,3 +1,11 @@
+/*
+ * @Author: BATU1579
+ * @CreateDate: 2022-07-26 09:44:33
+ * @LastEditor: BATU1579
+ * @LastTime: 2022-08-01 02:33:37
+ * @FilePath: \\src\\types\\dialogs.d.ts
+ * @Description: 对话框模块
+ */
 declare module 'dialogs' {
     global {
         /**

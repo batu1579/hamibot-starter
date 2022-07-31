@@ -2,9 +2,9 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-19 09:21:11
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-26 10:07:48
+ * @LastTime: 2022-08-01 02:34:29
  * @FilePath: \\src\\types\\floaty.d.ts
- * @Description: 
+ * @Description: 悬浮窗模块
  */
 declare module 'floaty' {
     global {

@@ -4,7 +4,7 @@
  * @LastEditors: BATU1579
  * @LastEditTime: 2022-06-10 09:53:27
  * @FilePath: \\src\\types\\http.d.ts
- * @Description: 
+ * @Description: 网络操作模块
  * 
  * Copyright (c) 2022 by Hamibot hello@hamibot.com, All Rights Reserved. 
  */

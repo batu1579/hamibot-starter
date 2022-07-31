@@ -2,9 +2,9 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-31 02:26:26
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-31 02:49:03
+ * @LastTime: 2022-08-01 02:35:39
  * @FilePath: \\src\\types\\shell.d.ts
- * @Description: 
+ * @Description: 终端模块
  */
 declare module 'shell' {
     global {
