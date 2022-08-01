@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-31 02:26:26
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-01 02:35:39
+ * @LastTime: 2022-08-01 17:04:02
  * @FilePath: \\src\\types\\shell.d.ts
  * @Description: 终端模块
  */
@@ -78,7 +78,7 @@ declare module 'shell' {
         onOutput?: (line: string) => any;
 
         /**
-         * @description: 每当 shell 有新的一行输出时便会调用该函数。其参数是一个字符串(不包括最后的换行符)。
+         * @description: 每当 shell 有新的一行输出时便会调用该函数。其参数是一个字符串（不包括最后的换行符）。
          */
         onNewLine?: (line: string) => any;
     }

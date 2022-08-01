@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 01:55:44
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-26 10:19:06
+ * @LastTime: 2022-08-01 17:14:02
  * @FilePath: \\src\\types\\device.d.ts
  * @Description: device 模块
  */
@@ -30,7 +30,7 @@ declare module 'device' {
             readonly buildId: string;
 
             /**
-             * @description: 设备的主板(?)型号。例如 'goldfish' 。
+             * @description: 设备的主板（?）型号。例如 'goldfish' 。
              */
             readonly broad: string;
 
@@ -60,12 +60,12 @@ declare module 'device' {
             readonly bootloader: string;
 
             /**
-             * @description: 设备的硬件名称(来自内核命令行或者/proc)。
+             * @description: 设备的硬件名称（来自内核命令行或者/proc）。
              */
             readonly hardware: string;
 
             /**
-             * @description: 构建(build)的唯一标识码。
+             * @description: 构建（build）的唯一标识码。
              */
             readonly fingerprint: string;
 
@@ -125,7 +125,7 @@ declare module 'device' {
 
             /**
              * @description: 获取当前屏幕亮度。
-             * @return {number} 当前的(手动)亮度。范围为 0~255。
+             * @return {number} 当前的（手动）亮度。范围为 0~255。
              */
             getBrightness(): number;
 
@@ -201,14 +201,14 @@ declare module 'device' {
 
             /**
              * @description: 设置当前闹钟音量。
-             * - **注意！：此函数需要'修改系统设置'的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。**
+             * - **注意！：此函数需要 '修改系统设置' 的权限。如果没有该权限，会抛出 `SecurityException` 并跳转到权限设置界面。**
              * @param {number} volume 目标音量。
              */
             setAlarmVolume(volume: number): void;
 
             /**
              * @description: 获取当前电量百分比。
-             * @return {number} 当前电量(0.0 ~ 100.0 的浮点数)。
+             * @return {number} 当前电量（ 0.0 ~ 100.0 的浮点数）。
              */
             getBattery(): number;
 
@@ -220,13 +220,13 @@ declare module 'device' {
 
             /**
              * @description: 获取设备内存总量。
-             * @return {number} 设备内存总量(单位字节(Byte), 1MB = 1024 * 1024B。)。
+             * @return {number} 设备内存总量（单位字节（Byte）， 1MB = 1024 * 1024B。）。
              */
             getTotalMem(): number;
 
             /**
              * @description: 获取设备当前可用的内存。
-             * @return {number} 设备当前可用的内存(单位字节(Byte), 1MB = 1024 * 1024B。)。
+             * @return {number} 设备当前可用的内存（单位字节（Byte）， 1MB = 1024 * 1024B。）。
              */
             getAcailMem(): number;
 

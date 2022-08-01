@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 00:20:15
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-26 10:25:30
+ * @LastTime: 2022-08-01 17:25:41
  * @FilePath: \\src\\types\\app.d.ts
  * @Description: app 模块
  */
@@ -122,7 +122,7 @@ declare module 'app' {
             getApkInfo(path: string): PackageInfo;
 
             /**
-             * @description: 打开应用的详情页(设置页)。
+             * @description: 打开应用的详情页（设置页）。
              * @param {string} packageName 应用包名。
              * @return {boolean} 如果找不到该应用，返回 `false` ; 否则返回 `true` 。
              */
@@ -189,7 +189,7 @@ declare module 'app' {
             startActivity(name: string): void;
 
             /**
-             * @description: 根据选项，构造一个意图 `Intent` 对象。需要注意的是，除非应用专门暴露 `Activity` 出来，否则在没有 `root` 权限的情况下使用 `Intent` 是无法跳转到特定 `Activity` 、应用的特定界面的。例如我们能通过 `Intent` 跳转到QQ的分享界面，是因为QQ对外暴露了分享的 `Activity` ；而在没有 `root` 权限的情况下，我们无法通过 `Intent` 跳转到QQ的设置界面，因为QQ并没有暴露这个 `Activity` 。更多信息，参见 [Intent](https://developer.android.com/guide/components/intents-filters.html#Types)。
+             * @description: 根据选项，构造一个意图 `Intent` 对象。需要注意的是，除非应用专门暴露 `Activity` 出来，否则在没有 `root` 权限的情况下使用 `Intent` 是无法跳转到特定 `Activity` 、应用的特定界面的。例如我们能通过 `Intent` 跳转到QQ的分享界面，是因为QQ对外暴露了分享的 `Activity` ；而在没有 `root` 权限的情况下，我们无法通过 `Intent` 跳转到QQ的设置界面，因为QQ并没有暴露这个 `Activity` 。更多信息，参见 [Intent](https://developer.android.com/guide/components/intents-filters.html#Types) 。
              * @param {IntentOptions} options 意图选项。
              * @example
              * ```typescript
@@ -335,7 +335,7 @@ declare module 'app' {
         function getAppName(packageName: string): string | null;
 
         /**
-         * @description: 打开应用的详情页(设置页)。
+         * @description: 打开应用的详情页（设置页）。
          * @param {string} packageName 应用包名。
          * @return {boolean} 如果找不到该应用，返回 false; 否则返回 true。
          */
@@ -359,7 +359,7 @@ declare module 'app' {
         bcc?: string | string[];
 
         /**
-         * @description: 邮件主题(标题)。
+         * @description: 邮件主题（标题）。
          */
         subject?: string;
 
@@ -376,7 +376,7 @@ declare module 'app' {
 
     interface IntentOptions {
         /**
-         * @description: 意图的 `Action` ，指意图要完成的动作，是一个字符串常量。当 `action` 以 `android.intent.action` 开头时，可以省略前缀，直接用 `SEND` 代替。参见[Action](https://developer.android.com/reference/android/content/Intent.html#standard-activity-actions)。
+         * @description: 意图的 `Action` ，指意图要完成的动作，是一个字符串常量。当 `action` 以 `android.intent.action` 开头时，可以省略前缀，直接用 `SEND` 代替。参见[Action](https://developer.android.com/reference/android/content/Intent.html#standard-activity-actions) 。
          * @example 'android.intent.action.SEND'
          */
         action?: string;
@@ -394,7 +394,7 @@ declare module 'app' {
         data?: string;
 
         /**
-         * @description: 意图的类别。参见 [Categories](https://developer.android.com/reference/android/content/Intent.html#standard-categories)。
+         * @description: 意图的类别。参见 [Categories](https://developer.android.com/reference/android/content/Intent.html#standard-categories) 。
          */
         category?: string[];
 
@@ -409,12 +409,12 @@ declare module 'app' {
         className?: string;
 
         /**
-         * @description: 以键值对构成的这个 `Intent` 的额外信息。提供该意图的其他信息，例如发送邮件时的邮件标题、邮件正文。参见 [Extras](https://developer.android.com/reference/android/content/Intent.html#standard-extra-data)。
+         * @description: 以键值对构成的这个 `Intent` 的额外信息。提供该意图的其他信息，例如发送邮件时的邮件标题、邮件正文。参见 [Extras](https://developer.android.com/reference/android/content/Intent.html#standard-extra-data) 。
          */
         extras?: object;
 
         /**
-         * @description: `Intent` 的标识，字符串数组，例如: ['activity_new_task', 'grant_read_uri_permission'] 。参见 [Flags](https://developer.android.com/reference/android/content/Intent.html#setFlags%28int%29)。
+         * @description: `Intent` 的标识，字符串数组，例如: `['activity_new_task', 'grant_read_uri_permission']` 。参见 [Flags](https://developer.android.com/reference/android/content/Intent.html#setFlags%28int%29) 。
          */
         flags?: string[];
 
@@ -974,7 +974,7 @@ declare module 'app' {
     }
 
     /**
-     * @description: Uri对象的详细信息参见 [android.net.Uri](https://developer.android.com/reference/android/net/Uri)。
+     * @description: Uri对象的详细信息参见 [android.net.Uri](https://developer.android.com/reference/android/net/Uri) 。
      */
     class Uri {
         /**

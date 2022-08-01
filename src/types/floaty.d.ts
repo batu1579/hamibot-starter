@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-19 09:21:11
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-01 02:34:29
+ * @LastTime: 2022-08-01 17:25:39
  * @FilePath: \\src\\types\\floaty.d.ts
  * @Description: 悬浮窗模块
  */
@@ -17,7 +17,7 @@ declare module 'floaty' {
             /**
              * @description: 指定悬浮窗的布局，创建并显示一个悬浮窗。该悬浮窗自带关闭、调整大小、调整位置按键，可根据需要调用 `setAdjustEnabled()` 函数来显示或隐藏。
              * - **注意！：因为脚本运行的线程不是 UI 线程，而所有对控件的修改操作需要在 UI 线程执行**
-             * @param {object} layout 悬浮窗界面的 XML 或者 View。更多信息参见 [UI 模块](https://docs.hamibot.com/reference/ui)的说明。
+             * @param {object} layout 悬浮窗界面的 XML 或者 View。更多信息参见 [UI 模块](https://docs.hamibot.com/reference/ui) 。
              * @return {FloatyWindow} 悬浮窗对象。
              * @example
              * ```typescript
@@ -83,7 +83,7 @@ declare module 'floaty' {
         class FloatyWindow {
             /**
              * @description: 设置悬浮窗是否可调整。
-             * @param {boolean} enabled 是否启用悬浮窗调整(大小、位置)， 为 `true` 则在悬浮窗左上角、右上角显示可供位置、大小调整的标示，就像控制台一样； 如果为 `false` ，则隐藏上述标示。
+             * @param {boolean} enabled 是否启用悬浮窗调整（大小、位置）， 为 `true` 则在悬浮窗左上角、右上角显示可供位置、大小调整的标示，就像控制台一样； 如果为 `false` ，则隐藏上述标示。
              */
             setAdjustEnabled(enabled: boolean): void;
 

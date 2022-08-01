@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 00:21:22
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-26 10:08:17
+ * @LastTime: 2022-08-01 17:25:40
  * @FilePath: \\src\\types\\global.d.ts
  * @Description: 全局函数和变量
  */
@@ -42,14 +42,14 @@ declare module 'global' {
         function setClip(text: string): void;
 
         /**
-         * @description: 以气泡显示信息 `message` 几秒。(具体时间取决于安卓系统，一般都是 2 秒)。
+         * @description: 以气泡显示信息 `message` 几秒。（具体时间取决于安卓系统，一般都是 2 秒）。
          * - **注意！：信息的显示是'异步'执行的，并且，不会等待信息消失程序才继续执行。如果在循环中执行该命令，可能出现脚本停止运行后仍然有不断的气泡信息出现的情况。
          * @param {string} message 要显示的信息。
          */
         function toast(message: string): void;
 
         /**
-         * @description: 相当于 `toast(message);log(message)` 。显示信息 `message` 并在控制台中输出。
+         * @description: 相当于 `toast(message); log(message)` 。显示信息 `message` 并在控制台中输出。
          * @param {string} message 要显示的信息。
          */
         function toastLog(message: string): void;
@@ -93,7 +93,7 @@ declare module 'global' {
         function random(): number;
 
         /**
-         * @description: 表示此脚本需要 Android API 版本达到指定版本才能运行。例如 `requiresApi(19)` 表示脚本需要在 Android 4.4 以及以上运行。调用该函数时会判断运行脚本的设备系统的版本号，如果没有达到要求则抛出异常。[API版本号对照表](https://docs.hamibot.com/reference/globals/#requiresapiapi)。
+         * @description: 表示此脚本需要 Android API 版本达到指定版本才能运行。例如 `requiresApi(19)` 表示脚本需要在 Android 4.4 以及以上运行。调用该函数时会判断运行脚本的设备系统的版本号，如果没有达到要求则抛出异常。[API版本号对照表](https://docs.hamibot.com/reference/globals/#requiresapiapi) 。
          * @param {string} api Android 版本号。
          */
         function requireApi(api: string): void;

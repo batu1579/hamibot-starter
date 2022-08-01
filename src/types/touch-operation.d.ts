@@ -2,14 +2,14 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-30 18:17:34
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-26 10:12:00
+ * @LastTime: 2022-08-01 17:02:49
  * @FilePath: \\src\\types\\touch-operation.d.ts
  * @Description: 触摸操作模块
  */
 declare module 'touch-operation' {
     global {
         /**
-         * @description: 设置脚本坐标点击所适合的屏幕宽高。如果脚本运行时，屏幕宽度不一致会自动放缩坐标。例如在 1920*1080 的设备中，某个操作的代码为 `setScreenMetrics(1080, 1920);` 那么在其他设备上 Hamibot 会自动放缩坐标以便脚本仍然有效。例如在 540 * 960 的屏幕中 `click(800, 200)` 实际上会点击位置(400, 100)。
+         * @description: 设置脚本坐标点击所适合的屏幕宽高。如果脚本运行时，屏幕宽度不一致会自动放缩坐标。例如在 1920*1080 的设备中，某个操作的代码为 `setScreenMetrics(1080, 1920);` 那么在其他设备上 Hamibot 会自动放缩坐标以便脚本仍然有效。例如在 540 * 960 的屏幕中 `click(800, 200)` 实际上会点击位置 (400, 100) 。
          * @param {number} width 屏幕宽度，单位像素。
          * @param {number} height 屏幕高度，单位像素。
          * @example
@@ -22,7 +22,7 @@ declare module 'touch-operation' {
         function setScreenMetrics(width: number, height: number): void;
 
         /**
-         * @description: 模拟点击坐标(x, y)，并返回是否点击成功。只有在点击执行完成后脚本才继续执行。一般而言，只有点击过程(大约 150 毫秒)中被其他事件中断(例如用户自行点击)才会点击失败。使用该函数模拟连续点击时可能有点击速度过慢的问题，这时可以用 `press()` 函数代替。
+         * @description: 模拟点击坐标 (x, y) ，并返回是否点击成功。只有在点击执行完成后脚本才继续执行。一般而言，只有点击过程（大约 150 毫秒）中被其他事件中断（例如用户自行点击）才会点击失败。使用该函数模拟连续点击时可能有点击速度过慢的问题，这时可以用 `press()` 函数代替。
          * - **注意！：此函数只有 Android 7.0 及以上才有效 !**
          * @param {number} x 要点击的横坐标。
          * @param {number} y 要点击的纵坐标。
@@ -30,7 +30,7 @@ declare module 'touch-operation' {
         function click(x: number, y: number): void;
 
         /**
-         * @description: 模拟长按坐标(x, y), 并返回是否成功。只有在长按执行完成（大约 600 毫秒）时脚本才会继续执行。一般而言，只有长按过程中被其他事件中断(例如用户自行点击)才会长按失败。
+         * @description: 模拟长按坐标 (x, y) , 并返回是否成功。只有在长按执行完成（大约 600 毫秒）时脚本才会继续执行。一般而言，只有长按过程中被其他事件中断（例如用户自行点击）才会长按失败。
          * - **注意！：此函数只有 Android 7.0 及以上才有效 !**
          * @param {number} x 要按住的横坐标。
          * @param {number} y 要按住的纵坐标。
@@ -38,7 +38,7 @@ declare module 'touch-operation' {
         function longClick(x: number, y: number): void;
 
         /**
-         * @description: 模拟按住坐标(x, y), 并返回是否成功。只有按住操作执行完成时脚本才会继续执行。如果按住时间过短，那么会被系统认为是点击；如果时长超过 500 毫秒，则认为是长按。一般而言，只有按住过程中被其他事件中断才会操作失败。
+         * @description: 模拟按住坐标 (x, y) , 并返回是否成功。只有按住操作执行完成时脚本才会继续执行。如果按住时间过短，那么会被系统认为是点击；如果时长超过 500 毫秒，则认为是长按。一般而言，只有按住过程中被其他事件中断才会操作失败。
          * - **注意！：此函数只有 Android 7.0 及以上才有效 !**
          * @param {number} x 要按住的横坐标。
          * @param {number} y 要按住的纵坐标。
@@ -55,7 +55,7 @@ declare module 'touch-operation' {
         function press(x: number, y: number, duration: number): void;
 
         /**
-         * @description: 模拟从坐标(x1, y1)滑动到坐标(x2, y2)，并返回是否成功。只有滑动操作执行完成时脚本才会继续执行。一般而言，只有滑动过程中被其他事件中断才会滑动失败。
+         * @description: 模拟从坐标 (x1, y1) 滑动到坐标 (x2, y2) ，并返回是否成功。只有滑动操作执行完成时脚本才会继续执行。一般而言，只有滑动过程中被其他事件中断才会滑动失败。
          * - **注意！：此函数只有 Android 7.0 及以上才有效 !**
          * @param {number} x1 滑动的起始横坐标。
          * @param {number} y1 滑动的起始纵坐标。
@@ -66,16 +66,21 @@ declare module 'touch-operation' {
         function swipe(x1: number, y1: number, x2: number, y2: number, duration: number): void;
 
         /**
-         * @description: 模拟手势操作。例如 `gesture(1000, [0, 0], [500, 500], [500, 1000])` 为模拟一个从 (0, 0)到 (500, 500) 到 (500, 100) 的手势操作，时长为 2 秒。
+         * @description: 模拟手势操作。
          * - **注意！：此函数只有 Android 7.0 及以上才有效 !**
          * @param {number} duration 手势的时长。
          * @param {array} [points] 手势滑动路径的一系列坐标。
+         * @example
+         * ```typescript
+         * // 模拟一个从 (0, 0) 到 (500, 500) 到 (500, 100) 的手势操作，时长为 2 秒。
+         * gesture(1000, [0, 0], [500, 500], [500, 1000])
+         * ```
          */
         function gesture(duration: number, ...points: [number, number][]): void;
 
         /**
          * @description: 同时模拟多个手势。
-         * @param {array} [gesture] `[delay, duration, [横坐标, 纵坐标]]` , `delay` 为延迟多久(毫秒)才执行该手势；`duration` 为手势执行时长；坐标数组为手势经过的点的坐标。
+         * @param {array} [gesture] `[delay, duration, [横坐标, 纵坐标]]` , `delay` 为延迟多久（毫秒）才执行该手势；`duration` 为手势执行时长；坐标数组为手势经过的点的坐标。
          * - **注意！：此函数只有 Android 7.0 及以上才有效 !**
          * @example
          * ```typescript
@@ -139,7 +144,7 @@ declare module 'touch-operation' {
             press(x: number, y: number, duration: number, id?: number): void;
 
             /**
-             * @description: 模拟长按位置(x, y)。
+             * @description: 模拟长按位置 (x, y) 。
              * - **注意！：此函数需要 root 权限。**
              * @param {number} x 横坐标。
              * @param {number} y 纵坐标。
@@ -149,7 +154,7 @@ declare module 'touch-operation' {
             longPress(x: number, y: number, duration: number, id?: number): void;
 
             /**
-             * @description: 模拟手指按下位置(x, y)。
+             * @description: 模拟手指按下位置 (x, y) 。
              * - **注意！：此函数需要 root 权限。**
              * @param {number} x 按下位置的横坐标。
              * @param {number} y 按下位置的纵坐标。
@@ -166,7 +171,7 @@ declare module 'touch-operation' {
         }
 
         /**
-         * @description: 点击位置(x, y)。
+         * @description: 点击位置 (x, y) 。
          * - **注意！：此函数在后续版本很可能有改动！请勿过分依赖此函数的副作用。推荐使用`RootAutomator`代替此函数。**
          * - **注意！：此函数的执行是异步的、非阻塞的，在不同机型上所用的时间不同。脚本不会等待动作执行完成才继续执行。因此最好在每个函数之后加上适当的 sleep 来达到期望的效果。**
          * - **注意！：动作的执行可能无法被停止，代码执行后可能会出现在任务管理中停止脚本后点击仍然继续的情况。**
@@ -182,7 +187,7 @@ declare module 'touch-operation' {
         function Tap(x: number, y: number): void;
 
         /**
-         * @description: 从(x1, y1)位置滑动到(x2, y2)位置。
+         * @description: 从 (x1, y1) 位置滑动到 (x2, y2) 位置。
          * - **注意！：此函数在后续版本很可能有改动！请勿过分依赖此函数的副作用。推荐使用`RootAutomator`代替此函数。**
          * - **注意！：此函数的执行是异步的、非阻塞的，在不同机型上所用的时间不同。脚本不会等待动作执行完成才继续执行。因此最好在每个函数之后加上适当的 sleep 来达到期望的效果。**
          * - **注意！：动作的执行可能无法被停止，代码执行后可能会出现在任务管理中停止脚本后点击仍然继续的情况。**

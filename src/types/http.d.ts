@@ -107,7 +107,7 @@ declare module 'http' {
             postJson(url: string, data: object, options?: RequestOptions, callback?: (res: Response) => any): Response;
 
             /**
-             * @description: 向目标地址发起类型为 multipart/form-data 的请求（通常用于文件上传等), 其中 files 参数是<name1: value1, name2: value2, ...>的键值对，value 的格式可以是以下几种情况：
+             * @description: 向目标地址发起类型为 multipart/form-data 的请求（通常用于文件上传等）, 其中 files 参数是<name1: value1, name2: value2, ...>的键值对，value 的格式可以是以下几种情况：
              *  - 文件类型，即 `open()` 返回的类型
              *  - [fileName, filePath]
              *  - [fileName, mimeType, filePath]
@@ -159,12 +159,12 @@ declare module 'http' {
          */
         interface Response {
             /**
-             * @description: 当前响应的 HTTP 状态码。例如 200(OK), 404(Not Found)等。有关 HTTP 状态码的信息，参见 [HTTP 响应代码](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status)。
+             * @description: 当前响应的 HTTP 状态码。例如 200（OK）, 404（Not Found）等。有关 HTTP 状态码的信息，参见 [HTTP 响应代码](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status) 。
              */
             readonly statusCode: number;
 
             /**
-             * @description: 当前响应的 HTTP 状态信息。例如'OK', 'Bad Request', 'Forbidden'。有关 HTTP 状态码的信息，参见 [HTTP 响应代码](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status)。
+             * @description: 当前响应的 HTTP 状态信息。例如'OK', 'Bad Request', 'Forbidden'。有关 HTTP 状态码的信息，参见 [HTTP 响应代码](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status) 。
              * @example
              * ```typescript
              * let res = http.get('www.baidu.com');
@@ -217,7 +217,7 @@ declare module 'http' {
 
     interface RequestOptions {
         /**
-         * @description: 键值对形式的 HTTP 头部信息。有关 HTTP 头部信息，参见 [HTTP Headers](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers)。
+         * @description: 键值对形式的 HTTP 头部信息。有关 HTTP 头部信息，参见 [HTTP Headers](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers) 。
          */
         headers: object;
 

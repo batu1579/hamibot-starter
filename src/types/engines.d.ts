@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 16:14:41
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-01 02:33:56
+ * @LastTime: 2022-08-01 17:11:54
  * @FilePath: \\src\\types\\engines.d.ts
  * @Description: 脚本引擎模块
  */
@@ -67,7 +67,7 @@ declare module 'engines' {
             execScriptFile(path: string, config?: ExecutionConfig): ScriptExecution;
 
             /**
-             * @description: 在新的脚本环境中运行录制文件(.auto)。
+             * @description: 在新的脚本环境中运行录制文件（ *.auto ）。
              * @param {string} path 要运行的录制文件路径。
              * @param {ExecutionConfig} [config] 运行配置项。
              * @return {ScriptExecution} 返回一个 `ScriptExectuion` 对象。
@@ -89,7 +89,7 @@ declare module 'engines' {
             stopAllAndToast(): void;
 
             /**
-             * @description: 获取当前脚本的脚本引擎对象( `ScriptEngine` )。该对象可以通过 `execArgv` 来获取他的运行参数，包括外部参数、 `intent` 等。普通脚本的运行参数通常为空，通过定时任务的广播启动的则可以获取到启动的 `intent` 。
+             * @description: 获取当前脚本的脚本引擎对象。该对象可以通过 `execArgv` 来获取他的运行参数，包括外部参数、 `intent` 等。普通脚本的运行参数通常为空，通过定时任务的广播启动的则可以获取到启动的 `intent` 。
              * @return {ScriptEngine} 当前脚本的脚本引擎对象。
              * @example
              * ```typescript
@@ -99,7 +99,7 @@ declare module 'engines' {
             myEngine(): ScriptEngine;
 
             /**
-             * @description: 获取当前所有正在运行的脚本的脚本引擎对象( `ScriptEngine` )。该对象可以通过 `execArgv` 来获取他的运行参数，包括外部参数、 `intent` 等。普通脚本的运行参数通常为空，通过定时任务的广播启动的则可以获取到启动的 `intent` 。
+             * @description: 获取当前所有正在运行的脚本的脚本引擎对象。该对象可以通过 `execArgv` 来获取他的运行参数，包括外部参数、 `intent` 等。普通脚本的运行参数通常为空，通过定时任务的广播启动的则可以获取到启动的 `intent` 。
              * @return {array} 所有正在运行的脚本的脚本引擎。
              */
             all(): ScriptEngine[];
@@ -135,13 +135,13 @@ declare module 'engines' {
          */
         class ScriptExecution {
             /**
-             * @description: 获取执行该脚本的脚本引擎对象( `ScriptEngine` )。
+             * @description: 获取执行该脚本的脚本引擎对象。
              * @return {ScriptEngine} 执行该脚本的脚本引擎对象。
              */
             getEngine(): ScriptEngine;
 
             /**
-             * @description: 获取该脚本的运行配置( `ScriptConfig` )。
+             * @description: 获取该脚本的运行配置。
              * @return {ScriptConfig} 该脚本的运行配置。
              */
             getConfig(): ScriptConfig;

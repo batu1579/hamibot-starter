@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-26 09:44:33
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-01 02:33:37
+ * @LastTime: 2022-08-01 17:12:59
  * @FilePath: \\src\\types\\dialogs.d.ts
  * @Description: 对话框模块
  */
@@ -170,7 +170,7 @@ declare module 'dialogs' {
              * @param {string} title 对话框的标题。
              * @param {array} items 对话框的选项列表，是一个字符串数组。
              * @param {function} [callback] 回调函数。当用户点击确定时被调用,一般用于 ui 模式。参数为 number （用户选择的选项索引），返回值为 any 。
-             * @return {number | Promise<number>} 返回用户选择的选项索引( `0` ~ `item.length - 1` )。如果用户取消了选择，返回 `-1` 。
+             * @return {number | Promise<number>} 返回用户选择的选项索引（ `0` ~ `item.length - 1` ）。如果用户取消了选择，返回 `-1` 。
              * @example
              * ```typescript
              * let options = ['选项A', '选项B', '选项C', '选项D'];
@@ -201,7 +201,7 @@ declare module 'dialogs' {
              * @param {string} items 对话框的选项列表，是一个字符串数组。
              * @param {number} [index] 对话框的初始选项的位置（默认为 0）。
              * @param {function} [callback] 回调函数。当用户点击确定时被调用,一般用于 ui 模式。参数为 number （用户选择的选项索引），返回值为 any 。
-             * @return {number | Promise<number>} 返回用户选择的选项索引( `0` ~ `item.length - 1` )。如果用户取消了选择，返回 `-1` 。
+             * @return {number | Promise<number>} 返回用户选择的选项索引（ `0` ~ `item.length - 1` ）。如果用户取消了选择，返回 `-1` 。
              */
             singleChoice(title: string, items: string[], index?: number, callback?: (i: number) => any): number | Promise<number>;
 
@@ -741,32 +741,32 @@ declare module 'dialogs' {
         itemsSelectedIndex?: number | number[];
 
         /**
-         * @description: 对话框确定按钮的文字内容(最右边按钮)。
+         * @description: 对话框确定按钮的文字内容（最右边按钮）。
          */
         positive?: string;
 
         /**
-         * @description: 对话框确定按钮的文字颜色(最右边按钮)。
+         * @description: 对话框确定按钮的文字颜色（最右边按钮）。
          */
         positiveColor?: DialogColor;
 
         /**
-         * @description: 对话框中立按钮的文字内容(最左边按钮)。
+         * @description: 对话框中立按钮的文字内容（最左边按钮）。
          */
         neutral?: string;
 
         /**
-         * @description: 对话框中立按钮的文字颜色(最左边按钮)。
+         * @description: 对话框中立按钮的文字颜色（最左边按钮）。
          */
         neutralColor?: DialogColor;
 
         /**
-         * @description: 对话框取消按钮的文字内容(确定按钮左边的按钮)。
+         * @description: 对话框取消按钮的文字内容（确定按钮左边的按钮）。
          */
         negative?: string;
 
         /**
-         * @description: 对话框取消按钮的文字颜色(确定按钮左边的按钮)。
+         * @description: 对话框取消按钮的文字颜色（确定按钮左边的按钮）。
          */
         negativeColor?: DialogColor;
 

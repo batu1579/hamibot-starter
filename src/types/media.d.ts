@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-12 04:23:34
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-21 02:13:41
+ * @LastTime: 2022-08-01 17:04:25
  * @FilePath: \\src\\types\\media.d.ts
  * @Description: 多媒体模块
  */
@@ -101,7 +101,7 @@ declare module 'media' {
 
             /**
              * @description: 获取当前音乐的播放进度。
-             * @return {number} 当前音乐的播放进度(已经播放的时间)，单位毫秒。
+             * @return {number} 当前音乐的播放进度（已经播放的时间），单位毫秒。
              */
             getMusicCurrentPosition(): number;
         }

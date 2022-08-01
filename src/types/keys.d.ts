@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-11 19:29:25
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-23 09:23:53
+ * @LastTime: 2022-08-01 17:04:38
  * @FilePath: \\src\\types\\keys.d.ts
  * @Description: 模拟物理按键模块
  */
@@ -30,7 +30,7 @@ declare module 'keys' {
         function powerDialog(): boolean;
 
         /**
-         * @description: 显示快速设置(下拉通知栏到底)。
+         * @description: 显示快速设置（下拉通知栏到底）。
          * - **注意！：此函数依赖于无障碍服务。**
          * @return {boolean} 是否执行成功。
          */
