@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 01:55:44
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-01 17:14:02
+ * @LastTime: 2022-08-01 20:14:57
  * @FilePath: \\src\\types\\device.d.ts
  * @Description: device 模块
  */
@@ -249,8 +249,9 @@ declare module 'device' {
 
             /**
              * @description: 保持屏幕常亮。如果此函数调用时屏幕没有点亮，则会唤醒屏幕。可以使用 `device.cancelKeepingAwake()` 来取消屏幕常亮。
+             * - *建议（：使用比较长的时长来代替'一直保持屏幕常亮'的功能，例如 `device.keepScreenOn(3600 * 1000)` 。*
              * - **注意！：此函数无法阻止用户使用锁屏键等正常关闭屏幕，只能使得设备在无人操作的情况下保持屏幕常亮。**
-             * - **注意！：在某些设备上，如果不加参数 `timeout` ，只能在 Hamibot 的界面保持屏幕常亮，在其他界面会自动失效，这是因为设备的省电策略造成的。建议使用比较长的时长来代替'一直保持屏幕常亮'的功能，例如 `device.keepScreenOn(3600 * 1000)` 。**
+             * - **注意！：在某些设备上，如果不加参数 `timeout` ，只能在 Hamibot 的界面保持屏幕常亮，在其他界面会自动失效，这是因为设备的省电策略造成的。**
              * @param {number} [timeout] 屏幕保持常亮的时间, 单位毫秒。如果不加此参数，则一直保持屏幕常亮。
              */
             keepScreenOn(timeout?: number): void;

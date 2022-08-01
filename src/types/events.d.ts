@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-26 11:23:12
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-31 22:35:38
+ * @LastTime: 2022-08-01 20:14:54
  * @FilePath: \\src\\types\\events.d.ts
  * @Description: 事件模块
  */
@@ -176,7 +176,8 @@ declare module 'events' {
             observeKey(): void;
 
             /**
-             * @description: 设置两个触摸事件分发的最小时间间隔。例如间隔为 10 毫秒的话，前一个触摸事件发生并被注册的监听器处理后，至少要过 10 毫秒才能分发和处理下一个触摸事件，这 10 毫秒之间的触摸将会被忽略。建议在满足需要的情况下尽量提高这个间隔。
+             * @description: 设置两个触摸事件分发的最小时间间隔。例如间隔为 10 毫秒的话，前一个触摸事件发生并被注册的监听器处理后，至少要过 10 毫秒才能分发和处理下一个触摸事件，这 10 毫秒之间的触摸将会被忽略。
+             * - *建议（：在满足需要的情况下尽量提高这个间隔。*
              * - **注意！：如果 timeout 设置过低可能造成事件拥堵。强烈建议不要设置 `timeout` 为 0 。**
              * @param {number} timeout 两个触摸事件的最小间隔。单位毫秒。默认为 10 毫秒。如果小于 0 ，视为 0 处理。
              */
@@ -720,12 +721,14 @@ declare module 'events' {
     /**
      * @callback KeyListener
      * @description: 当有按键被按下或弹起时要执行的回调函数。
-     * @param {number} keyCode 触发事件的按键编号，建议使用 `keys` 比较。
+     * @param {number} keyCode 触发事件的按键编号。
+     * - *建议（：使用 `keys` 比较 `keyCode` 的值。*
      * @param {KeyEventObject} event 按键事件。
      */
     type KeyListener = (
         /**
-         * 触发事件的按键编号，建议使用 `keys` 比较。
+         * 触发事件的按键编号。
+         * - *建议（：使用 `keys` 比较 `keyCode` 的值。*
          */
         keyCode: number,
         /**

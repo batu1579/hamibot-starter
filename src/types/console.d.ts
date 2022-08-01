@@ -155,7 +155,7 @@ declare module 'console' {
 
             /**
              * @description: 设置控制台的大小，单位像素。
-             * - 建议（：在显示控制台后等待一段时间后在进行调整，否则可能会设置失败。
+             * - *建议（：在显示控制台后等待一段时间后在进行调整，否则可能会设置失败。*
              * @param {number} w 宽度。
              * @param {number} h 高度。
              * @example
@@ -171,7 +171,7 @@ declare module 'console' {
 
             /**
              * @description: 设置控制台左上角的位置，单位像素。
-             * - 建议（：在显示控制台后等待一段时间后在进行调整，否则可能会设置失败。
+             * - *建议（：在显示控制台后等待一段时间后在进行调整，否则可能会设置失败。*
              * @param {number} x 横坐标。
              * @param {number} y 纵坐标。
              * @example

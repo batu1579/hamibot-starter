@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-26 09:44:33
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-01 17:12:59
+ * @LastTime: 2022-08-01 20:12:54
  * @FilePath: \\src\\types\\dialogs.d.ts
  * @Description: 对话框模块
  */
@@ -137,7 +137,7 @@ declare module 'dialogs' {
 
             /**
              * @description: 显示一个包含输入框的对话框，等待用户输入内容 。
-             * - **注意！：此函数相当于 `dialogs.rawInput()` 建议用 `dialogs.rawInput()` 代替。 **
+             * - *建议（：用 `dialogs.rawInput()` 代替此函数。*
              * @param {string} title 对话框的标题。
              * @param {string} [prefill] 对话框的内容（默认为空）。
              * @param {function} [callback] 回调函数。当用户点击确定时被调用,一般用于 ui 模式。参数为 string （用户输入的内容），返回值为 any 。
