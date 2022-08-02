@@ -45,8 +45,7 @@ let yyyy = sensors.register("yyy")!;
 
 ## TODO List
 
-- [ ] 添加声明文件 [22/26]
-  - [ ] Images
+- [ ] 添加声明文件 [23/26]
   - [ ] UI
   - [ ] Util
   - [ ] Canvans
