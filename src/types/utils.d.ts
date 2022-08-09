@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 20:18:32
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-24 02:58:03
+ * @LastTime: 2022-08-09 15:54:25
  * @FilePath: \\src\\types\\utils.d.ts
  * @Description: 
  */
@@ -34,5 +34,7 @@ declare module 'utils' {
         class Double extends Number {
 
         }
+
+        type Color = number | string;
     }
 }

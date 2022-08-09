@@ -1279,8 +1279,6 @@ declare module 'images' {
         'TRIANGLE'
     )
 
-    type Color = number | string;
-
     type ImageSize = number | [number] | [number, number]
 
     type BorderType = (
