@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-24 16:55:58
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-01 02:23:14
+ * @LastTime: 2022-08-09 22:45:49
  * @FilePath: \\webpack.config.js
  * @Description: https://blog.csdn.net/Zong_0915/article/details/115831373
  */
@@ -21,6 +21,11 @@ module.exports = {
         filename: "index.js"
     },
 
+    optimization: {
+        // 压缩代码
+        minimize: false
+    },
+
     // 指定webpack打包的时候要使用的模块
     module: {
         // 指定要价在的规则
@@ -28,6 +33,7 @@ module.exports = {
             {
                 // test指定的是规则生效的文件,意思是，用ts-loader来处理以ts为结尾的文件
                 test: /\.ts$/,
+                exclude: /node_modules/,
                 use: [
                     // 配置babel
                     {
@@ -35,28 +41,11 @@ module.exports = {
                         loader: 'babel-loader',
                         // 设置babel
                         options: {
-                            // 设置预定义的环境
-                            presets: [
-                                [
-                                    // 指定环境插件
-                                    "@babel/preset-env",
-                                    // 配置信息
-                                    {
-                                        targets: {
-                                            "chrome": "88"
-                                        },
-                                        // 指定corejs的版本
-                                        "corejs": "3",
-                                        // 使用corejs的方式为按需加载
-                                        "useBuiltIns": "usage"
-                                    }
-                                ]
-                            ]
+                            presets: ['@babel/preset-env']
                         }
                     },
                     'ts-loader'
-                ],
-                exclude: /node_modules/
+                ]
             }
         ]
     },
