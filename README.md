@@ -24,11 +24,15 @@ npm install
 
 在 `.\src` 文件夹下编写代码，程序入口为 `src\index.ts` 。
 
-完成编写以后使用下面的命令打包项目，打包后的文件路径为: `.\dist\bundle.js` 。
+完成编写以后使用 VSCode 的快捷键 `ctrl + shift + b` 打开任务菜单，然后选择 `npm build` 打包。
+
+也可以使用下面的命令打包项目：
 
 ```sh
 npm run build
 ```
+
+打包后的文件路径为: `.\dist\bundle.js`
 
 ## 注意事项
 
