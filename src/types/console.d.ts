@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 17:07:59
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-01 17:25:39
+ * @LastTime: 2022-08-11 17:01:28
  * @FilePath: \\src\\types\\console.d.ts
  * @Description: 控制台模块
  */
@@ -13,7 +13,7 @@ declare module 'console' {
         /**
          * @description: 控制台模块提供了一个和 Web 浏览器中相似的用于调试的控制台。用于输出一些调试信息、中间结果等。 console 模块中的一些函数也可以直接作为全局函数使用，例如 log, print 等。
          */
-        const console: Console
+        var console: Console
 
         interface Console {
             /**

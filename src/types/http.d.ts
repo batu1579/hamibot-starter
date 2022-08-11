@@ -1,8 +1,8 @@
 /*
  * @Author: Hamibot hello@hamibot.com
- * @Date: 2022-06-09 13:31:43
+ * @CreateDate: 2022-06-09 13:31:43
  * @LastEditors: BATU1579
- * @LastEditTime: 2022-06-10 09:53:27
+ * @LastTime: 2022-08-11 18:24:53
  * @FilePath: \\src\\types\\http.d.ts
  * @Description: 网络操作模块
  * 
@@ -19,7 +19,7 @@ declare module 'http' {
             /**
              * @description: 对地址 `url` 进行一次 HTTP GET 请求。如果没有回调函数，则在请求完成或失败时返回此次请求的响应。
              * @param {string} url 请求的 URL 地址，需要以'http://'或'https://'开头。如果 `url` 没有以'http://'开头，则默认为'http://'。
-             * @param {RequestOptions} [options] 请求选项。
+             * @param {HttpRequestOptions} [options] 请求选项。
              * @param {function} [callback] 回调函数。参数为 `Response` 对象。返回值为 any 。如果不加回调函数，则该请求将阻塞、同步地执行。
              * @return {Response} 请求的响应对象
              * @example
@@ -56,13 +56,13 @@ declare module 'http' {
              * log('html = ' + r.body.string());
              * ```
              */
-            get(url: string, options?: RequestOptions, callback?: (res: Response) => any): Response;
+            get(url: string, options?: HttpRequestOptions, callback?: (res: Response) => any): Response;
 
             /**
              * @description: 对地址 `url` 进行一次 HTTP POST 请求。如果没有回调函数，则在请求完成或失败时返回此次请求的响应。其中 POST 数据可以是字符串或键值对。具体含义取决于 `options.contentType` 的值。默认为'application/x-www-form-urlencoded', 这种方式是 JQuery 的 ajax 函数的默认方式。
              * @param {string} url 请求的 URL 地址，需要以'http://'或'https://'开头。如果 `url` 没有以'http://'开头，则默认为'http://'。
              * @param {Object} data POST 数据。
-             * @param {RequestOptions} [options] 请求选项。
+             * @param {HttpRequestOptions} [options] 请求选项。
              * @param {function} [callback] 回调函数。参数为 `Response` 对象。返回值为 any 。如果不加回调函数，则该请求将阻塞、同步地执行。
              * @return {Response} 请求的响应对象
              * @example
@@ -83,13 +83,13 @@ declare module 'http' {
              * }
              * ```
              */
-            post(url: string, data: Object, options?: RequestOptions, callback?: (res: Response) => any): Response;
+            post(url: string, data: Object, options?: HttpRequestOptions, callback?: (res: Response) => any): Response;
 
             /**
              * @description: 以 JSON 格式向目标 `Url` 发起 POST 请求。如果没有回调函数，则在请求完成或失败时返回此次请求的响应。JSON 格式指的是，将会调用 `JSON.stringify()` 把 `data` 对象转换为 JSON 字符串，并在 HTTP 头部信息中把'Content-Type'属性置为'application/json'。这种方式是 AngularJS 的 ajax 函数的默认方式。
              * @param {string} url 请求的 URL 地址，需要以'http://'或'https://'开头。如果 `url` 没有以'http://'开头，则默认为'http://'。
              * @param {object} data POST 数据。
-             * @param {RequestOptions} [options] 请求选项。
+             * @param {HttpRequestOptions} [options] 请求选项。
              * @param {function} [callback] 回调函数。参数为 `Response` 对象。返回值为 any 。如果不加回调函数，则该请求将阻塞、同步地执行。
              * @return {Response} 请求的响应对象
              * @example
@@ -104,7 +104,7 @@ declare module 'http' {
              * toastLog(r.body.string());
              * ```
              */
-            postJson(url: string, data: object, options?: RequestOptions, callback?: (res: Response) => any): Response;
+            postJson(url: string, data: object, options?: HttpRequestOptions, callback?: (res: Response) => any): Response;
 
             /**
              * @description: 向目标地址发起类型为 multipart/form-data 的请求（通常用于文件上传等）, 其中 files 参数是<name1: value1, name2: value2, ...>的键值对，value 的格式可以是以下几种情况：
@@ -113,7 +113,7 @@ declare module 'http' {
              *  - [fileName, mimeType, filePath]
              * @param {string} url 请求的 URL 地址，需要以'http://'或'https://'开头。如果 `url` 没有以'http://'开头，则默认为'http://'。
              * @param {FileOptions} files POST 数据。
-             * @param {RequestOptions} [options] 请求选项。
+             * @param {HttpRequestOptions} [options] 请求选项。
              * @param {function} [callback] 回调函数。参数为 `Response` 对象。返回值为 any 。如果不加回调函数，则该请求将阻塞、同步地执行。
              * @return {Response} 请求的响应对象
              * @example
@@ -141,17 +141,17 @@ declare module 'http' {
              * log(res.body.string());
              * ```
              */
-            postMultipart(url: string, files: FileOptions, options?: RequestOptions, callback?: (res: Response) => any): Response;
+            postMultipart(url: string, files: FileOptions, options?: HttpRequestOptions, callback?: (res: Response) => any): Response;
 
             /**
              * @description: 对目标地址 url 发起一次 HTTP 请求。如果没有回调函数，则在请求完成或失败时返回此次请求的响应。
              * - **注意！：该函数是 get, post, postJson 等函数的基础函数。因此除非是 PUT, DELET 等请求，或者需要更高定制的 HTTP 请求，否则直接使用 get, post, postJson 等函数会更加方便**
              * @param {string} url 请求的 URL 地址，需要以'http://'或'https://'开头。如果 `url` 没有以'http://'开头，则默认为'http://'。
-             * @param {RequestOptions} [options] 请求选项。
+             * @param {HttpRequestOptions} [options] 请求选项。
              * @param {function} [callback] 回调函数。参数为 `Response` 对象。返回值为 any 。如果不加回调函数，则该请求将阻塞、同步地执行。
              * @return {Response} 请求的响应对象
              */
-            request(url: string, options?: RequestOptions, callback?: (res: Response) => any): Response;
+            request(url: string, options?: HttpRequestOptions, callback?: (res: Response) => any): Response;
         }
 
         /**
@@ -215,7 +215,7 @@ declare module 'http' {
         }
     }
 
-    interface RequestOptions {
+    interface HttpRequestOptions {
         /**
          * @description: 键值对形式的 HTTP 头部信息。有关 HTTP 头部信息，参见 [HTTP Headers](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers) 。
          */
