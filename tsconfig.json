@@ -8,7 +8,7 @@
         "strict": true,
         "typeRoots": [
             "src/types",
-            // "node_modules/@types",
+            "node_modules/@types",
         ],
         "outDir": "build",
         "forceConsistentCasingInFileNames": true,
