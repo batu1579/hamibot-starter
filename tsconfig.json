@@ -1,14 +1,14 @@
 {
     "compilerOptions": {
         "lib": [
-            "ES2015"
+            "ES5"
         ],
-        "target": "es2015",
-        "module": "es2015",
+        "target": "ES5",
+        "module": "ES2015",
         "strict": true,
         "typeRoots": [
             "src/types",
-            "node_modules/@types",
+            "node_modules/@types"
         ],
         "outDir": "build",
         "forceConsistentCasingInFileNames": true,
