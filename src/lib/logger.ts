@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-05 04:00:16
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-13 09:18:03
+ * @LastTime: 2022-08-13 09:27:19
  * @FilePath: \\src\\lib\\logger.ts
  * @Description: 存放关于日志和调试信息的预制方法。
  */
@@ -219,6 +219,7 @@ export class Logger {
 
     /**
      * @description: 设置记录的日志级别，低于设置的级别的日志都不会记录。
+     * - **注意！：修改前的日志记录不会改变。**
      * @param {LevelName} level 设置的等级，可选的值为：
      * - `debug`
      * - `log`
