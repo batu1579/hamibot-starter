@@ -477,6 +477,18 @@ class LogStackFrame {
         let endTag: string = `</span></br>`
 
         for (let line of this.data.split('\n')) {
+            // 转义特殊字符
+            line = line.replace(/[<>&"'`\/]/g, (c) => {
+                return {
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '&': '&amp;',
+                    '"': '&quot;',
+                    '\'': '&#39;',
+                    '`': '&#96',
+                    '\/': '&#x2F'
+                }[c]!;
+            });
             htmlArray.push(
                 [startTag, line, endTag].join('')
             );
