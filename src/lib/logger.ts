@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-05 04:00:16
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-13 08:09:42
+ * @LastTime: 2022-08-13 09:18:03
  * @FilePath: \\src\\lib\\logger.ts
  * @Description: 存放关于日志和调试信息的预制方法。
  */
@@ -417,7 +417,7 @@ export class Logger {
      */
     private static sendToRemote(title: string, message: string): boolean {
         // TODO: 抛出异常？
-        if (Logger.TOKEN !== null) {
+        if (Logger.TOKEN === null) {
             return false;
         }
 
