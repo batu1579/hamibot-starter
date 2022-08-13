@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 17:07:59
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-11 17:01:28
+ * @LastTime: 2022-08-13 00:18:01
  * @FilePath: \\src\\types\\console.d.ts
  * @Description: 控制台模块
  */
@@ -11,7 +11,7 @@ declare module 'console' {
     global {
 
         /**
-         * @description: 控制台模块提供了一个和 Web 浏览器中相似的用于调试的控制台。用于输出一些调试信息、中间结果等。 console 模块中的一些函数也可以直接作为全局函数使用，例如 log, print 等。
+         * @description: 控制台模块提供了一个和 Web 浏览器中相似的用于调试的控制台。用于输出一些调试信息、中间结果等。 console 模块中的一些函数也可以直接作为全局函数使用，例如 `log` , `print` 等。
          */
         var console: Console
 
@@ -50,37 +50,37 @@ declare module 'console' {
             log(data?: any, ...args: any[]): void;
 
             /**
-             * @description: 与 console.log 类似，但输出结果以灰色字体显示。输出优先级低于 log，用于输出观察性质的信息。
+             * @description: 与 `console.log` 类似，但输出结果以灰色字体显示。输出优先级低于 `log` ，用于输出观察性质的信息。
              * @param {any} [data] 主要信息。
              * @param {array} [args] 要填充的数据。
              */
             verbose(data?: any, ...args: any[]): void;
 
             /**
-             * @description: 与 console.log 类似，但输出结果以绿色字体显示。输出优先级高于 log, 用于输出重要信息。
+             * @description: 与 `console.log` 类似，但输出结果以绿色字体显示。输出优先级高于 `log` ，用于输出重要信息。
              * @param {any} [data] 主要信息。
              * @param {array} [args] 要填充的数据。
              */
             info(data?: any, ...args: any[]): void;
 
             /**
-             * @description: 与 console.log 类似，但输出结果以蓝色字体显示。输出优先级高于 info, 用于输出警告信息。
+             * @description: 与 `console.log` 类似，但输出结果以蓝色字体显示。输出优先级高于 `info` ，用于输出警告信息。
              * @param {any} [data] 主要信息。
              * @param {array} [args] 要填充的数据。
              */
             warn(data?: any, ...args: any[]): void;
 
             /**
-             * @description: 与 console.log 类似，但输出结果以红色字体显示。输出优先级高于 warn, 用于输出错误信息。
+             * @description: 与 `console.log` 类似，但输出结果以红色字体显示。输出优先级高于 `warn` ，用于输出错误信息。
              * @param {any} [data] 主要信息。
              * @param {array} [args] 要填充的数据。
              */
             error(data?: any, ...args: any[]): void;
 
             /**
-             * @description: 断言。如果 value 为 false 则输出错误信息 message 并停止脚本运行。
+             * @description: 断言。如果 `value` 为 `false` 则输出错误信息 `message` 并停止脚本运行。
              * @param {any} value 要断言的布尔值。
-             * @param {string} message value 为 false 时要输出的信息。
+             * @param {string} message `value` 为 `false` 时要输出的信息。
              * @example
              * ```typescript
              * let a = 1 + 1;
