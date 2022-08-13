@@ -502,7 +502,7 @@ class LoggerSchemes {
     static readonly debug = {
         'displayName': 'DEBUG',
         'logFunction': console.verbose,
-        'color': 'grey',
+        'color': 'lightgrey',
         'level': 0
     }
     static readonly log = {
