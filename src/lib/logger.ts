@@ -15,7 +15,7 @@ class LogStack {
      * @param {LogStackFrame} stackFrame 要添加的新数据。
      * @return {number} 添加的数据的数组下标。
      */
-    push(stackFrame: LogStackFrame): number {
+    public push(stackFrame: LogStackFrame): number {
         return this.STACK.push(stackFrame);
     }
 
@@ -23,7 +23,7 @@ class LogStack {
      * @description: 清空日志堆栈中的数据，用于手动清空日志堆栈。
      * - **注意！：一般来说不需要手动清空。在发送日志后会自动清空日志堆栈，除非单独设置。**
      */
-    clear(): void {
+    public clear(): void {
         this.STACK.length = 0;
     }
 
@@ -31,7 +31,7 @@ class LogStack {
      * @description: 获取日志堆栈的内容。
      * @return {string[]} 将栈帧转换为字符串后的日志堆栈。
      */
-    getLogStack(): string[] {
+    public getLogStack(): string[] {
         let stack: string[] = [];
 
         for (let i = 0; i < this.STACK.length; i++) {
@@ -45,7 +45,7 @@ class LogStack {
      * @description: 将日志堆栈转换为字符串。
      * @return {string} 转换后的堆栈。
      */
-    toString(): string {
+    public toString(): string {
         return this.getLogStack().join('\n');
     }
 
@@ -53,7 +53,7 @@ class LogStack {
      * @description: 将日志堆栈转换为 html 字符串用于发送日志。
      * @return {string} 转换后的堆栈。
      */
-    toHtmlString(): string {
+    public toHtmlString(): string {
         let stack: string[] = [
             '<div style="font-size: 15px; font-family: monospace; word-wrap:break-word;">'
         ];
@@ -66,6 +66,138 @@ class LogStack {
         return stack.join('\n');
     }
 }
+
+class TraceStackFrame {
+    private line: number;
+    private callerName: string;
+
+    constructor(line: number, callerName: string) {
+        this.line = line;
+        this.callerName = callerName;
+    }
+
+    /**
+     * @description: 获取调用者的函数名。
+     * @return {string} 调用者的函数名。
+     */
+    public getCallerName(): string {
+        return this.callerName;
+    }
+
+    /**
+     * @description: 设置调用者的函数名。
+     * @param {string} callerName 要设置的函数名。
+     */
+    public setCallerName(callerName: string): void {
+        this.callerName = callerName;
+    }
+
+    /**
+     * @description: 重写 `TraceItem` 对象转换为字符串的方法。转换格式类似 Python 。
+     * @return {string} 转换后的字符串。
+     */
+    public toString(): string {
+        return ` | at line ${this.line}, in <${this.callerName}>`
+    }
+}
+
+class LogStackFrame {
+    private data: string;
+    private color: string;
+
+    constructor(scheme: LoggerScheme, data: string) {
+        this.data = data;
+        this.color = scheme.color;
+    }
+
+    /**
+     * @description: 将日志堆栈的栈帧转换为字符串。
+     * @return {string} 转换后的栈帧。
+     */
+    public toString(): string {
+        return this.data;
+    }
+
+    /**
+     * @description: 将日志堆栈的栈帧转换为 html 字符串用于发送日志。
+     * @return {string} 转换后的栈帧。
+     */
+    public toHtmlString(): string {
+        let htmlArray: string[] = [];
+        let startTag: string = `<span style='color: ${this.color};'>`;
+        let endTag: string = `</span></br>`
+
+        for (let line of this.data.split('\n')) {
+            // 转义特殊字符
+            line = line.replace(/[<>&"'`\/]/g, (c) => {
+                return {
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '&': '&amp;',
+                    '"': '&quot;',
+                    '\'': '&#39;',
+                    '`': '&#96',
+                    '\/': '&#x2F'
+                }[c]!;
+            });
+            htmlArray.push(
+                [startTag, line, endTag].join('')
+            );
+        }
+
+        return htmlArray.join('\n');
+    }
+}
+
+class LoggerSchemes {
+    static readonly debug = {
+        'displayName': 'DEBUG',
+        'logFunction': console.verbose,
+        'color': 'lightgrey',
+        'level': 0
+    }
+    static readonly log = {
+        'displayName': ' LOG ',
+        'logFunction': console.log,
+        'color': 'back',
+        'level': 1
+    }
+    static readonly info = {
+        'displayName': 'INFO',
+        'logFunction': console.info,
+        'color': 'green',
+        'level': 2
+    }
+    static readonly warn = {
+        'displayName': 'WARN',
+        'logFunction': console.warn,
+        'color': 'yellow',
+        'level': 3
+    }
+    static readonly error = {
+        'displayName': 'ERROR',
+        'logFunction': console.error,
+        'color': 'red',
+        'level': 4
+    }
+}
+
+interface LoggerScheme {
+    displayName: string;
+    logFunction: (data?: any, ...args: any[]) => void;
+    color: string;
+    level: number;
+}
+
+class LevelTable {
+    static readonly debug: number = 0;
+    static readonly log: number = 1;
+    static readonly info: number = 2;
+    static readonly warn: number = 3;
+    static readonly error: number = 4;
+}
+
+type LevelName = Exclude<keyof typeof LevelTable, 'prototype'>;
 
 /**
  * @description: 存放关于日志和调试信息的预制方法。
@@ -432,119 +564,3 @@ export class Logger {
         return res.statusCode === 200;
     }
 }
-
-class TraceStackFrame {
-    line: number;
-    callerName: string;
-
-    constructor(line: number, callerName: string) {
-        this.line = line;
-        this.callerName = callerName;
-    }
-
-    /**
-     * @description: 重写 `TraceItem` 对象转换为字符串的方法。转换格式类似 Python 。
-     * @return {string} 转换后的字符串。
-     */
-    toString(): string {
-        return ` | at line ${this.line}, in <${this.callerName}>`
-    }
-}
-
-class LogStackFrame {
-    private data: string;
-    private color: string;
-
-    constructor(scheme: LoggerScheme, data: string) {
-        this.data = data;
-        this.color = scheme.color;
-    }
-
-    /**
-     * @description: 将日志堆栈的栈帧转换为字符串。
-     * @return {string} 转换后的栈帧。
-     */
-    toString(): string {
-        return this.data;
-    }
-
-    /**
-     * @description: 将日志堆栈的栈帧转换为 html 字符串用于发送日志。
-     * @return {string} 转换后的栈帧。
-     */
-    toHtmlString(): string {
-        let htmlArray: string[] = [];
-        let startTag: string = `<span style='color: ${this.color};'>`;
-        let endTag: string = `</span></br>`
-
-        for (let line of this.data.split('\n')) {
-            // 转义特殊字符
-            line = line.replace(/[<>&"'`\/]/g, (c) => {
-                return {
-                    '<': '&lt;',
-                    '>': '&gt;',
-                    '&': '&amp;',
-                    '"': '&quot;',
-                    '\'': '&#39;',
-                    '`': '&#96',
-                    '\/': '&#x2F'
-                }[c]!;
-            });
-            htmlArray.push(
-                [startTag, line, endTag].join('')
-            );
-        }
-
-        return htmlArray.join('\n');
-    }
-}
-
-class LoggerSchemes {
-    static readonly debug = {
-        'displayName': 'DEBUG',
-        'logFunction': console.verbose,
-        'color': 'lightgrey',
-        'level': 0
-    }
-    static readonly log = {
-        'displayName': ' LOG ',
-        'logFunction': console.log,
-        'color': 'back',
-        'level': 1
-    }
-    static readonly info = {
-        'displayName': 'INFO',
-        'logFunction': console.info,
-        'color': 'green',
-        'level': 2
-    }
-    static readonly warn = {
-        'displayName': 'WARN',
-        'logFunction': console.warn,
-        'color': 'yellow',
-        'level': 3
-    }
-    static readonly error = {
-        'displayName': 'ERROR',
-        'logFunction': console.error,
-        'color': 'red',
-        'level': 4
-    }
-}
-
-interface LoggerScheme {
-    displayName: string;
-    logFunction: (data?: any, ...args: any[]) => void;
-    color: string;
-    level: number;
-}
-
-class LevelTable {
-    static readonly debug: number = 0;
-    static readonly log: number = 1;
-    static readonly info: number = 2;
-    static readonly warn: number = 3;
-    static readonly error: number = 4;
-}
-
-type LevelName = Exclude<keyof typeof LevelTable, 'prototype'>;
