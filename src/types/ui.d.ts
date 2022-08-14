@@ -3,7 +3,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-08-07 17:39:23
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-09 17:05:22
+ * @LastTime: 2022-08-13 18:02:14
  * @FilePath: \\src\\types\\ui.d.ts
  * @Description: 
  */
@@ -183,6 +183,37 @@ declare module 'ui' {
 
         interface View {
             /**
+             * @description: 设置属性的值。属性指定是 View 在 xml 中的属性。
+             * 
+             * 例如可以通过语句 `attr('text', '文本');` 来设置文本控件的文本值。
+             * 
+             * - **注意！：并不是所有属性都能在 js 代码中设置，有一些属性只能在布局创建时设置，例如 style 属性。还有一些属性虽然能在代码中设置，但是还没支持。**
+             * @param {string} name 属性名称。
+             * @param {string} value 属性的值。
+             * @example
+             * ```typescript
+             * 'ui';
+             * 
+             * ui.layout(
+             *     <frame>
+             *         <text id='example' text='Hello' />
+             *     </frame>
+             * );
+             * 
+             * // 5秒后执行
+             * ui.post(() => {
+             *     // 修改文本
+             *     ui.example.attr('text', 'Hello, Hamibot UI');
+             *     // 修改背景
+             *     ui.example.attr('bg', '#ff00ff');
+             *     // 修改高度
+             *     ui.example.attr('h', '500dp');
+             * }, 5000);
+             * ```
+             */
+            attr(name: string, value: string): void;
+
+            /**
              * @description: 获取属性的值。
              * @param {string} name 属性名称。
              * @return {string} 属性的值。
@@ -213,37 +244,6 @@ declare module 'ui' {
              * ```
              */
             attr(name: string): string;
-
-            /**
-             * @description: 设置属性的值。属性指定是 View 在 xml 中的属性。
-             * 
-             * 例如可以通过语句 `attr('text', '文本');` 来设置文本控件的文本值。
-             * 
-             * - **注意！：并不是所有属性都能在 js 代码中设置，有一些属性只能在布局创建时设置，例如 style 属性。还有一些属性虽然能在代码中设置，但是还没支持。**
-             * @param {string} name 属性名称。
-             * @param {string} value 属性的值。
-             * @example
-             * ```typescript
-             * 'ui';
-             * 
-             * ui.layout(
-             *     <frame>
-             *         <text id='example' text='Hello' />
-             *     </frame>
-             * );
-             * 
-             * // 5秒后执行
-             * ui.post(() => {
-             *     // 修改文本
-             *     ui.example.attr('text', 'Hello, Hamibot UI');
-             *     // 修改背景
-             *     ui.example.attr('bg', '#ff00ff');
-             *     // 修改高度
-             *     ui.example.attr('h', '500dp');
-             * }, 5000);
-             * ```
-             */
-            attr(name: string, value: string): void;
 
             [prop: string]: any;
         }
