@@ -9,6 +9,8 @@
  * Copyright (c) 2022 by Hamibot hello@hamibot.com, All Rights Reserved. 
  */
 declare module 'images' {
+    import { ByteArray, Color } from 'utils';
+
     global {
         /**
          * @description: images 模块提供了一些手机设备中常见的图片处理函数，包括截图、读写图片、图片剪裁、旋转、二值化、找色找图等。

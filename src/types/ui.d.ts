@@ -3,11 +3,13 @@
  * @Author: BATU1579
  * @CreateDate: 2022-08-07 17:39:23
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-13 18:02:14
+ * @LastTime: 2022-08-16 01:20:21
  * @FilePath: \\src\\types\\ui.d.ts
  * @Description: 
  */
 declare module 'ui' {
+    import { Color } from 'utils';
+
     global {
         /**
          * @description: ui 模块提供了编写用户界面的支持。

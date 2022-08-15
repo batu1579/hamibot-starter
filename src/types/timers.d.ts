@@ -2,11 +2,13 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-12 16:11:48
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-23 09:33:15
+ * @LastTime: 2022-08-16 01:20:36
  * @FilePath: \\src\\types\\timers.d.ts
  * @Description: 定时器模块
  */
 declare module 'timers' {
+    import { ImmediateID, IntervalID, TimeoutID } from 'utils';
+
     global {
         /**
          * @description: 预定每隔 `delay` 毫秒重复执行的 `callback` 。

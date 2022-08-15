@@ -2,11 +2,13 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-12 19:58:53
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-01 02:35:49
+ * @LastTime: 2022-08-16 01:16:03
  * @FilePath: \\src\\types\\threads.d.ts
  * @Description: 多线程模块
  */
-declare module 'threads' {
+declare module 'threads' {    
+    import { ImmediateID, IntervalID, TimeoutID, Long, Double } from 'utils';
+
     global {
         /**
          * @description: threads 模块提供了多线程支持，可以启动新线程来运行脚本。

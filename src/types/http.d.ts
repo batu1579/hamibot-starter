@@ -2,13 +2,15 @@
  * @Author: Hamibot hello@hamibot.com
  * @CreateDate: 2022-06-09 13:31:43
  * @LastEditors: BATU1579
- * @LastTime: 2022-08-11 18:24:53
+ * @LastTime: 2022-08-16 01:11:02
  * @FilePath: \\src\\types\\http.d.ts
  * @Description: 网络操作模块
  * 
  * Copyright (c) 2022 by Hamibot hello@hamibot.com, All Rights Reserved. 
  */
 declare module 'http' {
+    import { ByteArray } from 'utils';
+
     global {
         /**
          * @description: http 模块提供一些进行 http 请求的函数。

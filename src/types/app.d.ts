@@ -2,11 +2,13 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 00:20:15
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-01 17:25:41
+ * @LastTime: 2022-08-16 01:20:38
  * @FilePath: \\src\\types\\app.d.ts
  * @Description: app 模块
  */
 declare module 'app' {
+    import { Long } from 'utils';
+
     global {
         /**
          * @description: `app` 模块提供一系列函数，用于使用其他应用、与其他应用交互。例如发送意图、打开文件、发送邮件等。
@@ -341,7 +343,7 @@ declare module 'app' {
          */
         function openAppSetting(packageName: string): boolean;
     }
-    
+
     interface EmailOptions {
         /**
          * @description: 收件人的邮件地址。如果有多个收件人，则用字符串数组表示。
@@ -794,7 +796,7 @@ declare module 'app' {
         [prop: string]: any;
     }
 
-    class InstrumentationInfo{
+    class InstrumentationInfo {
         /**
          * @description: 完整路径分配给包的持久性数据的目录。
          */
@@ -965,7 +967,7 @@ declare module 'app' {
         [prop: string]: any;
     }
 
-    class PathPermission{
+    class PathPermission {
         [prop: string]: any;
     }
 

@@ -2,11 +2,13 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 01:38:14
  * @LastEditor: BATU1579
- * @LastTime: 2022-06-03 20:18:58
+ * @LastTime: 2022-08-16 01:09:09
  * @FilePath: \\src\\types\\base64.d.ts
  * @Description: base64 模块
  */
 declare module 'base64' {
+    import { encode } from 'utils';
+
     global {
 
         /**
