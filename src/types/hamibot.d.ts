@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-24 17:21:22
  * @LastEditor: BATU1579
- * @LastTime: 2022-07-23 09:42:59
+ * @LastTime: 2022-08-16 02:58:08
  * @FilePath: \\src\\types\\hamibot.d.ts
  * @Description: hamibot 模块
  */
@@ -14,57 +14,6 @@ declare module 'hamibot' {
          */
         const hamibot: Hamibot;
 
-        interface Hamibot {
-
-            /**
-             * @description: 包含环境信息和开发者自定义的脚本配置（参见 [在脚本中使用配置](https://docs.hamibot.com/tutorials/tutorial-config#%E5%9C%A8%E8%84%9A%E6%9C%AC%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE)）。
-             */
-            readonly env: HamibotEnv;
-
-            /**
-             * @description: 脚本的定价计划信息，可用来区分版本。
-             */
-            readonly plan: PricePlan;
-
-            /**
-             * @description: 将信息发送到控制台的脚本消息，实现远程查看。
-             * @param {string} text 消息内容。
-             * @param {MessageOptions} [opts] 选项。
-             * @example
-             * ```typescript
-             * hamibot.postMessage(Date.now().toString(), {
-             *     telemetry: true,
-             *     data: {
-             *         title: '标题',
-             *         attachments: [
-             *             // 支持 text, json, image 三种类型，根据实际需要选择使用
-             *             {
-             *                 type: 'text',
-             *                 data: '文字内容',
-             *             },
-             *             {
-             *                 type: 'json',
-             *                 data: JSON.stringify({
-             *                 currentActivity: currentActivity(),
-             *                 }),
-             *             },
-             *             {
-             *                 type: 'image',
-             *                 data: 'data:image/png;base64,iVB...', // base64
-             *             },
-             *         ],
-             *     },
-             * });
-             * ```
-             */
-            postMessage(text: string, opts?: MessageOptions): void;
-
-            /**
-             * @description: 确保 `hamibot.postMessage()` 发送成功后再退出。
-             */
-            exit(): void;
-        }
-
         // 声明全局函数
 
         /**
@@ -72,6 +21,57 @@ declare module 'hamibot' {
          * - **注意！：此函数是通过抛出 `ScriptInterrupttedException` 来实现的，因此如果用 `try...catch` 把 `exit()` 函数的异常捕捉，则脚本不会立即停止，仍会运行几行后再停止。**
          */
         function exit(): void;
+    }
+
+    interface Hamibot {
+
+        /**
+         * @description: 包含环境信息和开发者自定义的脚本配置（参见 [在脚本中使用配置](https://docs.hamibot.com/tutorials/tutorial-config#%E5%9C%A8%E8%84%9A%E6%9C%AC%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE)）。
+         */
+        readonly env: HamibotEnv;
+
+        /**
+         * @description: 脚本的定价计划信息，可用来区分版本。
+         */
+        readonly plan: PricePlan;
+
+        /**
+         * @description: 将信息发送到控制台的脚本消息，实现远程查看。
+         * @param {string} text 消息内容。
+         * @param {MessageOptions} [opts] 选项。
+         * @example
+         * ```typescript
+         * hamibot.postMessage(Date.now().toString(), {
+         *     telemetry: true,
+         *     data: {
+         *         title: '标题',
+         *         attachments: [
+         *             // 支持 text, json, image 三种类型，根据实际需要选择使用
+         *             {
+         *                 type: 'text',
+         *                 data: '文字内容',
+         *             },
+         *             {
+         *                 type: 'json',
+         *                 data: JSON.stringify({
+         *                 currentActivity: currentActivity(),
+         *                 }),
+         *             },
+         *             {
+         *                 type: 'image',
+         *                 data: 'data:image/png;base64,iVB...', // base64
+         *             },
+         *         ],
+         *     },
+         * });
+         * ```
+         */
+        postMessage(text: string, opts?: MessageOptions): void;
+
+        /**
+         * @description: 确保 `hamibot.postMessage()` 发送成功后再退出。
+         */
+        exit(): void;
     }
 
     interface HamibotEnv {

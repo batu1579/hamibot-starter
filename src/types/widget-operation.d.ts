@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-31 13:19:44
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-01 20:17:12
+ * @LastTime: 2022-08-16 03:28:12
  * @FilePath: \\src\\types\\widget-operation.d.ts
  * @Description: 控件操作
  */
@@ -869,7 +869,7 @@ declare module 'widget-operation' {
              * @description: 控件的 `desc` 属性。
              */
             readonly contentDescription: string | null;
-            
+
             /**
              * @description: 控件是否可勾选。
              */
@@ -995,7 +995,7 @@ declare module 'widget-operation' {
             findOne(selector: UiSelector): UiObject | null;
 
             // 和 UiObject 相同的方法
-            
+
             /**
              * @description: 点击集合内的所有控件，并返回是否点击成功。如果该函数返回 `false` ，可能是该控件不可点击（ `clickable` 属性为 `false` ），当前界面无法响应该点击等。
              * @return {boolean} 操作是否成功。

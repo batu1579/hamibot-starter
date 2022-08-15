@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 00:21:22
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-01 17:25:40
+ * @LastTime: 2022-08-16 02:57:41
  * @FilePath: \\src\\types\\global.d.ts
  * @Description: 全局函数和变量
  */
@@ -107,61 +107,61 @@ declare module 'global' {
 
         const runtime: Runtime;
 
-        interface Runtime {
-            /**
-             * @description: 动态申请安卓的权限。您可以通过 APK 编辑器来增加 Hamibot 以及 Hamibot 打包的应用的权限。
-             * - **注意！：尽管安卓有很多权限，但必须写入 Manifest 才能动态申请，为了防止权限的滥用，目前 Hamibot 只能额外申请两个权限**
-             * @param {array} permissions 权限的字符串数组，可选的值为:
-             * - `access_fine_location` - GPS 权限
-             * - `record_audio` - 录音权限
-             * @example
-             * ```typescript
-             * // 请求 GPS 权限
-             * runtime.requestPermissions(['access_fine_location']);
-             * ```
-             */
-            requestPermissions(permissions: ('access_fine_location' | 'record_audio')[]): void;
-
-            /**
-             * @description: 动态申请安卓的权限。您可以通过 APK 编辑器来增加 Hamibot 以及 Hamibot 打包的应用的权限。
-             * - **注意！：尽管安卓有很多权限，但必须写入 Manifest 才能动态申请，为了防止权限的滥用，目前 Hamibot 只能额外申请两个权限**
-             * @param {array} permissions 权限的字符串数组，可选的值为:
-             * - `access_fine_location` - GPS 权限
-             * - `record_audio` - 录音权限
-             * @example
-             * ```typescript
-             * // 请求 GPS 权限
-             * runtime.requestPermissions(['access_fine_location']);
-             * ```
-             */
-            requestPermissions(permissions: string[]): void;
-
-            /**
-             * @description: 加载目标 jar 文件，加载成功后将可以使用该 Jar 文件的类。
-             * @param {string} path jar 文件路径
-             * @example
-             * ```typescript
-             * // 加载jsoup.jar
-             * runtime.loadJar('./jsoup.jar');
-             * // 使用jsoup解析html
-             * importClass(org.jsoup.Jsoup);
-             * log(Jsoup.parse(files.read('./test.html')));
-             * ```
-             */
-            loadJar(path: string): void;
-
-            /**
-             * @description: 加载目标 dex 文件，加载成功后将可以使用该 dex 文件的类。因为加载 jar 实际上是把 jar 转换为 dex 再加载的，因此加载 dex 文件会比 jar 文件快得多。可以使用 Android SDK 的 build tools 的 dx 工具把 jar 转换为 dex。
-             * @param {string} path dex 文件路径
-             */
-            loadDex(path: string): void;
-        }
-
         /**
          * @description: 一个 android.content.Context 对象。
          * - **注意！：该对象为 ApplicationContext，因此不能用于界面、对话框等的创建**
          * @return {object} android.content.Context 对象
          */
         const context: object;
+    }
+
+    interface Runtime {
+        /**
+         * @description: 动态申请安卓的权限。您可以通过 APK 编辑器来增加 Hamibot 以及 Hamibot 打包的应用的权限。
+         * - **注意！：尽管安卓有很多权限，但必须写入 Manifest 才能动态申请，为了防止权限的滥用，目前 Hamibot 只能额外申请两个权限**
+         * @param {array} permissions 权限的字符串数组，可选的值为:
+         * - `access_fine_location` - GPS 权限
+         * - `record_audio` - 录音权限
+         * @example
+         * ```typescript
+         * // 请求 GPS 权限
+         * runtime.requestPermissions(['access_fine_location']);
+         * ```
+         */
+        requestPermissions(permissions: ('access_fine_location' | 'record_audio')[]): void;
+
+        /**
+         * @description: 动态申请安卓的权限。您可以通过 APK 编辑器来增加 Hamibot 以及 Hamibot 打包的应用的权限。
+         * - **注意！：尽管安卓有很多权限，但必须写入 Manifest 才能动态申请，为了防止权限的滥用，目前 Hamibot 只能额外申请两个权限**
+         * @param {array} permissions 权限的字符串数组，可选的值为:
+         * - `access_fine_location` - GPS 权限
+         * - `record_audio` - 录音权限
+         * @example
+         * ```typescript
+         * // 请求 GPS 权限
+         * runtime.requestPermissions(['access_fine_location']);
+         * ```
+         */
+        requestPermissions(permissions: string[]): void;
+
+        /**
+         * @description: 加载目标 jar 文件，加载成功后将可以使用该 Jar 文件的类。
+         * @param {string} path jar 文件路径
+         * @example
+         * ```typescript
+         * // 加载jsoup.jar
+         * runtime.loadJar('./jsoup.jar');
+         * // 使用jsoup解析html
+         * importClass(org.jsoup.Jsoup);
+         * log(Jsoup.parse(files.read('./test.html')));
+         * ```
+         */
+        loadJar(path: string): void;
+
+        /**
+         * @description: 加载目标 dex 文件，加载成功后将可以使用该 dex 文件的类。因为加载 jar 实际上是把 jar 转换为 dex 再加载的，因此加载 dex 文件会比 jar 文件快得多。可以使用 Android SDK 的 build tools 的 dx 工具把 jar 转换为 dex。
+         * @param {string} path dex 文件路径
+         */
+        loadDex(path: string): void;
     }
 }

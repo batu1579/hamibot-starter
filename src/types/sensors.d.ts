@@ -2,11 +2,13 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-12 04:55:37
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-01 01:17:56
+ * @LastTime: 2022-08-16 03:10:27
  * @FilePath: \\src\\types\\sensors.d.ts
  * @Description: 传感器模块
  */
 declare module 'sensors' {
+    import { EventEmitter } from 'events';
+
     global {
 
         /**
@@ -14,408 +16,408 @@ declare module 'sensors' {
          * - **注意！：脚本只能获取传感器的数据，不能模拟或伪造传感器的数据和事件。**
          */
         const sensors: Sensors;
-
-        interface Sensors {
-            /**
-             * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
-             * @param {string} sensorName 传感器名称（ `accelerometer` ）加速度传感器。
-             * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
-             * - `sensors.delay.fastest` - 最快的更新频率。
-             * - `sensors.delay.game` - 适合于游戏的更新频率。
-             * - `sensors.delay.ui` - 适合于用户界面的更新频率。
-             * - `sensors.delay.normal` - 正常频率。
-             * @return {AccelerometerEventEmitter | null} 传感器的监听器。
-             * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example
-             * ```typescript
-             * console.show();
-             * // 注册传感器监听
-             * let sensor = sensors.register('gravity', sensors.delay.game);
-             * if (sensor == null) {
-             *     toast('不支持重力传感器');
-             *     exit();
-             * }
-             * // 监听数据
-             * sensor.on('change', (gx, gy, gz) => {
-             *     log('重力加速度: %d, %d, %d', gx, gy, gz);
-             * });
-             * ```
-             */
-            register(sensorName: 'accelerometer', delay?: number): AccelerometerEventEmitter | null;
-
-            /**
-             * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
-             * @param {string} sensorName 传感器名称（ `orientation` ）方向传感器。
-             * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
-             * - `sensors.delay.fastest` - 最快的更新频率。
-             * - `sensors.delay.game` - 适合于游戏的更新频率。
-             * - `sensors.delay.ui` - 适合于用户界面的更新频率。
-             * - `sensors.delay.normal` - 正常频率。
-             * @return {OrientationEventEmitter | null} 传感器的监听器。
-             * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example
-             * ```typescript
-             * console.show();
-             * // 注册传感器监听
-             * let sensor = sensors.register('gravity', sensors.delay.game);
-             * if (sensor == null) {
-             *     toast('不支持重力传感器');
-             *     exit();
-             * }
-             * // 监听数据
-             * sensor.on('change', (gx, gy, gz) => {
-             *     log('重力加速度: %d, %d, %d', gx, gy, gz);
-             * });
-             * ```
-             */
-            register(sensorName: 'orientation', delay?: number): OrientationEventEmitter | null;
-
-            /**
-             * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
-             * @param {string} sensorName 传感器名称（ `gyroscope` ）陀螺仪传感器。
-             * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
-             * - `sensors.delay.fastest` - 最快的更新频率。
-             * - `sensors.delay.game` - 适合于游戏的更新频率。
-             * - `sensors.delay.ui` - 适合于用户界面的更新频率。
-             * - `sensors.delay.normal` - 正常频率。
-             * @return {GyroscopeEventEmitter | null} 传感器的监听器。
-             * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example
-             * ```typescript
-             * console.show();
-             * // 注册传感器监听
-             * let sensor = sensors.register('gravity', sensors.delay.game);
-             * if (sensor == null) {
-             *     toast('不支持重力传感器');
-             *     exit();
-             * }
-             * // 监听数据
-             * sensor.on('change', (gx, gy, gz) => {
-             *     log('重力加速度: %d, %d, %d', gx, gy, gz);
-             * });
-             * ```
-             */
-            register(sensorName: 'gyroscope', delay?: number): GyroscopeEventEmitter | null;
-
-            /**
-             * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
-             * @param {string} sensorName 传感器名称（ `magnetic_field` ）磁场传感器。
-             * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
-             * - `sensors.delay.fastest` - 最快的更新频率。
-             * - `sensors.delay.game` - 适合于游戏的更新频率。
-             * - `sensors.delay.ui` - 适合于用户界面的更新频率。
-             * - `sensors.delay.normal` - 正常频率。
-             * @return {MagneticFieldEventEmitter | null} 传感器的监听器。
-             * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example
-             * ```typescript
-             * console.show();
-             * // 注册传感器监听
-             * let sensor = sensors.register('gravity', sensors.delay.game);
-             * if (sensor == null) {
-             *     toast('不支持重力传感器');
-             *     exit();
-             * }
-             * // 监听数据
-             * sensor.on('change', (gx, gy, gz) => {
-             *     log('重力加速度: %d, %d, %d', gx, gy, gz);
-             * });
-             * ```
-             */
-            register(sensorName: 'magnetic_field', delay?: number): MagneticFieldEventEmitter | null;
-
-            /**
-             * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
-             * @param {string} sensorName 传感器名称（ `gravity` ）重力传感器。
-             * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
-             * - `sensors.delay.fastest` - 最快的更新频率。
-             * - `sensors.delay.game` - 适合于游戏的更新频率。
-             * - `sensors.delay.ui` - 适合于用户界面的更新频率。
-             * - `sensors.delay.normal` - 正常频率。
-             * @return {GravityEventEmitter | null} 传感器的监听器。
-             * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example
-             * ```typescript
-             * console.show();
-             * // 注册传感器监听
-             * let sensor = sensors.register('gravity', sensors.delay.game);
-             * if (sensor == null) {
-             *     toast('不支持重力传感器');
-             *     exit();
-             * }
-             * // 监听数据
-             * sensor.on('change', (gx, gy, gz) => {
-             *     log('重力加速度: %d, %d, %d', gx, gy, gz);
-             * });
-             * ```
-             */
-            register(sensorName: 'gravity', delay?: number): GravityEventEmitter | null;
-
-            /**
-             * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
-             * @param {string} sensorName 传感器名称（ `linear_acceleration` ）线性加速度传感器。
-             * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
-             * - `sensors.delay.fastest` - 最快的更新频率。
-             * - `sensors.delay.game` - 适合于游戏的更新频率。
-             * - `sensors.delay.ui` - 适合于用户界面的更新频率。
-             * - `sensors.delay.normal` - 正常频率。
-             * @return {LinearAccelerationEventEmitter | null} 传感器的监听器。
-             * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example
-             * ```typescript
-             * console.show();
-             * // 注册传感器监听
-             * let sensor = sensors.register('gravity', sensors.delay.game);
-             * if (sensor == null) {
-             *     toast('不支持重力传感器');
-             *     exit();
-             * }
-             * // 监听数据
-             * sensor.on('change', (gx, gy, gz) => {
-             *     log('重力加速度: %d, %d, %d', gx, gy, gz);
-             * });
-             * ```
-             */
-            register(sensorName: 'linear_acceleration', delay?: number): LinearAccelerationEventEmitter | null;
-
-            /**
-             * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
-             * @param {string} sensorName 传感器名称（ `ambient_temperature` ）环境温度传感器，大部分设备并不支持。
-             * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
-             * - `sensors.delay.fastest` - 最快的更新频率。
-             * - `sensors.delay.game` - 适合于游戏的更新频率。
-             * - `sensors.delay.ui` - 适合于用户界面的更新频率。
-             * - `sensors.delay.normal` - 正常频率。
-             * @return {AmbientTemperatureEventEmitter | null} 传感器的监听器。
-             * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example
-             * ```typescript
-             * console.show();
-             * // 注册传感器监听
-             * let sensor = sensors.register('gravity', sensors.delay.game);
-             * if (sensor == null) {
-             *     toast('不支持重力传感器');
-             *     exit();
-             * }
-             * // 监听数据
-             * sensor.on('change', (gx, gy, gz) => {
-             *     log('重力加速度: %d, %d, %d', gx, gy, gz);
-             * });
-             * ```
-             */
-            register(sensorName: 'ambient_temperature', delay?: number): AmbientTemperatureEventEmitter | null;
-
-            /**
-             * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
-             * @param {string} sensorName 传感器名称（ `light` ）光线传感器。
-             * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
-             * - `sensors.delay.fastest` - 最快的更新频率。
-             * - `sensors.delay.game` - 适合于游戏的更新频率。
-             * - `sensors.delay.ui` - 适合于用户界面的更新频率。
-             * - `sensors.delay.normal` - 正常频率。
-             * @return {LightEventEmitter | null} 传感器的监听器。
-             * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example
-             * ```typescript
-             * console.show();
-             * // 注册传感器监听
-             * let sensor = sensors.register('gravity', sensors.delay.game);
-             * if (sensor == null) {
-             *     toast('不支持重力传感器');
-             *     exit();
-             * }
-             * // 监听数据
-             * sensor.on('change', (gx, gy, gz) => {
-             *     log('重力加速度: %d, %d, %d', gx, gy, gz);
-             * });
-             * ```
-             */
-            register(sensorName: 'light', delay?: number): LightEventEmitter | null;
-
-            /**
-             * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
-             * @param {string} sensorName 传感器名称（ `pressure` ）压力传感器。
-             * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
-             * - `sensors.delay.fastest` - 最快的更新频率。
-             * - `sensors.delay.game` - 适合于游戏的更新频率。
-             * - `sensors.delay.ui` - 适合于用户界面的更新频率。
-             * - `sensors.delay.normal` - 正常频率。
-             * @return {PressureEventEmitter | null} 传感器的监听器。
-             * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example
-             * ```typescript
-             * console.show();
-             * // 注册传感器监听
-             * let sensor = sensors.register('gravity', sensors.delay.game);
-             * if (sensor == null) {
-             *     toast('不支持重力传感器');
-             *     exit();
-             * }
-             * // 监听数据
-             * sensor.on('change', (gx, gy, gz) => {
-             *     log('重力加速度: %d, %d, %d', gx, gy, gz);
-             * });
-             * ```
-             */
-            register(sensorName: 'pressure', delay?: number): PressureEventEmitter | null;
-
-            /**
-             * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
-             * @param {string} sensorName 传感器名称（ `proximity` ）距离传感器。
-             * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
-             * - `sensors.delay.fastest` - 最快的更新频率。
-             * - `sensors.delay.game` - 适合于游戏的更新频率。
-             * - `sensors.delay.ui` - 适合于用户界面的更新频率。
-             * - `sensors.delay.normal` - 正常频率。
-             * @return {ProximityEventEmitter | null} 传感器的监听器。
-             * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example
-             * ```typescript
-             * console.show();
-             * // 注册传感器监听
-             * let sensor = sensors.register('gravity', sensors.delay.game);
-             * if (sensor == null) {
-             *     toast('不支持重力传感器');
-             *     exit();
-             * }
-             * // 监听数据
-             * sensor.on('change', (gx, gy, gz) => {
-             *     log('重力加速度: %d, %d, %d', gx, gy, gz);
-             * });
-             * ```
-             */
-            register(sensorName: 'proximity', delay?: number): ProximityEventEmitter | null;
-
-            /**
-             * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
-             * @param {string} sensorName 传感器名称（ `relative_humidity` ）湿度传感器，大部分设备并不支持。
-             * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
-             * - `sensors.delay.fastest` - 最快的更新频率。
-             * - `sensors.delay.game` - 适合于游戏的更新频率。
-             * - `sensors.delay.ui` - 适合于用户界面的更新频率。
-             * - `sensors.delay.normal` - 正常频率。
-             * @return {RelativeHumidityEventEmitter | null} 传感器的监听器。
-             * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example
-             * ```typescript
-             * console.show();
-             * // 注册传感器监听
-             * let sensor = sensors.register('gravity', sensors.delay.game);
-             * if (sensor == null) {
-             *     toast('不支持重力传感器');
-             *     exit();
-             * }
-             * // 监听数据
-             * sensor.on('change', (gx, gy, gz) => {
-             *     log('重力加速度: %d, %d, %d', gx, gy, gz);
-             * });
-             * ```
-             */
-            register(sensorName: 'relative_humidity', delay?: number): RelativeHumidityEventEmitter | null;
-
-            /**
-             * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
-             * @param {string} sensorName 传感器名称。
-             * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
-             * - `sensors.delay.fastest` - 最快的更新频率。
-             * - `sensors.delay.game` - 适合于游戏的更新频率。
-             * - `sensors.delay.ui` - 适合于用户界面的更新频率。
-             * - `sensors.delay.normal` - 正常频率。
-             * @return {SensorsEventEmitter | null} 传感器的监听器。
-             * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
-             * @example
-             * ```typescript
-             * console.show();
-             * // 注册传感器监听
-             * let sensor = sensors.register('gravity', sensors.delay.game);
-             * if (sensor == null) {
-             *     toast('不支持重力传感器');
-             *     exit();
-             * }
-             * // 监听数据
-             * sensor.on('change', (gx, gy, gz) => {
-             *     log('重力加速度: %d, %d, %d', gx, gy, gz);
-             * });
-             * ```
-             */
-            register(sensorName: string, delay?: number): SensorEventEmitter | null;
-
-            /**
-             * @description: 注销该传感器监听器。被注销的监听器将不再能监听传感器数据。
-             * @param {SensorEventEmitter} emitter 要注销的监听器对象。
-             * @example
-             * ```typescript
-             * // 注册一个传感器监听器
-             * let sensor = sensors.register('gravity');
-             * if (sensor == null) {
-             *     exit();
-             * }
-             * // 2秒后注销该监听器
-             * setTimeout(() => {
-             *     sensors.unregister(sensor);
-             * }, 2000);
-             * ```
-             */
-            unregister(emitter: SensorEventEmitter): void;
-
-            /**
-             * @description: 注销所有传感器监听器。
-             */
-            unregisterAll(): void;
-
-            /**
-             * @description: 绑定当事件发生时的行为。
-             * @param {string} eventName 事件名称（ `unsupported_sensor` ）。
-             * @param {function} listener 当事件发生时要执行的回调函数。参数为 string （不支持的传感器名称），返回值为 any 。
-             * @example
-             * ```typescript
-             * // 忽略不支持的传感器
-             * sensors.ignoresUnsupportedSensor = true;
-             * // 监听有不支持的传感器时的事件
-             * sensors.on('unsupported_sensor', function(sensorName) {
-             *     toastLog('不支持的传感器: ' + sensorName);
-             * });
-             * // 随便注册一个不存在的传感器。
-             * log(sensors.register('aaabbb'));
-             * ```
-             */
-            on(eventName: 'unsupported_sensor', listener: (sensorName: string) => any): this;
-
-            /**
-             * @description: 表示是否忽略不支持的传感器。如果该值被设置为 `true` ，则函数 `sensors.register()` 即使对不支持的传感器也会返回一个无任何数据的虚拟传感器监听，也就是 `sensors.register()` 不会返回 `null` 从而避免非空判断，并且此时会触发 `sensors` 的 `unsupported_sensor` 事件。
-             * @example
-             * ```typescript
-             * // 忽略不支持的传感器
-             * sensors.ignoresUnsupportedSensor = true;
-             * // 监听有不支持的传感器时的事件
-             * sensors.on('unsupported_sensor', function(sensorName) {
-             *     toastLog('不支持的传感器: ' + sensorName);
-             * });
-             * // 随便注册一个不存在的传感器。
-             * log(sensors.register('aaabbb'));
-             * ```
-             */
-            ignoresUnsupportedSensor: boolean;
-
-            /**
-             * @description: 传感器数据更新频率，可选的值为:
-             * - `sensors.delay.fastest` - 最快的更新频率。
-             * - `sensors.delay.game` - 适合于游戏的更新频率。
-             * - `sensors.delay.ui` - 适合于用户界面的更新频率。
-             * - `sensors.delay.normal` - 正常频率。
-             */
-            readonly delay: Delay;
-        }
-
-        type SensorEventEmitter = {
-            /**
-             * @description: 绑定当事件发生时的行为。
-             * @param {string} eventName 事件名称（ `change` ）。当传感器数据改变时触发该事件。该事件触发的最高频繁由 `sensors.register()` 指定的 `delay` 参数决定。
-             * @param {array} [args] 传感器参数。
-             */
-            on(eventName: 'change', ...args: any[]): SensorEventEmitter;
-        } & BaseSensorEventEmitter;
     }
+
+    interface Sensors {
+        /**
+         * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
+         * @param {string} sensorName 传感器名称（ `accelerometer` ）加速度传感器。
+         * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * - `sensors.delay.fastest` - 最快的更新频率。
+         * - `sensors.delay.game` - 适合于游戏的更新频率。
+         * - `sensors.delay.ui` - 适合于用户界面的更新频率。
+         * - `sensors.delay.normal` - 正常频率。
+         * @return {AccelerometerEventEmitter | null} 传感器的监听器。
+         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * @example
+         * ```typescript
+         * console.show();
+         * // 注册传感器监听
+         * let sensor = sensors.register('gravity', sensors.delay.game);
+         * if (sensor == null) {
+         *     toast('不支持重力传感器');
+         *     exit();
+         * }
+         * // 监听数据
+         * sensor.on('change', (gx, gy, gz) => {
+         *     log('重力加速度: %d, %d, %d', gx, gy, gz);
+         * });
+         * ```
+         */
+        register(sensorName: 'accelerometer', delay?: number): AccelerometerEventEmitter | null;
+
+        /**
+         * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
+         * @param {string} sensorName 传感器名称（ `orientation` ）方向传感器。
+         * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * - `sensors.delay.fastest` - 最快的更新频率。
+         * - `sensors.delay.game` - 适合于游戏的更新频率。
+         * - `sensors.delay.ui` - 适合于用户界面的更新频率。
+         * - `sensors.delay.normal` - 正常频率。
+         * @return {OrientationEventEmitter | null} 传感器的监听器。
+         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * @example
+         * ```typescript
+         * console.show();
+         * // 注册传感器监听
+         * let sensor = sensors.register('gravity', sensors.delay.game);
+         * if (sensor == null) {
+         *     toast('不支持重力传感器');
+         *     exit();
+         * }
+         * // 监听数据
+         * sensor.on('change', (gx, gy, gz) => {
+         *     log('重力加速度: %d, %d, %d', gx, gy, gz);
+         * });
+         * ```
+         */
+        register(sensorName: 'orientation', delay?: number): OrientationEventEmitter | null;
+
+        /**
+         * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
+         * @param {string} sensorName 传感器名称（ `gyroscope` ）陀螺仪传感器。
+         * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * - `sensors.delay.fastest` - 最快的更新频率。
+         * - `sensors.delay.game` - 适合于游戏的更新频率。
+         * - `sensors.delay.ui` - 适合于用户界面的更新频率。
+         * - `sensors.delay.normal` - 正常频率。
+         * @return {GyroscopeEventEmitter | null} 传感器的监听器。
+         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * @example
+         * ```typescript
+         * console.show();
+         * // 注册传感器监听
+         * let sensor = sensors.register('gravity', sensors.delay.game);
+         * if (sensor == null) {
+         *     toast('不支持重力传感器');
+         *     exit();
+         * }
+         * // 监听数据
+         * sensor.on('change', (gx, gy, gz) => {
+         *     log('重力加速度: %d, %d, %d', gx, gy, gz);
+         * });
+         * ```
+         */
+        register(sensorName: 'gyroscope', delay?: number): GyroscopeEventEmitter | null;
+
+        /**
+         * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
+         * @param {string} sensorName 传感器名称（ `magnetic_field` ）磁场传感器。
+         * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * - `sensors.delay.fastest` - 最快的更新频率。
+         * - `sensors.delay.game` - 适合于游戏的更新频率。
+         * - `sensors.delay.ui` - 适合于用户界面的更新频率。
+         * - `sensors.delay.normal` - 正常频率。
+         * @return {MagneticFieldEventEmitter | null} 传感器的监听器。
+         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * @example
+         * ```typescript
+         * console.show();
+         * // 注册传感器监听
+         * let sensor = sensors.register('gravity', sensors.delay.game);
+         * if (sensor == null) {
+         *     toast('不支持重力传感器');
+         *     exit();
+         * }
+         * // 监听数据
+         * sensor.on('change', (gx, gy, gz) => {
+         *     log('重力加速度: %d, %d, %d', gx, gy, gz);
+         * });
+         * ```
+         */
+        register(sensorName: 'magnetic_field', delay?: number): MagneticFieldEventEmitter | null;
+
+        /**
+         * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
+         * @param {string} sensorName 传感器名称（ `gravity` ）重力传感器。
+         * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * - `sensors.delay.fastest` - 最快的更新频率。
+         * - `sensors.delay.game` - 适合于游戏的更新频率。
+         * - `sensors.delay.ui` - 适合于用户界面的更新频率。
+         * - `sensors.delay.normal` - 正常频率。
+         * @return {GravityEventEmitter | null} 传感器的监听器。
+         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * @example
+         * ```typescript
+         * console.show();
+         * // 注册传感器监听
+         * let sensor = sensors.register('gravity', sensors.delay.game);
+         * if (sensor == null) {
+         *     toast('不支持重力传感器');
+         *     exit();
+         * }
+         * // 监听数据
+         * sensor.on('change', (gx, gy, gz) => {
+         *     log('重力加速度: %d, %d, %d', gx, gy, gz);
+         * });
+         * ```
+         */
+        register(sensorName: 'gravity', delay?: number): GravityEventEmitter | null;
+
+        /**
+         * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
+         * @param {string} sensorName 传感器名称（ `linear_acceleration` ）线性加速度传感器。
+         * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * - `sensors.delay.fastest` - 最快的更新频率。
+         * - `sensors.delay.game` - 适合于游戏的更新频率。
+         * - `sensors.delay.ui` - 适合于用户界面的更新频率。
+         * - `sensors.delay.normal` - 正常频率。
+         * @return {LinearAccelerationEventEmitter | null} 传感器的监听器。
+         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * @example
+         * ```typescript
+         * console.show();
+         * // 注册传感器监听
+         * let sensor = sensors.register('gravity', sensors.delay.game);
+         * if (sensor == null) {
+         *     toast('不支持重力传感器');
+         *     exit();
+         * }
+         * // 监听数据
+         * sensor.on('change', (gx, gy, gz) => {
+         *     log('重力加速度: %d, %d, %d', gx, gy, gz);
+         * });
+         * ```
+         */
+        register(sensorName: 'linear_acceleration', delay?: number): LinearAccelerationEventEmitter | null;
+
+        /**
+         * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
+         * @param {string} sensorName 传感器名称（ `ambient_temperature` ）环境温度传感器，大部分设备并不支持。
+         * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * - `sensors.delay.fastest` - 最快的更新频率。
+         * - `sensors.delay.game` - 适合于游戏的更新频率。
+         * - `sensors.delay.ui` - 适合于用户界面的更新频率。
+         * - `sensors.delay.normal` - 正常频率。
+         * @return {AmbientTemperatureEventEmitter | null} 传感器的监听器。
+         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * @example
+         * ```typescript
+         * console.show();
+         * // 注册传感器监听
+         * let sensor = sensors.register('gravity', sensors.delay.game);
+         * if (sensor == null) {
+         *     toast('不支持重力传感器');
+         *     exit();
+         * }
+         * // 监听数据
+         * sensor.on('change', (gx, gy, gz) => {
+         *     log('重力加速度: %d, %d, %d', gx, gy, gz);
+         * });
+         * ```
+         */
+        register(sensorName: 'ambient_temperature', delay?: number): AmbientTemperatureEventEmitter | null;
+
+        /**
+         * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
+         * @param {string} sensorName 传感器名称（ `light` ）光线传感器。
+         * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * - `sensors.delay.fastest` - 最快的更新频率。
+         * - `sensors.delay.game` - 适合于游戏的更新频率。
+         * - `sensors.delay.ui` - 适合于用户界面的更新频率。
+         * - `sensors.delay.normal` - 正常频率。
+         * @return {LightEventEmitter | null} 传感器的监听器。
+         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * @example
+         * ```typescript
+         * console.show();
+         * // 注册传感器监听
+         * let sensor = sensors.register('gravity', sensors.delay.game);
+         * if (sensor == null) {
+         *     toast('不支持重力传感器');
+         *     exit();
+         * }
+         * // 监听数据
+         * sensor.on('change', (gx, gy, gz) => {
+         *     log('重力加速度: %d, %d, %d', gx, gy, gz);
+         * });
+         * ```
+         */
+        register(sensorName: 'light', delay?: number): LightEventEmitter | null;
+
+        /**
+         * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
+         * @param {string} sensorName 传感器名称（ `pressure` ）压力传感器。
+         * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * - `sensors.delay.fastest` - 最快的更新频率。
+         * - `sensors.delay.game` - 适合于游戏的更新频率。
+         * - `sensors.delay.ui` - 适合于用户界面的更新频率。
+         * - `sensors.delay.normal` - 正常频率。
+         * @return {PressureEventEmitter | null} 传感器的监听器。
+         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * @example
+         * ```typescript
+         * console.show();
+         * // 注册传感器监听
+         * let sensor = sensors.register('gravity', sensors.delay.game);
+         * if (sensor == null) {
+         *     toast('不支持重力传感器');
+         *     exit();
+         * }
+         * // 监听数据
+         * sensor.on('change', (gx, gy, gz) => {
+         *     log('重力加速度: %d, %d, %d', gx, gy, gz);
+         * });
+         * ```
+         */
+        register(sensorName: 'pressure', delay?: number): PressureEventEmitter | null;
+
+        /**
+         * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
+         * @param {string} sensorName 传感器名称（ `proximity` ）距离传感器。
+         * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * - `sensors.delay.fastest` - 最快的更新频率。
+         * - `sensors.delay.game` - 适合于游戏的更新频率。
+         * - `sensors.delay.ui` - 适合于用户界面的更新频率。
+         * - `sensors.delay.normal` - 正常频率。
+         * @return {ProximityEventEmitter | null} 传感器的监听器。
+         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * @example
+         * ```typescript
+         * console.show();
+         * // 注册传感器监听
+         * let sensor = sensors.register('gravity', sensors.delay.game);
+         * if (sensor == null) {
+         *     toast('不支持重力传感器');
+         *     exit();
+         * }
+         * // 监听数据
+         * sensor.on('change', (gx, gy, gz) => {
+         *     log('重力加速度: %d, %d, %d', gx, gy, gz);
+         * });
+         * ```
+         */
+        register(sensorName: 'proximity', delay?: number): ProximityEventEmitter | null;
+
+        /**
+         * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
+         * @param {string} sensorName 传感器名称（ `relative_humidity` ）湿度传感器，大部分设备并不支持。
+         * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * - `sensors.delay.fastest` - 最快的更新频率。
+         * - `sensors.delay.game` - 适合于游戏的更新频率。
+         * - `sensors.delay.ui` - 适合于用户界面的更新频率。
+         * - `sensors.delay.normal` - 正常频率。
+         * @return {RelativeHumidityEventEmitter | null} 传感器的监听器。
+         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * @example
+         * ```typescript
+         * console.show();
+         * // 注册传感器监听
+         * let sensor = sensors.register('gravity', sensors.delay.game);
+         * if (sensor == null) {
+         *     toast('不支持重力传感器');
+         *     exit();
+         * }
+         * // 监听数据
+         * sensor.on('change', (gx, gy, gz) => {
+         *     log('重力加速度: %d, %d, %d', gx, gy, gz);
+         * });
+         * ```
+         */
+        register(sensorName: 'relative_humidity', delay?: number): RelativeHumidityEventEmitter | null;
+
+        /**
+         * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
+         * @param {string} sensorName 传感器名称。
+         * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * - `sensors.delay.fastest` - 最快的更新频率。
+         * - `sensors.delay.game` - 适合于游戏的更新频率。
+         * - `sensors.delay.ui` - 适合于用户界面的更新频率。
+         * - `sensors.delay.normal` - 正常频率。
+         * @return {SensorsEventEmitter | null} 传感器的监听器。
+         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * @example
+         * ```typescript
+         * console.show();
+         * // 注册传感器监听
+         * let sensor = sensors.register('gravity', sensors.delay.game);
+         * if (sensor == null) {
+         *     toast('不支持重力传感器');
+         *     exit();
+         * }
+         * // 监听数据
+         * sensor.on('change', (gx, gy, gz) => {
+         *     log('重力加速度: %d, %d, %d', gx, gy, gz);
+         * });
+         * ```
+         */
+        register(sensorName: string, delay?: number): SensorEventEmitter | null;
+
+        /**
+         * @description: 注销该传感器监听器。被注销的监听器将不再能监听传感器数据。
+         * @param {SensorEventEmitter} emitter 要注销的监听器对象。
+         * @example
+         * ```typescript
+         * // 注册一个传感器监听器
+         * let sensor = sensors.register('gravity');
+         * if (sensor == null) {
+         *     exit();
+         * }
+         * // 2秒后注销该监听器
+         * setTimeout(() => {
+         *     sensors.unregister(sensor);
+         * }, 2000);
+         * ```
+         */
+        unregister(emitter: SensorEventEmitter): void;
+
+        /**
+         * @description: 注销所有传感器监听器。
+         */
+        unregisterAll(): void;
+
+        /**
+         * @description: 绑定当事件发生时的行为。
+         * @param {string} eventName 事件名称（ `unsupported_sensor` ）。
+         * @param {function} listener 当事件发生时要执行的回调函数。参数为 string （不支持的传感器名称），返回值为 any 。
+         * @example
+         * ```typescript
+         * // 忽略不支持的传感器
+         * sensors.ignoresUnsupportedSensor = true;
+         * // 监听有不支持的传感器时的事件
+         * sensors.on('unsupported_sensor', function(sensorName) {
+         *     toastLog('不支持的传感器: ' + sensorName);
+         * });
+         * // 随便注册一个不存在的传感器。
+         * log(sensors.register('aaabbb'));
+         * ```
+         */
+        on(eventName: 'unsupported_sensor', listener: (sensorName: string) => any): this;
+
+        /**
+         * @description: 表示是否忽略不支持的传感器。如果该值被设置为 `true` ，则函数 `sensors.register()` 即使对不支持的传感器也会返回一个无任何数据的虚拟传感器监听，也就是 `sensors.register()` 不会返回 `null` 从而避免非空判断，并且此时会触发 `sensors` 的 `unsupported_sensor` 事件。
+         * @example
+         * ```typescript
+         * // 忽略不支持的传感器
+         * sensors.ignoresUnsupportedSensor = true;
+         * // 监听有不支持的传感器时的事件
+         * sensors.on('unsupported_sensor', function(sensorName) {
+         *     toastLog('不支持的传感器: ' + sensorName);
+         * });
+         * // 随便注册一个不存在的传感器。
+         * log(sensors.register('aaabbb'));
+         * ```
+         */
+        ignoresUnsupportedSensor: boolean;
+
+        /**
+         * @description: 传感器数据更新频率，可选的值为:
+         * - `sensors.delay.fastest` - 最快的更新频率。
+         * - `sensors.delay.game` - 适合于游戏的更新频率。
+         * - `sensors.delay.ui` - 适合于用户界面的更新频率。
+         * - `sensors.delay.normal` - 正常频率。
+         */
+        readonly delay: Delay;
+    }
+
+    type SensorEventEmitter = {
+        /**
+         * @description: 绑定当事件发生时的行为。
+         * @param {string} eventName 事件名称（ `change` ）。当传感器数据改变时触发该事件。该事件触发的最高频繁由 `sensors.register()` 指定的 `delay` 参数决定。
+         * @param {array} [args] 传感器参数。
+         */
+        on(eventName: 'change', ...args: any[]): SensorEventEmitter;
+    } & BaseSensorEventEmitter;
 
     /**
      * @description: 传感器数据更新频率。

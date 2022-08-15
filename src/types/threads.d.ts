@@ -2,12 +2,12 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-12 19:58:53
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-16 01:16:03
+ * @LastTime: 2022-08-16 03:23:08
  * @FilePath: \\src\\types\\threads.d.ts
  * @Description: 多线程模块
  */
-declare module 'threads' {    
-    import { ImmediateID, IntervalID, TimeoutID, Long, Double } from 'utils';
+declare module 'threads' {
+    import { ImmediateID, IntervalID, TimeoutID } from 'timers';
 
     global {
         /**
@@ -19,210 +19,210 @@ declare module 'threads' {
          */
         const threads: Threads;
 
-        interface Threads {
-            /**
-             * @description: 启动一个新线程并执行 `action` 。
-             * - **注意！：通过 `threads.start()` 启动的所有线程会在脚本被强制停止时自动停止。**
-             * @param {Function} action
-             * @return {Thread} 新建的线程对象。
-             * @example
-             * ```typescript
-             * // 启动新线程
-             * threads.start(function() {
-             *     // 在新线程执行的代码
-             *     while (true) {
-             *         log('子线程');
-             *     }
-             * });
-             * while (true) {
-             *     log('脚本主线程');
-             * }
-             * ```
-             */
-            start(action: Function): Thread;
-
-            /**
-             * @description: 停止所有通过 `threads.start()` 启动的子线程。
-             */
-            shutDownAll(): void;
-
-            /**
-             * @description: 获取当前线程。
-             * @return {Thread} 返回当前线程的对象。
-             */
-            currentThread(): Thread;
-
-            /**
-             * @description: 新建一个 `Disposable` 对象，用于等待另一个线程的某个一次性结果。
-             * @return {Disposable} 新建的 `Disposable` 对象。
-             */
-            disposable(): Disposable;
-
-            /**
-             * @description: 新建一个整数原子变量。更多信息参见 [AtomicLong](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicLong.html) 。
-             * @param {number} [initialValue] 初始整数值（默认为 0 ）。
-             * @return {AtomicLong} 新建的整数原子变量。
-             */
-            atomic(initialValue?: number): AtomicLong;
-
-            /**
-             * @description: 新建一个可重入锁。更多信息参见 线程安全 以及 [ReentrantLock](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/ReentrantLock.html) 。
-             * @return {ReentrantLock} 新建的 `ReentrantLock` 对象。
-             */
-            lock(): ReentrantLock;
-        }
-
-        /**
-         * @description: 线程对象， `threads.start()` 返回的对象，用于获取和控制线程的状态，与其他线程交互等。 `Thread` 对象提供了和 `timers` 模块一样的 API，例如 `setTimeout()` ,  `setInterval()` 等，用于在该线程执行相应的定时回调，从而使线程之间可以直接交互。
-         * @example
-         * ```typescript
-         * let thread = threads.start(function() {
-         *     // 在子线程执行的定时器
-         *     setInterval(function() {
-         *         log('子线程:' + threads.currentThread());
-         *     }, 1000);
-         * });
-         * 
-         * log('当前线程为主线程:' + threads.currentThread());
-         * 
-         * // 等待子线程启动
-         * thread.waitFor();
-         * // 在子线程执行的定时器
-         * thread.setTimeout(function() {
-         *     // 这段代码会在子线程执行
-         *     log('当前线程为子线程:' + threads.currentThread());
-         * }, 2000);
-         * 
-         * sleep(30 * 1000);
-         * thread.interrupt();
-         * ```
-         */
-        class Thread {
-            /**
-             * @description: 中断线程运行。
-             */
-            interrupt(): void
-
-            /**
-             * @description: 等待线程执行完成。如果 `timeout` 为 0，则会一直等待直至该线程执行完成；否则最多等待 `timeout` 毫秒的时间。
-             * @param {number} [timeout] 等待时间，单位毫秒。
-             * @example
-             * ```typescript
-             * var sum = 0;
-             * // 启动子线程计算1加到10000
-             * let thread = threads.start(function() {
-             *     for (var i = 0; i < 10000; i++) {
-             *         sum += i;
-             *     }
-             * });
-             * // 等待该线程完成
-             * thread.join();
-             * toast('sum = ' + sum);
-             * ```
-             */
-            join(timeout?: number): void;
-
-            /**
-             * @description: 返回线程是否存活。
-             * @return {boolean} 如果线程仍未开始或已经结束，返回 `false` ; 如果线程已经开始或者正在运行中，返回 `true` 。
-             */
-            isAlive(): boolean;
-
-            /**
-             * @description: 等待线程开始执行。调用 `threads.start()` 以后线程仍然需要一定时间才能开始执行，因此调用此函数会等待线程开始执行；如果线程已经处于执行状态则立即返回。
-             * @example
-             * ```typescript
-             * var thread = threads.start(function() {
-             *     // do something
-             * });
-             * thread.waitFor();
-             * thread.setTimeout(function() {
-             *     // do something
-             * }, 1000);
-             * ```
-             */
-            waitFor(): void;
-
-            /**
-             * @description: 预定每隔 `delay` 毫秒重复执行的 `callback` 。
-             * - **注意！：定时器仍然是单线程的。如果脚本主体有耗时操作或死循环，则设定的定时器不能被及时执行。**
-             * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
-             * @param {Function} callback 当定时器到点时要调用的函数。
-             * @param {number} delay 调用 `callback` 之前要等待的毫秒数。当 `delay` 小于 0 时， `delay` 会被设为 0。
-             * @param {array} [args] 当调用 `callback` 时要传入的可选参数。
-             * @return {IntervalID} 返回一个用于 `clearInterval()` 的定时器 id 。
-             */
-            setInterval(callback: Function, delay: number, ...args: any[]): IntervalID;
-
-            /**
-             * @description: 预定在 `delay` 毫秒之后执行的单次 `callback` 。
-             * - **注意！：定时器仍然是单线程的。如果脚本主体有耗时操作或死循环，则设定的定时器不能被及时执行。**
-             * - **注意！： `callback` 可能不会精确地在 `delay` 毫秒被调用。 Hamibot 不能保证回调被触发的确切时间，也不能保证它们的顺序。 回调会在尽可能接近所指定的时间上调用。**
-             * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
-             * @param {Function} callback 当定时器到点时要调用的函数。
-             * @param {number} delay 调用 `callback` 之前要等待的毫秒数。当 `delay` 小于 0 时， `delay` 会被设为 0。
-             * @param {array} [args] 当调用 `callback` 时要传入的可选参数。
-             * @return {TimeoutID} 返回一个用于 `clearTimeout()` 的定时器 id 。
-             */
-            setTimeout(callback: Function, delay: number, ...args: any[]): TimeoutID;
-
-            /**
-             * @description: 预定立即执行的 callback，它是在 I/O 事件的回调之后被触发。
-             * 
-             * 当多次调用 `setImmediate()` 时， `callback` 函数会按照它们被创建的顺序依次执行。 每次事件循环迭代都会处理整个回调队列。 如果一个立即定时器是被一个正在执行的回调排入队列的，则该定时器直到下一次事件循环迭代才会被触发。
-             * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
-             * @param {Function} callback 在 Looper 循环的当前回合结束时要调用的函数。
-             * @param {array} [args] 当调用 `callback` 时要传入的可选参数。
-             * @return {ImmediateID} 返回一个用于 `clearImmediate()` 的 id。
-             */
-            setImmediate(callback: Function, ...args: any[]): ImmediateID;
-
-            /**
-             * @description: 取消一个由 `setInterval()` 创建的循环定时任务。
-             * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
-             * @param {IntervalID} id 一个 `setInterval()` 返回的 id。
-             * @example
-             * ```typescript
-             * // 每5秒就发出一次hello
-             * let id = setInterval(function() {
-             *     toast('hello');
-             * }, 5000);
-             * // 1分钟后取消循环
-             * setTimeout(() => clearInterval(id), 60 * 1000);
-             * ```
-             */
-            clearInterval(id: IntervalID | number): void;
-
-            /**
-             * @description: 取消一个由 `setTimeout()` 创建的定时任务。
-             * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
-             * @param {TimeoutID} id 一个 `setTimeout()` 返回的 id。
-             * @example
-             * ```typescript
-             * // 每5秒就发出一次hello
-             * let id = setInterval(function() {
-             *     toast('hello');
-             * }, 5000);
-             * // 1分钟后取消循环
-             * setTimeout(() => clearInterval(id), 60 * 1000);
-             * ```
-             */
-            clearTimeout(id: TimeoutID | number): void;
-
-            /**
-             * @description: 取消一个由 `setImmediate()` 创建的定时任务。
-             * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
-             * @param {ImmediateID} id 一个 `setImmediate()` 返回的 id。
-             */
-            clearImmediate(id: ImmediateID | number): void;
-        }
-
         /**
          * @description: 给函数 `func` 加上同步锁并作为一个新函数返回。
          * @param {Function} func 要加锁的函数。
          * @return {Function} 加锁包装后的函数。
          */
         function sync(func: Function): Function;
+    }
+
+    interface Threads {
+        /**
+         * @description: 启动一个新线程并执行 `action` 。
+         * - **注意！：通过 `threads.start()` 启动的所有线程会在脚本被强制停止时自动停止。**
+         * @param {Function} action
+         * @return {Thread} 新建的线程对象。
+         * @example
+         * ```typescript
+         * // 启动新线程
+         * threads.start(function() {
+         *     // 在新线程执行的代码
+         *     while (true) {
+         *         log('子线程');
+         *     }
+         * });
+         * while (true) {
+         *     log('脚本主线程');
+         * }
+         * ```
+         */
+        start(action: Function): Thread;
+
+        /**
+         * @description: 停止所有通过 `threads.start()` 启动的子线程。
+         */
+        shutDownAll(): void;
+
+        /**
+         * @description: 获取当前线程。
+         * @return {Thread} 返回当前线程的对象。
+         */
+        currentThread(): Thread;
+
+        /**
+         * @description: 新建一个 `Disposable` 对象，用于等待另一个线程的某个一次性结果。
+         * @return {Disposable} 新建的 `Disposable` 对象。
+         */
+        disposable(): Disposable;
+
+        /**
+         * @description: 新建一个整数原子变量。更多信息参见 [AtomicLong](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicLong.html) 。
+         * @param {number} [initialValue] 初始整数值（默认为 0 ）。
+         * @return {AtomicLong} 新建的整数原子变量。
+         */
+        atomic(initialValue?: number): AtomicLong;
+
+        /**
+         * @description: 新建一个可重入锁。更多信息参见 线程安全 以及 [ReentrantLock](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/ReentrantLock.html) 。
+         * @return {ReentrantLock} 新建的 `ReentrantLock` 对象。
+         */
+        lock(): ReentrantLock;
+    }
+
+    /**
+     * @description: 线程对象， `threads.start()` 返回的对象，用于获取和控制线程的状态，与其他线程交互等。 `Thread` 对象提供了和 `timers` 模块一样的 API，例如 `setTimeout()` ,  `setInterval()` 等，用于在该线程执行相应的定时回调，从而使线程之间可以直接交互。
+     * @example
+     * ```typescript
+     * let thread = threads.start(function() {
+     *     // 在子线程执行的定时器
+     *     setInterval(function() {
+     *         log('子线程:' + threads.currentThread());
+     *     }, 1000);
+     * });
+     * 
+     * log('当前线程为主线程:' + threads.currentThread());
+     * 
+     * // 等待子线程启动
+     * thread.waitFor();
+     * // 在子线程执行的定时器
+     * thread.setTimeout(function() {
+     *     // 这段代码会在子线程执行
+     *     log('当前线程为子线程:' + threads.currentThread());
+     * }, 2000);
+     * 
+     * sleep(30 * 1000);
+     * thread.interrupt();
+     * ```
+     */
+    class Thread {
+        /**
+         * @description: 中断线程运行。
+         */
+        interrupt(): void
+
+        /**
+         * @description: 等待线程执行完成。如果 `timeout` 为 0，则会一直等待直至该线程执行完成；否则最多等待 `timeout` 毫秒的时间。
+         * @param {number} [timeout] 等待时间，单位毫秒。
+         * @example
+         * ```typescript
+         * var sum = 0;
+         * // 启动子线程计算1加到10000
+         * let thread = threads.start(function() {
+         *     for (var i = 0; i < 10000; i++) {
+         *         sum += i;
+         *     }
+         * });
+         * // 等待该线程完成
+         * thread.join();
+         * toast('sum = ' + sum);
+         * ```
+         */
+        join(timeout?: number): void;
+
+        /**
+         * @description: 返回线程是否存活。
+         * @return {boolean} 如果线程仍未开始或已经结束，返回 `false` ; 如果线程已经开始或者正在运行中，返回 `true` 。
+         */
+        isAlive(): boolean;
+
+        /**
+         * @description: 等待线程开始执行。调用 `threads.start()` 以后线程仍然需要一定时间才能开始执行，因此调用此函数会等待线程开始执行；如果线程已经处于执行状态则立即返回。
+         * @example
+         * ```typescript
+         * var thread = threads.start(function() {
+         *     // do something
+         * });
+         * thread.waitFor();
+         * thread.setTimeout(function() {
+         *     // do something
+         * }, 1000);
+         * ```
+         */
+        waitFor(): void;
+
+        /**
+         * @description: 预定每隔 `delay` 毫秒重复执行的 `callback` 。
+         * - **注意！：定时器仍然是单线程的。如果脚本主体有耗时操作或死循环，则设定的定时器不能被及时执行。**
+         * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
+         * @param {Function} callback 当定时器到点时要调用的函数。
+         * @param {number} delay 调用 `callback` 之前要等待的毫秒数。当 `delay` 小于 0 时， `delay` 会被设为 0。
+         * @param {array} [args] 当调用 `callback` 时要传入的可选参数。
+         * @return {IntervalID} 返回一个用于 `clearInterval()` 的定时器 id 。
+         */
+        setInterval(callback: Function, delay: number, ...args: any[]): IntervalID;
+
+        /**
+         * @description: 预定在 `delay` 毫秒之后执行的单次 `callback` 。
+         * - **注意！：定时器仍然是单线程的。如果脚本主体有耗时操作或死循环，则设定的定时器不能被及时执行。**
+         * - **注意！： `callback` 可能不会精确地在 `delay` 毫秒被调用。 Hamibot 不能保证回调被触发的确切时间，也不能保证它们的顺序。 回调会在尽可能接近所指定的时间上调用。**
+         * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
+         * @param {Function} callback 当定时器到点时要调用的函数。
+         * @param {number} delay 调用 `callback` 之前要等待的毫秒数。当 `delay` 小于 0 时， `delay` 会被设为 0。
+         * @param {array} [args] 当调用 `callback` 时要传入的可选参数。
+         * @return {TimeoutID} 返回一个用于 `clearTimeout()` 的定时器 id 。
+         */
+        setTimeout(callback: Function, delay: number, ...args: any[]): TimeoutID;
+
+        /**
+         * @description: 预定立即执行的 callback，它是在 I/O 事件的回调之后被触发。
+         * 
+         * 当多次调用 `setImmediate()` 时， `callback` 函数会按照它们被创建的顺序依次执行。 每次事件循环迭代都会处理整个回调队列。 如果一个立即定时器是被一个正在执行的回调排入队列的，则该定时器直到下一次事件循环迭代才会被触发。
+         * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
+         * @param {Function} callback 在 Looper 循环的当前回合结束时要调用的函数。
+         * @param {array} [args] 当调用 `callback` 时要传入的可选参数。
+         * @return {ImmediateID} 返回一个用于 `clearImmediate()` 的 id。
+         */
+        setImmediate(callback: Function, ...args: any[]): ImmediateID;
+
+        /**
+         * @description: 取消一个由 `setInterval()` 创建的循环定时任务。
+         * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
+         * @param {IntervalID} id 一个 `setInterval()` 返回的 id。
+         * @example
+         * ```typescript
+         * // 每5秒就发出一次hello
+         * let id = setInterval(function() {
+         *     toast('hello');
+         * }, 5000);
+         * // 1分钟后取消循环
+         * setTimeout(() => clearInterval(id), 60 * 1000);
+         * ```
+         */
+        clearInterval(id: IntervalID | number): void;
+
+        /**
+         * @description: 取消一个由 `setTimeout()` 创建的定时任务。
+         * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
+         * @param {TimeoutID} id 一个 `setTimeout()` 返回的 id。
+         * @example
+         * ```typescript
+         * // 每5秒就发出一次hello
+         * let id = setInterval(function() {
+         *     toast('hello');
+         * }, 5000);
+         * // 1分钟后取消循环
+         * setTimeout(() => clearInterval(id), 60 * 1000);
+         * ```
+         */
+        clearTimeout(id: TimeoutID | number): void;
+
+        /**
+         * @description: 取消一个由 `setImmediate()` 创建的定时任务。
+         * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
+         * @param {ImmediateID} id 一个 `setImmediate()` 返回的 id。
+         */
+        clearImmediate(id: ImmediateID | number): void;
     }
 
     // TODO: 补全方法
@@ -380,7 +380,7 @@ declare module 'threads' {
          */
         applyAsLong(left: number, right: number): number;
     }
-    
+
     interface LongUnaryOperator {
         /**
          * @description: 定义对一个 long 操作数的操作，并产生一个 long 结果。 
@@ -692,4 +692,9 @@ declare module 'threads' {
          */
         clear(): void;
     }
+
+    // TODO: 想办法替换成长整数
+    class Long extends Number { }
+
+    class Double extends Number { }
 }
