@@ -20,7 +20,7 @@
 npm install
 ```
 
-## 使用方法
+## 快速开始
 
 1. 下载本仓库，有两种方式可选：
    1. 点击 [Use this template](https://github.com/batu1579/hamibot-starter/generate) 按钮以此仓库为模板创建一个自己的仓库，然后将仓库克隆到本地。
@@ -36,11 +36,16 @@ npm install
 
 4. 在控制台上传打包后的文件: `.\dist\index.js` 。
 
+## 使用预制函数
+
+所有预制库都存放在 `./src/lib` 文件夹中。
+
+详细使用方式和文档见 [预制库说明](./src/lib/docs/README.md) 。
+
 ## 注意事项
 
 1. 编写 UI 或悬浮窗时请记得将文件扩展名修改成 `tsx` 。
-2. UI 模块的类型提示目前我还没试过，如果发现了 BUG 拜托大大们帮我提一下 issue 。
-3. 如果有用到暂时没有声明过的模块，可以使用 ts 忽略:
+2. 如果有用到暂时没有声明过的模块，可以使用 ts 忽略:
 
    > 注意：忽略会跳过所有检查，除了语法错误。使用时会有风险，请在确保肯定不会出现问题后再使用。
 
@@ -60,57 +65,13 @@ npm install
     canvas.drawLine(0, 0, 1080, 1920, paint);
     ```
 
-## 建议
-
-1. 设置默认值时可以使用空值合并运算符 `??` 。
-
-    ```typescript
-    // 不使用空值合并运算符
-    let appName = app.getAppName('yyy');
-
-    if (appName === null) {
-        appName = '未找到应用';
-    }
-
-    // 使用空值合并运算符
-    let appName = app.getAppName('yyy') ?? '未找到应用';
-    ```
-
-2. 某些只针对特定情况的代码可以使用可选链运算符 `?.` 。在问号左侧的表达式为 `null` 或 `undefined` 时跳过代码。
-
-    ```typescript
-    // 查找跳过并点击，但是有时并没有跳过可以点击。
-    // 这时必须判断而不能使用非空断言，否则会出现 `undefined` 没有对应方法的问题。
-
-    // 不使用可选链运算符
-    let skipButton = textContains('skip').findOne(1000);
-    if (skipButton) {
-        skipButton.click();
-    }
-
-    // 使用可选链运算符
-    textContains('skip').findOne(1000)?.click();
-    ```
-
-3. 有时候函数的返回值可能会根据某个参数或者设置而改变，或者有的函数会返回 `null` 。一般的建议是通过判断或其他方式收窄类型，这样可以保证程序的鲁棒性。但是如果某些情况下你十分确定不会出现另一种类型，可以使用类型断言收窄类型或者非空断言来排除 `null` 类型。
-
-    > 注意：这种方式相当于强行让编辑器修改类型，但是在编译后的代码里并不会有任何验证。所以请谨慎使用。
-
-    ```typescript
-    // 类型断言
-    let xxx = sensors.register("xxx") as SensorEventEmitter;
-
-    // 非空断言（推荐，因为有的类型被隐藏了，想要使用还需要手动导入。）
-    let yyyy = sensors.register("yyy")!;
-    ```
-
 ## TODO List
 
+- [ ] 将 hamibot 的类型声明单独发布到 `DefinitelyTyped`
 - [ ] 添加声明文件 [24/26]
   - [ ] Util
   - [ ] Canvans
 - [ ] 使用 `Eslint` 在提交前统一代码风格
-- [ ] 将所有的预制函数使用 `TypeScript` 重写
 - [ ] 检查泛型注释
 - [ ] 检查回调函数注释
 - [ ] 检查注释中的类和方法是否使用行内代码格式
