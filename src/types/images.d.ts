@@ -73,7 +73,7 @@ declare module 'images' {
          * @description: 截取当前屏幕并返回一个 Image 对象。没有截图权限时执行该函数会抛出  `SecurityException` 。
          * 
          * 该函数不会返回 `null` ，两次调用可能返回相同的 `Image` 对象。这是因为设备截图的更新需要一定的时间，短时间内（一般来说是 16 毫秒）连续调用则会返回同一张截图。截图需要转换为 Bitmap 格式，从而该函数执行需要一定的时间（ 0~20 毫秒）。另外在 `requestScreenCapture()` 执行成功后需要一定时间后才有截图可用，因此如果立即调用 `captureScreen()` ，会等待一定时间后（一般为几百毫秒）才返回截图。
-         * @return {Image} 当前屏幕的截图。
+         * @return {CaptureImage} 当前屏幕的截图。
          * @example
          * ```typescript
          * // 请求横屏截图
@@ -86,7 +86,7 @@ declare module 'images' {
          * toast(colors.toString(color));
          * ```
          */
-        function captureScreen(): Image;
+        function captureScreen(): CaptureImage;
 
         /**
          * @description: 截取当前屏幕并以 `PNG` 格式保存到 `path` 中。如果文件不存在会被创建；文件存在会被覆盖。没有截图权限时执行该函数会抛出  `SecurityException` 。
@@ -96,7 +96,7 @@ declare module 'images' {
 
         /**
          * @description: 在图片中寻找颜色 color。
-         * @param {Image} image 操作的图片。
+         * @param {BaseImage} image 操作的图片。
          * @param {Color} color 要寻找的颜色的 RGB 值。如果是一个整数，则以 0xRRGGBB 的形式代表 RGB 值（A 通道会被忽略）。如果是字符串，则以 `#RRGGBB` 代表其 RGB 值。
          * @param {ColorOptions2} options 查找选项。
          * @return {Point | null} 找到时返回找到的点 `Point` ，找不到时返回 `null` 。
@@ -121,11 +121,11 @@ declare module 'images' {
          * }
          * ```
          */
-        function findColor(image: Image, color: Color, options?: ColorOptions2): Point | null;
+        function findColor(image: BaseImage, color: Color, options?: ColorOptions2): Point | null;
 
         /**
          * @description: 在图片中寻找颜色 color。
-         * @param {Image} image 操作的图片。
+         * @param {BaseImage} image 操作的图片。
          * @param {Color} color 要寻找的颜色的 RGB 值。如果是一个整数，则以 0xRRGGBB 的形式代表 RGB 值（A 通道会被忽略）。如果是字符串，则以 `#RRGGBB` 代表其 RGB 值。
          * @param {ColorOptions4} options 查找选项。
          * @return {Point | null} 找到时返回找到的点 `Point` ，找不到时返回 `null` 。
@@ -150,11 +150,11 @@ declare module 'images' {
          * }
          * ```
          */
-        function findColor(image: Image, color: Color, options?: ColorOptions4): Point | null;
+        function findColor(image: BaseImage, color: Color, options?: ColorOptions4): Point | null;
 
         /**
          * @description: 区域找色的简便方法。
-         * @param {Image} img 操作的图片。
+         * @param {BaseImage} img 操作的图片。
          * @param {Color} color 要寻找的颜色的 RGB 值。如果是一个整数，则以 0xRRGGBB 的形式代表 RGB 值（A 通道会被忽略）。如果是字符串，则以 `#RRGGBB` 代表其 RGB 值。
          * @param {number} x 找色区域左上角的横坐标。
          * @param {number} y 找色区域左上角的纵坐标。
@@ -165,11 +165,11 @@ declare module 'images' {
          * `similarity = (255 - threshold) / 255` 。
          * @return {Point | null} 找到时返回找到的点 `Point` ，找不到时返回 `null` 。
          */
-        function findColorInRegion(img: Image, color: Color, x: number, y: number, width?: number, height?: number, threshold?: number): Point | null;
+        function findColorInRegion(img: BaseImage, color: Color, x: number, y: number, width?: number, height?: number, threshold?: number): Point | null;
 
         /**
          * @description: 在图片 `img` 指定区域中找到颜色和 `color` 完全相等的某个点。找色区域通过x, y, width, height指定，如果不指定找色区域，则在整张图片中寻找。
-         * @param {Image} img 操作的图片。
+         * @param {BaseImage} img 操作的图片。
          * @param {Color} color 要寻找的颜色。
          * @param {number} [x] 找色区域的左上角横坐标。
          * @param {number} [y] 找色区域的左上角纵坐标。
@@ -190,12 +190,12 @@ declare module 'images' {
          * }
          * ```
          */
-        function findColorEquals(img: Image, color: Color, x?: number, y?: number, width?: number, height?: number): Point | null;
+        function findColorEquals(img: BaseImage, color: Color, x?: number, y?: number, width?: number, height?: number): Point | null;
 
         /**
          * @description: 找图。在大图片 `img` 中查找小图片 `template` 的位置（模块匹配）。
-         * @param {Image} img 用于进行搜索的完整图片。
-         * @param {Image} template 要在 `img` 图片中寻找的子图片（模板）。
+         * @param {BaseImage} img 用于进行搜索的完整图片。
+         * @param {BaseImage} template 要在 `img` 图片中寻找的子图片（模板）。
          * @param {TemplateOptions2} [options] 查找选项。
          * @return {Point | null} 找到时返回位置坐标（ `Point` ），找不到时返回 `null` 。
          * @example
@@ -229,12 +229,12 @@ declare module 'images' {
          * }
          * ```
          */
-        function findImage(img: Image, template: Image, options?: TemplateOptions2): Point | null;
+        function findImage(img: BaseImage, template: BaseImage, options?: TemplateOptions2): Point | null;
 
         /**
          * @description: 找图。在大图片 `img` 中查找小图片 `template` 的位置（模块匹配）。
-         * @param {Image} img 用于进行搜索的完整图片。
-         * @param {Image} template 要在 `img` 图片中寻找的子图片（模板）。
+         * @param {BaseImage} img 用于进行搜索的完整图片。
+         * @param {BaseImage} template 要在 `img` 图片中寻找的子图片（模板）。
          * @param {TemplateOptions4} [options] 查找选项。
          * @return {Point | null} 找到时返回位置坐标（ `Point` ），找不到时返回 `null` 。
          * @example
@@ -268,12 +268,12 @@ declare module 'images' {
          * }
          * ```
          */
-        function findImage(img: Image, template: Image, options?: TemplateOptions4): Point | null;
+        function findImage(img: BaseImage, template: BaseImage, options?: TemplateOptions4): Point | null;
 
         /**
          * @description: 区域找图的简便方法。在大图片 `img` 中查找小图片 `template` 的位置（模块匹配）。
-         * @param {Image} img 用于进行搜索的完整图片。
-         * @param {Image} template 要在 `img` 图片中寻找的子图片（模板）。
+         * @param {BaseImage} img 用于进行搜索的完整图片。
+         * @param {BaseImage} template 要在 `img` 图片中寻找的子图片（模板）。
          * @param {number} x 找色区域左上角的横坐标。
          * @param {number} y 找色区域左上角的纵坐标。
          * @param {number} [width] 找色区域的宽度。
@@ -283,7 +283,7 @@ declare module 'images' {
          * `similarity = (255 - threshold) / 255` 。
          * @return {Point | null} 找到时返回位置坐标（ `Point` ），找不到时返回 `null` 。
          */
-        function findImageInRegion(img: Image, template: Image, x: number, y: number, width?: number, height?: number, threshold?: number): Point | null;
+        function findImageInRegion(img: BaseImage, template: BaseImage, x: number, y: number, width?: number, height?: number, threshold?: number): Point | null;
     }
 
     interface Images {
@@ -303,14 +303,14 @@ declare module 'images' {
 
         /**
          * @description: 复制一张图片并返回新的副本。该函数会完全复制 img 对象的数据。
-         * @param {Image} img 要复制的图片。
+         * @param {BaseImage} img 要复制的图片。
          * @return {Image} 复制后的图片副本。
          */
-        copy(img: Image): Image;
+        copy(img: BaseImage): Image;
 
         /**
          * @description: 把图片 `image` 以 `format` 格式保存到 `path` 中。如果文件不存在会被创建；文件存在会被覆盖。
-         * @param {Image} image 要存储的图片对象。
+         * @param {BaseImage} image 要存储的图片对象。
          * @param {string} path 文件路径。
          * @param {ImageFormat} [format] 图片格式（默认为 `png` ），可选的值为:
          * - `png`
@@ -326,7 +326,7 @@ declare module 'images' {
          * app.viewFile('/sdcard/1.jpg');
          * ```
          */
-        save(image: Image, path: string, format?: ImageFormat, quality?: number): void;
+        save(image: BaseImage, path: string, format?: ImageFormat, quality?: number): void;
 
         /**
          * @description: 解码 Base64 数据为图片。
@@ -337,7 +337,7 @@ declare module 'images' {
 
         /**
          * @description: 把图片编码为 base64 数据并返回。
-         * @param {Image} img 要编码的图片对象。
+         * @param {BaseImage} img 要编码的图片对象。
          * @param {ImageFormat} [format] 图片格式（默认为 `png` ），可选的值为:
          * - `png`
          * - `jpeg`
@@ -346,7 +346,7 @@ declare module 'images' {
          * @param {number} [quality] 图片质量，为 0~100 的整数值（默认为 100 ）。
          * @return {string} base64 编码后的字符串。
          */
-        toBase64(img: Image, format?: ImageFormat, quality?: number): string;
+        toBase64(img: BaseImage, format?: ImageFormat, quality?: number): string;
 
         /**
          * @description: 解码字节数组 `bytes` 为 Image 对象。
@@ -357,7 +357,7 @@ declare module 'images' {
 
         /**
          * @description: 把图片编码为字节数组并返回。
-         * @param {Image} img 要编码的图片对象。
+         * @param {BaseImage} img 要编码的图片对象。
          * @param {ImageFormat} [format] 图片格式（默认为 `png` ），可选的值为:
          * - `png`
          * - `jpeg`
@@ -366,11 +366,11 @@ declare module 'images' {
          * @param {number} [quality] 图片质量，为 0~100 的整数值（默认为 100 ）。
          * @return {ByteArray} 编码后的字节数组。
          */
-        toBytes(img: Image, format?: ImageFormat, quality?: number): ByteArray;
+        toBytes(img: BaseImage, format?: ImageFormat, quality?: number): ByteArray;
 
         /**
          * @description: 从图片 `img` 的位置 (x, y) 处剪切大小为 `w` * `h` 的区域，并返回该剪切区域的新图片。
-         * @param {Image} img 要裁切的图片对象。
+         * @param {BaseImage} img 要裁切的图片对象。
          * @param {number} x 剪切区域的左上角横坐标。
          * @param {number} y 剪切区域的左上角纵坐标。
          * @param {number} w 剪切区域的宽度。
@@ -383,11 +383,11 @@ declare module 'images' {
          * images.save(clip, '/sdcard/clip.png');
          * ```
          */
-        clip(img: Image, x: number, y: number, w: number, h: number): Image;
+        clip(img: BaseImage, x: number, y: number, w: number, h: number): Image;
 
         /**
-         * @description: 调整图片大小，并返回调整后的图片。
-         * @param {Image} img 要调整的图片。
+         * @description: 调整图片大小，并返回调整后的新图片。
+         * @param {BaseImage} img 要调整的图片。
          * @param {array} size 调整后图片的尺寸。两个元素的数组 [w, h] ，分别表示宽度和高度；如果只有一个元素 [x,] ，则宽度和高度相等。
          * @param {InterpolationFunction} [interpolation] 插值方法（默认为 `LINEAR` ），可选的值为:
          * - `NEAREST` - 最近邻插值。
@@ -404,11 +404,11 @@ declare module 'images' {
          * images.resize(img, [200, 300])
          * ```
          */
-        resize(img: Image, size: ImageSize, interpolation?: InterpolationFunction): Image;
+        resize(img: BaseImage, size: ImageSize, interpolation?: InterpolationFunction): Image;
 
         /**
-         * @description: 调整图片大小，并返回调整后的图片。
-         * @param {Image} img 要调整的图片。
+         * @description: 调整图片大小，并返回调整后的新图片。
+         * @param {BaseImage} img 要调整的图片。
          * @param {array} size 调整后图片的尺寸。两个元素的数组 [w, h] ，分别表示宽度和高度；如果只有一个元素 [x,] ，则宽度和高度相等。
          * @param {string} [interpolation] 插值方法（默认为 `LINEAR` ），可选的值为:
          * - `NEAREST` - 最近邻插值。
@@ -425,11 +425,11 @@ declare module 'images' {
          * images.resize(img, [200, 300])
          * ```
          */
-        resize(img: Image, size: ImageSize, interpolation?: string): Image;
+        resize(img: BaseImage, size: ImageSize, interpolation?: string): Image;
 
         /**
-         * @description: 放缩图片，并返回放缩后的图片。
-         * @param {Image} img 要调整的图片。
+         * @description: 放缩图片，并返回放缩后的新图片。
+         * @param {BaseImage} img 要调整的图片。
          * @param {number} fx 宽度放缩倍数。
          * @param {number} fy 高度放缩倍数。
          * @param {InterpolationFunction} [interpolation] 插值方法（默认为 `LINEAR` ），可选的值为:
@@ -447,11 +447,11 @@ declare module 'images' {
          * images.scale(img, 0.5, 0.5)
          * ```
          */
-        scale(img: Image, fx: number, fy: number, interpolation?: InterpolationFunction): Image;
+        scale(img: BaseImage, fx: number, fy: number, interpolation?: InterpolationFunction): Image;
 
         /**
-         * @description: 放缩图片，并返回放缩后的图片。
-         * @param {Image} img 要调整的图片。
+         * @description: 放缩图片，并返回放缩后的新图片。
+         * @param {BaseImage} img 要调整的图片。
          * @param {number} fx 宽度放缩倍数。
          * @param {number} fy 高度放缩倍数。
          * @param {string} [interpolation] 插值方法（默认为 `LINEAR` ），可选的值为:
@@ -469,11 +469,11 @@ declare module 'images' {
          * images.scale(img, 0.5, 0.5)
          * ```
          */
-        scale(img: Image, fx: number, fy: number, interpolation?: string): Image;
+        scale(img: BaseImage, fx: number, fy: number, interpolation?: string): Image;
 
         /**
-         * @description: 将图片逆时针旋转 `degress` 度，返回旋转后的图片对象。
-         * @param {Image} img 要调整的图片。
+         * @description: 将图片逆时针旋转 `degress` 度，返回旋转后的新图片。
+         * @param {BaseImage} img 要调整的图片。
          * @param {number} degrees 图片逆时针旋转的角度。
          * @param {number} [x] 旋转中心 x 坐标，默认为图片中点。
          * @param {number} [y] 旋转中心 y 坐标，默认为图片中点。
@@ -484,12 +484,12 @@ declare module 'images' {
          * images.rotate(img, 90)
          * ```
          */
-        rotate(img: Image, degrees: number, x?: number, y?: number): Image;
+        rotate(img: BaseImage, degrees: number, x?: number, y?: number): Image;
 
         /**
          * @description: 连接两张图片，并返回连接后的图像。如果两张图片大小不一致，小的那张将适当居中。
-         * @param {Image} img1 图片1。
-         * @param {Image} img2 图片2。
+         * @param {BaseImage} img1 图片1。
+         * @param {BaseImage} img2 图片2。
          * @param {string} [direction] 连接方向（默认为 `RIGHT` ），可选的值为：
          * - `LEFT` - 将 `img2` 接到 `img1` 左边。
          * - `RIGHT` - 将 `img2` 接到 `img1` 右边。
@@ -497,18 +497,18 @@ declare module 'images' {
          * - `BOTTOM` - 将 `img2` 接到 `img1` 下边。
          * @return {Image} 连接后的图片。
          */
-        concat(img1: Image, img2: Image, direction?: 'LEFT' | 'RIGHT' | 'BOTTOM' | 'TOP'): Image;
+        concat(img1: BaseImage, img2: BaseImage, direction?: 'LEFT' | 'RIGHT' | 'BOTTOM' | 'TOP'): Image;
 
         /**
          * @description: 灰度化图片，并返回灰度化后的图片。
-         * @param {Image} img 要调整的图片。
+         * @param {BaseImage} img 要调整的图片。
          * @return {Image} 调整后的图片。
          */
-        gratscale(img: Image): Image;
+        gratscale(img: BaseImage): Image;
 
         /**
          * @description: 对图片进行阈值化处理。可以参考有关博客（比如 [threshold 函数的使用](https://blog.csdn.net/u012566751/article/details/77046445) ）或者 OpenCV 文档 [threshold](https://docs.opencv.org/3.4.4/d7/d1b/group__imgproc__misc.html#gae8a4a146d1ca78c626a53577199e9c57) 。
-         * @param {Image} img 要调整的图片。
+         * @param {BaseImage} img 要调整的图片。
          * @param {number} threshold 阈值。
          * @param {number} maxValue 最大值。
          * @param {ThresholdType} [type]  阈值化类型（默认为 `BINARY` ），参见 [ThresholdTypes](https://docs.opencv.org/3.4.4/d7/d1b/group__imgproc__misc.html#gaa9e58d2860d4afa658ef70a9b1115576) ，可选的值为：
@@ -526,11 +526,11 @@ declare module 'images' {
          * images.threshold(img, 100, 255, 'BINARY')
          * ```
          */
-        threshold(img: Image, threshold: number, maxValue: number, type?: ThresholdType): Image;
+        threshold(img: BaseImage, threshold: number, maxValue: number, type?: ThresholdType): Image;
 
         /**
          * @description: 对图片进行自适应阈值化处理。可以参考有关博客（比如 [threshold 与 adaptiveThreshold](https://blog.csdn.net/guduruyu/article/details/68059450) ）或者 OpenCV 文档 [adaptiveThreshold](https://docs.opencv.org/3.4.4/d7/d1b/group__imgproc__misc.html#ga72b913f352e4a1b1b397736707afcde3) 。
-         * @param {Image} img 要调整的图片。
+         * @param {BaseImage} img 要调整的图片。
          * @param {number} maxValue 最大值。
          * @param {string} adaptiveMethod 在一个邻域内计算阈值所采用的算法，可选的值为：
          * - `MEAN_C` - 计算出领域的平均值再减去参数 `C` 的值。
@@ -542,22 +542,22 @@ declare module 'images' {
          * @param {number} C 偏移值调整量。
          * @return {Image} 调整后的图片。
          */
-        adaptiveThreshold(img: Image, maxValue: number, adaptiveMethod: 'MEAN_C' | 'GAUSSIAN_C', ThresholdType: 'BINARY' | 'BINARY_INV', blockSize: number, C: number): Image;
+        adaptiveThreshold(img: BaseImage, maxValue: number, adaptiveMethod: 'MEAN_C' | 'GAUSSIAN_C', ThresholdType: 'BINARY' | 'BINARY_INV', blockSize: number, C: number): Image;
 
         /**
          * @description: 对图像进行颜色空间转换。可以参考有关博客（比如 [颜色空间转换](https://blog.csdn.net/u011574296/article/details/70896811?locationNum=14&fps=1) ）或者 OpenCV 文档 [cvtColor](https://docs.opencv.org/3.4.4/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab) 。
-         * @param {Image} img 要调整的图片。
+         * @param {BaseImage} img 要调整的图片。
          * @param {string} code 颜色空间转换的类型，可选的值有一共有 205 个（参见  [ColorConversionCodes](https://docs.opencv.org/3.4.4/d8/d01/group__imgproc__color__conversions.html#ga4e0972be5de079fed4e3a10e24ef5ef0) ），这里只列出几个：
          * - `BGR2GRAY` - BGR 转换为灰度。
          * - `BGR2HSV` - BGR 转换为 HSV。
          * @param {number} [dstCn] 目标图像的颜色通道数量，如果不填写则根据其他参数自动决定。
          * @return {Image} 调整后的图片。
          */
-        cvtColor(img: Image, code: 'BGR2GRAY' | 'BGR2HSV', dstCn?: number): Image;
+        cvtColor(img: BaseImage, code: 'BGR2GRAY' | 'BGR2HSV', dstCn?: number): Image;
 
         /**
          * @description: 将图片二值化，在 lowerBound~upperBound 范围以外的颜色都变成 0，在范围以内的颜色都变成 255。
-         * @param {Image} img 要调整的图片。
+         * @param {BaseImage} img 要调整的图片。
          * @param {number} lowerBound 颜色下界（0~255 或 十六进制颜色代码）。
          * @param {number} upperBound 颜色上界（0~255 或 十六进制颜色代码）。
          * @return {Image} 调整后的图片。
@@ -566,11 +566,11 @@ declare module 'images' {
          * images.inRange(img, '#000000', '#222222');
          * ```
          */
-        inRange(img: Image, lowerBound: Color, upperBound: Color): Image;
+        inRange(img: BaseImage, lowerBound: Color, upperBound: Color): Image;
 
         /**
          * @description: 将图片二值化，在 `color` - `interval` ~ `color` + `interval` 范围以外的颜色都变成 0，在范围以内的颜色都变成 255。这里对 color 的加减是对每个通道而言的。
-         * @param {Image} img 要调整的图片。()
+         * @param {BaseImage} img 要调整的图片。()
          * @param {Color} color 颜色值（0~255 或 十六进制颜色代码）。
          * @param {number} interval 每个通道的范围间隔。
          * @return {Image} 调整后的图片。
@@ -580,11 +580,11 @@ declare module 'images' {
          * images.interval(img, '#888888', 16)
          * ```
          */
-        interval(img: Image, color: Color, interval: number): Image;
+        interval(img: BaseImage, color: Color, interval: number): Image;
 
         /**
          * @description: 对图像进行模糊（平滑处理）。可以参考有关博客（比如 [实现图像平滑处理](https://www.cnblogs.com/denny402/p/3848316.html) 、 [调整图像边缘](https://blog.csdn.net/shuiyixin/article/details/106472722/) ）或者 OpenCV 文档 [blur](https://docs.opencv.org/3.4.4/d4/d86/group__imgproc__filter.html#ga8c45db9afe636703801b0b2e440fce37) 。
-         * @param {Image} img 要调整的图片。
+         * @param {BaseImage} img 要调整的图片。
          * @param {ImageSize} size 定义模糊内核大小，例如 `[3, 3]` 。
          * @param {array} [anchor] 指定锚点位置（被平滑点），默认为 `[-1, -1]` 即图像中心。
          * @param {BorderType} [type] 推断边缘像素类型，默认为 `DEFAULT` ，可选的值为：
@@ -600,19 +600,19 @@ declare module 'images' {
          * - `ISOLATED` - 使用黑色进行填充。
          * @return {Image} 调整后的图片。
          */
-        blur(img: Image, size: ImageSize, anchor?: [number, number], type?: BorderType): Image;
+        blur(img: BaseImage, size: ImageSize, anchor?: [number, number], type?: BorderType): Image;
 
         /**
          * @description: 对图像进行中值滤波。可以参考有关博客（比如 [实现图像平滑处理](https://www.cnblogs.com/denny402/p/3848316.html) ）或者 OpenCV 文档 [blur](https://docs.opencv.org/3.4.4/d4/d86/group__imgproc__filter.html#ga8c45db9afe636703801b0b2e440fce37) 。
-         * @param {Image} img 要调整的图片。
+         * @param {BaseImage} img 要调整的图片。
          * @param {ImageSize} size 定义模糊内核大小，例如 `[3, 3]` 。
          * @return {Image} 调整后的图片。
          */
-        medianBlur(img: Image, size: ImageSize): Image;
+        medianBlur(img: BaseImage, size: ImageSize): Image;
 
         /**
          * @description: 对图像进行高斯模糊。可以参考有关博客（比如 [实现图像平滑处理](https://www.cnblogs.com/denny402/p/3848316.html) 、 [调整图像边缘](https://blog.csdn.net/shuiyixin/article/details/106472722/) ）或者 OpenCV 文档 [blur](https://docs.opencv.org/3.4.4/d4/d86/group__imgproc__filter.html#ga8c45db9afe636703801b0b2e440fce37) 。
-         * @param {Image} img 要调整的图片。
+         * @param {BaseImage} img 要调整的图片。
          * @param {ImageSize} size 定义模糊内核大小，例如 `[3, 3]` 。
          * @param {number} [sigmaX] x 方向的标准方差，不填写则自动计算。
          * @param {number} [sigmaY] y 方向的标准方差，不填写则自动计算。
@@ -629,7 +629,7 @@ declare module 'images' {
          * - `ISOLATED` - 使用黑色进行填充。
          * @return {Image} 调整后的图片。
          */
-        gaussianBlur(img: Image, size: ImageSize, sigmaX?: number, sigmaY?: number, type?: BorderType): Image;
+        gaussianBlur(img: BaseImage, size: ImageSize, sigmaX?: number, sigmaY?: number, type?: BorderType): Image;
 
         /**
          * @description: 把 Mat 对象转换为 `Image` 对象。
@@ -667,7 +667,7 @@ declare module 'images' {
          * @description: 截取当前屏幕并返回一个 Image 对象。没有截图权限时执行该函数会抛出  `SecurityException` 。
          * 
          * 该函数不会返回 `null` ，两次调用可能返回相同的 `Image` 对象。这是因为设备截图的更新需要一定的时间，短时间内（一般来说是 16 毫秒）连续调用则会返回同一张截图。截图需要转换为 Bitmap 格式，从而该函数执行需要一定的时间（ 0~20 毫秒）。另外在 `requestScreenCapture()` 执行成功后需要一定时间后才有截图可用，因此如果立即调用 `captureScreen()` ，会等待一定时间后（一般为几百毫秒）才返回截图。
-         * @return {Image} 当前屏幕的截图。
+         * @return {CaptureImage} 当前屏幕的截图。
          * @example
          * ```typescript
          * // 请求横屏截图
@@ -680,7 +680,7 @@ declare module 'images' {
          * toast(colors.toString(color));
          * ```
          */
-        captureScreen(): Image;
+        captureScreen(): CaptureImage;
 
         /**
          * @description: 截取当前屏幕并以 `PNG` 格式保存到 `path` 中。如果文件不存在会被创建；文件存在会被覆盖。没有截图权限时执行该函数会抛出  `SecurityException` 。
@@ -690,16 +690,16 @@ declare module 'images' {
 
         /**
          * @description: 返回图片 image 在点 (x, y) 处的像素的 ARGB 值。坐标系以图片左上角为原点。以图片左侧边为 y 轴，上侧边为 x 轴。
-         * @param {Image} image 操作的图片。
+         * @param {BaseImage} image 操作的图片。
          * @param {number} x 要获取的像素的横坐标。
          * @param {number} y 要获取的像素的纵坐标。
          * @return {number} 点 (x, y) 处的像素的 ARGB 值。该值的格式为 0xAARRGGBB，是一个'32 位整数'（虽然 JavaScript 中并不区分整数类型和其他数值类型）。
          */
-        pixel(image: Image, x: number, y: number): number;
+        pixel(image: BaseImage, x: number, y: number): number;
 
         /**
          * @description: 在图片中寻找颜色 color。
-         * @param {Image} image 操作的图片。
+         * @param {BaseImage} image 操作的图片。
          * @param {Color} color 要寻找的颜色的 RGB 值。如果是一个整数，则以 0xRRGGBB 的形式代表 RGB 值（A 通道会被忽略）。如果是字符串，则以 `#RRGGBB` 代表其 RGB 值。
          * @param {ColorOptions2} [options] 查找选项。
          * @return {Point | null} 找到时返回找到的点 `Point` ，找不到时返回 `null` 。
@@ -724,11 +724,11 @@ declare module 'images' {
          * }
          * ```
          */
-        findColor(image: Image, color: Color, options?: ColorOptions2): Point | null;
+        findColor(image: BaseImage, color: Color, options?: ColorOptions2): Point | null;
 
         /**
          * @description: 在图片中寻找颜色 color。
-         * @param {Image} image 操作的图片。
+         * @param {BaseImage} image 操作的图片。
          * @param {Color} color 要寻找的颜色的 RGB 值。如果是一个整数，则以 0xRRGGBB 的形式代表 RGB 值（A 通道会被忽略）。如果是字符串，则以 `#RRGGBB` 代表其 RGB 值。
          * @param {ColorOptions4} [options] 查找选项。
          * @return {Point | null} 找到时返回找到的点 `Point` ，找不到时返回 `null` 。
@@ -753,11 +753,11 @@ declare module 'images' {
          * }
          * ```
          */
-        findColor(image: Image, color: Color, options?: ColorOptions4): Point | null;
+        findColor(image: BaseImage, color: Color, options?: ColorOptions4): Point | null;
 
         /**
          * @description: 区域找色的简便方法。
-         * @param {Image} img 操作的图片。
+         * @param {BaseImage} img 操作的图片。
          * @param {Color} color 要寻找的颜色的 RGB 值。如果是一个整数，则以 0xRRGGBB 的形式代表 RGB 值（A 通道会被忽略）。如果是字符串，则以 `#RRGGBB` 代表其 RGB 值。
          * @param {number} x 找色区域左上角的横坐标。
          * @param {number} y 找色区域左上角的纵坐标。
@@ -768,11 +768,11 @@ declare module 'images' {
          * `similarity = (255 - threshold) / 255` 。
          * @return {Point | null} 找到时返回找到的点 `Point` ，找不到时返回 `null` 。
          */
-        findColorInRegion(img: Image, color: Color, x: number, y: number, width?: number, height?: number, threshold?: number): Point | null;
+        findColorInRegion(img: BaseImage, color: Color, x: number, y: number, width?: number, height?: number, threshold?: number): Point | null;
 
         /**
          * @description: 在图片 `img` 指定区域中找到颜色和 `color` 完全相等的某个点。找色区域通过x, y, width, height指定，如果不指定找色区域，则在整张图片中寻找。
-         * @param {Image} img 操作的图片。
+         * @param {BaseImage} img 操作的图片。
          * @param {Color} color 要寻找的颜色。
          * @param {number} [x] 找色区域的左上角横坐标。
          * @param {number} [y] 找色区域的左上角纵坐标。
@@ -793,14 +793,14 @@ declare module 'images' {
          * }
          * ```
          */
-        findColorEquals(img: Image, color: Color, x?: number, y?: number, width?: number, height?: number): Point | null;
+        findColorEquals(img: BaseImage, color: Color, x?: number, y?: number, width?: number, height?: number): Point | null;
 
         /**
          * @description: 多点找色，类似于按键精灵的多点找色，其过程如下：
          * 1. 在图片 img 中找到颜色 `firstColor` 的位置 (x0, y0) 。
          * 2. 对于数组 `colors` 的每个元素 [x, y, color] ，检查图片 `img` 在位置 (x + x0, y + y0) 上的像素是否是颜色 `color` ，是的话返回 (x0, y0) ，否则继续寻找 `firstColor` 的位置，重新执行第一步。
          * 3. 整张图片都找不到时返回 null 。
-         * @param {Image} img 操作的图片。
+         * @param {BaseImage} img 操作的图片。
          * @param {Color} firstColor 起始点的颜色。
          * @param {array} colors 表示剩下的点相对于第一个点的位置和颜色的数组，数组的每个元素为 [x, y, color] 。
          * @param {ColorOptions2} [options] 查找选项。
@@ -821,14 +821,14 @@ declare module 'images' {
          * )
          * ```
          */
-        findMultiColors(img: Image, firstColor: Color, colors: ([number, number, Color])[], options?: ColorOptions2): Point | null;
+        findMultiColors(img: BaseImage, firstColor: Color, colors: ([number, number, Color])[], options?: ColorOptions2): Point | null;
 
         /**
          * @description: 多点找色，类似于按键精灵的多点找色，其过程如下：
          * 1. 在图片 img 中找到颜色 `firstColor` 的位置 (x0, y0) 。
          * 2. 对于数组 `colors` 的每个元素 [x, y, color] ，检查图片 `img` 在位置 (x + x0, y + y0) 上的像素是否是颜色 `color` ，是的话返回 (x0, y0) ，否则继续寻找 `firstColor` 的位置，重新执行第一步。
          * 3. 整张图片都找不到时返回 null 。
-         * @param {Image} img 操作的图片。
+         * @param {BaseImage} img 操作的图片。
          * @param {Color} firstColor 起始点的颜色。
          * @param {array} colors 表示剩下的点相对于第一个点的位置和颜色的数组，数组的每个元素为 [x, y, color] 。
          * @param {ColorOptions4} [options] 查找选项。
@@ -849,11 +849,11 @@ declare module 'images' {
          * )
          * ```
          */
-        findMultiColors(img: Image, firstColor: Color, colors: ([number, number, Color])[], options?: ColorOptions4): Point | null;
+        findMultiColors(img: BaseImage, firstColor: Color, colors: ([number, number, Color])[], options?: ColorOptions4): Point | null;
 
         /**
          * @description: 检测图片 `image` 在位置 (x, y) 处是否匹配到颜色 `color` 。用于检测图片中某个位置是否是特定颜色。
-         * @param {Image} image 操作的图片。
+         * @param {BaseImage} image 操作的图片。
          * @param {Color} color 要检测的颜色。
          * @param {number} x 要检测的位置横坐标。
          * @param {number} y 要检测的位置纵坐标。
@@ -886,12 +886,12 @@ declare module 'images' {
          * }
          * ```
          */
-        detectsColor(image: Image, color: Color, x: number, y: number, threshold?: number, algorithm?: string): boolean;
+        detectsColor(image: BaseImage, color: Color, x: number, y: number, threshold?: number, algorithm?: string): boolean;
 
         /**
          * @description: 找图。在大图片 `img` 中查找小图片 `template` 的位置（模块匹配）。
-         * @param {Image} img 用于进行搜索的完整图片。
-         * @param {Image} template 要在 `img` 图片中寻找的子图片（模板）。
+         * @param {BaseImage} img 用于进行搜索的完整图片。
+         * @param {BaseImage} template 要在 `img` 图片中寻找的子图片（模板）。
          * @param {TemplateOptions2} [options] 查找选项。
          * @return {Point | null} 找到时返回位置坐标（ `Point` ），找不到时返回 `null` 。
          * @example
@@ -926,12 +926,12 @@ declare module 'images' {
          * }
          * ```
          */
-        findImage(img: Image, template: Image, options?: TemplateOptions2): Point | null;
+        findImage(img: BaseImage, template: BaseImage, options?: TemplateOptions2): Point | null;
 
         /**
          * @description: 找图。在大图片 `img` 中查找小图片 `template` 的位置（模块匹配）。
-         * @param {Image} img 用于进行搜索的完整图片。
-         * @param {Image} template 要在 `img` 图片中寻找的子图片（模板）。
+         * @param {BaseImage} img 用于进行搜索的完整图片。
+         * @param {BaseImage} template 要在 `img` 图片中寻找的子图片（模板）。
          * @param {TemplateOptions4} [options] 查找选项。
          * @return {Point | null} 找到时返回位置坐标（ `Point` ），找不到时返回 `null` 。
          * @example
@@ -966,12 +966,12 @@ declare module 'images' {
          * }
          * ```
          */
-        findImage(img: Image, template: Image, options?: TemplateOptions4): Point | null;
+        findImage(img: BaseImage, template: BaseImage, options?: TemplateOptions4): Point | null;
 
         /**
          * @description: 区域找图的简便方法。在大图片 `img` 中查找小图片 `template` 的位置（模块匹配）。
-         * @param {Image} img 用于进行搜索的完整图片。
-         * @param {Image} template 要在 `img` 图片中寻找的子图片（模板）。
+         * @param {BaseImage} img 用于进行搜索的完整图片。
+         * @param {BaseImage} template 要在 `img` 图片中寻找的子图片（模板）。
          * @param {number} x 找色区域左上角的横坐标。
          * @param {number} y 找色区域左上角的纵坐标。
          * @param {number} [width] 找色区域的宽度。
@@ -981,25 +981,25 @@ declare module 'images' {
          * `similarity = (255 - threshold) / 255` 。
          * @return {Point | null} 找到时返回位置坐标（ `Point` ），找不到时返回 `null` 。
          */
-        findImageInRegion(img: Image, template: Image, x: number, y: number, width?: number, height?: number, threshold?: number): Point | null;
+        findImageInRegion(img: BaseImage, template: BaseImage, x: number, y: number, width?: number, height?: number, threshold?: number): Point | null;
 
         /**
          * @description: 在大图片中搜索小图片。该函数可以用于找图时找出多个位置，可以通过 `max` 参数控制最大的结果数量。也可以对匹配结果进行排序、求最值等操作。
-         * @param {Image} img 用于进行搜索的完整图片。
-         * @param {Image} template 要在 `img` 图片中寻找的子图片（模板）。
+         * @param {BaseImage} img 用于进行搜索的完整图片。
+         * @param {BaseImage} template 要在 `img` 图片中寻找的子图片（模板）。
          * @param {TemplateOptions2} [options] 查找选项。
          * @return {MatchingResult} 搜索结果。
          */
-        matchTemplate(img: Image, template: Image, options: TemplateOptions2): MatchingResult;
+        matchTemplate(img: BaseImage, template: BaseImage, options: TemplateOptions2): MatchingResult;
 
         /**
          * @description: 在大图片中搜索小图片。该函数可以用于找图时找出多个位置，可以通过 `max` 参数控制最大的结果数量。也可以对匹配结果进行排序、求最值等操作。
-         * @param {Image} img 用于进行搜索的完整图片。
-         * @param {Image} template 要在 `img` 图片中寻找的子图片（模板）。
+         * @param {BaseImage} img 用于进行搜索的完整图片。
+         * @param {BaseImage} template 要在 `img` 图片中寻找的子图片（模板）。
          * @param {TemplateOptions4} [options] 查找选项。
          * @return {MatchingResult} 搜索结果。
          */
-        matchTemplate(img: Image, template: Image, options: TemplateOptions4): MatchingResult;
+        matchTemplate(img: BaseImage, template: BaseImage, options: TemplateOptions4): MatchingResult;
     }
 
     class MatchingResult {
@@ -1078,7 +1078,7 @@ declare module 'images' {
         sortBy(cmp: SortDirection): MatchingResult;
     }
 
-    class Image {
+    class BaseImage {
         /**
          * @description: 获取图片宽度。
          * @return {number} 图片宽度，单位像素。
@@ -1106,6 +1106,15 @@ declare module 'images' {
          */
         pixel(x: number, y: number): number;
     }
+
+    class Image extends BaseImage {
+        /**
+         * @description: 回收创建的图片对象。
+         */
+        recycle(): void;
+    }
+
+    class CaptureImage extends BaseImage {}
 
     class Point {
         /**
