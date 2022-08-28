@@ -4,6 +4,9 @@
     <img alt="Version" src="https://img.shields.io/npm/v/script-template.svg">
   </a>
   <a href="#" target="_blank">
+    <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/batu1579/hamibot-starter">
+  </a>
+  <a href="[#](https://github.com/batu1579/hamibot-starter/blob/main/LICENSE)" target="_blank">
     <img alt="License: MPL--2.0" src="https://img.shields.io/badge/License-MPL--2.0-yellow.svg" />
   </a>
 </p>
@@ -15,6 +18,8 @@
 > 欢迎各位大佬帮我一起完善这个项目！
 
 ## 安装依赖
+
+> 因为使用了 npm 来管理依赖，在安装之前请确保安装过 `node.js` 。
 
 ```sh
 npm install
@@ -45,7 +50,7 @@ npm install
 ## 注意事项
 
 1. 编写 UI 或悬浮窗时请记得将文件扩展名修改成 `tsx` 。
-2. 如果有用到暂时没有声明过的模块，可以使用 ts 忽略:
+2. 如果有用到暂时没有声明过的模块，可以使用 TS 的忽略语法:
 
    > 注意：忽略会跳过所有检查，除了语法错误。使用时会有风险，请在确保肯定不会出现问题后再使用。
 
@@ -54,12 +59,12 @@ npm install
     // 可以不使用结束标记，即忽略到文件结尾。
     // 注意：必须在文件顶部使用。
     // @ts-nocheck
-
+   
     // 要跳过检查的某段代码
     canvas.drawLine(0, 0, 1080, 1920, paint);
-
+   
     // @ts-check
-
+   
     // 单行忽略（取消下一行的代码检查。）
     // @ts-ignore
     canvas.drawLine(0, 0, 1080, 1920, paint);
