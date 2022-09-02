@@ -221,7 +221,7 @@ export class Logger {
         if (index < 0) index = 0;
         if (index > stackFrames.length - 1) index = stackFrames.length - 1;
 
-        return stackFrames[index].callerName;
+        return stackFrames[index].getCallerName();
     }
 
     /**
@@ -496,7 +496,7 @@ export class Logger {
         }
 
         // 修改最外层调用名称为 Outer
-        stack[stack.length - 1].callerName = "Outer"
+        stack[stack.length - 1].setCallerName("Outer");
 
         return stack;
     }
