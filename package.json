@@ -4,8 +4,7 @@
     "description": "一个用来快速开始编写 HamiBot 脚本的模板",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "webpack --mode production"
+        "build": "webpack --config ./buildConfig/webpack.dev.js"
     },
     "keywords": [
         "hamibot",
@@ -25,7 +24,8 @@
         "ts-loader": "^9.3.0",
         "typescript": "^4.6.4",
         "webpack": "^5.72.1",
-        "webpack-cli": "^4.9.2"
+        "webpack-cli": "^4.9.2",
+        "webpack-merge": "^5.8.0"
     },
     "dependencies": {
         "@babel/preset-react": "^7.18.6",
