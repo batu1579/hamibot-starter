@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-24 16:55:58
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-06 12:23:46
+ * @LastTime: 2022-09-06 14:30:21
  * @FilePath: \\buildConfig\\webpack.config.js
  * @Description: 默认设置
  * 
@@ -12,6 +12,7 @@ const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
+    mode: "production",
 
     // 指定webpack打包的时候要使用的模块
     module: {
