@@ -53,7 +53,7 @@ npm install
 
 1. 在 `buildConfig` 文件夹下添加新的配置文件，例如： `webpack.MyBuildConfig.js`。
 2. 编写独立的构建设置，可以复制 `buildConfig/webpack.dev.js` 中的内容然后修改。
-3. 在 `config.json` 文件中的 `scripts` 字段中添加新的记录，例如：
+3. 在 `package.json` 文件中的 `scripts` 字段中添加新的记录，例如：
 
     ```json
     "scripts": {
