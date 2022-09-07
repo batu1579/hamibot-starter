@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-31 13:19:44
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-16 03:28:12
+ * @LastTime: 2022-09-07 17:43:34
  * @FilePath: \\src\\types\\widget-operation.d.ts
  * @Description: 控件操作
  */
@@ -277,6 +277,12 @@ declare module 'widget-operation' {
              * @return {this} 返回选择器自身以便链式调用。
              */
             descMatches(regex: RegExp | string): this;
+
+            /**
+             * @description: 为当前选择器添加附加控件 `depth` 深度条件。
+             * @return {this} 返回选择器自身以便链式调用。
+             */
+            depth(depth: number): this;
 
             /**
              * @description: 为当前选择器附加 `id` 等于 `resId` 的筛选条件。控件的 `id` 属性 **通常** 是可以用来确定控件的唯一标识，如果一个控件有 `id` ，那么使用 `id` 来找到他是最好的方法。不过，在列表中会出现多个控件的 `id` 相同的情况。
@@ -1340,6 +1346,12 @@ declare module 'widget-operation' {
          * @return {UiSelector} 返回选择器自身以便链式调用。
          */
         function descMatches(regex: RegExp | string): UiSelector;
+
+        /**
+         * @description: 为当前选择器添加附加控件 `depth` 深度条件。
+         * @return {this} 返回选择器自身以便链式调用。
+         */
+        function depth(depth: number): UiSelector;
 
         /**
          * @description: 为当前选择器附加 `id` 等于 `resId` 的筛选条件。控件的 `id` 属性 **通常** 是可以用来确定控件的唯一标识，如果一个控件有 `id` ，那么使用 `id` 来找到他是最好的方法。不过，在列表中会出现多个控件的 `id` 相同的情况。
