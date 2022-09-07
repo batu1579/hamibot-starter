@@ -497,7 +497,7 @@ declare module 'widget-operation' {
              * @param {boolean} [b] 控件是否已启用（默认为 `true` ）。
              * @return {this} 返回选择器自身以便链式调用。
              */
-            enable(b?: boolean): this;
+            enabled(b?: boolean): this;
 
             /**
              * @description: 为当前选择器附加控件是否可滑动的条件。滑动包括上下滑动和左右滑动。可以用这个条件来寻找可滑动控件来滑动界面。
@@ -1566,7 +1566,7 @@ declare module 'widget-operation' {
          * @param {boolean} [b] 控件是否已启用（默认为 `true` ）。
          * @return {UiSelector} 返回选择器自身以便链式调用。
          */
-        function enable(b?: boolean): UiSelector;
+        function enabled(b?: boolean): UiSelector;
 
         /**
          * @description: 为当前选择器附加控件是否可滑动的条件。滑动包括上下滑动和左右滑动。可以用这个条件来寻找可滑动控件来滑动界面。
