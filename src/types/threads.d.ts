@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-12 19:58:53
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-16 03:23:08
+ * @LastTime: 2022-09-07 21:59:16
  * @FilePath: \\src\\types\\threads.d.ts
  * @Description: 多线程模块
  */
@@ -30,6 +30,7 @@ declare module 'threads' {
     interface Threads {
         /**
          * @description: 启动一个新线程并执行 `action` 。
+         * - **注意！：启动新线程的时候不能使用箭头函数！**
          * - **注意！：通过 `threads.start()` 启动的所有线程会在脚本被强制停止时自动停止。**
          * @param {Function} action
          * @return {Thread} 新建的线程对象。
