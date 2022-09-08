@@ -49,8 +49,6 @@ npm install
 
 ## 导出设置
 
-### 在导出时使用独立配置
-
 1. 在 `buildConfig` 文件夹下添加新的配置文件，例如： `webpack.MyBuildConfig.js`。
 2. 编写独立的构建设置，可以复制 `buildConfig/webpack.dev.js` 中的内容然后修改。
 3. 在 `package.json` 文件中的 `scripts` 字段中添加新的记录，例如：
@@ -64,10 +62,26 @@ npm install
 
 4. 在打包项目时选择对应的配置。
 
+## 编写 UI
+
+在编写 UI 的时候需要使用 XML 字符串，不要使用 `tsx` 文件。
+
+```typescript
+let widget = floaty.window(
+    "<frame gravity='center' bg='#FF0000'>\
+        <text id='text'>悬浮文字</text>\
+    </frame>"
+);
+setTimeout(() => {
+    widget.close();
+}, 5000);
+```
+
+> 我目前找到的编译 tsx 的方法都会打包成 React 对象，如果有了解的大大拜托帮帮我蟹蟹。
+
 ## 注意事项
 
-1. 编写 UI 或悬浮窗时请记得将文件扩展名修改成 `tsx` 。
-2. 如果有用到暂时没有声明过的模块，可以使用 TS 的忽略语法:
+1. 如果有用到暂时没有声明过的模块，可以使用 TS 的忽略语法:
 
    > 注意：忽略会跳过所有检查，除了语法错误。使用时会有风险，请在确保肯定不会出现问题后再使用。
 
@@ -76,8 +90,6 @@ npm install
     // 可以不使用结束标记，即忽略到文件结尾。
     // 注意：必须在文件顶部使用。
     // @ts-nocheck
-   
-    // 要跳过检查的某段代码
     canvas.drawLine(0, 0, 1080, 1920, paint);
    
     // @ts-check

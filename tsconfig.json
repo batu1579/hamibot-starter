@@ -13,7 +13,6 @@
         "outDir": "build",
         "forceConsistentCasingInFileNames": true,
         "removeComments": true,
-        "jsx": "preserve",
         "noImplicitAny": false,
     }
 }
