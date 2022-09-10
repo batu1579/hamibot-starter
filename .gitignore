@@ -4,3 +4,5 @@ build
 .vscode
 regex.md
 index.dts
+*.code-workspace
+
