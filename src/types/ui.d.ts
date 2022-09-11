@@ -3,7 +3,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-08-07 17:39:23
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-16 02:52:26
+ * @LastTime: 2022-09-11 10:19:10
  * @FilePath: \\src\\types\\ui.d.ts
  * @Description: 
  */
@@ -15,10 +15,12 @@ declare module 'ui' {
          * @description: ui 模块提供了编写用户界面的支持。
          * 
          * 给 Android 开发者或者高阶用户的提醒：Hamibot 的 UI 系统来自于 Android，所有属性和方法都能在 Android 源码中找到。如果某些代码或属性没有出现在 Hamibot 的文档中，可以参考 Android 的文档。
-         * - [View](https://developer.android.google.cn/reference/android/view/View?hl=cn)
-         * - [Widget](https://developer.android.google.cn/reference/android/widget/package-summary?hl=cn)
+         * 
+         * - [View]
+         * - [Widget]
          * 
          * 界面是由视图（ View ）组成的。View 分成两种：
+         * 
          * - 控件（ Widget ）
          * - 布局（ Layout ）
          * 
@@ -38,6 +40,9 @@ declare module 'ui' {
          * ---
          * 
          * - **注意！：带有 ui 的脚本的的最前面必须使用 `'ui'` ，指定 ui 模式，否则脚本将不会以 ui 模式运行。**
+         * 
+         * [View]: https://developer.android.google.cn/reference/android/view/View?hl=cn
+         * [Widget]: https://developer.android.google.cn/reference/android/widget/package-summary?hl=cn
          * 
          * @example
          * ```typescript

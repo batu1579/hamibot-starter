@@ -2,7 +2,7 @@
  * @Author: Hamibot hello@hamibot.com
  * @CreateDate: 2022-06-09 13:31:43
  * @LastEditors: BATU1579
- * @LastTime: 2022-08-16 03:21:23
+ * @LastTime: 2022-09-11 10:01:13
  * @FilePath: \\src\\types\\http.d.ts
  * @Description: 网络操作模块
  * 
@@ -163,12 +163,16 @@ declare module 'http' {
      */
     interface Response {
         /**
-         * @description: 当前响应的 HTTP 状态码。例如 200（OK）, 404（Not Found）等。有关 HTTP 状态码的信息，参见 [HTTP 响应代码](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status) 。
+         * @description: 当前响应的 HTTP 状态码。例如 200（OK）, 404（Not Found）等。有关 HTTP 状态码的信息，参见 [HTTP 响应代码] 。
+         * 
+         * [HTTP 响应代码]: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status
          */
         readonly statusCode: number;
 
         /**
-         * @description: 当前响应的 HTTP 状态信息。例如'OK', 'Bad Request', 'Forbidden'。有关 HTTP 状态码的信息，参见 [HTTP 响应代码](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status) 。
+         * @description: 当前响应的 HTTP 状态信息。例如'OK', 'Bad Request', 'Forbidden'。有关 HTTP 状态码的信息，参见 [HTTP 响应代码] 。
+         * 
+         * [HTTP 响应代码]: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status
          * @example
          * ```typescript
          * let res = http.get('www.baidu.com');
@@ -220,7 +224,9 @@ declare module 'http' {
 
     interface HttpRequestOptions {
         /**
-         * @description: 键值对形式的 HTTP 头部信息。有关 HTTP 头部信息，参见 [HTTP Headers](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers) 。
+         * @description: 键值对形式的 HTTP 头部信息。有关 HTTP 头部信息，参见 [HTTP Headers] 。
+         * 
+         * [HTTP Headers]: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers
          */
         headers: object;
 
@@ -240,13 +246,17 @@ declare module 'http' {
         );
 
         /**
-         * @description: HTTP 头部信息中的'Content-Type', 表示 HTTP 请求的内容类型。例如'text/plain', 'application/json'。更多信息参见 [Content-Type](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type) 。
+         * @description: HTTP 头部信息中的'Content-Type', 表示 HTTP 请求的内容类型。例如'text/plain', 'application/json'。更多信息参见 [Content-Type] 。
+         * 
+         * [Content-Type]: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type
          */
         contentType: string;
 
         // TODO: 明确函数定义。
         /**
-         * @description: HTTP 请求的内容。可以是一个字符串，也可以是一个字节数组；或者是一个以 [BufferedSink](https://github.com/square/okio/blob/master/okio/src/main/java/okio/BufferedSink.java) 为参数的函数。
+         * @description: HTTP 请求的内容。可以是一个字符串，也可以是一个字节数组；或者是一个以 [BufferedSink] 为参数的函数。
+         * 
+         * [BufferedSink]: https://github.com/square/okio/blob/master/okio/src/main/java/okio/BufferedSink.java
          */
         body: string | ByteArray | Function;
     }

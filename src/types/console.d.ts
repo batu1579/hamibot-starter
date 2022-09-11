@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 17:07:59
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-13 00:18:01
+ * @LastTime: 2022-09-11 10:37:17
  * @FilePath: \\src\\types\\console.d.ts
  * @Description: 控制台模块
  */
@@ -18,7 +18,7 @@ declare module 'console' {
         interface Console {
             /**
              * @description: 显示控制台。这会显示一个控制台的悬浮窗。
-             * - **注意！：此函数需要悬浮窗权限。
+             * **注意！：此函数需要悬浮窗权限。**
              */
             show(): void;
 
@@ -33,7 +33,9 @@ declare module 'console' {
             clear(): void;
 
             /**
-             * @description: 将信息打印到控制台，并带上换行符。 可以一次性传入多个参数，第一个参数作为主要信息，其他参数作为类似于 [printf(3)](https://man7.org/linux/man-pages/man3/printf.3.html) 中的代替值（参数都会传给 `util.format()` ）。
+             * @description: 将信息打印到控制台，并带上换行符。 可以一次性传入多个参数，第一个参数作为主要信息，其他参数作为类似于 [printf(3)] 中的代替值（参数都会传给 `util.format()` ）。
+             * 
+             * [printf(3)]: https://man7.org/linux/man-pages/man3/printf.3.html
              * @param {any} [data] 主要信息。
              * @param {array} [args] 要填充的数据。
              * @example
@@ -208,7 +210,9 @@ declare module 'console' {
         // 声明全局函数
 
         /**
-         * @description: 将信息打印到控制台，并带上换行符。 可以一次性传入多个参数，第一个参数作为主要信息，其他参数作为类似于 [printf(3)](https://man7.org/linux/man-pages/man3/printf.3.html) 中的代替值（参数都会传给 `util.format()` ）。
+         * @description: 将信息打印到控制台，并带上换行符。 可以一次性传入多个参数，第一个参数作为主要信息，其他参数作为类似于 [printf(3)] 中的代替值（参数都会传给 `util.format()` ）。
+         * 
+         * [printf(3)]: https://man7.org/linux/man-pages/man3/printf.3.html
          * @param {any} data 主要信息。
          * @param {array} [args] 代替值。
          * @example
@@ -244,6 +248,7 @@ declare module 'console' {
 
         /**
          * @description: 写入的日志级别（默认为 `ALL` ），可选的值为:
+         * 
          * - `ALL` - 所有日志
          * - `OFF` - 关闭
          * - `DEBUG` - 调试级别
@@ -251,6 +256,7 @@ declare module 'console' {
          * - `WARN` - 告警级别
          * - `ERROR` - 错误级别
          * - `FATAL` - 严重错误级别
+         * 
          */
         rootLevel?: 'ALL' | 'OFF' | 'DEBUG' | 'INFO' | 'WARN' | 'ERROR' | 'FATAL';
 

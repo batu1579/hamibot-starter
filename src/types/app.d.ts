@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 00:20:15
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-16 03:35:53
+ * @LastTime: 2022-09-11 10:23:59
  * @FilePath: \\src\\types\\app.d.ts
  * @Description: app 模块
  */
@@ -250,7 +250,9 @@ declare module 'app' {
         /**
          * @description: 启动 Hamibot 的特定界面。
          * @param {string} name 活动名称，可选的值为:
+         * 
          * - `console` - 日志界面
+         * 
          * @example
          * ```typescript
          * app.startActivity('console');
@@ -259,7 +261,9 @@ declare module 'app' {
         startActivity(name: string): void;
 
         /**
-         * @description: 根据选项，构造一个意图 `Intent` 对象。需要注意的是，除非应用专门暴露 `Activity` 出来，否则在没有 `root` 权限的情况下使用 `Intent` 是无法跳转到特定 `Activity` 、应用的特定界面的。例如我们能通过 `Intent` 跳转到QQ的分享界面，是因为QQ对外暴露了分享的 `Activity` ；而在没有 `root` 权限的情况下，我们无法通过 `Intent` 跳转到QQ的设置界面，因为QQ并没有暴露这个 `Activity` 。更多信息，参见 [Intent](https://developer.android.com/guide/components/intents-filters.html#Types) 。
+         * @description: 根据选项，构造一个意图 `Intent` 对象。需要注意的是，除非应用专门暴露 `Activity` 出来，否则在没有 `root` 权限的情况下使用 `Intent` 是无法跳转到特定 `Activity` 、应用的特定界面的。例如我们能通过 `Intent` 跳转到QQ的分享界面，是因为QQ对外暴露了分享的 `Activity` ；而在没有 `root` 权限的情况下，我们无法通过 `Intent` 跳转到QQ的设置界面，因为QQ并没有暴露这个 `Activity` 。更多信息，参见 [Intent] 。
+         * 
+         * [Intent]: https://developer.android.com/guide/components/intents-filters.html#Types
          * @param {IntentOptions} options 意图选项。
          * @example
          * ```typescript
@@ -378,7 +382,9 @@ declare module 'app' {
 
     interface IntentOptions {
         /**
-         * @description: 意图的 `Action` ，指意图要完成的动作，是一个字符串常量。当 `action` 以 `android.intent.action` 开头时，可以省略前缀，直接用 `SEND` 代替。参见[Action](https://developer.android.com/reference/android/content/Intent.html#standard-activity-actions) 。
+         * @description: 意图的 `Action` ，指意图要完成的动作，是一个字符串常量。当 `action` 以 `android.intent.action` 开头时，可以省略前缀，直接用 `SEND` 代替。参见[Action] 。
+         * 
+         * [Action]: https://developer.android.com/reference/android/content/Intent.html#standard-activity-actions
          * @example 'android.intent.action.SEND'
          */
         action?: string;
@@ -396,7 +402,9 @@ declare module 'app' {
         data?: string;
 
         /**
-         * @description: 意图的类别。参见 [Categories](https://developer.android.com/reference/android/content/Intent.html#standard-categories) 。
+         * @description: 意图的类别。参见 [Categories] 。
+         * 
+         * [Categories]: https://developer.android.com/reference/android/content/Intent.html#standard-categories
          */
         category?: string[];
 
@@ -411,12 +419,16 @@ declare module 'app' {
         className?: string;
 
         /**
-         * @description: 以键值对构成的这个 `Intent` 的额外信息。提供该意图的其他信息，例如发送邮件时的邮件标题、邮件正文。参见 [Extras](https://developer.android.com/reference/android/content/Intent.html#standard-extra-data) 。
+         * @description: 以键值对构成的这个 `Intent` 的额外信息。提供该意图的其他信息，例如发送邮件时的邮件标题、邮件正文。参见 [Extras] 。
+         * 
+         * [Extras]: https://developer.android.com/reference/android/content/Intent.html#standard-extra-data
          */
         extras?: object;
 
         /**
-         * @description: `Intent` 的标识，字符串数组，例如: `['activity_new_task', 'grant_read_uri_permission']` 。参见 [Flags](https://developer.android.com/reference/android/content/Intent.html#setFlags%28int%29) 。
+         * @description: `Intent` 的标识，字符串数组，例如: `['activity_new_task', 'grant_read_uri_permission']` 。参见 [Flags] 。
+         * 
+         * [Flags]: https://developer.android.com/reference/android/content/Intent.html#setFlags%28int%29
          */
         flags?: string[];
 
@@ -976,7 +988,9 @@ declare module 'app' {
     }
 
     /**
-     * @description: Uri对象的详细信息参见 [android.net.Uri](https://developer.android.com/reference/android/net/Uri) 。
+     * @description: Uri对象的详细信息参见 [android.net.Uri] 。
+     * 
+     * [android.net.Uri]: https://developer.android.com/reference/android/net/Uri
      */
     class Uri {
         /**

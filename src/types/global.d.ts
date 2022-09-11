@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 00:21:22
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-16 02:57:41
+ * @LastTime: 2022-09-11 10:23:48
  * @FilePath: \\src\\types\\global.d.ts
  * @Description: 全局函数和变量
  */
@@ -93,7 +93,9 @@ declare module 'global' {
         function random(): number;
 
         /**
-         * @description: 表示此脚本需要 Android API 版本达到指定版本才能运行。例如 `requiresApi(19)` 表示脚本需要在 Android 4.4 以及以上运行。调用该函数时会判断运行脚本的设备系统的版本号，如果没有达到要求则抛出异常。[API版本号对照表](https://docs.hamibot.com/reference/globals/#requiresapiapi) 。
+         * @description: 表示此脚本需要 Android API 版本达到指定版本才能运行。例如 `requiresApi(19)` 表示脚本需要在 Android 4.4 以及以上运行。调用该函数时会判断运行脚本的设备系统的版本号，如果没有达到要求则抛出异常。[API 版本号对照表] 。
+         * 
+         * [API 版本号对照表]: https://docs.hamibot.com/reference/globals/#requiresapiapi
          * @param {string} api Android 版本号。
          */
         function requireApi(api: string): void;
@@ -120,8 +122,10 @@ declare module 'global' {
          * @description: 动态申请安卓的权限。您可以通过 APK 编辑器来增加 Hamibot 以及 Hamibot 打包的应用的权限。
          * - **注意！：尽管安卓有很多权限，但必须写入 Manifest 才能动态申请，为了防止权限的滥用，目前 Hamibot 只能额外申请两个权限**
          * @param {array} permissions 权限的字符串数组，可选的值为:
+         * 
          * - `access_fine_location` - GPS 权限
          * - `record_audio` - 录音权限
+         * 
          * @example
          * ```typescript
          * // 请求 GPS 权限
@@ -134,8 +138,10 @@ declare module 'global' {
          * @description: 动态申请安卓的权限。您可以通过 APK 编辑器来增加 Hamibot 以及 Hamibot 打包的应用的权限。
          * - **注意！：尽管安卓有很多权限，但必须写入 Manifest 才能动态申请，为了防止权限的滥用，目前 Hamibot 只能额外申请两个权限**
          * @param {array} permissions 权限的字符串数组，可选的值为:
+         * 
          * - `access_fine_location` - GPS 权限
          * - `record_audio` - 录音权限
+         * 
          * @example
          * ```typescript
          * // 请求 GPS 权限

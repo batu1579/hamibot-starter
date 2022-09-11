@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-24 17:21:22
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-16 02:58:08
+ * @LastTime: 2022-09-11 10:23:24
  * @FilePath: \\src\\types\\hamibot.d.ts
  * @Description: hamibot 模块
  */
@@ -26,7 +26,9 @@ declare module 'hamibot' {
     interface Hamibot {
 
         /**
-         * @description: 包含环境信息和开发者自定义的脚本配置（参见 [在脚本中使用配置](https://docs.hamibot.com/tutorials/tutorial-config#%E5%9C%A8%E8%84%9A%E6%9C%AC%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE)）。
+         * @description: 包含环境信息和开发者自定义的脚本配置（参见 [在脚本中使用配置] ）。
+         * 
+         * [在脚本中使用配置]: https://docs.hamibot.com/tutorials/tutorial-config#%E5%9C%A8%E8%84%9A%E6%9C%AC%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE
          */
         readonly env: HamibotEnv;
 
@@ -164,9 +166,11 @@ declare module 'hamibot' {
     interface MessageAttachment {
         /**
          * @description: 附件类型，根据实际需要选择使用，可选的值为:
+         * 
          * - `text` - 文本类型
          * - `json` - JSON类型
          * - `image` - 图片类型
+         * 
          */
         type: 'text' | 'json' | 'image';
 

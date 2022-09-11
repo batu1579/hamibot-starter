@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-12 04:55:37
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-16 03:10:27
+ * @LastTime: 2022-09-11 10:24:19
  * @FilePath: \\src\\types\\sensors.d.ts
  * @Description: 传感器模块
  */
@@ -23,10 +23,12 @@ declare module 'sensors' {
          * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
          * @param {string} sensorName 传感器名称（ `accelerometer` ）加速度传感器。
          * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * 
          * - `sensors.delay.fastest` - 最快的更新频率。
          * - `sensors.delay.game` - 适合于游戏的更新频率。
          * - `sensors.delay.ui` - 适合于用户界面的更新频率。
          * - `sensors.delay.normal` - 正常频率。
+         * 
          * @return {AccelerometerEventEmitter | null} 传感器的监听器。
          * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
          * @example
@@ -50,10 +52,12 @@ declare module 'sensors' {
          * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
          * @param {string} sensorName 传感器名称（ `orientation` ）方向传感器。
          * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * 
          * - `sensors.delay.fastest` - 最快的更新频率。
          * - `sensors.delay.game` - 适合于游戏的更新频率。
          * - `sensors.delay.ui` - 适合于用户界面的更新频率。
          * - `sensors.delay.normal` - 正常频率。
+         * 
          * @return {OrientationEventEmitter | null} 传感器的监听器。
          * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
          * @example
@@ -77,10 +81,12 @@ declare module 'sensors' {
          * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
          * @param {string} sensorName 传感器名称（ `gyroscope` ）陀螺仪传感器。
          * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * 
          * - `sensors.delay.fastest` - 最快的更新频率。
          * - `sensors.delay.game` - 适合于游戏的更新频率。
          * - `sensors.delay.ui` - 适合于用户界面的更新频率。
          * - `sensors.delay.normal` - 正常频率。
+         * 
          * @return {GyroscopeEventEmitter | null} 传感器的监听器。
          * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
          * @example
@@ -104,10 +110,12 @@ declare module 'sensors' {
          * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
          * @param {string} sensorName 传感器名称（ `magnetic_field` ）磁场传感器。
          * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * 
          * - `sensors.delay.fastest` - 最快的更新频率。
          * - `sensors.delay.game` - 适合于游戏的更新频率。
          * - `sensors.delay.ui` - 适合于用户界面的更新频率。
          * - `sensors.delay.normal` - 正常频率。
+         * 
          * @return {MagneticFieldEventEmitter | null} 传感器的监听器。
          * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
          * @example
@@ -131,10 +139,12 @@ declare module 'sensors' {
          * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
          * @param {string} sensorName 传感器名称（ `gravity` ）重力传感器。
          * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * 
          * - `sensors.delay.fastest` - 最快的更新频率。
          * - `sensors.delay.game` - 适合于游戏的更新频率。
          * - `sensors.delay.ui` - 适合于用户界面的更新频率。
          * - `sensors.delay.normal` - 正常频率。
+         * 
          * @return {GravityEventEmitter | null} 传感器的监听器。
          * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
          * @example
@@ -158,10 +168,12 @@ declare module 'sensors' {
          * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
          * @param {string} sensorName 传感器名称（ `linear_acceleration` ）线性加速度传感器。
          * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * 
          * - `sensors.delay.fastest` - 最快的更新频率。
          * - `sensors.delay.game` - 适合于游戏的更新频率。
          * - `sensors.delay.ui` - 适合于用户界面的更新频率。
          * - `sensors.delay.normal` - 正常频率。
+         * 
          * @return {LinearAccelerationEventEmitter | null} 传感器的监听器。
          * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
          * @example
@@ -185,10 +197,12 @@ declare module 'sensors' {
          * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
          * @param {string} sensorName 传感器名称（ `ambient_temperature` ）环境温度传感器，大部分设备并不支持。
          * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * 
          * - `sensors.delay.fastest` - 最快的更新频率。
          * - `sensors.delay.game` - 适合于游戏的更新频率。
          * - `sensors.delay.ui` - 适合于用户界面的更新频率。
          * - `sensors.delay.normal` - 正常频率。
+         * 
          * @return {AmbientTemperatureEventEmitter | null} 传感器的监听器。
          * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
          * @example
@@ -212,10 +226,12 @@ declare module 'sensors' {
          * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
          * @param {string} sensorName 传感器名称（ `light` ）光线传感器。
          * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * 
          * - `sensors.delay.fastest` - 最快的更新频率。
          * - `sensors.delay.game` - 适合于游戏的更新频率。
          * - `sensors.delay.ui` - 适合于用户界面的更新频率。
          * - `sensors.delay.normal` - 正常频率。
+         * 
          * @return {LightEventEmitter | null} 传感器的监听器。
          * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
          * @example
@@ -239,10 +255,12 @@ declare module 'sensors' {
          * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
          * @param {string} sensorName 传感器名称（ `pressure` ）压力传感器。
          * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * 
          * - `sensors.delay.fastest` - 最快的更新频率。
          * - `sensors.delay.game` - 适合于游戏的更新频率。
          * - `sensors.delay.ui` - 适合于用户界面的更新频率。
          * - `sensors.delay.normal` - 正常频率。
+         * 
          * @return {PressureEventEmitter | null} 传感器的监听器。
          * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
          * @example
@@ -266,10 +284,12 @@ declare module 'sensors' {
          * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
          * @param {string} sensorName 传感器名称（ `proximity` ）距离传感器。
          * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * 
          * - `sensors.delay.fastest` - 最快的更新频率。
          * - `sensors.delay.game` - 适合于游戏的更新频率。
          * - `sensors.delay.ui` - 适合于用户界面的更新频率。
          * - `sensors.delay.normal` - 正常频率。
+         * 
          * @return {ProximityEventEmitter | null} 传感器的监听器。
          * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
          * @example
@@ -293,10 +313,12 @@ declare module 'sensors' {
          * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
          * @param {string} sensorName 传感器名称（ `relative_humidity` ）湿度传感器，大部分设备并不支持。
          * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * 
          * - `sensors.delay.fastest` - 最快的更新频率。
          * - `sensors.delay.game` - 适合于游戏的更新频率。
          * - `sensors.delay.ui` - 适合于用户界面的更新频率。
          * - `sensors.delay.normal` - 正常频率。
+         * 
          * @return {RelativeHumidityEventEmitter | null} 传感器的监听器。
          * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
          * @example
@@ -320,10 +342,12 @@ declare module 'sensors' {
          * @description: 注册一个传感器监听并返回一个 SensorEventEmitter 对象 。
          * @param {string} sensorName 传感器名称。
          * @param {number} [delay] 传感器数据更新频率（默认为 `sensors.delay.normal` ），可选的值为:
+         * 
          * - `sensors.delay.fastest` - 最快的更新频率。
          * - `sensors.delay.game` - 适合于游戏的更新频率。
          * - `sensors.delay.ui` - 适合于用户界面的更新频率。
          * - `sensors.delay.normal` - 正常频率。
+         * 
          * @return {SensorsEventEmitter | null} 传感器的监听器。
          * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
          * @example
@@ -402,10 +426,12 @@ declare module 'sensors' {
 
         /**
          * @description: 传感器数据更新频率，可选的值为:
+         * 
          * - `sensors.delay.fastest` - 最快的更新频率。
          * - `sensors.delay.game` - 适合于游戏的更新频率。
          * - `sensors.delay.ui` - 适合于用户界面的更新频率。
          * - `sensors.delay.normal` - 正常频率。
+         * 
          */
         readonly delay: Delay;
     }
@@ -434,13 +460,15 @@ declare module 'sensors' {
          * @description: 当传感器精度发生变化时触发的事件。
          * @param {string} eventName 事件名称（ `accuracy_change` ）。
          * @param {number} accuracy 表示传感器精度，可选的值为:
+         * 
          * - `-1` - 传感器未连接。
          * - `0` - 传感器不可读。
          * - `1` - 低精度。
          * - `2` - 中精度。
          * - `3` - 高精度。
+         * 
          */
-        on(eventName: 'accuracy_change', accuracy: number): BaseSensorEventEmitter;
+        on(eventName: 'accuracy_change', accuracy: -1 | 0 | 1 | 2 | 3): BaseSensorEventEmitter;
     }
 
     type AddChangeEventListener<T> = {

@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-26 09:44:33
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-16 03:24:06
+ * @LastTime: 2022-09-11 10:24:42
  * @FilePath: \\src\\types\\dialogs.d.ts
  * @Description: 对话框模块
  */
@@ -13,7 +13,10 @@ declare module 'dialogs' {
     global {
         /**
          * @description: dialogs 模块提供了简单的对话框支持，可以通过对话框和用户进行交互。
-         * - **注意！：对话框在 ui 模式下不能像通常那样使用，应该使用回调函数或者 [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 的形式。
+         * 
+         * - **注意！：对话框在 ui 模式下不能像通常那样使用，应该使用回调函数或者 [Promise] 的形式。
+         * 
+         * [Promise]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise
          * @example
          * ```typescript
          * let clear = confirm('要清除所有缓存吗?');
@@ -406,9 +409,11 @@ declare module 'dialogs' {
          * @description: 获取被点击的按钮。
          * - **注意！：这个函数的作用文档当中并没有，是我猜的。。。**
          * @param {string} action 动作，可选的值为:
+         * 
          * - `positive`
          * - `negative`
          * - `neutral`
+         * 
          */
         getActionButton(action: 'positive' | 'negative' | 'neutral'): void;
 
@@ -732,9 +737,11 @@ declare module 'dialogs' {
 
         /**
          * @description: 对话框列表的选项选择模式，可选的值为:
+         * 
          * - `select` - 普通选择模式。
          * - `single` - 单选模式。
          * - `multi` - 多选模式。
+         * 
          */
         itemsSelectMode?: 'select' | 'single' | 'multi';
 
@@ -830,17 +837,21 @@ declare module 'dialogs' {
      * @callback DialogAnyListener
      * @description: 当任意按钮按下事件发生时要执行的回调函数。
      * @param {string} action 被点击的按钮，可选的值为：
+     * 
      * - `positive` - 确定按钮。
      * - `negative` - 取消按钮。
      * - `neutral` - 中性按钮。
+     * 
      * @param {Dialog} dialog 自定义的对话框对象。
      */
     type DialogAnyListener = (
         /**
          * 被点击的按钮，可选的值为：
+         * 
          * - `positive` - 确定按钮。
          * - `negative` - 取消按钮。
          * - `neutral` - 中性按钮。
+         * 
          */
         action: "positive" | "negative" | "neutral",
         /**

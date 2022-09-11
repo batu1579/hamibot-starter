@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-12 19:58:53
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-07 21:59:16
+ * @LastTime: 2022-09-11 09:52:59
  * @FilePath: \\src\\types\\threads.d.ts
  * @Description: 多线程模块
  */
@@ -68,14 +68,18 @@ declare module 'threads' {
         disposable(): Disposable;
 
         /**
-         * @description: 新建一个整数原子变量。更多信息参见 [AtomicLong](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicLong.html) 。
+         * @description: 新建一个整数原子变量。更多信息参见 [AtomicLong] 。
+         * 
+         * [AtomicLong]: https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicLong.html
          * @param {number} [initialValue] 初始整数值（默认为 0 ）。
          * @return {AtomicLong} 新建的整数原子变量。
          */
         atomic(initialValue?: number): AtomicLong;
 
         /**
-         * @description: 新建一个可重入锁。更多信息参见 线程安全 以及 [ReentrantLock](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/ReentrantLock.html) 。
+         * @description: 新建一个可重入锁。更多信息参见 线程安全 以及 [ReentrantLock] 。
+         * 
+         * [ReentrantLock]: https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/ReentrantLock.html
          * @return {ReentrantLock} 新建的 `ReentrantLock` 对象。
          */
         lock(): ReentrantLock;
@@ -242,8 +246,11 @@ declare module 'threads' {
     }
 
     /**
-     * @description: Java 原子长整数。更多信息参见 [AtomicLong](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicLong.html) 。
+     * @description: Java 原子长整数。更多信息参见 [AtomicLong] 。
+     * 
      * - **注意！：这里使用的是长整型，但是因为 BigInt 是 ES2020 的新增语法，这里暂时先用 Number 类型代替，可能会导致丢失数据！！**
+     * 
+     * [AtomicLong]: https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicLong.html
      */
     class AtomicLong extends Object {
         /**
@@ -392,7 +399,9 @@ declare module 'threads' {
     }
 
     /**
-     * @description: Java 可重入互斥锁。更多信息参见 [ReentrantLock](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/ReentrantLock.html) 。
+     * @description: Java 可重入互斥锁。更多信息参见 [ReentrantLock] 。
+     * 
+     * [ReentrantLock]: https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/ReentrantLock.html
      */
     class ReentrantLock extends Object {
         /**
@@ -563,7 +572,9 @@ declare module 'threads' {
     }
 
     /**
-     * @description: 更多信息参见 [Condition](https://www.apiref.com/java11-zh/java.base/java/util/concurrent/locks/Condition.html)
+     * @description: 更多信息参见 [Condition]
+     * 
+     * [Condition]: https://www.apiref.com/java11-zh/java.base/java/util/concurrent/locks/Condition.html
      */
     interface Condition {
         /**
@@ -619,7 +630,9 @@ declare module 'threads' {
     }
 
     /**
-     * @description: 更多信息参见 [Collection](https://www.apiref.com/java11-zh/java.base/java/util/Collection.html)
+     * @description: 更多信息参见 [Collection] 。
+     * 
+     * [Collection]: https://www.apiref.com/java11-zh/java.base/java/util/Collection.html
      */
     interface Collection<E> {
         /**

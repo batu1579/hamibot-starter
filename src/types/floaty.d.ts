@@ -22,7 +22,9 @@ declare module 'floaty' {
         /**
          * @description: 指定悬浮窗的布局，创建并显示一个悬浮窗。该悬浮窗自带关闭、调整大小、调整位置按键，可根据需要调用 `setAdjustEnabled()` 函数来显示或隐藏。
          * - **注意！：因为脚本运行的线程不是 UI 线程，而所有对控件的修改操作需要在 UI 线程执行**
-         * @param {object} layout 悬浮窗界面的 XML 或者 View。更多信息参见 [UI 模块](https://docs.hamibot.com/reference/ui) 。
+         * @param {object} layout 悬浮窗界面的 XML 或者 View。更多信息参见 [UI 模块] 。
+         * 
+         * [UI 模块]: https://docs.hamibot.com/reference/ui
          * @return {FloatyWindow} 悬浮窗对象。
          * @example
          * ```typescript

@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-26 11:23:12
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-16 03:26:08
+ * @LastTime: 2022-09-11 10:23:04
  * @FilePath: \\src\\types\\events.d.ts
  * @Description: 事件模块
  */
@@ -21,19 +21,23 @@ declare module 'events' {
             /**
              * @description: 获取事件的动作。
              * @return {number} 触发按键事件的动作，可能的值为：
+             * 
              * - `KeyEvent.ACTION_DOWN` - 按下事件。
              * - `KeyEvent.ACTION_UP` - 弹起事件。
+             * 
              */
             getAction(): number;
 
             /**
              * @description: 获取按键的按键编号。
              * @return {number} 触发按键事件的按键编号，可能的值为：
+             * 
              * - `KeyEvent.KEYCODE_HOME` - 主页键。
              * - `KeyEvent.KEYCODE_BACK` - 返回键。
              * - `KeyEvent.KEYCODE_MENU` - 菜单键。
              * - `KeyEvent.KEYCODE_VOLUME_UP` - 音量上键。
              * - `KeyEvent.KEYCODE_VOLUME_DOWN` - 音量下键。
+             * 
              */
             getKeyCode(): number;
 
@@ -127,11 +131,13 @@ declare module 'events' {
         /**
          * @description: 注册一个按键监听函数，当有 `keyName` 对应的按键按下会调用该函数。一次完整的按键动作包括了按键按下和弹起。按下事件会在手指按下一个按键的瞬间触发, 弹起事件则在手指放开这个按键时触发。
          * @param {string} keyName 要监听的按键名称，可选的值为：
+         * 
          * - `volume_up` - 音量上键。
          * - `volume_down` - 音量下键。
          * - `home` - 主屏幕键。
          * - `back` - 返回键。
          * - `menu` - 菜单键。
+         * 
          * @param {Function} listener 按键监听器。参数为 KeyEvent （按键事件），返回值为 any 。
          * @return {this} 返回自身以便链式调用。
          * @example
@@ -154,11 +160,13 @@ declare module 'events' {
         /**
          * @description: 注册一个按键监听函数，当有 `keyName` 对应的按键弹起会调用该函数。一次完整的按键动作包括了按键按下和弹起。按下事件会在手指按下一个按键的瞬间触发, 弹起事件则在手指放开这个按键时触发。
          * @param {string} keyName 要监听的按键名称，可选的值为：
+         * 
          * - `volume_up` - 音量上键。
          * - `volume_down` - 音量下键。
          * - `home` - 主屏幕键。
          * - `back` - 返回键。
          * - `menu` - 菜单键。
+         * 
          * @param {Function} listener 按键监听器。参数为 KeyEvent （按键事件），返回值为 any 。
          * @return {this} 返回自身以便链式调用。
          * @example
@@ -181,11 +189,13 @@ declare module 'events' {
         /**
          * @description: 注册一个按键监听函数，当有 `keyName` 对应的按键被按下时会调用该函数，之后会注销该按键监听器。也就是 `listener` 只有在 `onceKeyDown()` 调用后的第一次按键事件被调用一次。
          * @param {string} keyName 要监听的按键名称，可选的值为：
+         * 
          * - `volume_up` - 音量上键。
          * - `volume_down` - 音量下键。
          * - `home` - 主屏幕键。
          * - `back` - 返回键。
          * - `menu` - 菜单键。
+         * 
          * @param {Function} listener 按键监听器。参数为 KeyEvent （按键事件），返回值为 any 。
          * @return {this} 返回自身以便链式调用。
          */
@@ -194,11 +204,13 @@ declare module 'events' {
         /**
          * @description: 注册一个按键监听函数，当有 `keyName` 对应的按键弹起时会调用该函数，之后会注销该按键监听器。也就是 `listener` 只有在 `onceKeyUp()` 调用后的第一次按键事件被调用一次。
          * @param {string} keyName 要监听的按键名称，可选的值为：
+         * 
          * - `volume_up` - 音量上键。
          * - `volume_down` - 音量下键。
          * - `home` - 主屏幕键。
          * - `back` - 返回键。
          * - `menu` - 菜单键。
+         * 
          * @param {Function} listener 按键监听器。参数为 KeyEvent （按键事件），返回值为 any 。
          * @return {this} 返回自身以便链式调用。
          */
@@ -207,11 +219,13 @@ declare module 'events' {
         /**
          * @description: 删除该按键的 `KeyDown` 按下事件的所有监听。
          * @param {string} keyName 要取消监听的按键名称，可选的值为：
+         * 
          * - `volume_up` - 音量上键。
          * - `volume_down` - 音量下键。
          * - `home` - 主屏幕键。
          * - `back` - 返回键。
          * - `menu` - 菜单键。
+         * 
          * @return {this} 返回自身以便链式调用。
          */
         removeAllKeyDownListeners(keyName: KeyName): this;
@@ -219,11 +233,13 @@ declare module 'events' {
         /**
          * @description: 删除该按键的 `KeyDown` 弹起事件的所有监听。
          * @param {string} keyName 要取消监听的按键名称，可选的值为：
+         * 
          * - `volume_up` - 音量上键。
          * - `volume_down` - 音量下键。
          * - `home` - 主屏幕键。
          * - `back` - 返回键。
          * - `menu` - 菜单键。
+         * 
          * @return {this} 返回自身以便链式调用。
          */
         removeAllKeyUpListeners(keyName: KeyName): this;
@@ -248,11 +264,13 @@ declare module 'events' {
          * @description: 设置 **单个** 按键屏蔽状态。所谓按键屏蔽指的是，屏蔽原有按键的功能，例如使得音量键不再能调节音量，但此时仍然能通过按键事件监听按键。
          * - **注意！：只要有一个脚本屏蔽了某个按键，该按键便会被屏蔽；当脚本退出时，会自动解除所有按键屏蔽。**
          * @param {KeyName} key 要屏蔽的按键，可选的值为：
+         * 
          * - `volume_up` - 音量上键。
          * - `volume_down` - 音量下键。
          * - `home` - 主屏幕键。
          * - `back` - 返回键。
          * - `menu` - 菜单键。
+         * 
          * @param {boolean} enabled 是否屏蔽按键 `key` 。
          * @return {this} 返回自身以便链式调用。
          * @example

@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-23 09:05:08
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-16 03:21:07
+ * @LastTime: 2022-09-11 10:23:27
  * @FilePath: \\src\\types\\files.d.ts
  * @Description: 文件操作模块
  */
@@ -21,10 +21,12 @@ declare module 'files' {
          * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
          * @param {string} path 文件路径。
          * @param {string} [mode] 文件打开模式（默认为 `r` ），可选的值为:
+         * 
          * - `r` - 只读文本模式。该模式下只能对文件执行 **文本** 读取操作。
          * - `w` - 只写文本模式。该模式下只能对文件执行 **文本** 覆盖写入操作。
          * - `a` - 附加文本模式。该模式下将会把写入的文本附加到文件末尾。
          * - `rw` - 随机读写文本模式。该模式下将会把写入的文本附加到文件末尾。目前暂不支持二进制模式，随机读写模式。
+         * 
          * @param {encode} [encoding] 字符编码（默认为 `utf-8` ）。
          * @param {number} [bufferSize] 文件读写的缓冲区大小。
          * @return {ReadableTextFile} 打开的文件对象。
@@ -36,10 +38,12 @@ declare module 'files' {
          * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
          * @param {string} path 文件路径。
          * @param {string} [mode] 文件打开模式（默认为 `r` ），可选的值为:
+         * 
          * - `r` - 只读文本模式。该模式下只能对文件执行 **文本** 读取操作。
          * - `w` - 只写文本模式。该模式下只能对文件执行 **文本** 覆盖写入操作。
          * - `a` - 附加文本模式。该模式下将会把写入的文本附加到文件末尾。
          * - `rw` - 随机读写文本模式。该模式下将会把写入的文本附加到文件末尾。目前暂不支持二进制模式，随机读写模式。
+         * 
          * @param {encode} [encoding] 字符编码（默认为 `utf-8` ）。
          * @param {number} [bufferSize] 文件读写的缓冲区大小。
          * @return {ReadableTextFile} 打开的文件对象。
@@ -51,10 +55,12 @@ declare module 'files' {
          * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
          * @param {string} path 文件路径。
          * @param {string} [mode] 文件打开模式（默认为 `r` ），可选的值为:
+         * 
          * - `r` - 只读文本模式。该模式下只能对文件执行 **文本** 读取操作。
          * - `w` - 只写文本模式。该模式下只能对文件执行 **文本** 覆盖写入操作。
          * - `a` - 附加文本模式。该模式下将会把写入的文本附加到文件末尾。
          * - `rw` - 随机读写文本模式。该模式下将会把写入的文本附加到文件末尾。目前暂不支持二进制模式，随机读写模式。
+         * 
          * @param {encode} [encoding] 字符编码（默认为 `utf-8` ）。
          * @param {number} [bufferSize] 文件读写的缓冲区大小。
          * @return {WritableTextFile} 打开的文件对象。
@@ -66,10 +72,12 @@ declare module 'files' {
          * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
          * @param {string} path 文件路径。
          * @param {string} [mode] 文件打开模式（默认为 `r` ），可选的值为:
+         * 
          * - `r` - 只读文本模式。该模式下只能对文件执行 **文本** 读取操作。
          * - `w` - 只写文本模式。该模式下只能对文件执行 **文本** 覆盖写入操作。
          * - `a` - 附加文本模式。该模式下将会把写入的文本附加到文件末尾。
          * - `rw` - 随机读写文本模式。该模式下将会把写入的文本附加到文件末尾。目前暂不支持二进制模式，随机读写模式。
+         * 
          * @param {encode} [encoding] 字符编码（默认为 `utf-8` ）。
          * @param {number} [bufferSize] 文件读写的缓冲区大小。
          * @return {WritableTextFile} 打开的文件对象。
@@ -426,10 +434,12 @@ declare module 'files' {
          * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
          * @param {string} path 文件路径。
          * @param {string} [mode] 文件打开模式（默认为 `r` ），可选的值为:
+         * 
          * - `r` - 只读文本模式。该模式下只能对文件执行 **文本** 读取操作。
          * - `w` - 只写文本模式。该模式下只能对文件执行 **文本** 覆盖写入操作。
          * - `a` - 附加文本模式。该模式下将会把写入的文本附加到文件末尾。
          * - `rw` - 随机读写文本模式。该模式下将会把写入的文本附加到文件末尾。目前暂不支持二进制模式，随机读写模式。
+         * 
          * @param {encode} [encoding] 字符编码（默认为 `utf-8` ）。
          * @param {number} [bufferSize] 文件读写的缓冲区大小。
          * @return {ReadableTextFile} 打开的文件对象。
@@ -441,10 +451,12 @@ declare module 'files' {
          * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
          * @param {string} path 文件路径。
          * @param {string} [mode] 文件打开模式（默认为 `r` ），可选的值为:
+         * 
          * - `r` - 只读文本模式。该模式下只能对文件执行 **文本** 读取操作。
          * - `w` - 只写文本模式。该模式下只能对文件执行 **文本** 覆盖写入操作。
          * - `a` - 附加文本模式。该模式下将会把写入的文本附加到文件末尾。
          * - `rw` - 随机读写文本模式。该模式下将会把写入的文本附加到文件末尾。目前暂不支持二进制模式，随机读写模式。
+         * 
          * @param {encode} [encoding] 字符编码（默认为 `utf-8` ）。
          * @param {number} [bufferSize] 文件读写的缓冲区大小。
          * @return {ReadableTextFile} 打开的文件对象。
@@ -456,10 +468,12 @@ declare module 'files' {
          * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
          * @param {string} path 文件路径。
          * @param {string} [mode] 文件打开模式（默认为 `r` ），可选的值为:
+         * 
          * - `r` - 只读文本模式。该模式下只能对文件执行 **文本** 读取操作。
          * - `w` - 只写文本模式。该模式下只能对文件执行 **文本** 覆盖写入操作。
          * - `a` - 附加文本模式。该模式下将会把写入的文本附加到文件末尾。
          * - `rw` - 随机读写文本模式。该模式下将会把写入的文本附加到文件末尾。目前暂不支持二进制模式，随机读写模式。
+         * 
          * @param {encode} [encoding] 字符编码（默认为 `utf-8` ）。
          * @param {number} [bufferSize] 文件读写的缓冲区大小。
          * @return {WritableTextFile} 打开的文件对象。
@@ -471,10 +485,12 @@ declare module 'files' {
          * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
          * @param {string} path 文件路径。
          * @param {string} [mode] 文件打开模式（默认为 `r` ），可选的值为:
+         * 
          * - `r` - 只读文本模式。该模式下只能对文件执行 **文本** 读取操作。
          * - `w` - 只写文本模式。该模式下只能对文件执行 **文本** 覆盖写入操作。
          * - `a` - 附加文本模式。该模式下将会把写入的文本附加到文件末尾。
          * - `rw` - 随机读写文本模式。该模式下将会把写入的文本附加到文件末尾。目前暂不支持二进制模式，随机读写模式。
+         * 
          * @param {encode} [encoding] 字符编码（默认为 `utf-8` ）。
          * @param {number} [bufferSize] 文件读写的缓冲区大小。
          * @return {WritableTextFile} 打开的文件对象。

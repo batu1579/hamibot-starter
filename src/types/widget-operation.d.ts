@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-31 13:19:44
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-07 17:43:34
+ * @LastTime: 2022-09-11 10:14:31
  * @FilePath: \\src\\types\\widget-operation.d.ts
  * @Description: 控件操作
  */
@@ -12,8 +12,10 @@ declare module 'widget-operation' {
          * @description: 检查无障碍服务是否已经启用，如果没有启用则抛出异常并跳转到无障碍服务启用界面，同时设置无障碍模式为 mode。
          * - *建议（：使用 `auto.waitFor()` 和 `auto.setMode()` 代替该函数，因为 `auto()` 函数如果无障碍服务未启动会停止脚本；而 `auto.waitFor()` 则会在在无障碍服务启动后继续运行。*
          * @param {string} [mode] 无障碍模式（默认为 `normal` ），可选的值为:
+         * 
          * - `fast` - 快速模式。该模式下会启用控件缓存，从而选择器获取屏幕控件更快。对于需要快速的控件操作的脚本可以使用该模式，一般脚本则没有必要使用该函数。
          * - `normal` - 正常模式。
+         * 
          * @example
          * ```typescript
          * auto('fast');
@@ -31,17 +33,21 @@ declare module 'widget-operation' {
             /**
              * @description: 设置无障碍模式为 mode。
              * @param {string} mode 无障碍模式（默认为 `normal` ），可选的值为:
+             * 
              * - `fast` - 快速模式。该模式下会启用控件缓存，从而选择器获取屏幕控件更快。对于需要快速的控件操作的脚本可以使用该模式，一般脚本则没有必要使用该函数。
              * - `normal` - 正常模式。
+             * 
              */
             function setMode(mode: 'fast' | 'normal'): void;
 
             /**
              * @description: 启用有关 automator 的一些特性。
              * @param {string | string[]} flags 标志，来启用和禁用某些特性，可选的值为:
+             * 
              * - `findOnUiThread` - 使用该特性后，选择器搜索时会在主进程进行。该特性用于解决线程安全问题导致的次生问题，不过目前貌似已知问题并不是线程安全问题。
              * - `useUsageStats` - 使用该特性后，将会以'使用情况统计'服务的结果来检测当前正在运行的应用包名（需要授予'查看使用情况统计'权限）。如果觉得 `currentPackage()` 返回的结果不太准确，可以尝试该特性。
              * - `useShell` - 使用该特性后，将使用 shell 命令获取当前正在运行的应用的包名、活动名称，但是需要 root 权限。
+             * 
              * @example
              * ```typescript
              * auto.setFlags(['findOnUiThread', 'useShell']);
@@ -52,9 +58,11 @@ declare module 'widget-operation' {
             /**
              * @description: 启用有关 automator 的一些特性。
              * @param {string | string[]} flags 标志，来启用和禁用某些特性，可选的值为:
+             * 
              * - `findOnUiThread` - 使用该特性后，选择器搜索时会在主进程进行。该特性用于解决线程安全问题导致的次生问题，不过目前貌似已知问题并不是线程安全问题。
              * - `useUsageStats` - 使用该特性后，将会以'使用情况统计'服务的结果来检测当前正在运行的应用包名（需要授予'查看使用情况统计'权限）。如果觉得 `currentPackage()` 返回的结果不太准确，可以尝试该特性。
              * - `useShell` - 使用该特性后，将使用 shell 命令获取当前正在运行的应用的包名、活动名称，但是需要 root 权限。
+             * 
              * @example
              * ```typescript
              * auto.setFlags(['findOnUiThread', 'useShell']);
@@ -70,8 +78,11 @@ declare module 'widget-operation' {
             /**
              * @description: 当前所有窗口（ `AccessibilityWindowInfo` ）的数组，可能包括状态栏、输入法、当前应用窗口，弹出窗口、悬浮窗、分屏应用窗口等。可以分别获取每个窗口的布局信息。
              * 
-             * 更多信息参见 [AccessibilityWindowInfo](https://developer.android.com/reference/android/view/accessibility/AccessibilityWindowInfo)，返回值为 Boolean （是否符合过滤条件）。
+             * 更多信息参见 [AccessibilityWindowInfo] ，返回值为 Boolean （是否符合过滤条件）。
+             * 
              * - **注意！：该函数需要 Android 5.0 以上才能运行**
+             * 
+             * [AccessibilityWindowInfo]: https://developer.android.com/reference/android/view/accessibility/AccessibilityWindowInfo
              */
             const windows: object[];
 
@@ -98,7 +109,9 @@ declare module 'widget-operation' {
              * - **注意！： 如果 `WindowFilter` 返回的结果均为 `false` ，则选择器的搜索结果将为空。**
              * - **注意！： setWindowFilter 函数会影响 `auto.windowRoots` 的结果。**
              * - **注意！： 该函数需要 Android 5.0 以上才有效。**
-             * @param {function} filter 用于过滤的回调函数。参数为窗口，更多信息参见 [AccessibilityWindowInfo](https://developer.android.com/reference/android/view/accessibility/AccessibilityWindowInfo) ，返回值为 Boolean （是否符合过滤条件）。
+             * @param {function} filter 用于过滤的回调函数。参数为窗口，更多信息参见 [AccessibilityWindowInfo] ，返回值为 Boolean （是否符合过滤条件）。
+             * 
+             * [AccessibilityWindowInfo]: https://developer.android.com/reference/android/view/accessibility/AccessibilityWindowInfo
              */
             function setWindowFilter(filter: (window: AccessibilityWindowInfo) => boolean): void;
         }
@@ -191,8 +204,10 @@ declare module 'widget-operation' {
             /**
              * @description: 指定选择器的搜索算法。广度优先在控件所在层次较低时，或者布局的层次不多时，通常能更快找到控件。
              * @param {string} algorithm 搜索算法（默认为 `DFS` ），可选的值为:
+             * 
              * - `DFS` - 深度优先算法
              * - `BFS` - 广度优先算法
+             * 
              * @return {this} 返回选择器自身以便链式调用。
              * @example
              * ```typescript
@@ -235,8 +250,11 @@ declare module 'widget-operation' {
             textEndsWith(suffix: string): this;
 
             /**
-             * @description: 为当前选择器附加控件 `text` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions) 。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+             * @description: 为当前选择器附加控件 `text` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式] 。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+             * 
              * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
+             * 
+             * [正则表达式]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions
              * @param {RegExp | string} reg 要满足的正则表达式。
              * @return {this} 返回选择器自身以便链式调用。
              */
@@ -271,8 +289,11 @@ declare module 'widget-operation' {
             descEndsWith(suffix: string): this;
 
             /**
-             * @description: 为当前选择器附加控件 `desc` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+             * @description: 为当前选择器附加控件 `desc` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式] 。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+             * 
              * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
+             * 
+             * [正则表达式]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions
              * @param {RegExp | string} regex 要满足的正则表达式。
              * @return {this} 返回选择器自身以便链式调用。
              */
@@ -314,8 +335,11 @@ declare module 'widget-operation' {
             idEndsWith(suffix: string): this;
 
             /**
-             * @description: 附加 `id` 需要满足正则表达式。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+             * @description: 附加 `id` 需要满足正则表达式。有关正则表达式，可以查看 [正则表达式] 。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+             * 
              * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
+             * 
+             * [正则表达式]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions
              * @param {RegExp} reg `id` 要满足的正则表达式。
              * @return {this} 返回选择器自身以便链式调用。
              * @example
@@ -361,8 +385,11 @@ declare module 'widget-operation' {
             classNameEndsWith(suffix: string): this;
 
             /**
-             * @description: 为当前选择器附加控件 `className` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+             * @description: 为当前选择器附加控件 `className` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式] 。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+             * 
              * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
+             * 
+             * [正则表达式]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions
              * @param {RegExp} reg 要满足的正则表达式。
              * @return {this} 返回选择器自身以便链式调用。
              */
@@ -397,8 +424,11 @@ declare module 'widget-operation' {
             packageNameEndsWith(suffix: string): this;
 
             /**
-             * @description: 为当前选择器附加控件 `packageName` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+             * @description: 为当前选择器附加控件 `packageName` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式] 。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+             * 
              * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
+             * 
+             * [正则表达式]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions
              * @param {RegExp | string} reg 要满足的正则表达式。
              * @return {this} 返回选择器自身以便链式调用。
              */
@@ -1260,8 +1290,10 @@ declare module 'widget-operation' {
         /**
          * @description: 指定选择器的搜索算法。广度优先在控件所在层次较低时，或者布局的层次不多时，通常能更快找到控件。
          * @param {string} algorithm 搜索算法（默认为 `DFS` ），可选的值为:
+         * 
          * - `DFS` - 深度优先算法
          * - `BFS` - 广度优先算法
+         * 
          * @return {UiSelector} 返回选择器自身以便链式调用。
          * @example
          * ```typescript
@@ -1304,8 +1336,11 @@ declare module 'widget-operation' {
         function textEndsWith(suffix: string): UiSelector;
 
         /**
-         * @description: 为当前选择器附加控件 `text` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+         * @description: 为当前选择器附加控件 `text` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式] 。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+         * 
          * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
+         * 
+         * [正则表达式]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions
          * @param {RegExp | string} reg 要满足的正则表达式。
          * @return {UiSelector} 返回选择器自身以便链式调用。
          */
@@ -1340,8 +1375,11 @@ declare module 'widget-operation' {
         function descEndsWith(suffix: string): UiSelector;
 
         /**
-         * @description: 为当前选择器附加控件 `desc` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+         * @description: 为当前选择器附加控件 `desc` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式] 。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+         * 
          * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
+         * 
+         * [正则表达式]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions
          * @param {RegExp | string} regex 要满足的正则表达式。
          * @return {UiSelector} 返回选择器自身以便链式调用。
          */
@@ -1383,8 +1421,11 @@ declare module 'widget-operation' {
         function idEndsWith(suffix: string): UiSelector;
 
         /**
-         * @description: 附加 `id` 需要满足正则表达式。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+         * @description: 附加 `id` 需要满足正则表达式。有关正则表达式，可以查看 [正则表达式] 。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+         * 
          * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
+         * 
+         * [正则表达式]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions
          * @param {RegExp} reg `id` 要满足的正则表达式。
          * @return {UiSelector} 返回选择器自身以便链式调用。
          * @example
@@ -1430,8 +1471,11 @@ declare module 'widget-operation' {
         function classNameEndsWith(suffix: string): UiSelector;
 
         /**
-         * @description: 为当前选择器附加控件 `packageName` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+         * @description: 为当前选择器附加控件 `packageName` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式] 。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+         * 
          * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
+         * 
+         * [正则表达式]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions
          * @param {RegExp} reg 要满足的正则表达式。
          * @return {UiSelector} 返回选择器自身以便链式调用。
          */
@@ -1466,8 +1510,11 @@ declare module 'widget-operation' {
         function packageNameEndsWith(suffix: string): UiSelector;
 
         /**
-         * @description: 为当前选择器附加控件 `packageName` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions) 。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+         * @description: 为当前选择器附加控件 `packageName` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式] 。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
+         * 
          * - **注意！：有些情况会出现匹配不到的问题。请尽量减少使用。**
+         * 
+         * [正则表达式]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions
          * @param {RegExp | string} reg 要满足的正则表达式。
          * @return {UiSelector} 返回选择器自身以便链式调用。
          */
@@ -1692,7 +1739,9 @@ declare module 'widget-operation' {
 
     // TODO: 补全常用属性
     /**
-     * @description: 更多信息参见 [AccessibilityWindowInfo](https://www.apiref.com/android-zh/android/view/accessibility/AccessibilityWindowInfo.html)
+     * @description: 更多信息参见 [AccessibilityWindowInfo]
+     * 
+     * [AccessibilityWindowInfo]: https://www.apiref.com/android-zh/android/view/accessibility/AccessibilityWindowInfo.html
      */
     interface AccessibilityWindowInfo {
         [prop: string]: any;

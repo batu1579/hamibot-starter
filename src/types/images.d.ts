@@ -313,10 +313,12 @@ declare module 'images' {
          * @param {BaseImage} image 要存储的图片对象。
          * @param {string} path 文件路径。
          * @param {ImageFormat} [format] 图片格式（默认为 `png` ），可选的值为:
+         * 
          * - `png`
          * - `jpeg`
          * - `jpg`
          * - `webp`
+         * 
          * @param {number} [quality] 图片质量，为 0~100 的整数值（默认为 100 ）。
          * @example
          * ```typescript
@@ -339,10 +341,12 @@ declare module 'images' {
          * @description: 把图片编码为 base64 数据并返回。
          * @param {BaseImage} img 要编码的图片对象。
          * @param {ImageFormat} [format] 图片格式（默认为 `png` ），可选的值为:
+         * 
          * - `png`
          * - `jpeg`
          * - `jpg`
          * - `webp`
+         * 
          * @param {number} [quality] 图片质量，为 0~100 的整数值（默认为 100 ）。
          * @return {string} base64 编码后的字符串。
          */
@@ -359,10 +363,12 @@ declare module 'images' {
          * @description: 把图片编码为字节数组并返回。
          * @param {BaseImage} img 要编码的图片对象。
          * @param {ImageFormat} [format] 图片格式（默认为 `png` ），可选的值为:
+         * 
          * - `png`
          * - `jpeg`
          * - `jpg`
          * - `webp`
+         * 
          * @param {number} [quality] 图片质量，为 0~100 的整数值（默认为 100 ）。
          * @return {ByteArray} 编码后的字节数组。
          */
@@ -390,13 +396,16 @@ declare module 'images' {
          * @param {BaseImage} img 要调整的图片。
          * @param {array} size 调整后图片的尺寸。两个元素的数组 [w, h] ，分别表示宽度和高度；如果只有一个元素 [x,] ，则宽度和高度相等。
          * @param {InterpolationFunction} [interpolation] 插值方法（默认为 `LINEAR` ），可选的值为:
+         * 
          * - `NEAREST` - 最近邻插值。
          * - `LINEAR` - 线性插值。
          * - `AREA` - 区域插值。
          * - `CUBIC` - 三次样条插值。
          * - `LANCZOS4` - Lanczos 插值。
          * 
-         * 更多信息参见 [InterpolationFlags](https://docs.opencv.org/3.4.4/da/d54/group__imgproc__transform.html#ga5bb5a1fea74ea38e1a5445ca803ff121) 。
+         * 更多信息参见 [InterpolationFlags] 。
+         * 
+         * [InterpolationFlags]: https://docs.opencv.org/3.4.4/da/d54/group__imgproc__transform.html#ga5bb5a1fea74ea38e1a5445ca803ff121
          * @return {Image} 调整后的图片。
          * @example
          * ```typescript
@@ -411,13 +420,16 @@ declare module 'images' {
          * @param {BaseImage} img 要调整的图片。
          * @param {array} size 调整后图片的尺寸。两个元素的数组 [w, h] ，分别表示宽度和高度；如果只有一个元素 [x,] ，则宽度和高度相等。
          * @param {string} [interpolation] 插值方法（默认为 `LINEAR` ），可选的值为:
+         * 
          * - `NEAREST` - 最近邻插值。
          * - `LINEAR` - 线性插值。
          * - `AREA` - 区域插值。
          * - `CUBIC` - 三次样条插值。
          * - `LANCZOS4` - Lanczos 插值。
          * 
-         * 更多信息参见 [InterpolationFlags](https://docs.opencv.org/3.4.4/da/d54/group__imgproc__transform.html#ga5bb5a1fea74ea38e1a5445ca803ff121) 。
+         * 更多信息参见 [InterpolationFlags] 。
+         * 
+         * [InterpolationFlags]: https://docs.opencv.org/3.4.4/da/d54/group__imgproc__transform.html#ga5bb5a1fea74ea38e1a5445ca803ff121
          * @return {Image} 调整后的图片。
          * @example
          * ```typescript
@@ -433,13 +445,16 @@ declare module 'images' {
          * @param {number} fx 宽度放缩倍数。
          * @param {number} fy 高度放缩倍数。
          * @param {InterpolationFunction} [interpolation] 插值方法（默认为 `LINEAR` ），可选的值为:
+         * 
          * - `NEAREST` - 最近邻插值。
          * - `LINEAR` - 线性插值。
          * - `AREA` - 区域插值。
          * - `CUBIC` - 三次样条插值。
          * - `LANCZOS4` - Lanczos 插值。
          * 
-         * 更多信息参见 [InterpolationFlags](https://docs.opencv.org/3.4.4/da/d54/group__imgproc__transform.html#ga5bb5a1fea74ea38e1a5445ca803ff121) 。
+         * 更多信息参见 [InterpolationFlags] 。
+         * 
+         * [InterpolationFlags]: https://docs.opencv.org/3.4.4/da/d54/group__imgproc__transform.html#ga5bb5a1fea74ea38e1a5445ca803ff121
          * @return {Image} 调整后的图片。
          * @example
          * ```typescript
@@ -455,13 +470,16 @@ declare module 'images' {
          * @param {number} fx 宽度放缩倍数。
          * @param {number} fy 高度放缩倍数。
          * @param {string} [interpolation] 插值方法（默认为 `LINEAR` ），可选的值为:
+         * 
          * - `NEAREST` - 最近邻插值。
          * - `LINEAR` - 线性插值。
          * - `AREA` - 区域插值。
          * - `CUBIC` - 三次样条插值。
          * - `LANCZOS4` - Lanczos 插值。
          * 
-         * 更多信息参见 [InterpolationFlags](https://docs.opencv.org/3.4.4/da/d54/group__imgproc__transform.html#ga5bb5a1fea74ea38e1a5445ca803ff121) 。
+         * 更多信息参见 [InterpolationFlags] 。
+         * 
+         * [InterpolationFlags]: https://docs.opencv.org/3.4.4/da/d54/group__imgproc__transform.html#ga5bb5a1fea74ea38e1a5445ca803ff121
          * @return {Image} 调整后的图片。
          * @example
          * ```typescript
@@ -491,10 +509,12 @@ declare module 'images' {
          * @param {BaseImage} img1 图片1。
          * @param {BaseImage} img2 图片2。
          * @param {string} [direction] 连接方向（默认为 `RIGHT` ），可选的值为：
+         * 
          * - `LEFT` - 将 `img2` 接到 `img1` 左边。
          * - `RIGHT` - 将 `img2` 接到 `img1` 右边。
          * - `TOP` - 将 `img2` 接到 `img1` 上边。
          * - `BOTTOM` - 将 `img2` 接到 `img1` 下边。
+         * 
          * @return {Image} 连接后的图片。
          */
         concat(img1: BaseImage, img2: BaseImage, direction?: 'LEFT' | 'RIGHT' | 'BOTTOM' | 'TOP'): Image;
@@ -507,11 +527,15 @@ declare module 'images' {
         gratscale(img: BaseImage): Image;
 
         /**
-         * @description: 对图片进行阈值化处理。可以参考有关博客（比如 [threshold 函数的使用](https://blog.csdn.net/u012566751/article/details/77046445) ）或者 OpenCV 文档 [threshold](https://docs.opencv.org/3.4.4/d7/d1b/group__imgproc__misc.html#gae8a4a146d1ca78c626a53577199e9c57) 。
+         * @description: 对图片进行阈值化处理。可以参考有关博客（比如 [threshold 函数的使用] ）或者 OpenCV 文档 [threshold] 。
+         * 
+         * [threshold 函数的使用]: https://blog.csdn.net/u012566751/article/details/77046445
+         * [threshold]: https://docs.opencv.org/3.4.4/d7/d1b/group__imgproc__misc.html#gae8a4a146d1ca78c626a53577199e9c57)
          * @param {BaseImage} img 要调整的图片。
          * @param {number} threshold 阈值。
          * @param {number} maxValue 最大值。
-         * @param {ThresholdType} [type]  阈值化类型（默认为 `BINARY` ），参见 [ThresholdTypes](https://docs.opencv.org/3.4.4/d7/d1b/group__imgproc__misc.html#gaa9e58d2860d4afa658ef70a9b1115576) ，可选的值为：
+         * @param {ThresholdType} [type]  阈值化类型（默认为 `BINARY` ），参见 [ThresholdTypes] ，可选的值为：
+         * 
          * - `BINARY` - 超过阈值的值设置 `maxValue` ，其他值设置为 `0` 。
          * - `BINARY_INV` - 超过阈值的值设置为 `0` ，其他值设置为 `maxValue` 。
          * - `TRUNC` - 过阈值的值设置为 `threshold` ，其他值 ***不变*** 。
@@ -519,6 +543,8 @@ declare module 'images' {
          * - `TOZERO_INV` - 超过阈值的值设置为 `0` ，其他值 ***不变*** 。
          * - `OTSU` - 大津法自动寻求全局阈值。
          * - `TRIANGLE` - 三角形法自动寻求全局阈值。
+         * 
+         * [ThresholdTypes]: https://docs.opencv.org/3.4.4/d7/d1b/group__imgproc__misc.html#gaa9e58d2860d4afa658ef70a9b1115576)
          * @return {Image} 调整后的图片。
          * @example
          * ```typescript
@@ -529,15 +555,22 @@ declare module 'images' {
         threshold(img: BaseImage, threshold: number, maxValue: number, type?: ThresholdType): Image;
 
         /**
-         * @description: 对图片进行自适应阈值化处理。可以参考有关博客（比如 [threshold 与 adaptiveThreshold](https://blog.csdn.net/guduruyu/article/details/68059450) ）或者 OpenCV 文档 [adaptiveThreshold](https://docs.opencv.org/3.4.4/d7/d1b/group__imgproc__misc.html#ga72b913f352e4a1b1b397736707afcde3) 。
+         * @description: 对图片进行自适应阈值化处理。可以参考有关博客（比如 [threshold 与 adaptiveThreshold] ）或者 OpenCV 文档 [adaptiveThreshold] 。
+         * 
+         * [threshold 与 adaptiveThreshold]: https://blog.csdn.net/guduruyu/article/details/68059450
+         * [adaptiveThreshold]: https://docs.opencv.org/3.4.4/d7/d1b/group__imgproc__misc.html#ga72b913f352e4a1b1b397736707afcde3
          * @param {BaseImage} img 要调整的图片。
          * @param {number} maxValue 最大值。
          * @param {string} adaptiveMethod 在一个邻域内计算阈值所采用的算法，可选的值为：
+         * 
          * - `MEAN_C` - 计算出领域的平均值再减去参数 `C` 的值。
          * - `GAUSSIAN_C` - 计算出领域的高斯均值再减去参数 `C` 的值。
+         * 
          * @param {string} ThresholdType 阈值化类型，可选的值有：
+         * 
          * - `BINARY` - 超过阈值的值设置 `maxValue` ，其他值设置为 `0` 。
          * - `BINARY_INV` - 超过阈值的值设置为 `0` ，其他值设置为 `maxValue` 。
+         * 
          * @param {number} blockSize 邻域块大小。
          * @param {number} C 偏移值调整量。
          * @return {Image} 调整后的图片。
@@ -545,11 +578,17 @@ declare module 'images' {
         adaptiveThreshold(img: BaseImage, maxValue: number, adaptiveMethod: 'MEAN_C' | 'GAUSSIAN_C', ThresholdType: 'BINARY' | 'BINARY_INV', blockSize: number, C: number): Image;
 
         /**
-         * @description: 对图像进行颜色空间转换。可以参考有关博客（比如 [颜色空间转换](https://blog.csdn.net/u011574296/article/details/70896811?locationNum=14&fps=1) ）或者 OpenCV 文档 [cvtColor](https://docs.opencv.org/3.4.4/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab) 。
+         * @description: 对图像进行颜色空间转换。可以参考有关博客（比如 [颜色空间转换] ）或者 OpenCV 文档 [cvtColor] 。
+         * 
+         * [颜色空间转换]: https://blog.csdn.net/u011574296/article/details/70896811?locationNum=14&fps=1
+         * [cvtColor]: https://docs.opencv.org/3.4.4/d8/d01/group__imgproc__color__conversions.html#ga397ae87e1288a81d2363b61574eb8cab
          * @param {BaseImage} img 要调整的图片。
-         * @param {string} code 颜色空间转换的类型，可选的值有一共有 205 个（参见  [ColorConversionCodes](https://docs.opencv.org/3.4.4/d8/d01/group__imgproc__color__conversions.html#ga4e0972be5de079fed4e3a10e24ef5ef0) ），这里只列出几个：
+         * @param {string} code 颜色空间转换的类型，可选的值有一共有 205 个（参见  [ColorConversionCodes] ），这里只列出几个：
+         * 
          * - `BGR2GRAY` - BGR 转换为灰度。
          * - `BGR2HSV` - BGR 转换为 HSV。
+         * 
+         * [ColorConversionCodes]: https://docs.opencv.org/3.4.4/d8/d01/group__imgproc__color__conversions.html#ga4e0972be5de079fed4e3a10e24ef5ef0
          * @param {number} [dstCn] 目标图像的颜色通道数量，如果不填写则根据其他参数自动决定。
          * @return {Image} 调整后的图片。
          */
@@ -583,12 +622,18 @@ declare module 'images' {
         interval(img: BaseImage, color: Color, interval: number): Image;
 
         /**
-         * @description: 对图像进行模糊（平滑处理）。可以参考有关博客（比如 [实现图像平滑处理](https://www.cnblogs.com/denny402/p/3848316.html) 、 [调整图像边缘](https://blog.csdn.net/shuiyixin/article/details/106472722/) ）或者 OpenCV 文档 [blur](https://docs.opencv.org/3.4.4/d4/d86/group__imgproc__filter.html#ga8c45db9afe636703801b0b2e440fce37) 。
+         * @description: 对图像进行模糊（平滑处理）。可以参考有关博客（比如 [实现图像平滑处理] 、 [调整图像边缘] ）或者 OpenCV 文档 [blur] 。
+         * 
+         * [实现图像平滑处理]: https://www.cnblogs.com/denny402/p/3848316.html
+         * [调整图像边缘]: https://blog.csdn.net/shuiyixin/article/details/106472722/
+         * [blur]: https://docs.opencv.org/3.4.4/d4/d86/group__imgproc__filter.html#ga8c45db9afe636703801b0b2e440fce37
          * @param {BaseImage} img 要调整的图片。
          * @param {ImageSize} size 定义模糊内核大小，例如 `[3, 3]` 。
          * @param {array} [anchor] 指定锚点位置（被平滑点），默认为 `[-1, -1]` 即图像中心。
          * @param {BorderType} [type] 推断边缘像素类型，默认为 `DEFAULT` ，可选的值为：
-         * - 示例说明：填充的左边界 | 图像内容 | 填充的右边界
+         * 
+         * > 示例说明：填充的左边界 | 图像内容 | 填充的右边界
+         * 
          * - `CONSTANT` - iiiiii|abcdefgh|iiiiiii 使用指定像素值来填充边缘，需要额外指定的像素。
          * - `REPLICATE` - aaaaaa|abcdefgh|hhhhhhh 复制边界像素值来填充边缘。
          * - `REFLECT` - fedcba|abcdefgh|hgfedcb 反射复制边界像素值来反转填充边缘。
@@ -598,12 +643,16 @@ declare module 'images' {
          * - `REFLECT101` - 和 `BORDER_REFLECT_101` 相同。
          * - `DEFAULT` - 和 `BORDER_REFLECT_101` 相同。
          * - `ISOLATED` - 使用黑色进行填充。
+         * 
          * @return {Image} 调整后的图片。
          */
         blur(img: BaseImage, size: ImageSize, anchor?: [number, number], type?: BorderType): Image;
 
         /**
-         * @description: 对图像进行中值滤波。可以参考有关博客（比如 [实现图像平滑处理](https://www.cnblogs.com/denny402/p/3848316.html) ）或者 OpenCV 文档 [blur](https://docs.opencv.org/3.4.4/d4/d86/group__imgproc__filter.html#ga8c45db9afe636703801b0b2e440fce37) 。
+         * @description: 对图像进行中值滤波。可以参考有关博客（比如 [实现图像平滑处理] ）或者 OpenCV 文档 [blur] 。
+         * 
+         * [实现图像平滑处理]: https://www.cnblogs.com/denny402/p/3848316.html
+         * [blur]: https://docs.opencv.org/3.4.4/d4/d86/group__imgproc__filter.html#ga8c45db9afe636703801b0b2e440fce37
          * @param {BaseImage} img 要调整的图片。
          * @param {ImageSize} size 定义模糊内核大小，例如 `[3, 3]` 。
          * @return {Image} 调整后的图片。
@@ -611,13 +660,19 @@ declare module 'images' {
         medianBlur(img: BaseImage, size: ImageSize): Image;
 
         /**
-         * @description: 对图像进行高斯模糊。可以参考有关博客（比如 [实现图像平滑处理](https://www.cnblogs.com/denny402/p/3848316.html) 、 [调整图像边缘](https://blog.csdn.net/shuiyixin/article/details/106472722/) ）或者 OpenCV 文档 [blur](https://docs.opencv.org/3.4.4/d4/d86/group__imgproc__filter.html#ga8c45db9afe636703801b0b2e440fce37) 。
+         * @description: 对图像进行高斯模糊。可以参考有关博客（比如 [实现图像平滑处理] 、 [调整图像边缘] ）或者 OpenCV 文档 [blur] 。
+         * 
+         * [实现图像平滑处理]: https://www.cnblogs.com/denny402/p/3848316.html
+         * [调整图像边缘]: https://blog.csdn.net/shuiyixin/article/details/106472722/
+         * [blur]: https://docs.opencv.org/3.4.4/d4/d86/group__imgproc__filter.html#ga8c45db9afe636703801b0b2e440fce37
          * @param {BaseImage} img 要调整的图片。
          * @param {ImageSize} size 定义模糊内核大小，例如 `[3, 3]` 。
          * @param {number} [sigmaX] x 方向的标准方差，不填写则自动计算。
          * @param {number} [sigmaY] y 方向的标准方差，不填写则自动计算。
          * @param {BorderType} [type] 推断边缘像素类型，默认为 `DEFAULT` ，可选的值为：
-         * - 示例说明：填充的左边界 | 图像内容 | 填充的右边界
+         * 
+         * > 示例说明：填充的左边界 | 图像内容 | 填充的右边界
+         * 
          * - `CONSTANT` - iiiiii|abcdefgh|iiiiiii 使用指定像素值来填充边缘，需要额外指定的像素。
          * - `REPLICATE` - aaaaaa|abcdefgh|hhhhhhh 复制边界像素值来填充边缘。
          * - `REFLECT` - fedcba|abcdefgh|hgfedcb 反射复制边界像素值来反转填充边缘。
@@ -627,6 +682,7 @@ declare module 'images' {
          * - `REFLECT101` - 和 `BORDER_REFLECT_101` 相同。
          * - `DEFAULT` - 和 `BORDER_REFLECT_101` 相同。
          * - `ISOLATED` - 使用黑色进行填充。
+         * 
          * @return {Image} 调整后的图片。
          */
         gaussianBlur(img: BaseImage, size: ImageSize, sigmaX?: number, sigmaY?: number, type?: BorderType): Image;
@@ -861,11 +917,13 @@ declare module 'images' {
          * 
          * `similarity = (255 - threshold) / 255` 。
          * @param {string} [algorithm] 颜色匹配算法，可选的值为：
+         * 
          * - `equal` - 相等匹配，只有与给定颜色 `color` 完全相等时才匹配。
          * - `diff` - 差值匹配。与给定颜色的 R、G、B 差的绝对值之和小于 `threshold` 时匹配。
          * - `rgb` - RGB 欧拉距离相似度。与给定颜色 `color` 的 RGB 欧拉距离小于等于 `threshold` 时匹配。
          * - `rgb+` - 加权 RGB 欧拉距离匹配（LAB Delta E）。
          * - `hs` - hs 欧拉距离匹配。hs 为 HSV 空间的色调值。
+         * 
          * @return {boolean} 匹配成功返回 `true` 否则返回 `false` 。
          * @example
          * ```typescript
@@ -1198,11 +1256,13 @@ declare module 'images' {
          * 
          * `similarity = (255 - threshold) / 255` 。
          * @param {string} [algorithm] 颜色匹配算法，可选的值为：
+         * 
          * - `equal` - 相等匹配，只有与给定颜色 `color` 完全相等时才匹配。
          * - `diff` - 差值匹配。与给定颜色的 R、G、B 差的绝对值之和小于 `threshold` 时匹配。
          * - `rgb` - RGB 欧拉距离相似度。与给定颜色 `color` 的 RGB 欧拉距离小于等于 `threshold` 时匹配。
          * - `rgb+` - 加权 RGB 欧拉距离匹配（LAB Delta E）。
          * - `hs` - hs 欧拉距离匹配。hs 为 HSV 空间的色调值。
+         * 
          * @return {boolean} 相似返回 `true` 否则返回 `false` 。
          */
         isSimilar(color1: Color, color2: Color, threshold?: number, algorithm?: string): boolean;
@@ -1328,8 +1388,10 @@ declare module 'images' {
     interface TwoItemRegionOptions {
         /**
          * @description: 设置找色区域为 (region[0], region[1]) 到图片右下角。如果不指定 `region` 选项，则找色区域为整张图片。
+         * 
          * - `region[0]` - 找色区域左上角的横坐标。
          * - `region[1]` - 找色区域左上角的纵坐标。
+         * 
          */
         region?: [number, number];
     }
@@ -1337,10 +1399,12 @@ declare module 'images' {
     interface FourItemRegionOptions {
         /**
          * @description: 设置找色区域为 (region[0], region[1]) 到 (region[0] + region[2], region[1] + region[3]) 。如果不指定 `region` 选项，则找色区域为整张图片。
+         * 
          * - `region[0]` - 找色区域左上角的横坐标。
          * - `region[1]` - 找色区域左上角的纵坐标。
          * - `region[2]` - 找色区域的宽度。
          * - `region[3]` - 找色区域的高度。
+         * 
          */
         region?: [number, number, number, number];
     }
