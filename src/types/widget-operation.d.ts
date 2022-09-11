@@ -80,11 +80,9 @@ declare module 'widget-operation' {
              * 
              * 更多信息参见 [AccessibilityWindowInfo] ，返回值为 Boolean （是否符合过滤条件）。
              * 
-             * 
              * **注意！：**
              * 
              * - 该函数需要 Android 5.0 以上才能运行
-             * 
              * 
              * [AccessibilityWindowInfo]: https://developer.android.com/reference/android/view/accessibility/AccessibilityWindowInfo
              */
@@ -284,11 +282,9 @@ declare module 'widget-operation' {
             /**
              * @description: 为当前选择器附加控件 `text` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式] 。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
              * 
-             * 
              * **注意！：**
              * 
              * - 有些情况会出现匹配不到的问题。请尽量减少使用。
-             * 
              * 
              * [正则表达式]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions
              * @param {RegExp | string} reg 要满足的正则表达式。
@@ -327,11 +323,9 @@ declare module 'widget-operation' {
             /**
              * @description: 为当前选择器附加控件 `desc` 需要满足正则表达式 `reg` 的条件。有关正则表达式，可以查看 [正则表达式] 。需要注意的是，如果正则表达式是字符串，则需要使用 `\\` 来表达 `\` （也即 Java 正则表达式的形式），例如 `textMatches('\\d+')` 匹配多位数字；但如果使用 JavaScript 语法的正则表达式则不需要，例如 `textMatches(/\d+/)` 。但如果使用字符串的正则表达式则该字符串不能同时以'/'开头和结束，也即不能写诸如 `textMatches('/\\d+/')` 的表达式，否则会被开头的'/'和结尾的'/'会被忽略。
              * 
-             * 
              * **注意！：**
              * 
              * - 有些情况会出现匹配不到的问题。请尽量减少使用。
-             * 
              * 
              * [正则表达式]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions
              * @param {RegExp | string} regex 要满足的正则表达式。

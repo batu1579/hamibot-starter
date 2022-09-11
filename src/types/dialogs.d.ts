@@ -14,11 +14,9 @@ declare module 'dialogs' {
         /**
          * @description: dialogs 模块提供了简单的对话框支持，可以通过对话框和用户进行交互。
          * 
-         * 
          * **注意！：**
          * 
          * - 对话框在 ui 模式下不能像通常那样使用，应该使用回调函数或者 [Promise] 的形式。
-         * 
          * 
          * [Promise]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise
          * @example

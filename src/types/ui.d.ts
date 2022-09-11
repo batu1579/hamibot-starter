@@ -41,7 +41,6 @@ declare module 'ui' {
          * 
          * - 带有 ui 的脚本的的最前面必须使用 `'ui'` ，指定 ui 模式，否则脚本将不会以 ui 模式运行。
          * 
-         * 
          * [View]: https://developer.android.google.cn/reference/android/view/View?hl=cn
          * [Widget]: https://developer.android.google.cn/reference/android/widget/package-summary?hl=cn
          * 
@@ -195,7 +194,6 @@ declare module 'ui' {
          * @description: 设置属性的值。属性指定是 View 在 xml 中的属性。
          * 
          * 例如可以通过语句 `attr('text', '文本');` 来设置文本控件的文本值。
-         * 
          * 
          * **注意！：**
          * 

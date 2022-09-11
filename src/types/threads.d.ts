@@ -15,7 +15,6 @@ declare module 'threads' {
          * 
          * 脚本主线程会等待所有子线程执行完成后才停止执行，因此如果子线程中有死循环，请在必要的时候调用 `exit()` 来直接停止脚本或 `threads.shutDownAll()` 来停止所有子线程。
          * 
-         * 
          * **注意！：**
          * 
          * - 由于 JavaScript 自身没有多线程的支持，因此您可能会遇到意料之外的问题。
@@ -280,11 +279,9 @@ declare module 'threads' {
     /**
      * @description: Java 原子长整数。更多信息参见 [AtomicLong] 。
      * 
-     * 
      * **注意！：**
      * 
      * - 这里使用的是长整型，但是因为 BigInt 是 ES2020 的新增语法，这里暂时先用 Number 类型代替，可能会导致丢失数据！！
-     * 
      * 
      * [AtomicLong]: https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicLong.html
      */
@@ -464,7 +461,6 @@ declare module 'threads' {
          * - 一些其他线程当前线程interrupts 。
          * 
          * 如果当前线程获取锁定，则锁定保持计数被设置为 1 。
-         * 
          * 
          * **注意！：**
          * 

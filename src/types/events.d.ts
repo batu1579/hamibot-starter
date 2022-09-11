@@ -576,7 +576,6 @@ declare module 'events' {
          * 
          * 此函数是 `emitter.on(eventName, listener)` 的别名。
          * 
-         * 
          * **注意！：**
          * 
          * - 多次调用并传入相同的 `eventName` 和 `listener` 会导致 `listener` 被添加与调用多次。
@@ -646,7 +645,6 @@ declare module 'events' {
          * 
          * 默认情况下，事件监听器会按照添加的顺序依次调用。 `emitter.prependListener()` 方法可用于将事件监听器添加到监听器数组的开头。
          * 
-         * 
          * **注意！：**
          * 
          * - 多次调用并传入相同的 `eventName` 和 `listener` 会导致 `listener` 被添加与调用多次。
@@ -677,7 +675,6 @@ declare module 'events' {
          * @description: 添加一个单次 `listener` 函数到名为 `eventName` 的事件的监听器数组的末尾。下次触发 eventName 事件时，监听器会被移除，然后调用。
          * 
          * 默认情况下，事件监听器会按照添加的顺序依次调用。 `emitter.prependOnceListener() ` 方法可用于将事件监听器添加到监听器数组的开头。
-         * 
          * 
          * **注意！：**
          * 
@@ -761,7 +758,6 @@ declare module 'events' {
          * `removeListener()` 最多只会从监听器数组里移除一个监听器实例。 如果任何单一的监听器被多次添加到指定 `eventName` 的监听器数组中，则必须多次调用 `removeListener()` 才能移除每个实例。
          * 
          * 因为监听器是使用内部数组进行管理的，所以调用它会改变在监听器被移除后注册的任何监听器的位置索引。 虽然这不会影响监听器的调用顺序，但意味着由 `emitter.listeners()` 方法返回的监听器数组副本需要被重新创建。
-         * 
          * 
          * **注意！：**
          * 
