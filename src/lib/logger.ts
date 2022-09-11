@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-05 04:00:16
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-10 11:22:34
+ * @LastTime: 2022-09-11 09:10:30
  * @FilePath: \\src\\lib\\logger.ts
  * @Description: 存放关于日志和调试信息的预制方法。
  */
@@ -35,7 +35,7 @@ class LogCollection {
         ];
 
         for (let i = 0; i < this.frames.length; i++) {
-            stack.push(this[i].toHtmlString());
+            stack.push(this.frames[i].toHtmlString());
         }
         stack.push('</div>')
 
@@ -50,7 +50,7 @@ class LogCollection {
         let stack: string[] = [];
 
         for (let i = 0; i < this.frames.length; i++) {
-            stack.push(this[i].toString());
+            stack.push(this.frames[i].toString());
         }
 
         return stack.join('\n');
