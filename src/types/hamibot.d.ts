@@ -111,7 +111,11 @@ declare module 'hamibot' {
 
         /**
          * @description: 配置项的数据。
-         * - *建议（：使用前手动检查数据*
+         * 
+         * *建议（：*
+         * 
+         * - 使用前手动检查数据
+         * 
          */
         readonly [prop: string]: any;
     }

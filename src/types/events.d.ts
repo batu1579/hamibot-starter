@@ -312,7 +312,11 @@ declare module 'events' {
 
         /**
          * @description: 设置两个触摸事件分发的最小时间间隔。例如间隔为 10 毫秒的话，前一个触摸事件发生并被注册的监听器处理后，至少要过 10 毫秒才能分发和处理下一个触摸事件，这 10 毫秒之间的触摸将会被忽略。
-         * - *建议（：在满足需要的情况下尽量提高这个间隔。*
+         * 
+         * *建议（：*
+         * 
+         * - 在满足需要的情况下尽量提高这个间隔。
+         * 
          * 
          * **注意！：**
          * 
@@ -793,13 +797,21 @@ declare module 'events' {
      * @callback KeyListener
      * @description: 当有按键被按下或弹起时要执行的回调函数。
      * @param {number} keyCode 触发事件的按键编号。
-     * - *建议（：使用 `keys` 比较 `keyCode` 的值。*
+     * 
+     * *建议（：*
+     * 
+     * - 使用 `keys` 比较 `keyCode` 的值。
+     * 
      * @param {KeyEvent} event 按键事件。
      */
     type KeyListener = (
         /**
          * 触发事件的按键编号。
-         * - *建议（：使用 `keys` 比较 `keyCode` 的值。*
+         * 
+         * *建议（：*
+         * 
+         * - 使用 `keys` 比较 `keyCode` 的值。
+         * 
          */
         keyCode: number,
         /**

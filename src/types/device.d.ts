@@ -278,7 +278,11 @@ declare module 'device' {
 
         /**
          * @description: 保持屏幕常亮。如果此函数调用时屏幕没有点亮，则会唤醒屏幕。可以使用 `device.cancelKeepingAwake()` 来取消屏幕常亮。
-         * - *建议（：使用比较长的时长来代替'一直保持屏幕常亮'的功能，例如 `device.keepScreenOn(3600 * 1000)` 。*
+         * 
+         * *建议（：*
+         * 
+         * - 使用比较长的时长来代替'一直保持屏幕常亮'的功能，例如 `device.keepScreenOn(3600 * 1000)` 。
+         * 
          * 
          * **注意！：**
          * 

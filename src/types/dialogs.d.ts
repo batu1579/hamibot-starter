@@ -218,7 +218,11 @@ declare module 'dialogs' {
 
         /**
          * @description: 显示一个包含输入框的对话框，等待用户输入内容 。
-         * - *建议（：用 `dialogs.rawInput()` 代替此函数。*
+         * 
+         * *建议（：*
+         * 
+         * - 用 `dialogs.rawInput()` 代替此函数。
+         * 
          * @param {string} title 对话框的标题。
          * @param {string} [prefill] 对话框的内容（默认为空）。
          * @param {function} [callback] 回调函数。当用户点击确定时被调用,一般用于 ui 模式。参数为 string （用户输入的内容），返回值为 any 。

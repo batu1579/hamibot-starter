@@ -10,7 +10,11 @@ declare module 'widget-operation' {
     global {
         /**
          * @description: 检查无障碍服务是否已经启用，如果没有启用则抛出异常并跳转到无障碍服务启用界面，同时设置无障碍模式为 mode。
-         * - *建议（：使用 `auto.waitFor()` 和 `auto.setMode()` 代替该函数，因为 `auto()` 函数如果无障碍服务未启动会停止脚本；而 `auto.waitFor()` 则会在在无障碍服务启动后继续运行。*
+         * 
+         * *建议（：*
+         * 
+         * - 使用 `auto.waitFor()` 和 `auto.setMode()` 代替该函数，因为 `auto()` 函数如果无障碍服务未启动会停止脚本；而 `auto.waitFor()` 则会在在无障碍服务启动后继续运行。
+         * 
          * @param {string} [mode] 无障碍模式（默认为 `normal` ），可选的值为:
          * 
          * - `fast` - 快速模式。该模式下会启用控件缓存，从而选择器获取屏幕控件更快。对于需要快速的控件操作的脚本可以使用该模式，一般脚本则没有必要使用该函数。
@@ -26,7 +30,11 @@ declare module 'widget-operation' {
         namespace auto {
             /**
              * @description: 检查无障碍服务是否已经启用，如果没有启用则跳转到无障碍服务启用界面，并等待无障碍服务启动；当无障碍服务启动后脚本会继续运行。因为该函数是阻塞的，因此除非是有协程特性，否则不能在 ui 模式下运行该函数。
-             * - *建议（：在 ui 模式下使用 `auto()` 函数。*
+             * 
+             * *建议（：*
+             * 
+             * - 在 ui 模式下使用 `auto()` 函数。
+             * 
              */
             function waitFor(): void;
 
@@ -1077,7 +1085,11 @@ declare module 'widget-operation' {
 
             /**
              * @description: 获取集合中的控件（ `UiObject` ）。历史遗留函数。
-             * - *建议（：直接使用数组下标的方式访问元素。*
+             * 
+             * *建议（：*
+             * 
+             * - 直接使用数组下标的方式访问元素。
+             * 
              * @return {UiObject} 集合中第 `i + 1` 个控件。
              */
             get(i: number): UiObject;
