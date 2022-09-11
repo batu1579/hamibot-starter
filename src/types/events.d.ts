@@ -11,7 +11,11 @@ declare module 'events' {
     global {
         /**
          * @description: `events` 本身是一个 `EventEmiiter` ，但内置了一些事件、包括按键事件、通知事件、Toast 事件等。
-         * - **注意！：事件的处理是单线程的，并且仍然在原线程执行，如果脚本主体或者其他事件处理中有耗时操作、轮询等，则事件将无法得到及时处理（会进入事件队列等待脚本主体或其他事件处理完成才执行）。**
+         * 
+         * **注意！：**
+         * 
+         * - 事件的处理是单线程的，并且仍然在原线程执行，如果脚本主体或者其他事件处理中有耗时操作、轮询等，则事件将无法得到及时处理（会进入事件队列等待脚本主体或其他事件处理完成才执行）。
+         * 
          */
         const events: Events;
 
@@ -124,7 +128,11 @@ declare module 'events' {
 
         /**
          * @description: 启用按键监听，例如音量键、Home 键。按键监听使用无障碍服务实现，如果无障碍服务未启用会抛出异常并提示开启。只有这个函数成功执行后, onKeyDown, onKeyUp等按键事件的监听才有效。
-         * - **注意！：此函数在安卓 4.3 以上才能使用。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数在安卓 4.3 以上才能使用。
+         * 
          */
         observeKey(): void;
 
@@ -246,7 +254,11 @@ declare module 'events' {
 
         /**
          * @description: 设置 **全部** 按键屏蔽状态。所谓按键屏蔽指的是，屏蔽原有按键的功能，例如使得音量键不再能调节音量，但此时仍然能通过按键事件监听按键。
-         * - **注意！：只要有一个脚本屏蔽了某个按键，该按键便会被屏蔽；当脚本退出时，会自动解除所有按键屏蔽。**
+         * 
+         * **注意！：**
+         * 
+         * - 只要有一个脚本屏蔽了某个按键，该按键便会被屏蔽；当脚本退出时，会自动解除所有按键屏蔽。
+         * 
          * @param {boolean} enabled 是否屏蔽所有按键。
          * @return {this} 返回自身以便链式调用。
          * @example
@@ -262,7 +274,11 @@ declare module 'events' {
 
         /**
          * @description: 设置 **单个** 按键屏蔽状态。所谓按键屏蔽指的是，屏蔽原有按键的功能，例如使得音量键不再能调节音量，但此时仍然能通过按键事件监听按键。
-         * - **注意！：只要有一个脚本屏蔽了某个按键，该按键便会被屏蔽；当脚本退出时，会自动解除所有按键屏蔽。**
+         * 
+         * **注意！：**
+         * 
+         * - 只要有一个脚本屏蔽了某个按键，该按键便会被屏蔽；当脚本退出时，会自动解除所有按键屏蔽。
+         * 
          * @param {KeyName} key 要屏蔽的按键，可选的值为：
          * 
          * - `volume_up` - 音量上键。
@@ -286,14 +302,22 @@ declare module 'events' {
 
         /**
          * @description: 启用屏幕触摸监听。只有这个函数被成功执行后, 触摸事件的监听才有效。
-         * - **注意！：此函数需要 root 权限。没有 root 权限调用该函数则什么也不会发生。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数需要 root 权限。没有 root 权限调用该函数则什么也不会发生。
+         * 
          */
         observeKey(): void;
 
         /**
          * @description: 设置两个触摸事件分发的最小时间间隔。例如间隔为 10 毫秒的话，前一个触摸事件发生并被注册的监听器处理后，至少要过 10 毫秒才能分发和处理下一个触摸事件，这 10 毫秒之间的触摸将会被忽略。
          * - *建议（：在满足需要的情况下尽量提高这个间隔。*
-         * - **注意！：如果 timeout 设置过低可能造成事件拥堵。强烈建议不要设置 `timeout` 为 0 。**
+         * 
+         * **注意！：**
+         * 
+         * - 如果 timeout 设置过低可能造成事件拥堵。强烈建议不要设置 `timeout` 为 0 。
+         * 
          * @param {number} timeout 两个触摸事件的最小间隔。单位毫秒。默认为 10 毫秒。如果小于 0 ，视为 0 处理。
          */
         setTouchEventTimeout(timeout: number): void;
@@ -396,7 +420,11 @@ declare module 'events' {
 
         /**
          * @description: 开启通知监听。例如QQ消息、微信消息、推送等通知。通知监听依赖于通知服务，如果通知服务没有运行，会抛出异常并跳转到通知权限开启界面。
-         * - **注意！：有时即使通知权限已经开启通知服务也没有运行，这时需要关闭权限再重新开启一次。**
+         * 
+         * **注意！：**
+         * 
+         * - 有时即使通知权限已经开启通知服务也没有运行，这时需要关闭权限再重新开启一次。
+         * 
          * @example
          * ```typescript
          * events.obverseNotification();
@@ -527,7 +555,11 @@ declare module 'events' {
          * @description: 每个事件默认可以注册最多 10 个监听器。 单个 `EventEmitter` 实例的限制可以使用 `emitter.setMaxListeners(n)` 方法改变。 所有 `EventEmitter` 实例的默认值可以使用 `EventEmitter.defaultMaxListeners` 属性改变。
          * 
          * 设置 `EventEmitter.defaultMaxListeners` 要谨慎，因为会影响所有 `EventEmitter` 实例，包括之前创建的。 因而，调用 `emitter.setMaxListeners(n)` 优先于 `EventEmitter.defaultMaxListeners` 。
-         * - **注意！：与 Node.js 不同，这是一个硬性限制。 `EventEmitter` 实例不允许添加更多的监听器，监听器超过最大数量时会抛出 `TooManyListenersException` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 与 Node.js 不同，这是一个硬性限制。 `EventEmitter` 实例不允许添加更多的监听器，监听器超过最大数量时会抛出 `TooManyListenersException` 。
+         * 
          * @example
          * ```typescript
          * emitter.setMaxListeners(emitter.getMaxListeners() + 1);
@@ -544,7 +576,11 @@ declare module 'events' {
          * 
          * 此函数是 `emitter.on(eventName, listener)` 的别名。
          * 
-         * - **注意！：多次调用并传入相同的 `eventName` 和 `listener` 会导致 `listener` 被添加与调用多次。**
+         * 
+         * **注意！：**
+         * 
+         * - 多次调用并传入相同的 `eventName` 和 `listener` 会导致 `listener` 被添加与调用多次。
+         * 
          * @param {string} eventName 事件名称。
          * @param {Function} listener 当事件发生时要执行的回调函数。
          * @return {this} 返回自身以便链式调用。
@@ -610,7 +646,11 @@ declare module 'events' {
          * 
          * 默认情况下，事件监听器会按照添加的顺序依次调用。 `emitter.prependListener()` 方法可用于将事件监听器添加到监听器数组的开头。
          * 
-         * - **注意！：多次调用并传入相同的 `eventName` 和 `listener` 会导致 `listener` 被添加与调用多次。**
+         * 
+         * **注意！：**
+         * 
+         * - 多次调用并传入相同的 `eventName` 和 `listener` 会导致 `listener` 被添加与调用多次。
+         * 
          * @param {string} eventName 事件名称。
          * @param {Function} listener 当事件发生时要执行的回调函数。
          * @return {this} 返回自身以便链式调用。
@@ -638,7 +678,11 @@ declare module 'events' {
          * 
          * 默认情况下，事件监听器会按照添加的顺序依次调用。 `emitter.prependOnceListener() ` 方法可用于将事件监听器添加到监听器数组的开头。
          * 
-         * - **注意！：多次调用并传入相同的 `eventName` 和 `listener` 会导致 `listener` 被添加与调用多次。**
+         * 
+         * **注意！：**
+         * 
+         * - 多次调用并传入相同的 `eventName` 和 `listener` 会导致 `listener` 被添加与调用多次。
+         * 
          * @param {string} eventName 事件名称。
          * @param {Function} listener 当事件发生时要执行的回调函数。
          * @return {this} 返回自身以便链式调用。
@@ -663,7 +707,11 @@ declare module 'events' {
 
         /**
          * @description: 添加 `listener` 函数到名为 `eventName` 的事件的监听器数组的开头。
-         * - **注意！：多次调用并传入相同的 `eventName` 和 `listener` 会导致 `listener` 被添加与调用多次。**
+         * 
+         * **注意！：**
+         * 
+         * - 多次调用并传入相同的 `eventName` 和 `listener` 会导致 `listener` 被添加与调用多次。
+         * 
          * @param {string} eventName 事件名称。
          * @param {Function} listener 当事件发生时要执行的回调函数。
          * @return {this} 返回自身以便链式调用。
@@ -678,7 +726,11 @@ declare module 'events' {
 
         /**
          * @description: 添加一个单次 `listener` 函数到名为 `eventName` 的事件的监听器数组的开头。下次触发 `eventName` 事件时，监听器会被移除，然后调用。
-         * - **注意！：多次调用并传入相同的 `eventName` 和 `listener` 会导致 `listener` 被添加与调用多次。**
+         * 
+         * **注意！：**
+         * 
+         * - 多次调用并传入相同的 `eventName` 和 `listener` 会导致 `listener` 被添加与调用多次。
+         * 
          * @param {string} eventName 事件名称。
          * @param {Function} listener 当事件发生时要执行的回调函数。
          * @return {this} 返回自身以便链式调用。
@@ -693,7 +745,11 @@ declare module 'events' {
 
         /**
          * @description: 移除全部或指定 `eventName` 的监听器。
-         * - **注意！：注意，在代码中移除其他地方添加的监听器是一个不好的做法，尤其是当 EventEmitter 实例是其他组件或模块创建的。**
+         * 
+         * **注意！：**
+         * 
+         * - 注意，在代码中移除其他地方添加的监听器是一个不好的做法，尤其是当 EventEmitter 实例是其他组件或模块创建的。
+         * 
          * @param {string} [eventName] 事件名称。
          * @return {this} 返回自身以便链式调用。
          */
@@ -706,7 +762,11 @@ declare module 'events' {
          * 
          * 因为监听器是使用内部数组进行管理的，所以调用它会改变在监听器被移除后注册的任何监听器的位置索引。 虽然这不会影响监听器的调用顺序，但意味着由 `emitter.listeners()` 方法返回的监听器数组副本需要被重新创建。
          * 
-         * - **注意！：一旦一个事件被触发，所有绑定到它的监听器都会按顺序依次触发。 这意味着，在事件触发后、最后一个监听器完成执行前，任何 `removeListener()` 或 `removeAllListeners()` 调用都不会从 `emit()` 中移除它们。 随后的事件会像预期的那样发生。**
+         * 
+         * **注意！：**
+         * 
+         * - 一旦一个事件被触发，所有绑定到它的监听器都会按顺序依次触发。 这意味着，在事件触发后、最后一个监听器完成执行前，任何 `removeListener()` 或 `removeAllListeners()` 调用都不会从 `emit()` 中移除它们。 随后的事件会像预期的那样发生。
+         * 
          * @param {string} eventName 事件名称。
          * @param {Function} listener 要移除的监听器。
          * @return {this} 返回自身以便链式调用。

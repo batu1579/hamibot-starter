@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-23 09:05:08
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-11 10:23:27
+ * @LastTime: 2022-09-11 10:56:20
  * @FilePath: \\src\\types\\files.d.ts
  * @Description: 文件操作模块
  */
@@ -18,7 +18,11 @@ declare module 'files' {
         // 声明全局函数
         /**
          * @description: 打开一个文件。根据打开模式返回不同的文件对象。
-         * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。
+         * 
          * @param {string} path 文件路径。
          * @param {string} [mode] 文件打开模式（默认为 `r` ），可选的值为:
          * 
@@ -35,7 +39,11 @@ declare module 'files' {
 
         /**
          * @description: 打开一个文件。根据打开模式返回不同的文件对象。
-         * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。
+         * 
          * @param {string} path 文件路径。
          * @param {string} [mode] 文件打开模式（默认为 `r` ），可选的值为:
          * 
@@ -52,7 +60,11 @@ declare module 'files' {
 
         /**
          * @description: 打开一个文件。根据打开模式返回不同的文件对象。
-         * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。
+         * 
          * @param {string} path 文件路径。
          * @param {string} [mode] 文件打开模式（默认为 `r` ），可选的值为:
          * 
@@ -69,7 +81,11 @@ declare module 'files' {
 
         /**
          * @description: 打开一个文件。根据打开模式返回不同的文件对象。
-         * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。
+         * 
          * @param {string} path 文件路径。
          * @param {string} [mode] 文件打开模式（默认为 `r` ），可选的值为:
          * 
@@ -184,7 +200,11 @@ declare module 'files' {
 
         /**
          * @description: 读取文件 path 的所有内容并返回一个字节数组。如果文件不存在，则抛出 `FileNotFoundException` 。
-         * - **注意！：该数组是 Java 的数组，不具有 JavaScript 数组的 `forEach()` , `slice()` 等函数。**
+         * 
+         * **注意！：**
+         * 
+         * - 该数组是 Java 的数组，不具有 JavaScript 数组的 `forEach()` , `slice()` 等函数。
+         * 
          * @param {string} path 文件路径。
          * @return {JavaByteArray} 16 进制数组。
          * @example
@@ -363,7 +383,11 @@ declare module 'files' {
 
         /**
          * @description: 删除单个文件或 **空文件夹**。
-         * - **注意！：此方法只能删除空文件夹，如果要删除非空文件夹需要使用 `removeDir` 方法
+         * 
+         * **注意！：**
+         * 
+         * - 此方法只能删除空文件夹，如果要删除非空文件夹需要使用 `removeDir` 方法。
+         * 
          * @param {string} path 文件或文件夹路径。
          * @return {boolean} 是否删除成功。
          */
@@ -431,7 +455,11 @@ declare module 'files' {
 
         /**
          * @description: 打开一个文件。根据打开模式返回不同的文件对象。
-         * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。
+         * 
          * @param {string} path 文件路径。
          * @param {string} [mode] 文件打开模式（默认为 `r` ），可选的值为:
          * 
@@ -448,7 +476,11 @@ declare module 'files' {
 
         /**
          * @description: 打开一个文件。根据打开模式返回不同的文件对象。
-         * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。
+         * 
          * @param {string} path 文件路径。
          * @param {string} [mode] 文件打开模式（默认为 `r` ），可选的值为:
          * 
@@ -465,7 +497,11 @@ declare module 'files' {
 
         /**
          * @description: 打开一个文件。根据打开模式返回不同的文件对象。
-         * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。
+         * 
          * @param {string} path 文件路径。
          * @param {string} [mode] 文件打开模式（默认为 `r` ），可选的值为:
          * 
@@ -482,7 +518,11 @@ declare module 'files' {
 
         /**
          * @description: 打开一个文件。根据打开模式返回不同的文件对象。
-         * - **注意！：对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 对于 `w` 模式，如果文件并不存在，则会创建一个，已存在则会清空该文件内容。其他模式文件不存在会抛出 `FileNotFoundException` 。
+         * 
          * @param {string} path 文件路径。
          * @param {string} [mode] 文件打开模式（默认为 `r` ），可选的值为:
          * 
@@ -510,7 +550,11 @@ declare module 'files' {
 
         /**
          * @description: 读取该文件接下来最长为 `maxCount` 的字符串。
-         * - **注意！：即使文件剩余内容不足 `maxCount` 也不会出错。**
+         * 
+         * **注意！：**
+         * 
+         * - 即使文件剩余内容不足 `maxCount` 也不会出错。
+         * 
          * @param {number} maxCount 最大读取的字符数量。
          * @return {string} 接下来最长为 `maxCount` 的字符串。
          */
@@ -530,7 +574,11 @@ declare module 'files' {
 
         /**
          * @description: 关闭该文件。
-         * - **注意！：打开一个文件不再使用时务必关闭**
+         * 
+         * **注意！：**
+         * 
+         * - 打开一个文件不再使用时务必关闭
+         * 
          */
         close(): void;
     }
@@ -564,7 +612,11 @@ declare module 'files' {
 
         /**
          * @description: 关闭文件。同时会被缓冲区内容输出到文件。
-         * - **注意！：打开一个文件写入后，不再使用时务必关闭，否则文件可能会丢失**
+         * 
+         * **注意！：**
+         * 
+         * - 打开一个文件写入后，不再使用时务必关闭，否则文件可能会丢失
+         * 
          */
         close(): void;
     }

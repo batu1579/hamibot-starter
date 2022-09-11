@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 00:21:22
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-11 10:23:48
+ * @LastTime: 2022-09-11 10:56:19
  * @FilePath: \\src\\types\\global.d.ts
  * @Description: 全局函数和变量
  */
@@ -22,15 +22,23 @@ declare module 'global' {
 
         /**
          * @description: 返回最近一次监测到的正在运行的应用的包名，一般可以认为就是当前正在运行的应用的包名。
-         * - **注意！：此函数有一定延迟，可以通过 `selector()` 创建一个空选择器然后使用 `findOne()` 获取第一个找到的控件，然后直接访问控件的 `packageName` 属性来实时查询**
-         * - **注意！：此函数依赖于无障碍服务，如果服务未启动，则抛出异常并提示用户启动**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数有一定延迟，可以通过 `selector()` 创建一个空选择器然后使用 `findOne()` 获取第一个找到的控件，然后直接访问控件的 `packageName` 属性来实时查询
+         * - 此函数依赖于无障碍服务，如果服务未启动，则抛出异常并提示用户启动
+         * 
          * @return {string} 最近一次运行的应用包名。
          */
         function currentPackage(): string;
 
         /**
          * @description: 返回最近一次监测到的正在运行的 `Activity` 的名称，一般可以认为就是当前正在运行的 `Activity` 的名称。
-         * - **注意！：此函数依赖于无障碍服务，如果服务未启动，则抛出异常并提示用户启动**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于无障碍服务，如果服务未启动，则抛出异常并提示用户启动
+         * 
          * @return {string} 最近运行的 `Activity` 的名称。
          */
         function currentActivity(): string;
@@ -43,7 +51,11 @@ declare module 'global' {
 
         /**
          * @description: 以气泡显示信息 `message` 几秒。（具体时间取决于安卓系统，一般都是 2 秒）。
-         * - **注意！：信息的显示是'异步'执行的，并且，不会等待信息消失程序才继续执行。如果在循环中执行该命令，可能出现脚本停止运行后仍然有不断的气泡信息出现的情况。
+         * 
+         * **注意！：**
+         * 
+         * - 信息的显示是'异步'执行的，并且，不会等待信息消失程序才继续执行。如果在循环中执行该命令，可能出现脚本停止运行后仍然有不断的气泡信息出现的情况。
+         * 
          * @param {string} message 要显示的信息。
          */
         function toast(message: string): void;
@@ -111,7 +123,11 @@ declare module 'global' {
 
         /**
          * @description: 一个 android.content.Context 对象。
-         * - **注意！：该对象为 ApplicationContext，因此不能用于界面、对话框等的创建**
+         * 
+         * **注意！：**
+         * 
+         * - 该对象为 ApplicationContext，因此不能用于界面、对话框等的创建
+         * 
          * @return {object} android.content.Context 对象
          */
         const context: object;
@@ -120,7 +136,11 @@ declare module 'global' {
     interface Runtime {
         /**
          * @description: 动态申请安卓的权限。您可以通过 APK 编辑器来增加 Hamibot 以及 Hamibot 打包的应用的权限。
-         * - **注意！：尽管安卓有很多权限，但必须写入 Manifest 才能动态申请，为了防止权限的滥用，目前 Hamibot 只能额外申请两个权限**
+         * 
+         * **注意！：**
+         * 
+         * - 尽管安卓有很多权限，但必须写入 Manifest 才能动态申请，为了防止权限的滥用，目前 Hamibot 只能额外申请两个权限
+         * 
          * @param {array} permissions 权限的字符串数组，可选的值为:
          * 
          * - `access_fine_location` - GPS 权限
@@ -136,7 +156,11 @@ declare module 'global' {
 
         /**
          * @description: 动态申请安卓的权限。您可以通过 APK 编辑器来增加 Hamibot 以及 Hamibot 打包的应用的权限。
-         * - **注意！：尽管安卓有很多权限，但必须写入 Manifest 才能动态申请，为了防止权限的滥用，目前 Hamibot 只能额外申请两个权限**
+         * 
+         * **注意！：**
+         * 
+         * - 尽管安卓有很多权限，但必须写入 Manifest 才能动态申请，为了防止权限的滥用，目前 Hamibot 只能额外申请两个权限
+         * 
          * @param {array} permissions 权限的字符串数组，可选的值为:
          * 
          * - `access_fine_location` - GPS 权限

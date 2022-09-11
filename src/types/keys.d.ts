@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-11 19:29:25
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-01 17:04:38
+ * @LastTime: 2022-09-11 10:51:31
  * @FilePath: \\src\\types\\keys.d.ts
  * @Description: 模拟物理按键模块
  */
@@ -10,122 +10,198 @@ declare module 'keys' {
     global {
         /**
          * @description: 模拟按下返回键。
-         * - **注意！：此函数依赖于无障碍服务。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于无障碍服务。
+         * 
          * @return {boolean} 是否执行成功。
          */
         function back(): boolean;
 
         /**
          * @description: 模拟按下 Home 键。
-         * - **注意！：此函数依赖于无障碍服务。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于无障碍服务。
+         * 
          * @return {boolean} 是否执行成功。
          */
         function home(): boolean;
 
         /**
          * @description: 弹出电源键菜单。
-         * - **注意！：此函数依赖于无障碍服务。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于无障碍服务。
+         * 
          * @return {boolean} 是否执行成功。
          */
         function powerDialog(): boolean;
 
         /**
          * @description: 显示快速设置（下拉通知栏到底）。
-         * - **注意！：此函数依赖于无障碍服务。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于无障碍服务。
+         * 
          * @return {boolean} 是否执行成功。
          */
         function notifications(): boolean;
 
         /**
          * @description: 显示最近任务。
-         * - **注意！：此函数依赖于无障碍服务。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于无障碍服务。
+         * 
          * @return {boolean} 是否执行成功。
          */
         function recents(): boolean;
 
         /**
          * @description: 分屏。
-         * - **注意！：此函数依赖于无障碍服务。**
-         * - **注意！：此函数需要系统自身功能的支持。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于无障碍服务。
+         * - 此函数需要系统自身功能的支持。
+         * 
          * @return {boolean} 是否执行成功。
          */
         function splitScreen(): boolean;
 
         /**
          * @description: 模拟按下 Home 键。
-         * - **注意！：此函数依赖于 root 权限。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于 root 权限。
+         * 
          */
         function Home(): void;
 
         /**
          * @description: 模拟按下返回键。 
-         * - **注意！：此函数依赖于 root 权限。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于 root 权限。
+         * 
          */
         function Back(): void;
 
         /**
          * @description: 模拟按下电源键。 
-         * - **注意！：此函数依赖于 root 权限。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于 root 权限。
+         * 
          */
         function Power(): void;
 
         /**
          * @description: 模拟按下菜单键。
-         * - **注意！：此函数依赖于 root 权限。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于 root 权限。
+         * 
          */
         function Menu(): void;
 
         /**
          * @description: 按下音量上键。
-         * - **注意！：此函数依赖于 root 权限。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于 root 权限。
+         * 
          */
         function VolumeUp(): void;
 
         /**
          * @description: 按下音量下键。
-         * - **注意！：此函数依赖于 root 权限。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于 root 权限。
+         * 
          */
         function VolumeDown(): void;
 
         /**
          * @description: 模拟按下照相键。
-         * - **注意！：此函数依赖于 root 权限。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于 root 权限。
+         * 
          */
         function Camera(): void;
 
         /**
          * @description: 模拟按下物理按键上。
-         * - **注意！：此函数依赖于 root 权限。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于 root 权限。
+         * 
          */
         function Up(): void;
 
         /**
          * @description: 模拟按下物理按键下。
-         * - **注意！：此函数依赖于 root 权限。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于 root 权限。
+         * 
          */
         function Down(): void;
 
         /**
          * @description: 模拟按下物理按键左。
-         * - **注意！：此函数依赖于 root 权限。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于 root 权限。
+         * 
          */
         function Left(): void;
 
         /**
          * @description: 模拟按下物理按键右。
-         * - **注意！：此函数依赖于 root 权限。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于 root 权限。
+         * 
          */
         function Right(): void;
 
         /**
          * @description: 模拟按下物理按键确定。
-         * - **注意！：此函数依赖于 root 权限。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于 root 权限。
+         * 
          */
         function OK(): void;
 
         /**
          * @description: 输入文字text。
-         * - **注意！：此函数依赖于 root 权限。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于 root 权限。
+         * 
          * @param {string} text 要输入的文字，只能为英文或英文符号。
          * @example
          * ```typescript
@@ -136,7 +212,11 @@ declare module 'keys' {
 
         /**
          * @description: 模拟按下物理按键。
-         * - **注意！：此函数依赖于 root 权限。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数依赖于 root 权限。
+         * 
          * @param {number | KeyCode} code
          * @example
          * ```typescript

@@ -13,7 +13,11 @@ declare module 'sensors' {
 
         /**
          * @description: sensors 模块提供了获取手机上的传感器的信息的支持，这些传感器包括距离传感器、光线光感器、重力传感器、方向传感器等。要监听一个传感器时，需要使用 `sensors.register()` 注册监听器，之后才能开始监听；不需要监听时则调用 `sensors.unregister()` 注销监听器。在脚本结束时会自动注销所有的监听器。同时，这种监听会使脚本保持运行状态，如果不注销监听器，脚本会一直保持运行状态。
-         * - **注意！：脚本只能获取传感器的数据，不能模拟或伪造传感器的数据和事件。**
+         * 
+         * **注意！：**
+         * 
+         * - 脚本只能获取传感器的数据，不能模拟或伪造传感器的数据和事件。
+         * 
          */
         const sensors: Sensors;
     }
@@ -30,7 +34,11 @@ declare module 'sensors' {
          * - `sensors.delay.normal` - 正常频率。
          * 
          * @return {AccelerometerEventEmitter | null} 传感器的监听器。
-         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。
+         * 
          * @example
          * ```typescript
          * console.show();
@@ -59,7 +67,11 @@ declare module 'sensors' {
          * - `sensors.delay.normal` - 正常频率。
          * 
          * @return {OrientationEventEmitter | null} 传感器的监听器。
-         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。
+         * 
          * @example
          * ```typescript
          * console.show();
@@ -88,7 +100,11 @@ declare module 'sensors' {
          * - `sensors.delay.normal` - 正常频率。
          * 
          * @return {GyroscopeEventEmitter | null} 传感器的监听器。
-         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。
+         * 
          * @example
          * ```typescript
          * console.show();
@@ -117,7 +133,11 @@ declare module 'sensors' {
          * - `sensors.delay.normal` - 正常频率。
          * 
          * @return {MagneticFieldEventEmitter | null} 传感器的监听器。
-         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。
+         * 
          * @example
          * ```typescript
          * console.show();
@@ -146,7 +166,11 @@ declare module 'sensors' {
          * - `sensors.delay.normal` - 正常频率。
          * 
          * @return {GravityEventEmitter | null} 传感器的监听器。
-         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。
+         * 
          * @example
          * ```typescript
          * console.show();
@@ -175,7 +199,11 @@ declare module 'sensors' {
          * - `sensors.delay.normal` - 正常频率。
          * 
          * @return {LinearAccelerationEventEmitter | null} 传感器的监听器。
-         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。
+         * 
          * @example
          * ```typescript
          * console.show();
@@ -204,7 +232,11 @@ declare module 'sensors' {
          * - `sensors.delay.normal` - 正常频率。
          * 
          * @return {AmbientTemperatureEventEmitter | null} 传感器的监听器。
-         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。
+         * 
          * @example
          * ```typescript
          * console.show();
@@ -233,7 +265,11 @@ declare module 'sensors' {
          * - `sensors.delay.normal` - 正常频率。
          * 
          * @return {LightEventEmitter | null} 传感器的监听器。
-         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。
+         * 
          * @example
          * ```typescript
          * console.show();
@@ -262,7 +298,11 @@ declare module 'sensors' {
          * - `sensors.delay.normal` - 正常频率。
          * 
          * @return {PressureEventEmitter | null} 传感器的监听器。
-         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。
+         * 
          * @example
          * ```typescript
          * console.show();
@@ -291,7 +331,11 @@ declare module 'sensors' {
          * - `sensors.delay.normal` - 正常频率。
          * 
          * @return {ProximityEventEmitter | null} 传感器的监听器。
-         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。
+         * 
          * @example
          * ```typescript
          * console.show();
@@ -320,7 +364,11 @@ declare module 'sensors' {
          * - `sensors.delay.normal` - 正常频率。
          * 
          * @return {RelativeHumidityEventEmitter | null} 传感器的监听器。
-         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。
+         * 
          * @example
          * ```typescript
          * console.show();
@@ -349,7 +397,11 @@ declare module 'sensors' {
          * - `sensors.delay.normal` - 正常频率。
          * 
          * @return {SensorsEventEmitter | null} 传感器的监听器。
-         * - **注意！：如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 如果不支持 `sensorName` 所指定的传感器，那么该函数将返回 `null` ；但如果 `sensors.ignoresUnsupportedSensor` 的值被设置为 `true` , 则该函数会返回一个不会分发任何传感器事件的 `SensorEventEmitter` 。
+         * 
          * @example
          * ```typescript
          * console.show();

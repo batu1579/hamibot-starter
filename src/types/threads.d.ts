@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-12 19:58:53
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-11 09:52:59
+ * @LastTime: 2022-09-11 10:51:30
  * @FilePath: \\src\\types\\threads.d.ts
  * @Description: 多线程模块
  */
@@ -15,7 +15,11 @@ declare module 'threads' {
          * 
          * 脚本主线程会等待所有子线程执行完成后才停止执行，因此如果子线程中有死循环，请在必要的时候调用 `exit()` 来直接停止脚本或 `threads.shutDownAll()` 来停止所有子线程。
          * 
-         * - **注意！：由于 JavaScript 自身没有多线程的支持，因此您可能会遇到意料之外的问题。**
+         * 
+         * **注意！：**
+         * 
+         * - 由于 JavaScript 自身没有多线程的支持，因此您可能会遇到意料之外的问题。
+         * 
          */
         const threads: Threads;
 
@@ -30,8 +34,12 @@ declare module 'threads' {
     interface Threads {
         /**
          * @description: 启动一个新线程并执行 `action` 。
-         * - **注意！：启动新线程的时候不能使用箭头函数！**
-         * - **注意！：通过 `threads.start()` 启动的所有线程会在脚本被强制停止时自动停止。**
+         * 
+         * **注意！：**
+         * 
+         * - 启动新线程的时候不能使用箭头函数！
+         * - 通过 `threads.start()` 启动的所有线程会在脚本被强制停止时自动停止。
+         * 
          * @param {Function} action
          * @return {Thread} 新建的线程对象。
          * @example
@@ -158,8 +166,12 @@ declare module 'threads' {
 
         /**
          * @description: 预定每隔 `delay` 毫秒重复执行的 `callback` 。
-         * - **注意！：定时器仍然是单线程的。如果脚本主体有耗时操作或死循环，则设定的定时器不能被及时执行。**
-         * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 定时器仍然是单线程的。如果脚本主体有耗时操作或死循环，则设定的定时器不能被及时执行。
+         * - 该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。
+         * 
          * @param {Function} callback 当定时器到点时要调用的函数。
          * @param {number} delay 调用 `callback` 之前要等待的毫秒数。当 `delay` 小于 0 时， `delay` 会被设为 0。
          * @param {array} [args] 当调用 `callback` 时要传入的可选参数。
@@ -169,9 +181,13 @@ declare module 'threads' {
 
         /**
          * @description: 预定在 `delay` 毫秒之后执行的单次 `callback` 。
-         * - **注意！：定时器仍然是单线程的。如果脚本主体有耗时操作或死循环，则设定的定时器不能被及时执行。**
-         * - **注意！： `callback` 可能不会精确地在 `delay` 毫秒被调用。 Hamibot 不能保证回调被触发的确切时间，也不能保证它们的顺序。 回调会在尽可能接近所指定的时间上调用。**
-         * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 定时器仍然是单线程的。如果脚本主体有耗时操作或死循环，则设定的定时器不能被及时执行。
+         * -  `callback` 可能不会精确地在 `delay` 毫秒被调用。 Hamibot 不能保证回调被触发的确切时间，也不能保证它们的顺序。 回调会在尽可能接近所指定的时间上调用。
+         * - 该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。
+         * 
          * @param {Function} callback 当定时器到点时要调用的函数。
          * @param {number} delay 调用 `callback` 之前要等待的毫秒数。当 `delay` 小于 0 时， `delay` 会被设为 0。
          * @param {array} [args] 当调用 `callback` 时要传入的可选参数。
@@ -183,7 +199,11 @@ declare module 'threads' {
          * @description: 预定立即执行的 callback，它是在 I/O 事件的回调之后被触发。
          * 
          * 当多次调用 `setImmediate()` 时， `callback` 函数会按照它们被创建的顺序依次执行。 每次事件循环迭代都会处理整个回调队列。 如果一个立即定时器是被一个正在执行的回调排入队列的，则该定时器直到下一次事件循环迭代才会被触发。
-         * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。
+         * 
          * @param {Function} callback 在 Looper 循环的当前回合结束时要调用的函数。
          * @param {array} [args] 当调用 `callback` 时要传入的可选参数。
          * @return {ImmediateID} 返回一个用于 `clearImmediate()` 的 id。
@@ -192,7 +212,11 @@ declare module 'threads' {
 
         /**
          * @description: 取消一个由 `setInterval()` 创建的循环定时任务。
-         * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。
+         * 
          * @param {IntervalID} id 一个 `setInterval()` 返回的 id。
          * @example
          * ```typescript
@@ -208,7 +232,11 @@ declare module 'threads' {
 
         /**
          * @description: 取消一个由 `setTimeout()` 创建的定时任务。
-         * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。
+         * 
          * @param {TimeoutID} id 一个 `setTimeout()` 返回的 id。
          * @example
          * ```typescript
@@ -224,7 +252,11 @@ declare module 'threads' {
 
         /**
          * @description: 取消一个由 `setImmediate()` 创建的定时任务。
-         * - **注意！：该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。**
+         * 
+         * **注意！：**
+         * 
+         * - 该定时器会在该线程执行。如果当前线程仍未开始执行或已经执行结束，则抛出 `IllegalStateException` 。
+         * 
          * @param {ImmediateID} id 一个 `setImmediate()` 返回的 id。
          */
         clearImmediate(id: ImmediateID | number): void;
@@ -248,7 +280,11 @@ declare module 'threads' {
     /**
      * @description: Java 原子长整数。更多信息参见 [AtomicLong] 。
      * 
-     * - **注意！：这里使用的是长整型，但是因为 BigInt 是 ES2020 的新增语法，这里暂时先用 Number 类型代替，可能会导致丢失数据！！**
+     * 
+     * **注意！：**
+     * 
+     * - 这里使用的是长整型，但是因为 BigInt 是 ES2020 的新增语法，这里暂时先用 Number 类型代替，可能会导致丢失数据！！
+     * 
      * 
      * [AtomicLong]: https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/atomic/AtomicLong.html
      */
@@ -427,9 +463,13 @@ declare module 'threads' {
          * - 锁是由当前线程获取的; 要么
          * - 一些其他线程当前线程interrupts 。
          * 
-         * 如果当前线程获取锁定，则锁定保持计数被设置为1。
+         * 如果当前线程获取锁定，则锁定保持计数被设置为 1 。
          * 
-         * - **注意！：由于该方法是明确的中断点，所以优先考虑通过锁定正常或可重入的采集来响应中断。**
+         * 
+         * **注意！：**
+         * 
+         * - 由于该方法是明确的中断点，所以优先考虑通过锁定正常或可重入的采集来响应中断。
+         * 
          */
         lockInterruptibly(): void;
 
@@ -487,7 +527,11 @@ declare module 'threads' {
 
         /**
          * @description: 查询当前线程是否持有此锁定。
-         * - **注意！：此方法通常用于调试和测试。**
+         * 
+         * **注意！：**
+         * 
+         * - 此方法通常用于调试和测试。
+         * 
          * @return {boolean} 当前线程持有此锁定返回 `true` 否则返回 `false` 。
          */
         isHeldByCurrentThread(): boolean;
@@ -531,7 +575,11 @@ declare module 'threads' {
 
         /**
          * @description: 获取与此锁相关联的给定条件等待的线程数。
-         * - **注意！：由于超时和中断可能在任何时间发生，因此估计仅用作实际服务员数量的上限。 此方法设计用于监视系统状态，而不是用于同步控制。**
+         * 
+         * **注意！：**
+         * 
+         * - 由于超时和中断可能在任何时间发生，因此估计仅用作实际服务员数量的上限。 此方法设计用于监视系统状态，而不是用于同步控制。
+         * 
          * @param {Condition} condition 检验条件。
          * @return {number} 与此锁相关联的符合条件的等待的线程的个数。
          */
@@ -539,7 +587,11 @@ declare module 'threads' {
 
         /**
          * @description: 查询给定线程是否等待获取此锁。
-         * - **注意！：由于取消可能随时发生，因此返回 `true` 不保证任何其他线程将获得此锁定。 该方法主要用于监视系统状态。**
+         * 
+         * **注意！：**
+         * 
+         * - 由于取消可能随时发生，因此返回 `true` 不保证任何其他线程将获得此锁定。 该方法主要用于监视系统状态。
+         * 
          * @param {Thread} thread 要查询的线程。
          * @return {boolean} 指定线程在等待则返回 `true` 否则返回 `false` 。
          */
@@ -547,14 +599,22 @@ declare module 'threads' {
 
         /**
          * @description: 查询是否有线程正在等待获取此锁。
-         * - **注意！：由于取消可能随时发生，因此返回 `true` 不保证任何其他线程将获得此锁定。 该方法主要用于监视系统状态。**
+         * 
+         * **注意！：**
+         * 
+         * - 由于取消可能随时发生，因此返回 `true` 不保证任何其他线程将获得此锁定。 该方法主要用于监视系统状态。
+         * 
          * @return {boolean} 有线程在等待返回 `true` 否则返回 `false` 。
          */
         hasQueuedThreads(): boolean;
 
         /**
          * @description: 查询任何线程是否等待与此锁相关联的给定条件。
-         * - **注意！：由于超时和中断可能会随时发生，所以 `true` 返回并不能保证将来的 signal 将唤醒任何线程。 该方法主要用于监视系统状态。**
+         * 
+         * **注意！：**
+         * 
+         * - 由于超时和中断可能会随时发生，所以 `true` 返回并不能保证将来的 signal 将唤醒任何线程。 该方法主要用于监视系统状态。
+         * 
          * @param {Condition} condition 检验条件。
          * @return {boolean} 如果有任何等待线程返回 `true` 否则返回 `false` 。
          */
@@ -657,14 +717,22 @@ declare module 'threads' {
         /**
          * @description: 获取集合中元素组成的迭代器。
          * @return {Iterator} 此集合中元素的迭代器。
-         * - **注意！：对于返回元素的顺序没有任何保证（除非此集合是某个提供保证的类的实例）。**
+         * 
+         * **注意！：**
+         * 
+         * - 对于返回元素的顺序没有任何保证（除非此集合是某个提供保证的类的实例）。
+         * 
          */
         iterator(): Iterator<E>;
 
         /**
          * @description: 获取集合包含的所有元素组成的数组。
          * @return {array} 返回包含此集合中所有元素的数组。
-         * - **注意！：如果此集合对其迭代器返回的元素的顺序做出任何保证，则此方法必须以相同的顺序返回元素。**
+         * 
+         * **注意！：**
+         * 
+         * - 如果此集合对其迭代器返回的元素的顺序做出任何保证，则此方法必须以相同的顺序返回元素。
+         * 
          */
         toArray(): E[];
 

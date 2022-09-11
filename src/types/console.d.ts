@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-25 17:07:59
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-11 10:37:17
+ * @LastTime: 2022-09-11 10:56:22
  * @FilePath: \\src\\types\\console.d.ts
  * @Description: 控制台模块
  */
@@ -18,7 +18,11 @@ declare module 'console' {
         interface Console {
             /**
              * @description: 显示控制台。这会显示一个控制台的悬浮窗。
-             * **注意！：此函数需要悬浮窗权限。**
+             * 
+             * **注意！：**
+             * 
+             * - 此函数需要悬浮窗权限。
+             * 
              */
             show(): void;
 
@@ -188,7 +192,11 @@ declare module 'console' {
 
             /**
              * @description: 设置日志保存的路径和配置。
-             * - **注意！: 该函数会影响所有脚本的日志记录。**
+             * 
+             * **注意！：**
+             * 
+             * - 该函数会影响所有脚本的日志记录。
+             * 
              * @param {LogConfig} config 日志配置。
              * @example
              * ```typescript

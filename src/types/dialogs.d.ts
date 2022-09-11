@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-26 09:44:33
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-11 10:24:42
+ * @LastTime: 2022-09-11 10:56:21
  * @FilePath: \\src\\types\\dialogs.d.ts
  * @Description: 对话框模块
  */
@@ -14,7 +14,11 @@ declare module 'dialogs' {
         /**
          * @description: dialogs 模块提供了简单的对话框支持，可以通过对话框和用户进行交互。
          * 
-         * - **注意！：对话框在 ui 模式下不能像通常那样使用，应该使用回调函数或者 [Promise] 的形式。
+         * 
+         * **注意！：**
+         * 
+         * - 对话框在 ui 模式下不能像通常那样使用，应该使用回调函数或者 [Promise] 的形式。
+         * 
          * 
          * [Promise]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise
          * @example
@@ -407,7 +411,11 @@ declare module 'dialogs' {
 
         /**
          * @description: 获取被点击的按钮。
-         * - **注意！：这个函数的作用文档当中并没有，是我猜的。。。**
+         * 
+         * **注意！：**
+         * 
+         * - 这个函数的作用文档当中并没有，是我猜的。。。
+         * 
          * @param {string} action 动作，可选的值为:
          * 
          * - `positive`
@@ -435,7 +443,11 @@ declare module 'dialogs' {
 
         /**
          * @description: 对话框被取消时会触发的事件。
-         * - **注意！：一个对话框可能按取消按钮、返回键取消或者点击对话框以外区域取消。**
+         * 
+         * **注意！：**
+         * 
+         * - 一个对话框可能按取消按钮、返回键取消或者点击对话框以外区域取消。
+         * 
          * @param {string} eventName 事件名称（ `cancel` ）。
          * @param {function} listener 当事件发生时要执行的回调函数。参数为 Dialog （自定义的对话框），返回值为 any 。
          * @return {this} 返回对话框对象自身以便链式调用。
@@ -454,7 +466,11 @@ declare module 'dialogs' {
 
         /**
          * @description: 对话框消失时会触发的事件。对话框被取消或者手动调用 `dialog.dismiss()` 函数都会触发该事件。
-         * - **注意！：一个对话框可能按取消按钮、返回键取消或者点击对话框以外区域取消。**
+         * 
+         * **注意！：**
+         * 
+         * - 一个对话框可能按取消按钮、返回键取消或者点击对话框以外区域取消。
+         * 
          * @param {string} eventName 事件名称（ `dismiss` ）。
          * @param {function} listener 当事件发生时要执行的回调函数。参数为 Dialog （自定义的对话框），返回值为 any 。
          * @return {this} 返回对话框对象自身以便链式调用。

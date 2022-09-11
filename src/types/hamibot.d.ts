@@ -18,7 +18,11 @@ declare module 'hamibot' {
 
         /**
          * @description: 立即停止脚本运行。
-         * - **注意！：此函数是通过抛出 `ScriptInterrupttedException` 来实现的，因此如果用 `try...catch` 把 `exit()` 函数的异常捕捉，则脚本不会立即停止，仍会运行几行后再停止。**
+         * 
+         * **注意！：**
+         * 
+         * - 此函数是通过抛出 `ScriptInterrupttedException` 来实现的，因此如果用 `try...catch` 把 `exit()` 函数的异常捕捉，则脚本不会立即停止，仍会运行几行后再停止。
+         * 
          */
         function exit(): void;
     }

@@ -3,7 +3,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-08-07 17:39:23
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-11 10:19:10
+ * @LastTime: 2022-09-11 10:51:25
  * @FilePath: \\src\\types\\ui.d.ts
  * @Description: 
  */
@@ -37,9 +37,10 @@ declare module 'ui' {
          * - 子视图, 子控件: 布局里面的控件是这个布局的子控件/子视图。实际上布局里面不仅仅只能有控件，还可以是嵌套的布局。因此用子视图（ Child View ）更准确一些。在上面的例子中，按钮便是垂直布局的子控件。
          * - 父视图，父布局：直接包含一个控件的布局是这个控件的父布局/父视图（ Parent View ）。在上面的例子中，垂直布局便是按钮的父布局。
          * 
-         * ---
+         * **注意！：**
          * 
-         * - **注意！：带有 ui 的脚本的的最前面必须使用 `'ui'` ，指定 ui 模式，否则脚本将不会以 ui 模式运行。**
+         * - 带有 ui 的脚本的的最前面必须使用 `'ui'` ，指定 ui 模式，否则脚本将不会以 ui 模式运行。
+         * 
          * 
          * [View]: https://developer.android.google.cn/reference/android/view/View?hl=cn
          * [Widget]: https://developer.android.google.cn/reference/android/widget/package-summary?hl=cn
@@ -195,7 +196,11 @@ declare module 'ui' {
          * 
          * 例如可以通过语句 `attr('text', '文本');` 来设置文本控件的文本值。
          * 
-         * - **注意！：并不是所有属性都能在 js 代码中设置，有一些属性只能在布局创建时设置，例如 style 属性。还有一些属性虽然能在代码中设置，但是还没支持。**
+         * 
+         * **注意！：**
+         * 
+         * - 并不是所有属性都能在 js 代码中设置，有一些属性只能在布局创建时设置，例如 style 属性。还有一些属性虽然能在代码中设置，但是还没支持。
+         * 
          * @param {string} name 属性名称。
          * @param {string} value 属性的值。
          * @example

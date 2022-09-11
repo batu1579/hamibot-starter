@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-07-12 16:11:48
  * @LastEditor: BATU1579
- * @LastTime: 2022-08-16 03:12:59
+ * @LastTime: 2022-09-11 10:51:29
  * @FilePath: \\src\\types\\timers.d.ts
  * @Description: 定时器模块
  */
@@ -10,7 +10,11 @@ declare module 'timers' {
     global {
         /**
          * @description: 预定每隔 `delay` 毫秒重复执行的 `callback` 。
-         * - **注意！：定时器仍然是单线程的。如果脚本主体有耗时操作或死循环，则设定的定时器不能被及时执行。**
+         * 
+         * **注意！：**
+         * 
+         * - 定时器仍然是单线程的。如果脚本主体有耗时操作或死循环，则设定的定时器不能被及时执行。
+         * 
          * @param {Function} callback 当定时器到点时要调用的函数。
          * @param {number} delay 调用 `callback` 之前要等待的毫秒数。当 `delay` 小于 0 时， `delay` 会被设为 0。
          * @param {array} [args] 当调用 `callback` 时要传入的可选参数。
@@ -20,8 +24,12 @@ declare module 'timers' {
 
         /**
          * @description: 预定在 `delay` 毫秒之后执行的单次 `callback` 。
-         * - **注意！：定时器仍然是单线程的。如果脚本主体有耗时操作或死循环，则设定的定时器不能被及时执行。**
-         * - **注意！： `callback` 可能不会精确地在 `delay` 毫秒被调用。 Hamibot 不能保证回调被触发的确切时间，也不能保证它们的顺序。 回调会在尽可能接近所指定的时间上调用。**
+         * 
+         * **注意！：**
+         * 
+         * - 定时器仍然是单线程的。如果脚本主体有耗时操作或死循环，则设定的定时器不能被及时执行。
+         * -  `callback` 可能不会精确地在 `delay` 毫秒被调用。 Hamibot 不能保证回调被触发的确切时间，也不能保证它们的顺序。 回调会在尽可能接近所指定的时间上调用。
+         * 
          * @param {Function} callback 当定时器到点时要调用的函数。
          * @param {number} delay 调用 `callback` 之前要等待的毫秒数。当 `delay` 小于 0 时， `delay` 会被设为 0。
          * @param {array} [args] 当调用 `callback` 时要传入的可选参数。

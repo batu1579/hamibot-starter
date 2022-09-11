@@ -10,7 +10,11 @@ declare module 'media' {
     global {
         /**
          * @description: media 模块提供多媒体编程的支持。目前仅支持音乐播放和媒体文件扫描。后续会结合 UI 加入视频播放等功能。
-         * - **注意！：使用该模块播放音乐时是在后台异步播放的，在脚本结束后会自动结束播放，因此可能需要插入诸如 `sleep()` 的语句来使脚本保持运行。**
+         * 
+         * **注意！：**
+         * 
+         * - 使用该模块播放音乐时是在后台异步播放的，在脚本结束后会自动结束播放，因此可能需要插入诸如 `sleep()` 的语句来使脚本保持运行。
+         * 
          * @example
          * ```typescript
          * // 播放音乐
@@ -43,7 +47,11 @@ declare module 'media' {
 
         /**
          * @description: 播放音乐文件 `path` 。如果文件不存在或者文件不是受支持的音乐格式，则抛出 `UncheckedIOException` 异常。
-         * - **注意！：该函数不会显示任何音乐播放界面。如果要使用音乐播放器播放音乐，请使用 `app.viewFile` 函数。**
+         * 
+         * **注意！：**
+         * 
+         * - 该函数不会显示任何音乐播放界面。如果要使用音乐播放器播放音乐，请使用 `app.viewFile` 函数。
+         * 
          * @param {string} path 音乐文件路径。
          * @param {number} [volume] 播放音量，为 0~1 的浮点数（默认为 1）。
          * @param {boolean} [looping] 是否循环播放，如果为 `true` 则循环播放（默认为 `false` ）。
