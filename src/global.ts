@@ -7,6 +7,9 @@
  * @Description: 全局常量和配置项验证
  */
 
+import { ConfigInvalidException } from "./lib/exception";
+import { setToken } from "./lib/logger";
+
 /**
  * @description: 脚本版本号。建议根据 [语义化版本号] 迭代
  */
@@ -26,3 +29,10 @@ export let {
     TOKEN,
     SHOW_CONSOLE,
 } = hamibot.env;
+
+// 设置 pushplus token
+if (TOKEN !== undefined && setToken(TOKEN) == false) {
+    throw new ConfigInvalidException(
+        "The 'Token' field in the configuration is invalid"
+    )
+}
