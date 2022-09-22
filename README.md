@@ -31,13 +31,17 @@ npm install
    1. 点击 [Use this template](https://github.com/batu1579/hamibot-starter/generate) 按钮以此仓库为模板创建一个自己的仓库，然后将仓库克隆到本地。
    2. 如果你不准备使用 Git 作为版本管理工具，可以直接通过 `Code` -> `Download ZIP` 下载压缩包。
 2. 在 `src` 文件夹下编写代码，程序入口为 `src/index.ts` 。
-3. 完成编写后打包项目，有两种方式可选：
+3. 完成编写后打包项目，有三种方式可选：
    1. 使用 VSCode 快捷键 `ctrl + shift + b` 打开任务菜单，然后选择 `npm build` 打包。
    2. 使用命令打包项目：
 
       ```sh
       npm run build
       ```
+
+   3. 在 VS Code 资源管理器的 NPM 脚本窗口中选则对应的配置运行。
+
+      > 如果没有找到 NPM 窗口可以在命令窗口中查找并选择 `焦点在 NPM 脚本 视图上`
 
 4. 在控制台上传打包后的文件: `dist/index.js` 。
 
