@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-05 04:00:16
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-11 09:10:30
+ * @LastTime: 2022-09-22 14:20:02
  * @FilePath: \\src\\lib\\logger.ts
  * @Description: 存放关于日志和调试信息的预制方法。
  */
@@ -248,7 +248,7 @@ let TOKEN: string | null = null;
  * @return {string} 调用者的函数名。
  */
 export function getCallerName(index: number = 0): string {
-    let trace = sliceStackFrames(getStackTrace(), 1, 0);
+    let trace = sliceStackFrames(getRawStackTrace(), 1, 0);
     let stackFrames = parseTrace(trace);
 
     // 检查参数 index 的范围
@@ -264,7 +264,7 @@ export function getCallerName(index: number = 0): string {
  * - **注意！：匿名函数和类中的方法等 `console.trace()` 方法不显示的函数不能当作终止栈帧。**
  * @return {string} 调用堆栈的字符串。
  */
-export function getStackTrace(endFunction?: Function): string {
+export function getRawStackTrace(endFunction?: Function): string {
     let stackTrace = { stack: '' };
 
     Error.captureStackTrace(
@@ -274,6 +274,15 @@ export function getStackTrace(endFunction?: Function): string {
 
     // 删除不必要的栈帧
     return sliceStackFrames(stackTrace.stack, 1, -2);
+}
+
+/**
+ * @description: 获取修正后的调用堆栈信息。
+ * @return {string} 调用堆栈字符串。
+ */
+export function getStackTrace(endFunction?: Function): string {
+    let trace = sliceStackFrames(getRawStackTrace(endFunction), 1, 0);
+    return formatTrace(trace);
 }
 
 export class Record {
@@ -386,7 +395,7 @@ export class Record {
      * ```
      */
     public static trace(data?: string, ...args: any[]): string {
-        let trace = sliceStackFrames(getStackTrace(), 1, 0);
+        let trace = sliceStackFrames(getRawStackTrace(), 1, 0);
 
         return Record.recLog(LoggerSchemes.trace, `${data}\n${formatTrace(trace)}`, ...args);
     }
@@ -474,7 +483,7 @@ export function sendMessage(title: string, data: string, ...args: any[]): boolea
 export function sendLog(logs?: LogCollection, title?: string, clear?: boolean): boolean {
     logs = logs ?? logStack;
     title = title ?? 'logger';
-    clear = clear?? true;
+    clear = clear ?? true;
     let isSend = sendToRemote(title, logs.toHtmlString());
 
     if (isSend && clear) {

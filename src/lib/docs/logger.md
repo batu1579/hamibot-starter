@@ -92,7 +92,13 @@ function func(): void {
 
 - `endFunction` （可选）终止栈帧，会自动排除后续的无用栈帧。
 
-获取当前真实的调用堆栈。
+获取修正后的调用堆栈信息。可以显示正确的行号，返回调用堆栈的字符串。
+
+## getRawStackTrace(endFunction?: Function): string
+
+- `endFunction` （可选）终止栈帧，会自动排除后续的无用栈帧。
+
+获取当前真实的调用堆栈，返回调用堆栈的字符串。
 
 **注意！：匿名函数和类中的方法等 `console.trace()` 方法不显示的函数不能当作终止栈帧。**
 
