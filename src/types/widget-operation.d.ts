@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-05-31 13:19:44
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-11 10:56:17
+ * @LastTime: 2022-09-22 17:54:37
  * @FilePath: \\src\\types\\widget-operation.d.ts
  * @Description: 控件操作
  */
@@ -1298,6 +1298,21 @@ declare module 'widget-operation' {
             bottom: number;
 
             /**
+             * @description: 创建一个新的空 `Rect` 。
+             */
+            constructor();
+
+            /**
+             * @description: 创建一个具有指定坐标的新 `Rect` 。
+             */
+            constructor(r: Rect);
+
+            /**
+             * @description: 创建一个新 `Rect` ，使用指定 `Rect` 中的值进行初始化（未修改）。
+             */
+            constructor(left: number, top: number, right: number, bottom: number);
+
+            /**
              * @description: 获取长方形中点 x 坐标。
              * @return {number} 长方形中点 x 坐标（像素）。
              */
@@ -1332,6 +1347,13 @@ declare module 'widget-operation' {
              * @return {boolean} 当前长方形与长方形 `r` 相交则返回 `true` 否则返回 `false` 。
              */
             intersect(r: Rect): boolean;
+        }
+
+        class RectF extends Rect {
+            /**
+             * @description: 创建一个新 `Rect` ，使用指定 `Rect` 中的值进行初始化（未修改）。
+             */
+            constructor(r: RectF);
         }
 
         // 声明全局函数
