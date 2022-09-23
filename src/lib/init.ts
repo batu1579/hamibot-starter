@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-04 20:58:39
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-22 13:51:17
+ * @LastTime: 2022-09-23 17:31:58
  * @FilePath: \\src\\lib\\init.ts
  * @Description: 脚本初始化
  */
@@ -39,7 +39,7 @@ export function init() {
     }
 
     // show console
-    if (SHOW_CONSOLE != null ? SHOW_CONSOLE : false) {
+    if (SHOW_CONSOLE) {
         console.show();
         sleep(SHORT_WAIT_MS);
         console.setPosition(0, 100);
