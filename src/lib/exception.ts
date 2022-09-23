@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-04 16:09:50
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-22 22:54:41
+ * @LastTime: 2022-09-23 20:17:53
  * @FilePath: \\src\\lib\\exception.ts
  * @Description: 全局异常类
  */
@@ -10,11 +10,7 @@ import { EVENT } from "../global"
 import { getStackTrace, Record } from "./logger";
 
 EVENT.on("ERROR", (err: BaseException) => {
-    Record.error(
-        "Traceback (most recent call last):\n" +
-        err.traceBack + "\n" +
-        err.exceptionType + (err.message ? ": " + err.message : "") + "\n"
-    );
+    Record.error(err.toString());
 })
 
 export class BaseException {
@@ -31,6 +27,14 @@ export class BaseException {
         this.traceBack = getStackTrace();
 
         EVENT.emit("ERROR", this);
+    }
+
+    toString(): string {
+        return (
+            "Traceback (most recent call last):\n" +
+            this.traceBack + "\n" +
+            this.exceptionType + (this.message ? ": " + this.message : "") + "\n"
+        )
     }
 }
 
