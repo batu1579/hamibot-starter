@@ -1,17 +1,17 @@
 [
-  {
-    "name": "TOKEN",
-    "type": "text",
-    "label": "sendplus的用户token",
-    "help": "可以在微信中查看复制，不使用sendplus则留空"
-  },
-  {
-    "label": "显示控制台(需要悬浮窗权限)",
-    "type": "select",
-    "name": "SHOW_CONSOLE",
-    "options": {
-      "true": "是",
-      "false": "否"
+    {
+        "name": "TOKEN",
+        "type": "text",
+        "label": "sendplus的用户token",
+        "help": "可以在微信中查看复制，不使用sendplus则留空"
+    },
+    {
+        "label": "显示控制台(需要悬浮窗权限)",
+        "type": "select",
+        "name": "SHOW_CONSOLE",
+        "options": {
+            "true": "是",
+            "false": "否"
+        }
     }
-  }
 ]
