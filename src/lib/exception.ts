@@ -19,15 +19,15 @@ EVENT.on("ERROR", (err: BaseException) => {
 
 export class BaseException {
 
-    public name: string;
-    public message: string;
-    public exceptionType: string;
-    public traceBack: string;
+    protected exceptionType: string;
 
-    constructor(exceptionType: string, message: string) {
-        this.name = 'BaseException';
+    private message?: string;
+    private traceBack: string;
+
+    constructor(message?: string) {
+        this.exceptionType = 'BaseException';
+
         this.message = message;
-        this.exceptionType = exceptionType;
         this.traceBack = getStackTrace();
 
         EVENT.emit("ERROR", this);
@@ -36,28 +36,27 @@ export class BaseException {
 
 export class PermissionException extends BaseException {
     constructor(message: string) {
-        super("Permission Exception", message);
-        this.name = "BasePermissionException";
+        super(message);
+        this.exceptionType = "PermissionException";
     }
 }
 
 export class PermissionObtainingFailure extends PermissionException {
     constructor(permission: string) {
         super(permission + " obtaining failure");
-        this.name = "PermissionObtainingFailure";
     }
 }
 
 export class ValueException extends BaseException {
     constructor(message: string) {
-        super("Value Exception", message);
-        this.name = "ValueException";
+        super(message);
+        this.exceptionType = "ValueException";
     }
 }
 
 export class ConfigInvalidException extends ValueException {
     constructor(message: string) {
         super(message + ", please check it again !");
-        this.name = "ConfigInvalidException";
+        this.exceptionType = "ConfigInvalidException";
     }
 }
