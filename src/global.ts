@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-04 21:03:08
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-22 22:56:43
+ * @LastTime: 2022-09-23 17:41:05
  * @FilePath: \\src\\global.ts
  * @Description: 全局常量和配置项验证
  */
@@ -30,8 +30,10 @@ export let {
     SHOW_CONSOLE,
 } = hamibot.env;
 
-// 设置 pushplus token
-if (TOKEN !== undefined && setToken(TOKEN) == false) {
+// ------------------------- validation --------------------------
+
+// pushplus token
+if (typeof(TOKEN) === "string" && setToken(TOKEN) == false) {
     throw new ConfigInvalidException(
         "The 'Token' field in the configuration is invalid"
     )

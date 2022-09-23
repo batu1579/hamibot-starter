@@ -195,6 +195,19 @@ Record.trace('Show me');
 
 设置 pushplus 的令牌，必须为 32 位十六进制数的字符串。返回是否设置成功。
 
+如果不是运行中获取的令牌，可以选择在脚本配置文件当中添加如下名为 `TOKEN` 的字段，在读取全局变量时会自动加载。
+
+```json
+[
+    {
+        "name": "TOKEN",
+        "type": "text",
+        "label": "sendplus的用户token",
+        "help": "可以在微信中查看复制，不使用sendplus则留空"
+    }
+]
+```
+
 ## sendMessage(title: string, data: string, ...args?: any[]): boolean
 
 - `title` 发送消息的标题。
