@@ -2,14 +2,15 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-05 04:00:16
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-22 14:20:02
+ * @LastTime: 2022-09-24 23:38:57
  * @FilePath: \\src\\lib\\logger.ts
  * @Description: 存放关于日志和调试信息的预制方法。
  */
-class LogCollection {
-    private frames: LogStackFrame[];
+class FrameCollection<FrameType> {
 
-    constructor(...frames: LogStackFrame[]) {
+    protected frames: FrameType[];
+
+    constructor(...frames: FrameType[]) {
         this.frames = frames;
     }
 
@@ -20,6 +21,39 @@ class LogCollection {
     public clear(): void {
         this.frames.length = 0;
     }
+
+    /**
+     * @description: 向日志堆栈中压入新的栈帧。
+     * @param {FrameType} frame 添加的栈帧。
+     */
+    public push(frame: FrameType): void {
+        this.frames.push(frame);
+    }
+
+    /**
+     * @description: 从当前的日志集合当中过滤符合条件的日志。
+     * @param {Function} callbackFn 用来测试数组中每个元素的函数。返回 `true` 表示该元素通过测试，保留该元素， `false` 则不保留。它接受以下三个参数：
+     * - `element` 数组中当前正在处理的元素。
+     * - `index` 正在处理的元素在数组中的索引。
+     * - `array` 调用了 `filter()` 的数组本身。
+     * @return {LogCollection} 过滤出的符合条件的日志栈帧组成的新日志集合。
+     */
+    public filter(callbackFn: (frame: FrameType, index: number, array: FrameType[]) => boolean): FrameCollection<FrameType> {
+        let result = new FrameCollection<FrameType>();
+        let tempFrame: FrameType;
+
+        for (let i = 0; i < this.frames.length; i++) {
+            tempFrame = this.frames[i];
+            if (callbackFn(tempFrame, i, this.frames)) {
+                result.push(tempFrame);
+            }
+        }
+
+        return result;
+    }
+}
+
+class LogCollection extends FrameCollection<LogStackFrame> {
 
     /**
      * @description: 将日志堆栈转换为 html 字符串用于发送日志。
@@ -55,35 +89,22 @@ class LogCollection {
 
         return stack.join('\n');
     }
+}
 
+class TraceCollection extends FrameCollection<TraceStackFrame> {
     /**
-     * @description: 向日志堆栈中压入新的栈帧。
-     * @param {LogStackFrame} frame 添加的栈帧。
+     * @description: 将调用堆栈集合转换为字符串。
+     * @param {Format} [format] 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
+     * @return {string} 转换后的字符串。
      */
-    public push(frame: LogStackFrame): void {
-        this.frames.push(frame);
-    }
+    public toString(format?: Format): string {
+        let trace: string[] = []
 
-    /**
-     * @description: 从当前的日志集合当中过滤符合条件的日志。
-     * @param {Function} callbackFn 用来测试数组中每个元素的函数。返回 `true` 表示该元素通过测试，保留该元素， `false` 则不保留。它接受以下三个参数：
-     * - `element` 数组中当前正在处理的元素。
-     * - `index` 正在处理的元素在数组中的索引。
-     * - `array` 调用了 `filter()` 的数组本身。
-     * @return {LogCollection} 过滤出的符合条件的日志栈帧组成的新日志集合。
-     */
-    public filter(callbackFn: (frame: LogStackFrame, index: number, array: LogStackFrame[]) => boolean): LogCollection {
-        let result: LogCollection = new LogCollection();
-        let tempFrame: LogStackFrame;
-
-        for (let i = 0; i < this.frames.length; i++) {
-            tempFrame = this.frames[i];
-            if (callbackFn(tempFrame, i, this.frames)) {
-                result.push(tempFrame);
-            }
+        for (let frame of this.frames) {
+            trace.push(frame.toString(format));
         }
 
-        return result;
+        return trace.join("\n")
     }
 }
 
@@ -94,6 +115,14 @@ class TraceStackFrame {
     constructor(line: number, callerName: string) {
         this.line = line;
         this.callerName = callerName;
+    }
+
+    /**
+     * @description: 获取调用所在代码中的行数。
+     * @return {number} 调用所在的行号。
+     */
+    public getLine(): number {
+        return this.line;
     }
 
     /**
@@ -113,12 +142,12 @@ class TraceStackFrame {
     }
 
     /**
-     * @description: 重写 `TraceItem` 对象转换为字符串的方法。转换格式类似 Python 。
+     * @description: 将 TraceStackFrame 对象转换为字符串的方法。
+     * @param {Format} [format] 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
      * @return {string} 转换后的字符串。
      */
-    public toString(): string {
-        // TODO 可以自定义模板
-        return ` | at line ${this.line}, in <${this.callerName}>`
+    public toString(format?: Format): string {
+        return (format ?? defaultFormat)(this.line, this.callerName);
     }
 }
 
@@ -278,11 +307,12 @@ export function getRawStackTrace(endFunction?: Function): string {
 
 /**
  * @description: 获取修正后的调用堆栈信息。
- * @return {string} 调用堆栈字符串。
+ * @param {Function} [endFunction] 终止栈帧，会自动排除后续的无用栈帧。
+ * @return {TraceCollection} 调用堆栈集合。
  */
-export function getStackTrace(endFunction?: Function): string {
+export function getStackTrace(endFunction?: Function): TraceCollection {
     let trace = sliceStackFrames(getRawStackTrace(endFunction), 1, 0);
-    return formatTrace(trace);
+    return new TraceCollection(...parseTrace(trace));
 }
 
 export class Record {
@@ -386,6 +416,7 @@ export class Record {
      * 
      * - **注意！：此函数显示的等级和 `Record.debug()` 相同。**
      * @param {string} [data] 主要信息。
+     * @param {Format} [format] 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
      * @param {array} [args] 要填充的数据。
      * @example
      * ```typescript
@@ -394,10 +425,11 @@ export class Record {
      * Record.trace('Show me');
      * ```
      */
-    public static trace(data?: string, ...args: any[]): string {
+    public static trace(data?: string, format?: Format, ...args: any[]): string {
         let trace = sliceStackFrames(getRawStackTrace(), 1, 0);
+        let parsedTrace = new TraceCollection(...parseTrace(trace))
 
-        return Record.recLog(LoggerSchemes.trace, `${data}\n${formatTrace(trace)}`, ...args);
+        return Record.recLog(LoggerSchemes.trace, `${data}\n${parsedTrace.toString(format)}`, ...args);
     }
 
     /**
@@ -552,22 +584,6 @@ function parseTrace(originTrace: string): TraceStackFrame[] {
 }
 
 /**
- * @description: 重新格式化调用堆栈信息，同时修正行号。
- * @param {string} originTrace 原始调用堆栈字符串（使用异常的 `stack` 属性取得）。
- * @return {string} 处理后的调用堆栈字符串。
- */
-function formatTrace(originTrace: string): string {
-    let stackFrames: TraceStackFrame[] = parseTrace(originTrace);
-    let trace: string[] = []
-
-    for (let frame of stackFrames) {
-        trace.push(frame.toString())
-    }
-
-    return trace.join("\n")
-}
-
-/**
  * @description: 使用 pushplus 推送文本。
  * @param {string} title 发送消息的标题。
  * @param {string} message 要发送的消息。
@@ -588,3 +604,13 @@ function sendToRemote(title: string, message: string): boolean {
 
     return res.statusCode === 200;
 }
+
+export function defaultFormat(line: number, callerName: string): string {
+    return `  | at line ${line}, in <${callerName}>`;
+}
+
+type Format = typeof defaultFormat;
+
+export type TraceCollectionType = Omit<typeof TraceCollection, "prototype">;
+
+export type TraceStackFrameType = Omit<typeof TraceStackFrame, "prototype">;
