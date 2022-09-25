@@ -357,6 +357,8 @@ export class Record {
      */
     private static DISPLAY_LEVEL: number = LogLevel.Debug;
 
+    private constructor() {}
+
     /**
      * @description: 设置记录的日志级别，低于设置的级别的日志都不会记录。
      * 
@@ -653,7 +655,7 @@ function sendToRemote(title: string, message: string): boolean {
     return res.statusCode === 200;
 }
 
-export function defaultFormatter(line: number, callerName: string): string {
+function defaultFormatter(line: number, callerName: string): string {
     return `  | at line ${line}, in <${callerName}>`;
 }
 
