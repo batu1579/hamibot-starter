@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-05 04:00:16
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-24 23:38:57
+ * @LastTime: 2022-09-25 00:10:40
  * @FilePath: \\src\\lib\\logger.ts
  * @Description: 存放关于日志和调试信息的预制方法。
  */
@@ -94,10 +94,10 @@ class LogCollection extends FrameCollection<LogStackFrame> {
 class TraceCollection extends FrameCollection<TraceStackFrame> {
     /**
      * @description: 将调用堆栈集合转换为字符串。
-     * @param {Format} [format] 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
+     * @param {TraceFormatter} [format] 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
      * @return {string} 转换后的字符串。
      */
-    public toString(format?: Format): string {
+    public toString(format?: TraceFormatter): string {
         let trace: string[] = []
 
         for (let frame of this.frames) {
@@ -143,11 +143,11 @@ class TraceStackFrame {
 
     /**
      * @description: 将 TraceStackFrame 对象转换为字符串的方法。
-     * @param {Format} [format] 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
+     * @param {TraceFormatter} [format] 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
      * @return {string} 转换后的字符串。
      */
-    public toString(format?: Format): string {
-        return (format ?? defaultFormat)(this.line, this.callerName);
+    public toString(format?: TraceFormatter): string {
+        return (format ?? defaultFormatter)(this.line, this.callerName);
     }
 }
 
@@ -416,7 +416,7 @@ export class Record {
      * 
      * - **注意！：此函数显示的等级和 `Record.debug()` 相同。**
      * @param {string} [data] 主要信息。
-     * @param {Format} [format] 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
+     * @param {TraceFormatter} [format] 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
      * @param {array} [args] 要填充的数据。
      * @example
      * ```typescript
@@ -425,7 +425,7 @@ export class Record {
      * Record.trace('Show me');
      * ```
      */
-    public static trace(data?: string, format?: Format, ...args: any[]): string {
+    public static trace(data?: string, format?: TraceFormatter, ...args: any[]): string {
         let trace = sliceStackFrames(getRawStackTrace(), 1, 0);
         let parsedTrace = new TraceCollection(...parseTrace(trace))
 
@@ -605,12 +605,12 @@ function sendToRemote(title: string, message: string): boolean {
     return res.statusCode === 200;
 }
 
-export function defaultFormat(line: number, callerName: string): string {
+export function defaultFormatter(line: number, callerName: string): string {
     return `  | at line ${line}, in <${callerName}>`;
 }
 
-type Format = typeof defaultFormat;
+export type TraceCollectionType = TraceCollection;
 
-export type TraceCollectionType = Omit<typeof TraceCollection, "prototype">;
+export type TraceStackFrameType = TraceStackFrame;
 
-export type TraceStackFrameType = Omit<typeof TraceStackFrame, "prototype">;
+type TraceFormatter = typeof defaultFormatter;
