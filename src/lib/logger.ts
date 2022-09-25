@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-05 04:00:16
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-25 00:10:40
+ * @LastTime: 2022-09-25 22:54:28
  * @FilePath: \\src\\lib\\logger.ts
  * @Description: 存放关于日志和调试信息的预制方法。
  */
@@ -15,15 +15,19 @@ class FrameCollection<FrameType> {
     }
 
     /**
-     * @description: 清空日志堆栈中的数据，用于手动清空日志堆栈。
-     * - **注意！：一般来说不需要手动清空。在发送日志后会自动清空日志堆栈，除非单独设置。**
+     * @description: 清空栈帧集合中的数据，用于手动清空堆栈。
+     * 
+     * **注意！：**
+     * 
+     * - 一般来说不需要手动清空。
+     * 
      */
     public clear(): void {
         this.frames.length = 0;
     }
 
     /**
-     * @description: 向日志堆栈中压入新的栈帧。
+     * @description: 向堆栈中压入新的栈帧。
      * @param {FrameType} frame 添加的栈帧。
      */
     public push(frame: FrameType): void {
@@ -31,12 +35,12 @@ class FrameCollection<FrameType> {
     }
 
     /**
-     * @description: 从当前的日志集合当中过滤符合条件的日志。
+     * @description: 从当前的集合当中过滤符合条件的栈帧。
      * @param {Function} callbackFn 用来测试数组中每个元素的函数。返回 `true` 表示该元素通过测试，保留该元素， `false` 则不保留。它接受以下三个参数：
      * - `element` 数组中当前正在处理的元素。
      * - `index` 正在处理的元素在数组中的索引。
      * - `array` 调用了 `filter()` 的数组本身。
-     * @return {LogCollection} 过滤出的符合条件的日志栈帧组成的新日志集合。
+     * @return {LogCollection} 过滤出的符合条件的栈帧组成的新栈帧集合。
      */
     public filter(callbackFn: (frame: FrameType, index: number, array: FrameType[]) => boolean): FrameCollection<FrameType> {
         let result = new FrameCollection<FrameType>();
@@ -50,6 +54,23 @@ class FrameCollection<FrameType> {
         }
 
         return result;
+    }
+}
+
+class TraceCollection extends FrameCollection<TraceStackFrame> {
+    /**
+     * @description: 将调用堆栈集合转换为字符串。
+     * @param {TraceFormatter} [format] 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
+     * @return {string} 转换后的字符串。
+     */
+    public toString(format?: TraceFormatter): string {
+        let trace: string[] = []
+
+        for (let frame of this.frames) {
+            trace.push(frame.toString(format));
+        }
+
+        return trace.join("\n")
     }
 }
 
@@ -88,23 +109,6 @@ class LogCollection extends FrameCollection<LogStackFrame> {
         }
 
         return stack.join('\n');
-    }
-}
-
-class TraceCollection extends FrameCollection<TraceStackFrame> {
-    /**
-     * @description: 将调用堆栈集合转换为字符串。
-     * @param {TraceFormatter} [format] 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
-     * @return {string} 转换后的字符串。
-     */
-    public toString(format?: TraceFormatter): string {
-        let trace: string[] = []
-
-        for (let frame of this.frames) {
-            trace.push(frame.toString(format));
-        }
-
-        return trace.join("\n")
     }
 }
 
@@ -161,6 +165,36 @@ class LogStackFrame {
     }
 
     /**
+     * @description: 获取日志栈帧的级别，一般用于 `LogCollection.filter()` 的回调函数进行判断。建议通过 `LogLevel` 枚举类型来比较等级。
+     * @return {number} 日志栈帧的级别。
+     * @example
+     * ```typescript
+     * // 获取日志堆栈中全部的 log 等级的日志记录
+     * let collection = logStack.filter((frame) => {
+     *     return frame.getLevel() == LogLevel.log;
+     * });
+     * ```
+     */
+    public getLevel(): number {
+        return this.scheme.level;
+    }
+
+    /**
+     * @description: 获取日志栈帧曾经输出的信息，一般用于 `LogCollection.filter()` 的回调函数进行判断。
+     * @return {string} 日志栈帧曾经输出的信息。
+     * @example
+     * ```typescript
+     * // 获取日志堆栈中全部包含其中 hello 的日志记录
+     * let collection = logStack.filter((frame) => {
+     *     return /hello/.test(frame.getData());
+     * });
+     * ```
+     */
+    public getData(): string {
+        return this.data
+    }
+
+    /**
      * @description: 将日志堆栈的栈帧转换为字符串。
      * @return {string} 转换后的栈帧。
      */
@@ -196,14 +230,6 @@ class LogStackFrame {
         }
 
         return htmlArray.join('\n');
-    }
-
-    public getLevel(): number {
-        return this.scheme.level;
-    }
-
-    public getData(): string {
-        return this.data
     }
 }
 
@@ -290,7 +316,11 @@ export function getCallerName(index: number = 0): string {
 /**
  * @description: 获取当前真实的调用堆栈。
  * @param {Function} [endFunction] 终止栈帧，会自动排除后续的无用栈帧。
- * - **注意！：匿名函数和类中的方法等 `console.trace()` 方法不显示的函数不能当作终止栈帧。**
+ * 
+ * **注意！：**
+ * 
+ * - 匿名函数和类中的方法等 `console.trace()` 方法不显示的函数不能当作终止栈帧。
+ * 
  * @return {string} 调用堆栈的字符串。
  */
 export function getRawStackTrace(endFunction?: Function): string {
@@ -329,7 +359,11 @@ export class Record {
 
     /**
      * @description: 设置记录的日志级别，低于设置的级别的日志都不会记录。
-     * - **注意！：修改前的日志记录不会改变。**
+     * 
+     * **注意！：**
+     * 
+     * - 修改前的日志记录不会改变。
+     * 
      * @param {number} level 设置的等级。建议使用 `LogLevel` 枚举类型来获取等级。
      */
     public setRecordLevel(level: number): void {
@@ -376,7 +410,11 @@ export class Record {
 
     /**
      * @description: 与 `Record.log` 类似，但输出结果以灰色字体显示。输出优先级低于 `log` ，用于输出观察性质的信息。
-     * - **注意！：此函数是 `Record.verbose` 的别名。**
+     * 
+     * **注意！：**
+     * 
+     * - 此函数是 `Record.verbose` 的别名。
+     * 
      * @param {string} [message] 主要信息。
      * @param {array} [args] 要填充的数据。
      */
@@ -414,7 +452,10 @@ export class Record {
      * 
      * 此函数与 `console.trace` 的主要区别在于会修正异常的行号，便于调试。同时会将调用堆栈信息存储在日志堆栈中。
      * 
-     * - **注意！：此函数显示的等级和 `Record.debug()` 相同。**
+     * **注意！：**
+     * 
+     * - 此函数显示的等级和 `Record.debug()` 相同。
+     * 
      * @param {string} [data] 主要信息。
      * @param {TraceFormatter} [format] 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
      * @param {array} [args] 要填充的数据。
@@ -460,6 +501,9 @@ export class Record {
 
 /**
  * @description: 设置 pushplus 的令牌，必须为 32 位十六进制数的字符串。
+ * 
+ * 如果不是运行中获取的令牌，可以选择在脚本配置文件当中添加如下名为 `TOKEN` 的字段，在读取全局变量时会自动加载。
+ * 
  * @param {string} token 用于调用 pushplus api 的令牌。
  * @return {boolean} 是否设置成功。
  */
@@ -499,8 +543,12 @@ export function sendMessage(title: string, data: string, ...args: any[]): boolea
  * @param {LogCollection} [logs] 要发送的日志集合，默认发送完整的日志堆栈。可以通过过滤方法，选择性发送。
  * @param {string} [title] 发送消息的标题（默认为 `logger` ）。
  * @param {boolean} [clear] 发送后是否清空日志堆栈（默认为 `true` ）。
- * - **注意！：发送失败时并不会清空日志堆栈，不管 `clear` 参数为何值。**
- * - **注意！：在选择的日志集合不为默认时需要手动清除全部日志。**
+ * 
+ * **注意！：**
+ * 
+ * - 发送失败时并不会清空日志堆栈，不管 `clear` 参数为何值。
+ * - 在选择的日志集合不为默认时需要手动清除全部日志。
+ * 
  * @return {boolean} 是否发送成功。
  * @example
  * ```typescript
