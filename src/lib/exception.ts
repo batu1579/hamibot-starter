@@ -2,34 +2,53 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-04 16:09:50
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-23 20:17:53
+ * @LastTime: 2022-09-25 22:40:09
  * @FilePath: \\src\\lib\\exception.ts
  * @Description: 全局异常类
  */
 import { EVENT } from "../global"
-import { getStackTrace, Record } from "./logger";
+import {
+    Record,
+    getStackTrace,
+    TraceCollectionType,
+    TraceStackFrameType
+} from "./logger";
 
 EVENT.on("ERROR", (err: BaseException) => {
     Record.error(err.toString());
 })
 
-export class BaseException {
+export interface Exception {
+    filter(frame: TraceStackFrameType, index: number, array: TraceStackFrameType[]): boolean;
+    traceFormatter(line: number, callerName: string): string;
+    toString(): string;
+}
+
+export class BaseException implements Exception {
 
     protected exceptionType: string;
-
-    private message?: string;
-    private traceBack: string;
+    protected message?: string;
+    protected traceBack: string;
 
     constructor(message?: string) {
         this.exceptionType = 'BaseException';
-
         this.message = message;
-        this.traceBack = getStackTrace();
+
+        let trace: TraceCollectionType = getStackTrace().filter(this.filter);
+        this.traceBack = trace.toString(this.traceFormatter);
 
         EVENT.emit("ERROR", this);
     }
 
-    toString(): string {
+    public filter(frame: TraceStackFrameType, index: number, array: TraceStackFrameType[]): boolean {
+        return true;
+    }
+
+    public traceFormatter(line: number, callerName: string): string {
+        return `  | at line ${line}, in <${callerName}>`;
+    };
+
+    public toString(): string {
         return (
             "Traceback (most recent call last):\n" +
             this.traceBack + "\n" +
@@ -38,27 +57,27 @@ export class BaseException {
     }
 }
 
-export class PermissionException extends BaseException {
+export class PermissionException extends BaseException implements Exception {
     constructor(message: string) {
         super(message);
         this.exceptionType = "PermissionException";
     }
 }
 
-export class PermissionObtainingFailure extends PermissionException {
+export class PermissionObtainingFailure extends PermissionException implements Exception {
     constructor(permission: string) {
         super(permission + " obtaining failure");
     }
 }
 
-export class ValueException extends BaseException {
+export class ValueException extends BaseException implements Exception {
     constructor(message: string) {
         super(message);
         this.exceptionType = "ValueException";
     }
 }
 
-export class ConfigInvalidException extends ValueException {
+export class ConfigInvalidException extends ValueException implements Exception {
     constructor(message: string) {
         super(message + ", please check it again !");
         this.exceptionType = "ConfigInvalidException";
