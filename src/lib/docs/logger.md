@@ -56,7 +56,7 @@
 
 > 注意： `TraceStackFrame` 类并未导出，只能从 [TraceCollection](#class-tracecollection) 的实例中获取。
 
-### TraceCollection.getLine(): number
+### TraceStackFrame.getLine(): number
 
 获取调用所在代码中的行数。一般用于 `TraceCollection.filter()` 的回调函数中进行判断。
 
@@ -68,7 +68,7 @@ let trace = getStackTrace().filter((frame: TraceStackFrameType) => {
 });
 ```
 
-### TraceCollection.getCallerName(): string
+### TraceStackFrame.getCallerName(): string
 
 获取调用者的函数名。一般用于 `TraceCollection.filter()` 的回调函数中进行判断。
 
@@ -80,7 +80,7 @@ let trace = getStackTrace().filter((frame: TraceStackFrameType) => {
 });
 ```
 
-### TraceCollection.toString(format?: [TraceFormatter](#traceformatter)): string
+### TraceStackFrame.toString(format?: [TraceFormatter](#traceformatter)): string
 
 - `format` 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
 
