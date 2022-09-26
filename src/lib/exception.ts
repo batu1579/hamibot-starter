@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-04 16:09:50
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-25 22:40:09
+ * @LastTime: 2022-09-26 09:48:48
  * @FilePath: \\src\\lib\\exception.ts
  * @Description: 全局异常类
  */
@@ -14,13 +14,11 @@ import {
     TraceStackFrameType
 } from "./logger";
 
-EVENT.on("ERROR", (err: BaseException) => {
+EVENT.on("ERROR", (err: Exception) => {
     Record.error(err.toString());
 })
 
 export interface Exception {
-    filter(frame: TraceStackFrameType, index: number, array: TraceStackFrameType[]): boolean;
-    traceFormatter(line: number, callerName: string): string;
     toString(): string;
 }
 
@@ -40,11 +38,11 @@ export class BaseException implements Exception {
         EVENT.emit("ERROR", this);
     }
 
-    public filter(frame: TraceStackFrameType, index: number, array: TraceStackFrameType[]): boolean {
+    protected filter(frame: TraceStackFrameType, index: number, array: TraceStackFrameType[]): boolean {
         return true;
     }
 
-    public traceFormatter(line: number, callerName: string): string {
+    protected traceFormatter(line: number, callerName: string): string {
         return `  | at line ${line}, in <${callerName}>`;
     };
 
