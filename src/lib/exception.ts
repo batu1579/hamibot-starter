@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-04 16:09:50
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-26 11:27:41
+ * @LastTime: 2022-09-26 22:06:43
  * @FilePath: \\src\\lib\\exception.ts
  * @Description: 全局异常类
  */
@@ -55,21 +55,21 @@ export class BaseException implements Exception {
     }
 }
 
-export class PermissionException extends BaseException implements Exception {
+export class PermissionException extends BaseException {
     constructor(message: string) {
         super(message);
         this.exceptionType = "PermissionException";
     }
 }
 
-export class ValueException extends BaseException implements Exception {
+export class ValueException extends BaseException {
     constructor(message: string) {
         super(message);
         this.exceptionType = "ValueException";
     }
 }
 
-export class ConfigInvalidException extends ValueException implements Exception {
+export class ConfigInvalidException extends ValueException {
     constructor(message: string) {
         super(message + ", please check it again !");
         this.exceptionType = "ConfigInvalidException";
