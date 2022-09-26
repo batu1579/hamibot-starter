@@ -4,7 +4,7 @@
 
 > 日志模块后续可能会有比较大的改动。目前只是测试版本。
 
-## FrameCollection<FrameType>
+## FrameCollection\<FrameType\>
 
 栈帧集合对象。
 
@@ -14,7 +14,7 @@
 
 > 注意： 一般来说不需要手动清空。
 
-### FrameCollection.filter(callbackFn: (frame: FrameType, index: number, array: FrameType[]) => boolean): FrameCollection<FrameType>
+### FrameCollection.filter(callbackFn: (frame: FrameType, index: number, array: FrameType[]) => boolean): FrameCollection\<FrameType\>
 
 - `callbackFn` 用来测试数组中每个元素的函数。返回 `true` 表示该元素通过测试，保留该元素， `false` 则不保留。它接受以下三个参数：
 
@@ -26,7 +26,7 @@
 
 ## TraceCollection
 
-调用堆栈集合，继承自 [FrameCollection](framecollection)<[TraceStackFrame](#tracestackframe)> 。在外部使用该类型的参数时需要使用 `TraceCollectionType` 。
+调用堆栈集合，继承自 [FrameCollection](#framecollectionframetype)\<[TraceStackFrame](#tracestackframe)\> 。在外部使用该类型的参数时需要使用 `TraceCollectionType` 。
 
 > 注意： `TraceCollection` 类并未导出，只能通过 `getStackTrace()` 方法来获取当前的调用堆栈集合。
 
@@ -38,7 +38,7 @@
 
 ## LogCollection
 
-日志集合，继承自 [FrameCollection](framecollection)<[TraceStackFrame](#tracestackframe)> 。
+日志集合，继承自 [FrameCollection](#framecollectionframetype)\<[TraceStackFrame](#tracestackframe)\> 。
 
 > 注意： `LogCollection` 类并未导出，只能通过 [logStack](#logstack) 对象来获取他的子集。
 
