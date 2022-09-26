@@ -2,12 +2,12 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-04 20:58:39
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-23 17:31:58
+ * @LastTime: 2022-09-26 11:20:30
  * @FilePath: \\src\\lib\\init.ts
  * @Description: 脚本初始化
  */
 import { Record } from "./logger";
-import { PermissionObtainingFailure } from "./exception";
+import { PermissionException } from "./exception";
 import { VERSION, SHOW_CONSOLE, SHORT_WAIT_MS } from "../global";
 
 export function init() {
@@ -20,7 +20,7 @@ export function init() {
     // check accessibility permission
     if (auto.service === null) {
         if (!confirm('Please enable accessibility permission')) {
-            throw new PermissionObtainingFailure("accessibility permission");
+            throw new PermissionException("Accessibility permission obtaining failure.");
         }
         auto.waitFor();
     } else {

@@ -62,12 +62,6 @@ export class PermissionException extends BaseException implements Exception {
     }
 }
 
-export class PermissionObtainingFailure extends PermissionException implements Exception {
-    constructor(permission: string) {
-        super(permission + " obtaining failure");
-    }
-}
-
 export class ValueException extends BaseException implements Exception {
     constructor(message: string) {
         super(message);
