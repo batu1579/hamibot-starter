@@ -4,7 +4,7 @@
 
 > 日志模块后续可能会有比较大的改动。目前只是测试版本。
 
-## FrameCollection\<FrameType\>
+## class FrameCollection\<FrameType\>
 
 栈帧集合对象。
 
@@ -24,9 +24,9 @@
 
 从当前的日志集合当中过滤符合条件的栈帧，并返回他们组成的新栈帧集合。
 
-## TraceCollection
+## class TraceCollection
 
-调用堆栈集合，继承自 [FrameCollection](#framecollectionframetype)\<[TraceStackFrame](#tracestackframe)\> 。在外部使用该类型的参数时需要使用 `TraceCollectionType` 。
+调用堆栈集合，继承自 [FrameCollection](#class-framecollectionframetype)\<[TraceStackFrame](#class-tracestackframe)\> 。在外部使用该类型的参数时需要使用 `TraceCollectionType` 。
 
 > 注意： `TraceCollection` 类并未导出，只能通过 `getStackTrace()` 方法来获取当前的调用堆栈集合。
 
@@ -36,11 +36,11 @@
 
 将调用堆栈集合转换为字符串并返回。
 
-## LogCollection
+## class LogCollection
 
-日志集合，继承自 [FrameCollection](#framecollectionframetype)\<[TraceStackFrame](#tracestackframe)\> 。
+日志集合，继承自 [FrameCollection](#class-framecollectionframetype)\<[LogStackFrame](#class-logstackframe)\> 。
 
-> 注意： `LogCollection` 类并未导出，只能通过 [logStack](#logstack) 对象来获取他的子集。
+> 注意： `LogCollection` 类并未导出，只能通过 [logStack](#const-logstack) 对象来获取他的子集。
 
 ### LogCollection.toHtmlString(): string
 
@@ -50,11 +50,11 @@
 
 将全部日志堆栈中的数据转换为一个字符串并返回。
 
-## TraceStackFrame
+## class TraceStackFrame
 
 调用栈帧对象，用来保存调用堆栈中每一次调用的相关数据。在外部使用该类型的参数时需要使用 `TraceStackFrameType` 。
 
-> 注意： `TraceStackFrame` 类并未导出，只能从 [TraceCollection](#tracecollection) 的实例中获取。
+> 注意： `TraceStackFrame` 类并未导出，只能从 [TraceCollection](#class-tracecollection) 的实例中获取。
 
 ### TraceCollection.getLine(): number
 
@@ -74,7 +74,7 @@ let trace = getStackTrace().filter((frame: TraceStackFrameType) => {
 
 ```typescript
 // 过滤调用者名称不为 xxx 的调用
-let trace = getStackTrace().filter((frame: TraceStackFrame) => {
+let trace = getStackTrace().filter((frame: TraceStackFrameType) => {
     let callerName = frame.getCallerName();
     return callerName !== "xxx"
 });
@@ -86,15 +86,15 @@ let trace = getStackTrace().filter((frame: TraceStackFrame) => {
 
 将 `TraceStackFrame` 对象转换为字符串的方法。
 
-## LogStackFrame
+## class LogStackFrame
 
 日志栈帧对象，用来保存每一次输出日志的详细信息。
 
-> 注意： `LogStackFrame` 类并未导出，只能从 [LogCollection](#logcollection) 的实例中获取。
+> 注意： `LogStackFrame` 类并未导出，只能从 [LogCollection](#class-logcollection) 的实例中获取。
 
 ### LogStackFrame.getLevel(): number
 
-获取日志栈帧的级别，一般用于 `LogCollection.filter()` 的回调函数进行判断。建议通过 [LogLevel](#loglevel) 枚举类型来比较等级。
+获取日志栈帧的级别，一般用于 `LogCollection.filter()` 的回调函数进行判断。建议通过 [LogLevel](#enum-loglevel) 枚举类型来比较等级。
 
 ```typescript
 // 获取日志堆栈中全部的 log 等级的日志记录
@@ -122,7 +122,7 @@ let collection = logStack.filter((frame) => {
 
 将日志栈帧转换为 HTML 字符串并返回，一般用于发送日志。
 
-## LogLevel
+## enum LogLevel
 
 日志等级的枚举对象，包括五个等级从低到高依次为：
 
@@ -132,9 +132,9 @@ let collection = logStack.filter((frame) => {
 - `Warn` 出现异常，但不影响程序执行。
 - `Error` 严重错误，会导致程序退出。
 
-## logStack
+## const logStack
 
-日志堆栈对象，用来记录曾经输出过的日志。本身是一个 [LogCollection](#logcollection) 实例。
+日志堆栈对象，用来记录曾经输出过的日志。本身是一个 [LogCollection](#class-logcollection) 实例。
 
 ## getCallerName(index: number): string
 
@@ -158,23 +158,23 @@ function func(): void {
 
 **注意！：匿名函数和类中的方法等 `console.trace()` 方法不显示的函数不能当作终止栈帧。**
 
-## getStackTrace(endFunction?: Function): [TraceCollection](#tracecollection)
+## getStackTrace(endFunction?: Function): [TraceCollection](#class-tracecollection)
 
 - `endFunction` （可选）终止栈帧，会自动排除后续的无用栈帧。
 
 获取修正后的调用堆栈集合，包含修正行号后的栈帧对象。返回调用堆栈的集合对象。
 
-## Record
+## class Record
 
 ### Record.setRecordLevel(level: number): void
 
-- `level` 设置的等级。建议使用 [LogLevel](#loglevel) 枚举类型来获取等级。
+- `level` 设置的等级。建议使用 [LogLevel](#enum-loglevel) 枚举类型来获取等级。
 
 设置记录的日志级别，低于设置的级别的日志都不会记录。
 
 ### Record.setDisplayLevel(level: number): void
 
-- `level` 设置的等级。建议使用 [LogLevel](#loglevel) 枚举类型来获取等级。
+- `level` 设置的等级。建议使用 [LogLevel](#enum-loglevel) 枚举类型来获取等级。
 
 设置显示的日志级别，低于设置的级别的日志都不会显示。
 
