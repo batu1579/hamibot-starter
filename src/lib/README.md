@@ -6,6 +6,7 @@
 
 - [init](./docs/init.md) 初始化脚本检查。
 - [Logger](./docs/logger.md) 关于日志和调试信息的预制方法。
+- [exception](./docs/exception.md) 自定义的异常类。
 
 ## 使用方法
 
