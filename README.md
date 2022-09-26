@@ -17,21 +17,25 @@
 >
 > 欢迎各位大佬帮我一起完善这个项目！
 
-## 安装依赖
-
-> 因为使用了 npm 来管理依赖，在安装之前请确保安装过 `node.js` 。
-
-```sh
-npm install
-```
-
 ## 快速开始
 
 1. 下载本仓库，有两种方式可选：
-   1. 点击 [Use this template](https://github.com/batu1579/hamibot-starter/generate) 按钮以此仓库为模板创建一个自己的仓库，然后将仓库克隆到本地。
-   2. 如果你不准备使用 Git 作为版本管理工具，可以直接通过 `Code` -> `Download ZIP` 下载压缩包。
-2. 在 `src` 文件夹下编写代码，程序入口为 `src/index.ts` 。
-3. 完成编写后打包项目，有三种方式可选：
+
+   1. 点击右上角的 [Fork](https://github.com/batu1579/hamibot-starter/fork) 按钮将此仓库克隆到自己账户下，然后将仓库克隆到本地。
+   2. 如果你不准备使用 Git 作为版本管理工具，也可以从 [这里](https://github.com/batu1579/hamibot-starter/archive/refs/heads/main.zip) 下载压缩包。
+
+2. 使用指令安装依赖：
+
+    ```sh
+    npm install
+    ```
+
+    > 因为使用了 npm 来管理依赖，在安装之前请确保安装过 `node.js` 。
+
+3. 在 `src` 文件夹下编写代码，程序入口为 `src/index.ts` 。
+
+4. 完成编写后打包项目，有三种方式可选：
+
    1. 使用 VSCode 快捷键 `ctrl + shift + b` 打开任务菜单，然后选择 `npm build` 打包。
    2. 使用命令打包项目：
 
@@ -43,7 +47,7 @@ npm install
 
       > 如果没有找到 NPM 窗口可以在命令窗口中查找并选择 `焦点在 NPM 脚本 视图上`
 
-4. 在控制台上传打包后的文件: `dist/index.js` 。
+5. 在控制台上传打包后的文件: `dist/index.js` 。
 
 ## 使用预制函数
 
