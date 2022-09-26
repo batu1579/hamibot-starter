@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-04 16:09:50
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-26 09:48:48
+ * @LastTime: 2022-09-26 11:27:41
  * @FilePath: \\src\\lib\\exception.ts
  * @Description: 全局异常类
  */
@@ -25,20 +25,20 @@ export interface Exception {
 export class BaseException implements Exception {
 
     protected exceptionType: string;
-    protected message?: string;
+    protected message: string | undefined;
     protected traceBack: string;
 
     constructor(message?: string) {
         this.exceptionType = 'BaseException';
         this.message = message;
 
-        let trace: TraceCollectionType = getStackTrace().filter(this.filter);
+        let trace: TraceCollectionType = getStackTrace().filter(this.traceFilter);
         this.traceBack = trace.toString(this.traceFormatter);
 
         EVENT.emit("ERROR", this);
     }
 
-    protected filter(frame: TraceStackFrameType, index: number, array: TraceStackFrameType[]): boolean {
+    protected traceFilter(frame: TraceStackFrameType, index: number, array: TraceStackFrameType[]): boolean {
         return true;
     }
 
