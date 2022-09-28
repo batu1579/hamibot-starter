@@ -22,7 +22,14 @@
 1. 下载本仓库，有两种方式可选：
 
    1. 点击右上角的 [Fork](https://github.com/batu1579/hamibot-starter/fork) 按钮将此仓库克隆到自己账户下，然后将仓库克隆到本地。
-   2. 如果你不准备使用 Git 作为版本管理工具，也可以从 [这里](https://github.com/batu1579/hamibot-starter/archive/refs/heads/main.zip) 下载压缩包。
+
+        > 推荐，使用这种方式可以方便的得到更新，但是一个账户只能克隆一个。
+
+   2. 点击右上角的 [Use this template](https://github.com/batu1579/hamibot-starter/generate) 按钮以此仓库为模板在账户下创建仓库。
+
+        > 如果你的账号里已经有一个克隆的仓库，那就只能选择这种方法。但是使用这种方式没法方便的通过合并上游仓库的方式来更新。
+
+   3. 如果你不准备使用 Git 作为版本管理工具，也可以从 [这里](https://github.com/batu1579/hamibot-starter/archive/refs/heads/main.zip) 下载压缩包。
 
 2. 使用指令安装依赖：
 
