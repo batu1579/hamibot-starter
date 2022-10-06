@@ -1,0 +1,6 @@
+{
+    "fileMark": {
+        "configFile": "src/config.json",
+        "scriptFile": "dist/index.js"
+    }
+}
