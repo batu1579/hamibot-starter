@@ -7,7 +7,7 @@
         "module": "ES2015",
         "strict": true,
         "typeRoots": [
-            "src/types",
+            "types",
             "node_modules/@types"
         ],
         "outDir": "build",
