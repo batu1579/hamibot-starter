@@ -1,7 +1,6 @@
 node_modules
 build
 .VSCodeCounter
-.vscode
 regex.md
 index.dts
 *.code-workspace
