@@ -2,12 +2,12 @@
  * @Author: BATU1579
  * @CreateDate: 2022-06-03 01:16:42
  * @LastEditor: BATU1579
- * @LastTime: 2022-10-17 10:42:03
- * @FilePath: \\src\\types\\ocr.d.ts
+ * @LastTime: 2022-10-23 22:32:24
+ * @FilePath: \\types\\ocr.d.ts
  * @Description: 文字识别模块
  */
 declare module 'ocr' {
-    import { Image } from "images";
+    import { BaseImage } from "images";
 
     global {
         /**
@@ -20,7 +20,7 @@ declare module 'ocr' {
     interface OCR {
         /**
          * @description: 识别图片中的文字。
-         * @param {Image} img 要识别的图片。
+         * @param {BaseImage} img 要识别的图片。
          * @return {OcrResult} OCR 识别结果。
          * @since 1.2.2
          * @example
@@ -34,11 +34,11 @@ declare module 'ocr' {
          * log(res);
          * ```
          */
-        recognize(img: Image): OcrResult;
+        recognize(img: BaseImage): OcrResult;
 
         /**
          * @description: 识别图片中的文字，只返回完整文本结果。
-         * @param {Image} img 要识别的图片。
+         * @param {BaseImage} img 要识别的图片。
          * @return {OcrResult} OCR 识别结果。
          * @since 1.2.2
          * @example
@@ -52,7 +52,7 @@ declare module 'ocr' {
          * log(res);
          * ```
          */
-        recognizeText(img: Image): string;
+        recognizeText(img: BaseImage): string;
     }
 
     interface OcrResult {
