@@ -7,12 +7,14 @@
         "module": "ES2015",
         "strict": true,
         "typeRoots": [
-            "types",
+            "**/types",
             "node_modules/@types"
         ],
         "outDir": "build",
         "forceConsistentCasingInFileNames": true,
         "removeComments": true,
         "noImplicitAny": false,
+		"noUnusedParameters": true,
+		"noFallthroughCasesInSwitch": true,
     }
 }
