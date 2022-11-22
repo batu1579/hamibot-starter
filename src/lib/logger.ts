@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-05 04:00:16
  * @LastEditor: BATU1579
- * @LastTime: 2022-09-25 22:54:28
+ * @LastTime: 2022-11-22 16:27:08
  * @FilePath: \\src\\lib\\logger.ts
  * @Description: 存放关于日志和调试信息的预制方法。
  */
@@ -33,7 +33,9 @@ class FrameCollection<FrameType> {
     public push(frame: FrameType): void {
         this.frames.push(frame);
     }
+}
 
+class TraceCollection extends FrameCollection<TraceStackFrame> {
     /**
      * @description: 从当前的集合当中过滤符合条件的栈帧。
      * @param {Function} callbackFn 用来测试数组中每个元素的函数。返回 `true` 表示该元素通过测试，保留该元素， `false` 则不保留。它接受以下三个参数：
@@ -42,9 +44,9 @@ class FrameCollection<FrameType> {
      * - `array` 调用了 `filter()` 的数组本身。
      * @return {LogCollection} 过滤出的符合条件的栈帧组成的新栈帧集合。
      */
-    public filter(callbackFn: (frame: FrameType, index: number, array: FrameType[]) => boolean): FrameCollection<FrameType> {
-        let result = new FrameCollection<FrameType>();
-        let tempFrame: FrameType;
+    public filter(callbackFn: (frame: TraceStackFrame, index: number, array: TraceStackFrame[]) => boolean): TraceCollection {
+        let result = new TraceCollection();
+        let tempFrame: TraceStackFrame;
 
         for (let i = 0; i < this.frames.length; i++) {
             tempFrame = this.frames[i];
@@ -55,9 +57,7 @@ class FrameCollection<FrameType> {
 
         return result;
     }
-}
 
-class TraceCollection extends FrameCollection<TraceStackFrame> {
     /**
      * @description: 将调用堆栈集合转换为字符串。
      * @param {TraceFormatter} [format] 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
@@ -75,6 +75,27 @@ class TraceCollection extends FrameCollection<TraceStackFrame> {
 }
 
 class LogCollection extends FrameCollection<LogStackFrame> {
+    /**
+     * @description: 从当前的集合当中过滤符合条件的栈帧。
+     * @param {Function} callbackFn 用来测试数组中每个元素的函数。返回 `true` 表示该元素通过测试，保留该元素， `false` 则不保留。它接受以下三个参数：
+     * - `element` 数组中当前正在处理的元素。
+     * - `index` 正在处理的元素在数组中的索引。
+     * - `array` 调用了 `filter()` 的数组本身。
+     * @return {LogCollection} 过滤出的符合条件的栈帧组成的新栈帧集合。
+     */
+    public filter(callbackFn: (frame: LogStackFrame, index: number, array: LogStackFrame[]) => boolean): LogCollection {
+        let result = new LogCollection();
+        let tempFrame: LogStackFrame;
+
+        for (let i = 0; i < this.frames.length; i++) {
+            tempFrame = this.frames[i];
+            if (callbackFn(tempFrame, i, this.frames)) {
+                result.push(tempFrame);
+            }
+        }
+
+        return result;
+    }
 
     /**
      * @description: 将日志堆栈转换为 html 字符串用于发送日志。
@@ -357,7 +378,7 @@ export class Record {
      */
     private static DISPLAY_LEVEL: number = LogLevel.Debug;
 
-    private constructor() {}
+    private constructor() { }
 
     /**
      * @description: 设置记录的日志级别，低于设置的级别的日志都不会记录。

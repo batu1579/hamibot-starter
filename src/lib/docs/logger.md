@@ -14,7 +14,13 @@
 
 > 注意： 一般来说不需要手动清空。
 
-### FrameCollection.filter(callbackFn: (frame: FrameType, index: number, array: FrameType[]) => boolean): FrameCollection\<FrameType\>
+## class TraceCollection
+
+调用堆栈集合，继承自 [FrameCollection](#class-framecollectionframetype)\<[TraceStackFrame](#class-tracestackframe)\> 。在外部使用该类型的参数时需要使用 `TraceCollectionType` 。
+
+> 注意： `TraceCollection` 类并未导出，只能通过 `getStackTrace()` 方法来获取当前的调用堆栈集合。
+
+### TraceCollection.filter(callbackFn: (frame: FrameType, index: number, array: FrameType[]) => boolean): TraceCollection
 
 - `callbackFn` 用来测试数组中每个元素的函数。返回 `true` 表示该元素通过测试，保留该元素， `false` 则不保留。它接受以下三个参数：
 
@@ -23,12 +29,6 @@
   - `array` 调用了 `filter()` 的数组本身。
 
 从当前的日志集合当中过滤符合条件的栈帧，并返回他们组成的新栈帧集合。
-
-## class TraceCollection
-
-调用堆栈集合，继承自 [FrameCollection](#class-framecollectionframetype)\<[TraceStackFrame](#class-tracestackframe)\> 。在外部使用该类型的参数时需要使用 `TraceCollectionType` 。
-
-> 注意： `TraceCollection` 类并未导出，只能通过 `getStackTrace()` 方法来获取当前的调用堆栈集合。
 
 ### TraceCollection.toString(format?: [TraceFormatter](#traceformatter)): String
 
@@ -41,6 +41,16 @@
 日志集合，继承自 [FrameCollection](#class-framecollectionframetype)\<[LogStackFrame](#class-logstackframe)\> 。
 
 > 注意： `LogCollection` 类并未导出，只能通过 [logStack](#const-logstack) 对象来获取他的子集。
+
+### LogCollection.filter(callbackFn: (frame: FrameType, index: number, array: FrameType[]) => boolean): LogCollection
+
+- `callbackFn` 用来测试数组中每个元素的函数。返回 `true` 表示该元素通过测试，保留该元素， `false` 则不保留。它接受以下三个参数：
+
+  - `element` 数组中当前正在处理的元素。
+  - `index` 正在处理的元素在数组中的索引。
+  - `array` 调用了 `filter()` 的数组本身。
+
+从当前的日志集合当中过滤符合条件的栈帧，并返回他们组成的新栈帧集合。
 
 ### LogCollection.toHtmlString(): string
 
