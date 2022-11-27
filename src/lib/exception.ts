@@ -2,11 +2,10 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-04 16:09:50
  * @LastEditor: BATU1579
- * @LastTime: 2022-10-31 22:31:03
+ * @LastTime: 2022-11-28 01:51:04
  * @FilePath: \\src\\lib\\exception.ts
  * @Description: 全局异常类
  */
-import { EVENT } from "../global"
 import {
     Record,
     getStackTrace,
@@ -14,11 +13,16 @@ import {
     TraceStackFrameType
 } from "./logger";
 
-EVENT.on("ERROR", (err: Exception) => {
-    Record.error(err.toString());
+const ERROR_EVENTS = events.emitter();
+
+ERROR_EVENTS.on("error", (err: Exception) => {
+    Record.noPrintError(err.toString());
 })
 
 export interface Exception {
+    readonly exceptionType: string;
+    readonly message: string;
+
     toString(): string;
 
     traceFormatter?: (line: number, callerName: string) => string;
@@ -26,14 +30,14 @@ export interface Exception {
     traceFilter?: (frame: TraceStackFrameType, index: number, array: TraceStackFrameType[]) => boolean;
 }
 
-export class BaseException implements Exception {
+export class BaseException extends Error implements Exception {
 
-    protected exceptionType: string;
-    protected message: string | undefined;
+    readonly exceptionType: string = 'BaseException';
+    readonly message: string;
     protected traceBack: string;
 
-    constructor(message?: string) {
-        this.exceptionType = 'BaseException';
+    constructor(message: string) {
+        super();
         this.message = message;
 
         let trace: TraceCollectionType = getStackTrace()
@@ -42,7 +46,7 @@ export class BaseException implements Exception {
         }
         this.traceBack = trace.toString(this.traceFormatter);
 
-        EVENT.emit("ERROR", this);
+        ERROR_EVENTS.emit("error", this);
     }
 
     public traceFilter = undefined;
@@ -58,23 +62,55 @@ export class BaseException implements Exception {
     }
 }
 
-export class PermissionException extends BaseException {
-    constructor(message: string) {
-        super(message);
-        this.exceptionType = "PermissionException";
+function __isExceptionType<T extends BaseException>(error: any, targetException: string): error is T {
+    let exceptionType = Object.getOwnPropertyDescriptor(error, "exceptionType");
+
+    if (exceptionType === undefined) {
+        return false;
     }
+
+    return exceptionType.value === targetException;
+}
+
+export function isBaseException(error: any): error is BaseException {
+    return __isExceptionType<BaseException>(error, "BaseException");
+}
+
+export class PermissionException extends BaseException {
+    readonly exceptionType: string = "PermissionException";
+}
+
+export function isPermissionException(error: any): error is PermissionException {
+    return __isExceptionType<PermissionException>(error, 'PermissionException');
 }
 
 export class ValueException extends BaseException {
-    constructor(message: string) {
-        super(message);
-        this.exceptionType = "ValueException";
-    }
+    readonly exceptionType: string = "ValueException";
+}
+
+export function isValueException(error: any): error is ValueException {
+    return __isExceptionType<ValueException>(error, 'ValueException');
+}
+
+export class WidgetNotFoundException extends BaseException {
+    readonly exceptionType: string = "WidgetNotFoundException";
+}
+
+export function isWidgetNotFoundException(error: any): error is WidgetNotFoundException {
+    return __isExceptionType<WidgetNotFoundException>(error, 'WidgetNotFoundException');
 }
 
 export class ConfigInvalidException extends ValueException {
-    constructor(message: string) {
-        super(message + ", please check it again !");
-        this.exceptionType = "ConfigInvalidException";
+    readonly exceptionType: string = "ConfigInvalidException";
+
+    constructor(fieldName: string, helpInfo?: string) {
+        super(
+            `The '${fieldName}' field in the configuration is invalid${", " + helpInfo}. ` +
+            "please check it again !"
+        );
     }
+}
+
+export function isConfigInvalidException(error: any): error is ConfigInvalidException {
+    return __isExceptionType<ConfigInvalidException>(error, 'ConfigInvalidException');
 }

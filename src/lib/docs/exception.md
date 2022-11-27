@@ -8,42 +8,48 @@
 
 ```TypeScript
 class HttpException extends BaseException {
+    readonly exceptionType: string = "HttpException";
+
     constructor(errorCode: number) {
-        super(errorCode);
-        this.exceptionType = "HttpException";
+        super(errorCode.toString());
     }
 
-    protected traceFormatter(line: number, callerName: string) {
+    public traceFilter(frame: TraceStackFrameType, index: number, array: TraceStackFrameType[]): boolean {
+        // 设置自定义的调用堆栈过滤器
+        return frame.getCallerName() !== "xxx" && index !== 0;
+    }
+
+    public traceFormatter(line: number, callerName: string): string {
         // 设置自定义的调用追踪样式
-        return `  Called by ${callerName} on line ${line}`
+        return `  Called by ${callerName} on line ${line}`;
     }
 
-    public toString() {
+    public toString(): string {
         // 设置自定义的异常输出样式
         return (
             "Traceback:\n" +
             this.traceBack + "\n" +
             this.exceptionType + (this.message ? ": " + this.message : "") + "\n"
-        )
+        );
     }
 }
 ```
 
-或者如果 `BaseException` 类无法提供所需的灵活程度，需要自己重新构造异常。需要达成两点：
+或者如果 `BaseException` 类无法提供所需的灵活程度，需要自己重新构造异常。至少需要满足两点：
 
 1. 实现 `Exception` 接口。
-2. 在构造方法最后一行用全局的事件发射器 `EVENT` 发射一个 `Error` 事件，并将实例引用 `this` 当作事件的参数传递。
+
+2. 在构造方法最后一行用异常事件发射器 `ERROR_EVENT` 发射一个 `error` 事件，并将实例引用 `this` 当作事件的参数传递。
 
 ```typescript
 class MyException implements Exception {
 
-    protected message: string
+    readonly message: stringl;
+    readonly exceptionType: string = "MyException";
 
     constructor(message: string) {
         this.message = message;
-        this.exceptionType = "MyException";
-
-        EVENT.emit("ERROR", this);
+        ERROR_EVENT.emit("error", this);
     }
 
     public toString(): string {
@@ -54,23 +60,35 @@ class MyException implements Exception {
 
 ## interface Exception
 
-异常接口，如果不想继承自基类或者其他预制基类，可以选择改为实现此接口并在构造方法中用全局的事件发射器 `EVENT` 发射一个 `Error` 事件。
+异常接口，如果不想继承自基类或者其他预制基类，可以选择改为实现此接口并在构造方法中用异常事件发射器 `ERROR_EVENT` 发射一个 `error` 事件。
+
+### readonly exceptionType: string
+
+用来标记异常类型，一般和异常类名相同即可。
+
+### readonly message: string
+
+异常的详细描述信息。
+
+### Exception.toString(): string
+
+用于将异常对象转换成字符串输出，默认注册的监听器就是调用这个方法来输出异常信息。
 
 ## class BaseException
 
-所有自定义异常的基类，在抛出这些继承自 `BaseException` 类的异常时会用全局的事件发射器 `EVENT` 发射一个 `Error` 事件。在脚本运行之前自动会给 `EVENT` 注册一个 `Error` 事件的监听器，来捕获输出这个异常相关的信息。
+所有自定义异常的基类，继承自 `Error` 实现了 `Exception` 接口。
 
-目前还没找到接收全局未捕获的异常的办法，所以暂时用这种办法代替一下。
+> 目前还没找到接收全局未捕获的异常的办法，所以暂时用这种办法代替一下。
 
-### protected BaseException.message: string | undefined
+### BaseException.message: string | undefined
 
 异常要发送的信息，用来在覆盖 `toString()` 方法时获取异常要发送的信息。
 
-### protected BaseException.exceptionType: string
+### BaseException.exceptionType: string
 
 异常类型，用来在覆盖 `toString()` 方法时获取异常的类型。
 
-### protected BaseException.traceBack: string
+### BaseException.traceBack: string
 
 引发异常的调用堆栈信息，用来在覆盖 `toString()` 方法时获取调用堆栈的信息。
 调用堆栈信息。转换字符串的结果可以使用异常类中的 `filter()` 和 `traceFormatter()` 方法来调整。
@@ -120,6 +138,20 @@ ${exceptionType}: ${message}
 
 值异常，继承自 [BaseException](#class-baseexception) 。
 
+## class WidgetNotFoundException
+
+未找到控件，继承自 [BaseException](#class-baseexception) 。
+
 ## clase ConfigInvalidException
 
 脚本配置中的属性值非法异常，继承自 [BaseException](#class-baseexception) 。
+
+## 判断异常类型的辅助函数
+
+> 建议使用自定义异常时也提供类似的判断函数
+
+- `isBaseException(error: any)`: 判断一个 any 对象是否是 `BaseException` 类的实例。
+- `isPermissionException(error: any)`:  判断一个 any 对象是否是 `PermissionException` 类的实例。
+- `isValueException(error: any)`:  判断一个 any 对象是否是 `ValueException` 类的实例。
+- `isWidgetNotFoundException(error: any)`:  判断一个 any 对象是否是 `WidgetNotFoundException` 类的实例。
+- `isConfigurationException(error: any)`:  判断一个 any 对象是否是 `ConfigInvalidException` 类的实例。
