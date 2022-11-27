@@ -45,6 +45,27 @@ events.on("exit", () => {
     console.hide();
 });
 
+// register send log listener
+if (_TOKEN !== "") {
+    events.on("exit", () => {
+        let collection = logStack.filter((frame) => {
+            return frame.getLevel() >= LogLevel.Log;
+        });
+
+        Record.info("Sending logs...");
+
+        for (let i = 0; i < 3; i++) {
+            if (sendLog(collection, `[LOG] ${PROJECT_NAME}`)) {
+                Record.info("Sending logs succeeds");
+                return;
+            }
+            Record.warn(`Sending failed, retry ${i + 1}`);
+        }
+
+        Record.error("Failure to send Logs !");
+    });
+}
+
 // ------------------------ validation --------------------------
 
 Record.info("Verifying configurations");
