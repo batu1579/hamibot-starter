@@ -2,25 +2,15 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-04 20:58:39
  * @LastEditor: BATU1579
- * @LastTime: 2022-11-22 16:34:51
+ * @LastTime: 2022-11-28 01:17:42
  * @FilePath: \\src\\lib\\init.ts
  * @Description: 脚本初始化
  */
 import { Record } from "./logger";
 import { PermissionException } from "./exception";
-import { VERSION, SHOW_CONSOLE, SHORT_WAIT_MS, LONG_WAIT_MS } from "../global";
+import { SHOW_CONSOLE, SHORT_WAIT_MS } from "../global";
 
 export function init() {
-
-    Record.info(`Launching...\n\nCurrent script version: ${VERSION}\n`);
-    events.on("exit", () => {
-        threads.shutDownAll();
-        Record.info("Exit...");
-
-        sleep(LONG_WAIT_MS * 5);
-        console.hide();
-    });
-
     // check accessibility permission
     if (auto.service === null) {
         if (!confirm('Please enable accessibility permission')) {
