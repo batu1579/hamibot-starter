@@ -244,6 +244,13 @@ Record.log('count:', count);
 
 与 `Record.log` 类似，但输出结果以红色字体显示。输出优先级高于 `warn` ，用于输出错误信息。
 
+### Record.noPrintError(message: string, ...args: any[]): string
+
+- `message` 主要信息。
+- `args`  （可选） 要填充的数据。
+
+与 `Record.error` 类似，但不会输出结果到控制台。主要用于避免重复显示抛出的异常。
+
 ### Record.trace(data?: string, format?: [TraceFormatter](#traceformatter), ...args: any[]): string
 
 - `message` 主要信息。
@@ -275,8 +282,8 @@ Record.trace('Show me');
     {
         "name": "TOKEN",
         "type": "text",
-        "label": "sendplus的用户token",
-        "help": "可以在微信中查看复制，不使用sendplus则留空"
+        "label": "pushplus的用户token",
+        "help": "可以在微信中查看复制，不使用pushplus则留空"
     }
 ]
 ```

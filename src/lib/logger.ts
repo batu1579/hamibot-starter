@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-05 04:00:16
  * @LastEditor: BATU1579
- * @LastTime: 2022-11-22 16:27:08
+ * @LastTime: 2022-11-28 01:18:01
  * @FilePath: \\src\\lib\\logger.ts
  * @Description: 存放关于日志和调试信息的预制方法。
  */
@@ -419,7 +419,7 @@ export class Record {
      * ```
      */
     public static log(message?: string, ...args: any[]): string {
-        return Record.recLog(LoggerSchemes.log, message, ...args);
+        return Record.recLog(LoggerSchemes.log, true, message, ...args);
     }
 
     /**
@@ -428,7 +428,7 @@ export class Record {
      * @param {array} [args] 要填充的数据。
      */
     public static verbose(message?: string, ...args: any[]): string {
-        return Record.recLog(LoggerSchemes.debug, message, ...args);
+        return Record.recLog(LoggerSchemes.debug, true, message, ...args);
     }
 
     /**
@@ -449,7 +449,7 @@ export class Record {
      * @param {array} [args] 要填充的数据。
      */
     public static info(message?: string, ...args: any[]): string {
-        return Record.recLog(LoggerSchemes.info, message, ...args);
+        return Record.recLog(LoggerSchemes.info, true, message, ...args);
     }
 
     /**
@@ -458,7 +458,7 @@ export class Record {
      * @param {array} [args] 要填充的数据。
      */
     public static warn(message?: string, ...args: any[]): string {
-        return Record.recLog(LoggerSchemes.warn, message, ...args);
+        return Record.recLog(LoggerSchemes.warn, true, message, ...args);
     }
 
     /**
@@ -467,7 +467,16 @@ export class Record {
      * @param {array} [args] 要填充的数据。
      */
     public static error(message?: string, ...args: any[]): string {
-        return Record.recLog(LoggerSchemes.error, message, ...args);
+        return Record.recLog(LoggerSchemes.error, true, message, ...args);
+    }
+
+    /**
+     * @description: 与 `Record.error` 类似，但不会输出结果到控制台。主要用于避免重复显示抛出的异常。
+     * @param {string} [message] 主要信息。
+     * @param {array} [args] 要填充的数据。
+     */
+    public static noPrintError(message?: string, ...args: any[]): string {
+        return Record.recLog(LoggerSchemes.error, false, message, ...args);
     }
 
     /**
@@ -493,7 +502,7 @@ export class Record {
         let trace = sliceStackFrames(getRawStackTrace(), 1, 0);
         let parsedTrace = new TraceCollection(...parseTrace(trace))
 
-        return Record.recLog(LoggerSchemes.trace, `${data}\n${parsedTrace.toString(format)}`, ...args);
+        return Record.recLog(LoggerSchemes.trace, true, `${data}\n${parsedTrace.toString(format)}`, ...args);
     }
 
     /**
@@ -503,7 +512,7 @@ export class Record {
      * @param {array} [args] 要填充的数据。
      * @return {string} 输出的日志信息。
      */
-    private static recLog(scheme: LoggerScheme, data?: string, ...args: any[]): string {
+    private static recLog(scheme: LoggerScheme, needPrint: boolean, data?: string, ...args: any[]): string {
         // @ts-ignore
         data = util.format(data, ...args);
         data = `[${scheme.displayName}] [${getCallerName(3)}]: ${data}`;
@@ -514,7 +523,7 @@ export class Record {
         }
 
         // 输出日志
-        if (scheme.level >= Record.DISPLAY_LEVEL) {
+        if (needPrint && scheme.level >= Record.DISPLAY_LEVEL) {
             scheme.logFunction(data);
         }
 
