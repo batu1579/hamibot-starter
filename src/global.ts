@@ -25,16 +25,22 @@ export const EVENT = events.emitter();
 
 // ------------------------- configuration -------------------------
 
-export let {
-    TOKEN,
-    SHOW_CONSOLE,
+// ---------------------- configuration -------------------------
+
+const {
+    _TOKEN,
+    _SHOW_CONSOLE,
 } = hamibot.env;
 
-// ------------------------- validation --------------------------
+// ------------------------ validation --------------------------
 
 // pushplus token
-if (typeof(TOKEN) === "string" && setToken(TOKEN) == false) {
-    throw new ConfigInvalidException(
-        "The 'Token' field in the configuration is invalid"
-    )
+if (_TOKEN !== "" && setToken(_TOKEN) == false) {
+    throw new ConfigInvalidException("pushplus token", "needs to be a 32-bit hexadecimal number");
 }
+
+// show console
+if (typeof _SHOW_CONSOLE !== "boolean") {
+    throw new ConfigInvalidException("show console");
+}
+export const SHOW_CONSOLE = _SHOW_CONSOLE;

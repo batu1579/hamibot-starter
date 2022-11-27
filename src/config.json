@@ -1,14 +1,14 @@
 [
     {
-        "name": "TOKEN",
+        "name": "_TOKEN",
         "type": "text",
-        "label": "sendplus的用户token",
-        "help": "可以在微信中查看复制，不使用sendplus则留空"
+        "label": "pushplus 的用户 Token",
+        "help": "可以在 pushplus 的微信公众号中获取，不使用 pushplus 则留空"
     },
     {
         "label": "显示控制台(需要悬浮窗权限)",
         "type": "select",
-        "name": "SHOW_CONSOLE",
+        "name": "_SHOW_CONSOLE",
         "options": {
             "true": "是",
             "false": "否"
