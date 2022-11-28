@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-04 16:09:50
  * @LastEditor: BATU1579
- * @LastTime: 2022-11-28 01:51:04
+ * @LastTime: 2022-11-28 12:10:47
  * @FilePath: \\src\\lib\\exception.ts
  * @Description: 全局异常类
  */
@@ -82,6 +82,14 @@ export class PermissionException extends BaseException {
 
 export function isPermissionException(error: any): error is PermissionException {
     return __isExceptionType<PermissionException>(error, 'PermissionException');
+}
+
+export class ServiceNotEnabled extends BaseException {
+    readonly exceptionType: string = "ServiceNotEnabled";
+}
+
+export function isServiceNotEnabled(error: any): error is ServiceNotEnabled {
+    return __isExceptionType<ServiceNotEnabled>(error, 'ServiceNotEnabled');
 }
 
 export class ValueException extends BaseException {

@@ -134,6 +134,10 @@ ${exceptionType}: ${message}
 
 权限异常类，继承自 [BaseException](#class-baseexception) 。
 
+## class ServiceNotEnabled
+
+无障碍服务异常类，继承自 [BaseException](#class-baseexception) 。
+
 ## class ValueException
 
 值异常，继承自 [BaseException](#class-baseexception) 。
@@ -151,7 +155,8 @@ ${exceptionType}: ${message}
 > 建议使用自定义异常时也提供类似的判断函数
 
 - `isBaseException(error: any)`: 判断一个 any 对象是否是 `BaseException` 类的实例。
-- `isPermissionException(error: any)`:  判断一个 any 对象是否是 `PermissionException` 类的实例。
-- `isValueException(error: any)`:  判断一个 any 对象是否是 `ValueException` 类的实例。
-- `isWidgetNotFoundException(error: any)`:  判断一个 any 对象是否是 `WidgetNotFoundException` 类的实例。
-- `isConfigurationException(error: any)`:  判断一个 any 对象是否是 `ConfigInvalidException` 类的实例。
+- `isPermissionException(error: any)`: 判断一个 any 对象是否是 `PermissionException` 类的实例。
+- `isServiceException(error: any)`: 判断一个 any 对象是否是 `ServiceNotEnabled` 类的实例。
+- `isValueException(error: any)`: 判断一个 any 对象是否是 `ValueException` 类的实例。
+- `isWidgetNotFoundException(error: any)`: 判断一个 any 对象是否是 `WidgetNotFoundException` 类的实例。
+- `isConfigurationException(error: any)`: 判断一个 any 对象是否是 `ConfigInvalidException` 类的实例。
