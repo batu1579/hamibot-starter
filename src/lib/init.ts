@@ -2,13 +2,13 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-04 20:58:39
  * @LastEditor: BATU1579
- * @LastTime: 2022-11-28 01:17:42
+ * @LastTime: 2022-11-28 11:16:01
  * @FilePath: \\src\\lib\\init.ts
  * @Description: 脚本初始化
  */
 import { Record } from "./logger";
-import { PermissionException } from "./exception";
 import { SHOW_CONSOLE, SHORT_WAIT_MS } from "../global";
+import { PermissionException, ServiceNotEnabled } from "./exception";
 
 export function init() {
     // check accessibility permission
@@ -23,13 +23,12 @@ export function init() {
 
     // check is service alive
     if (device.height === 0 || device.width === 0) {
-        Record.error(
+        throw new ServiceNotEnabled(
             'Failed to get the screen size. ' +
             'Please try restarting the service or re-installing Hamibot'
         );
-        exit();
     } else {
-        Record.verbose("Screen size: " + device.height + " x " + device.width);
+        Record.debug("Screen size: " + device.height + " x " + device.width);
     }
 
     // show console
