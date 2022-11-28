@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-04 21:03:08
  * @LastEditor: BATU1579
- * @LastTime: 2022-11-28 02:01:56
+ * @LastTime: 2022-11-28 13:58:09
  * @FilePath: \\src\\global.ts
  * @Description: 全局常量和配置项验证
  */
@@ -36,23 +36,19 @@ const {
 
 // -------------------- register listener -----------------------
 
-// register kill thread listener
+// register exit listener
 events.on("exit", () => {
     threads.shutDownAll();
     Record.info("Exit...");
 
-    sleep(LONG_WAIT_MS * 5);
-    console.hide();
-});
+    // send to pushplus
+    let collection = logStack.filter((frame) => {
+        return frame.getLevel() >= LogLevel.Log;
+    });
 
-// register send log listener
-if (_TOKEN !== "") {
-    events.on("exit", () => {
-        let collection = logStack.filter((frame) => {
-            return frame.getLevel() >= LogLevel.Log;
-        });
+    if (_TOKEN && _TOKEN !== "") {
 
-        Record.info("Sending logs...");
+        Record.info("Sending logs to pushplus...");
 
         for (let i = 0; i < 3; i++) {
             if (sendLog(collection, `[LOG] ${PROJECT_NAME}`)) {
@@ -62,9 +58,18 @@ if (_TOKEN !== "") {
             Record.warn(`Sending failed, retry ${i + 1}`);
         }
 
-        Record.error("Failure to send Logs !");
-    });
-}
+        Record.error("Failure to send logs !");
+
+    }
+
+    // send to hamibot
+    for (let item of collection.toStringArray()) {
+        hamibot.postMessage(item);
+    }
+
+    sleep(LONG_WAIT_MS * 5);
+    console.hide();
+});
 
 // ------------------------ validation --------------------------
 
