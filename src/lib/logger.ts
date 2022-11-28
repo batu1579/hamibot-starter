@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-05 04:00:16
  * @LastEditor: BATU1579
- * @LastTime: 2022-11-28 01:18:01
+ * @LastTime: 2022-11-28 12:13:24
  * @FilePath: \\src\\lib\\logger.ts
  * @Description: 存放关于日志和调试信息的预制方法。
  */
@@ -59,6 +59,21 @@ class TraceCollection extends FrameCollection<TraceStackFrame> {
     }
 
     /**
+     * @description: 将调用堆栈集合逐个转换为字符串。
+     * @param {TraceFormatter} [format] 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
+     * @return {string[]} 将集合中元素转换为字符串后的数组。
+     */
+    public toStringArray(format?: TraceFormatter): string[] {
+        let trace: string[] = []
+
+        for (let frame of this.frames) {
+            trace.push(frame.toString(format));
+        }
+
+        return trace
+    }
+
+    /**
      * @description: 将调用堆栈集合转换为字符串。
      * @param {TraceFormatter} [format] 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
      * @return {string} 转换后的字符串。
@@ -76,12 +91,12 @@ class TraceCollection extends FrameCollection<TraceStackFrame> {
 
 class LogCollection extends FrameCollection<LogStackFrame> {
     /**
-     * @description: 从当前的集合当中过滤符合条件的栈帧。
+     * @description: 从当前的集合当中过滤符合条件的元素。
      * @param {Function} callbackFn 用来测试数组中每个元素的函数。返回 `true` 表示该元素通过测试，保留该元素， `false` 则不保留。它接受以下三个参数：
      * - `element` 数组中当前正在处理的元素。
      * - `index` 正在处理的元素在数组中的索引。
      * - `array` 调用了 `filter()` 的数组本身。
-     * @return {LogCollection} 过滤出的符合条件的栈帧组成的新栈帧集合。
+     * @return {LogCollection} 过滤出的符合条件的日志组成的新集合。
      */
     public filter(callbackFn: (frame: LogStackFrame, index: number, array: LogStackFrame[]) => boolean): LogCollection {
         let result = new LogCollection();
@@ -98,8 +113,8 @@ class LogCollection extends FrameCollection<LogStackFrame> {
     }
 
     /**
-     * @description: 将日志堆栈转换为 html 字符串用于发送日志。
-     * @return {string} 转换后的堆栈。
+     * @description: 将日志集合转换为 html 字符串用于发送日志。
+     * @return {string} 转换后的字符串。
      */
     public toHtmlString(): string {
         let stack: string[] = [
@@ -119,8 +134,22 @@ class LogCollection extends FrameCollection<LogStackFrame> {
     }
 
     /**
-     * @description: 获取日志堆栈的内容。
-     * @return {string} 将栈帧转换为字符串后的日志堆栈。
+     * @description: 将日志集合逐个转换为字符串。
+     * @return {string[]} 将集合中元素转换为字符串后的数组。
+     */
+    public toStringArray(): string[] {
+        let stack: string[] = [];
+
+        for (let i = 0; i < this.frames.length; i++) {
+            stack.push(this.frames[i].toString());
+        }
+
+        return stack;
+    }
+
+    /**
+     * @description: 将日志集合转换为字符串。
+     * @return {string} 将日志集合元素转换为字符串后使用换行符拼接的字符串。
      */
     public toString(): string {
         let stack: string[] = [];
@@ -316,7 +345,7 @@ export const logStack: LogCollection = new LogCollection();
 /**
  * @description: pushplus 的令牌。用于发送日志。
  */
-let TOKEN: string | null = null;
+let _token: string | null = null;
 
 /**
  * @description: 通过抛出异常，从调用堆栈中获取调用者的函数名。
@@ -540,17 +569,11 @@ export class Record {
  * @return {boolean} 是否设置成功。
  */
 export function setToken(token: string): boolean {
-    let regResult = /([0-9a-f]*)/.exec(token);
-
-    if (token.length !== 32) {
-        return false;
-    } else if (regResult === null) {
-        return false;
-    } else if (regResult[1] !== token) {
+    if (token.length !== 32 || /^\d*$/.test(token)) {
         return false;
     }
 
-    TOKEN = token;
+    _token = token;
 
     return true;
 }
@@ -671,13 +694,13 @@ function parseTrace(originTrace: string): TraceStackFrame[] {
  */
 function sendToRemote(title: string, message: string): boolean {
     // TODO: 抛出异常？
-    if (TOKEN === null) {
+    if (_token === null) {
         return false;
     }
 
     let res = http.post(`http://www.pushplus.plus/send`, {
         title: title,
-        token: TOKEN,
+        token: _token,
         content: message,
         template: 'html'
     })
@@ -688,6 +711,10 @@ function sendToRemote(title: string, message: string): boolean {
 function defaultFormatter(line: number, callerName: string): string {
     return `  | at line ${line}, in <${callerName}>`;
 }
+
+export type LogCollectionType = LogCollection;
+
+export type LogStackFrameType = LogStackFrame;
 
 export type TraceCollectionType = TraceCollection;
 

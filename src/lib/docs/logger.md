@@ -30,6 +30,12 @@
 
 从当前的日志集合当中过滤符合条件的栈帧，并返回他们组成的新栈帧集合。
 
+### TraceCollection.toStringArray(format?: [TraceFormatter](#traceformatter)): String[]
+
+- `format` 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
+
+将调用堆栈集合逐个转换为字符串。
+
 ### TraceCollection.toString(format?: [TraceFormatter](#traceformatter)): String
 
 - `format` 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
@@ -55,6 +61,10 @@
 ### LogCollection.toHtmlString(): string
 
 将全部日志堆栈中的数据转换为 HTML 文档。用于美化远程发送的样式。
+
+### LogCollection.toStringArray(): string[]
+
+将日志集合逐个转换为字符串。
 
 ### LogCollection.toString(): string
 
