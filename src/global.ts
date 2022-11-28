@@ -71,12 +71,12 @@ if (_TOKEN !== "") {
 Record.info("Verifying configurations");
 
 // pushplus token
-if (_TOKEN !== "" && setToken(_TOKEN) == false) {
+if (_TOKEN && _TOKEN !== "" && setToken(_TOKEN) == false) {
     throw new ConfigInvalidException("pushplus token", "needs to be a 32-bit hexadecimal number");
 }
 
 // show console
-if (typeof _SHOW_CONSOLE !== "boolean") {
+if (typeof _SHOW_CONSOLE !== "string" || _SHOW_CONSOLE !== "true" && _SHOW_CONSOLE !== "false") {
     throw new ConfigInvalidException("show console");
 }
 export const SHOW_CONSOLE = _SHOW_CONSOLE;

@@ -33,7 +33,7 @@ export function init() {
     }
 
     // show console
-    if (SHOW_CONSOLE) {
+    if (SHOW_CONSOLE === "true") {
         console.show();
         sleep(SHORT_WAIT_MS);
         console.setPosition(0, 100);
