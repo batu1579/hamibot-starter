@@ -418,7 +418,7 @@ export class Record {
      * 
      * @param {number} level 设置的等级。建议使用 `LogLevel` 枚举类型来获取等级。
      */
-    public setRecordLevel(level: number): void {
+    public static setRecordLevel(level: number): void {
         Record.RECORD_LEVEL = level;
     }
 
@@ -426,7 +426,7 @@ export class Record {
      * @description: 设置显示的日志级别，低于设置的级别的日志都不会显示。
      * @param {number} level 设置的等级。建议使用 `LogLevel` 枚举类型来获取等级。
      */
-    public setDisplayLevel(level: number): void {
+    public static setDisplayLevel(level: number): void {
         Record.DISPLAY_LEVEL = level;
     }
 
