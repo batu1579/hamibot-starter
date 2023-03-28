@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-05 04:00:16
  * @LastEditor: BATU1579
- * @LastTime: 2022-11-28 12:13:24
+ * @LastTime: 2023-03-28 20:21:34
  * @FilePath: \\src\\lib\\logger.ts
  * @Description: 存放关于日志和调试信息的预制方法。
  */
@@ -220,7 +220,7 @@ class LogStackFrame {
      * @example
      * ```typescript
      * // 获取日志堆栈中全部的 log 等级的日志记录
-     * let collection = logStack.filter((frame) => {
+     * let collection = LOG_STACK.filter((frame) => {
      *     return frame.getLevel() == LogLevel.log;
      * });
      * ```
@@ -235,7 +235,7 @@ class LogStackFrame {
      * @example
      * ```typescript
      * // 获取日志堆栈中全部包含其中 hello 的日志记录
-     * let collection = logStack.filter((frame) => {
+     * let collection = LOG_STACK.filter((frame) => {
      *     return /hello/.test(frame.getData());
      * });
      * ```
@@ -258,6 +258,7 @@ class LogStackFrame {
      */
     public toHtmlString(): string {
         let htmlArray: string[] = [];
+        // TODO(BATU1579): 添加可以自定义的行内样式
         let startTag: string = `<span style='color: ${this.scheme.color};'>`;
         let endTag: string = `</span></br>`
 
@@ -291,7 +292,9 @@ export enum LogLevel {
     Error
 }
 
-class LoggerSchemes {
+export class LoggerSchemes {
+    private constructor() { }
+
     static readonly trace = {
         'displayName': 'TRACE',
         'logFunction': console.verbose,
@@ -330,17 +333,19 @@ class LoggerSchemes {
     }
 }
 
-interface LoggerScheme {
-    displayName: string;
-    logFunction: (data?: any, ...args: any[]) => void;
-    color: string;
-    level: number;
+export interface LoggerScheme {
+    readonly displayName: string;
+    readonly logFunction: (data?: any, ...args: any[]) => void;
+    readonly color: string;
+    readonly level: LogLevel;
+    readonly needPrint?: boolean;
+    readonly needRecord?: boolean;
 }
 
 /**
  * @description: 日志堆栈，用来记录打印的全部日志。
  */
-export const logStack: LogCollection = new LogCollection();
+export const LOG_STACK: LogCollection = new LogCollection();
 
 /**
  * @description: pushplus 的令牌。用于发送日志。
@@ -395,7 +400,21 @@ export function getStackTrace(endFunction?: Function): TraceCollection {
     return new TraceCollection(...parseTrace(trace));
 }
 
+export interface LogRecordConfig {
+    readonly needPrint?: boolean;
+    readonly needRecord?: boolean;
+    readonly skipCallerNumber?: number;
+}
+
+const DEFAULT_LOG_RECORD_CONFIG: LogRecordConfig = {
+    needPrint: true,
+    needRecord: true,
+    skipCallerNumber: 1
+}
+
 export class Record {
+
+    private constructor() { }
 
     /**
      * @description: 用来限制记录的日志级别，低于此级别的日志不会记录。
@@ -406,8 +425,6 @@ export class Record {
      * @description: 用来限制显示的日志级别，低于此级别的日志不会被显示出来。
      */
     private static DISPLAY_LEVEL: number = LogLevel.Debug;
-
-    private constructor() { }
 
     /**
      * @description: 设置记录的日志级别，低于设置的级别的日志都不会记录。
@@ -436,6 +453,7 @@ export class Record {
      * 此函数与 `console.log` 方法的主要区别在于会自动存储每一次的日志，以供后面使用。
      * @param {string} [message] 主要信息。
      * @param {any[]} [args] 要填充的数据。
+     * @return {string} 输出的日志信息。
      * @example
      * ```typescript
      * const count: number = 5;
@@ -448,16 +466,19 @@ export class Record {
      * ```
      */
     public static log(message?: string, ...args: any[]): string {
-        return Record.recLog(LoggerSchemes.log, true, message, ...args);
+        // @ts-ignore
+        return Record.recLog(LoggerSchemes.log, util.format(message, ...args));
     }
 
     /**
      * @description: 与 `Record.log` 类似，但输出结果以灰色字体显示。输出优先级低于 `log` ，用于输出观察性质的信息。
      * @param {string} [message] 主要信息。
      * @param {array} [args] 要填充的数据。
+     * @return {string} 输出的日志信息。
      */
     public static verbose(message?: string, ...args: any[]): string {
-        return Record.recLog(LoggerSchemes.debug, true, message, ...args);
+        // @ts-ignore
+        return Record.recLog(LoggerSchemes.debug, util.format(message, ...args));
     }
 
     /**
@@ -469,6 +490,7 @@ export class Record {
      * 
      * @param {string} [message] 主要信息。
      * @param {array} [args] 要填充的数据。
+     * @return {string} 输出的日志信息。
      */
     public static debug = Record.verbose;
 
@@ -476,36 +498,33 @@ export class Record {
      * @description: 与 `Record.log` 类似，但输出结果以绿色字体显示。输出优先级高于 `log` ，用于输出重要信息。
      * @param {string} [message] 主要信息。
      * @param {array} [args] 要填充的数据。
+     * @return {string} 输出的日志信息。
      */
     public static info(message?: string, ...args: any[]): string {
-        return Record.recLog(LoggerSchemes.info, true, message, ...args);
+        // @ts-ignore
+        return Record.recLog(LoggerSchemes.info, util.format(message, ...args));
     }
 
     /**
      * @description: 与 `Record.log` 类似，但输出结果以蓝色字体显示。输出优先级高于 `info` ，用于输出警告信息。
      * @param {string} [message] 主要信息。
      * @param {array} [args] 要填充的数据。
+     * @return {string} 输出的日志信息。
      */
     public static warn(message?: string, ...args: any[]): string {
-        return Record.recLog(LoggerSchemes.warn, true, message, ...args);
+        // @ts-ignore
+        return Record.recLog(LoggerSchemes.warn, util.format(message, ...args));
     }
 
     /**
      * @description: 与 `Record.log` 类似，但输出结果以红色字体显示。输出优先级高于 `warn` ，用于输出错误信息。
      * @param {string} [message] 主要信息。
      * @param {array} [args] 要填充的数据。
+     * @return {string} 输出的日志信息。
      */
     public static error(message?: string, ...args: any[]): string {
-        return Record.recLog(LoggerSchemes.error, true, message, ...args);
-    }
-
-    /**
-     * @description: 与 `Record.error` 类似，但不会输出结果到控制台。主要用于避免重复显示抛出的异常。
-     * @param {string} [message] 主要信息。
-     * @param {array} [args] 要填充的数据。
-     */
-    public static noPrintError(message?: string, ...args: any[]): string {
-        return Record.recLog(LoggerSchemes.error, false, message, ...args);
+        // @ts-ignore
+        return Record.recLog(LoggerSchemes.error, util.format(message, ...args));
     }
 
     /**
@@ -517,9 +536,9 @@ export class Record {
      * 
      * - 此函数显示的等级和 `Record.debug()` 相同。
      * 
-     * @param {string} [data] 主要信息。
-     * @param {TraceFormatter} [format] 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
+     * @param {string} [message] 主要信息。
      * @param {array} [args] 要填充的数据。
+     * @return {string} 输出的日志信息。
      * @example
      * ```typescript
      * // Show me
@@ -527,36 +546,90 @@ export class Record {
      * Record.trace('Show me');
      * ```
      */
-    public static trace(data?: string, format?: TraceFormatter, ...args: any[]): string {
+    public static trace(message?: string, ...args: any[]): string {
         let trace = sliceStackFrames(getRawStackTrace(), 1, 0);
         let parsedTrace = new TraceCollection(...parseTrace(trace))
 
-        return Record.recLog(LoggerSchemes.trace, true, `${data}\n${parsedTrace.toString(format)}`, ...args);
+        // @ts-ignore
+        message = util.format(message, ...args);
+
+        return Record.recLog(LoggerSchemes.trace, `${message}\n${parsedTrace.toString()}`);
+    }
+
+
+    /**
+     * @description: 与 `Record.trace` 类似，会打印出调用这个函数所在的调用栈信息（即当前运行的文件、行数等信息）。
+     * 
+     * 此函数与 `Record.trace` 的主要区别在于可以手动指定调用栈的格式，可以更个性化的显示调用栈。
+     * 
+     * **注意！：**
+     * 
+     * - 此函数显示的等级和 `Record.debug()` 相同。
+     * 
+     * @param {TraceFormatter} formatter 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
+     * @param {string} [message] 主要信息。
+     * @param {array} [args] 要填充的数据。
+     * @return {string} 输出的日志信息。
+     * @example
+     * ```typescript
+     * // Show me
+     * //  | callerName: #line
+     * Record.trace((line, caller) => `  | ${caller}: #${line}`, 'Show me');
+     * ```
+     */
+    public static traceWithCustomFormatter(formatter: TraceFormatter, message?: string, ...args: any[]): string {
+        let trace = sliceStackFrames(getRawStackTrace(), 1, 0);
+        let parsedTrace = new TraceCollection(...parseTrace(trace))
+
+        // @ts-ignore
+        message = util.format(message, ...args);
+
+        return Record.recLog(LoggerSchemes.trace, `${message}\n${parsedTrace.toString(formatter)}`);
+    }
+
+    /**
+     * @description: 高度自定义的日志信息接口
+     * @param {LoggerScheme} scheme 日志记录方案，包括显示名称，日志等级，显示颜色等等，可以使用模块中的 `LoggerSchemes` 类来设置，也可以自己构建。
+     * @param {LogRecordConfig} config 细粒度的日志设置，包括是否输出到控制台，跳过几个调用者名称等等。
+     * @param {string} [message] 主要信息。
+     * @param {array} [args] 要填充的数据。
+     * @return {string} 输出的日志信息。
+     */
+    public static customLog(
+        scheme: LoggerScheme,
+        config: LogRecordConfig,
+        message?: string, ...args: any[]
+    ): string {
+        // @ts-ignore
+        return Record.recLog(scheme, util.format(message, ...args), config);
     }
 
     /**
      * @description: 记录日志核心方法，负责记录和输出日志数据。
      * @param {LoggerScheme} scheme 日志记录方案。
-     * @param {string} [data] 主要信息。
-     * @param {array} [args] 要填充的数据。
+     * @param {string} [logMessage] 日志信息。
+     * @param {LogRecordConfig} [config] 日志记录设置。
      * @return {string} 输出的日志信息。
      */
-    private static recLog(scheme: LoggerScheme, needPrint: boolean, data?: string, ...args: any[]): string {
-        // @ts-ignore
-        data = util.format(data, ...args);
-        data = `[${scheme.displayName}] [${getCallerName(3)}]: ${data}`;
+    private static recLog(scheme: LoggerScheme, logMessage?: string, config?: LogRecordConfig): string {
+        config = config ?? DEFAULT_LOG_RECORD_CONFIG;
+
+        // TODO(BATU1579): 自定义日志格式
+        logMessage = `[${scheme.displayName}] [${getCallerName(config.skipCallerNumber)}]: ${logMessage}`;
 
         // 向日志堆栈中添加数据
-        if (scheme.level >= Record.RECORD_LEVEL) {
-            logStack.push(new LogStackFrame(data, scheme));
+        let needRecord = config.needRecord ?? scheme.needRecord ?? true;
+        if (needRecord && scheme.level >= Record.RECORD_LEVEL) {
+            LOG_STACK.push(new LogStackFrame(logMessage, scheme));
         }
 
         // 输出日志
+        let needPrint = config.needPrint ?? scheme.needPrint ?? true;
         if (needPrint && scheme.level >= Record.DISPLAY_LEVEL) {
-            scheme.logFunction(data);
+            scheme.logFunction(logMessage);
         }
 
-        return data;
+        return logMessage;
     }
 }
 
@@ -608,15 +681,15 @@ export function sendMessage(title: string, data: string, ...args: any[]): boolea
  * @example
  * ```typescript
  * // 只发送全部 log 等级的日志
- * let collection = logStack.filter((frame) => {
+ * let collection = LOG_STACK.filter((frame) => {
  *     return frame.getLevel() == LogLevel.log;
  * });
  * sendLog(collection);
- * logStack.clear();
+ * LOG_STACK.clear();
  * ```
  */
 export function sendLog(logs?: LogCollection, title?: string, clear?: boolean): boolean {
-    logs = logs ?? logStack;
+    logs = logs ?? LOG_STACK;
     title = title ?? 'logger';
     clear = clear ?? true;
     let isSend = sendToRemote(title, logs.toHtmlString());
@@ -720,4 +793,4 @@ export type TraceCollectionType = TraceCollection;
 
 export type TraceStackFrameType = TraceStackFrame;
 
-type TraceFormatter = typeof defaultFormatter;
+export type TraceFormatter = typeof defaultFormatter;
