@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-04 16:09:50
  * @LastEditor: BATU1579
- * @LastTime: 2022-11-28 12:10:47
+ * @LastTime: 2023-03-28 19:08:12
  * @FilePath: \\src\\lib\\exception.ts
  * @Description: 全局异常类
  */
@@ -10,13 +10,23 @@ import {
     Record,
     getStackTrace,
     TraceCollectionType,
-    TraceStackFrameType
+    TraceStackFrameType,
+    LoggerSchemes
 } from "./logger";
 
 const ERROR_EVENTS = events.emitter();
 
-ERROR_EVENTS.on("error", (err: Exception) => {
-    Record.noPrintError(err.toString());
+ERROR_EVENTS.on("error", function errorListener(err: Exception) {
+    // 防止重复输出异常信息
+    Record.customLog(
+        LoggerSchemes.error,
+        {
+            needPrint: false,
+            needRecord: true,
+            skipCallerNumber: 2
+        },
+        err.toString()
+    );
 })
 
 export interface Exception {

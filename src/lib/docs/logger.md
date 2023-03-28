@@ -46,7 +46,7 @@
 
 日志集合，继承自 [FrameCollection](#class-framecollectionframetype)\<[LogStackFrame](#class-logstackframe)\> 。
 
-> 注意： `LogCollection` 类并未导出，只能通过 [logStack](#const-logstack) 对象来获取他的子集。
+> 注意： `LogCollection` 类并未导出，只能通过 [LOG_STACK](#const-log_stack) 对象来获取他的子集。
 
 ### LogCollection.filter(callbackFn: (frame: FrameType, index: number, array: FrameType[]) => boolean): LogCollection
 
@@ -118,7 +118,7 @@ let trace = getStackTrace().filter((frame: TraceStackFrameType) => {
 
 ```typescript
 // 获取日志堆栈中全部的 log 等级的日志记录
-let collection = logStack.filter((frame) => {
+let collection = LOG_STACK.filter((frame) => {
     return frame.getLevel() == LogLevel.log;
 });
 ```
@@ -129,7 +129,7 @@ let collection = logStack.filter((frame) => {
 
 ```typescript
 // 获取日志堆栈中全部包含其中 hello 的日志记录
-let collection = logStack.filter((frame) => {
+let collection = LOG_STACK.filter((frame) => {
     return /hello/.test(frame.getData());
 });
 ```
@@ -152,7 +152,29 @@ let collection = logStack.filter((frame) => {
 - `Warn` 出现异常，但不影响程序执行。
 - `Error` 严重错误，会导致程序退出。
 
-## const logStack
+## class LoggerSchemes
+
+预设的日志记录方案，用于在自定义日志时快速设置。所有方案都实现自 [LoggerScheme](#interface-loggerscheme) 总共包括六个预设：
+
+- `trace` 调用堆栈。
+- `debug` 调试信息。
+- `log` 默认日志。
+- `info` 重要信息。
+- `warn` 警告信息。
+- `error` 异常信息。
+
+## interface LoggerScheme
+
+日志记录方案接口，用来规定必要的字段。
+
+- `displayName: string` 日志显示的名称。
+- `logFunction: (data?: any, ...args: any[]) => void` 用于显示日志的函数
+- `color: string` 发送远程日志时添加的颜色信息，可以是 Html 预设的颜色，也可以是色号（ `#fff` ），还可以是 rgb 颜色（ `rgb(255, 255, 255)` ）。
+- `level: LogLevel` 日志等级。
+- `needPrint?: boolean` 是否需要输出到 `logFunction` 指定的显示函数（默认是控制台），默认为 `true`。
+- `needRecord?: boolean` 是否需要记录到日志堆栈，默认为 `true`。
+
+## const LOG_STACK
 
 日志堆栈对象，用来记录曾经输出过的日志。本身是一个 [LogCollection](#class-logcollection) 实例。
 
@@ -183,6 +205,14 @@ function func(): void {
 - `endFunction` （可选）终止栈帧，会自动排除后续的无用栈帧。
 
 获取修正后的调用堆栈集合，包含修正行号后的栈帧对象。返回调用堆栈的集合对象。
+
+## interface LogRecordConfig
+
+日志记录设置接口，用来规定必要的字段。
+
+- `needPrint?: boolean` 是否需要输出到 `logFunction` 指定的显示函数（默认是控制台），默认为 `true`。此设置可以临时覆盖记录方案中的设置。
+- `needRecord?: boolean` 是否需要记录到日志堆栈，默认为 `true`。此设置可以临时覆盖记录方案中的设置。
+- `skipCallerNumber?: number` 需要跳过的调用堆栈数量。有时候不想输出真正的调用者，而是想输出更上层的调用者时可以设置此字段，此字段一般为 1 。
 
 ## class Record
 
@@ -254,17 +284,9 @@ Record.log('count:', count);
 
 与 `Record.log` 类似，但输出结果以红色字体显示。输出优先级高于 `warn` ，用于输出错误信息。
 
-### Record.noPrintError(message: string, ...args: any[]): string
+### Record.trace(message?: string, ...args: any[]): string
 
 - `message` 主要信息。
-- `args`  （可选） 要填充的数据。
-
-与 `Record.error` 类似，但不会输出结果到控制台。主要用于避免重复显示抛出的异常。
-
-### Record.trace(data?: string, format?: [TraceFormatter](#traceformatter), ...args: any[]): string
-
-- `message` 主要信息。
-- `format` 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
 - `args`  （可选） 要填充的数据。
 
 与 `console.trace` 类似，同时会打印出调用这个函数所在的调用栈信息（即当前运行的文件、行数等信息）。
@@ -275,9 +297,36 @@ Record.log('count:', count);
 
 ```typescript
 // Show me
-//   | at line xxx, in <callerName>
+//  | at line xxx, in <callerName>
 Record.trace('Show me');
 ```
+
+### Record.traceWithCustomFormatter(formatter?: [TraceFormatter](#traceformatter), data?: string, ...args: any[]): string
+
+- `formatter` 用于规定转换后的字符串格式的回调方法，默认转换格式的默认转换格式类似 Python 。
+- `message` 主要信息。
+- `args`  （可选） 要填充的数据。
+
+与 `Record.trace` 类似，会打印出调用这个函数所在的调用栈信息（即当前运行的文件、行数等信息）。
+
+此函数与 `Record.trace` 的主要区别在于可以手动指定调用栈的格式，可以更个性化的显示调用栈。
+
+**注意！：此函数显示的等级和 `Record.debug()` 相同。**
+
+```typescript
+// Show me
+//   | at line xxx, in <callerName>
+Record.trace((line, caller) => `  | ${caller}: #${line}`, 'Show me');
+```
+
+### Record.customLog(scheme: LoggerScheme, config: LogRecordConfig, message?: string, ...args: any[]): string
+
+- `scheme` 日志记录方案，包括显示名称，日志等级，显示颜色等等，可以使用模块中的 `LoggerSchemes` 类来设置，也可以自己构建。
+- `config` 细粒度的日志设置，包括是否输出到控制台，跳过几个调用者名称等等。这里的设置可以临时替代 `scheme` 中的同名设置。
+- `message` 主要信息。
+- `args`  （可选） 要填充的数据。
+
+高度自定义的日志信息接口。
 
 ## setToken(token: string): boolean
 
@@ -323,11 +372,11 @@ Record.trace('Show me');
 
 ```typescript
 // 只发送全部 log 等级的日志
-let collection = logStack.filter((frame) => {
+let collection = LOG_STACK.filter((frame) => {
     return frame.getLevel() == LogLevel.log;
 });
 sendLog(collection);
-logStack.clear();
+LOG_STACK.clear();
 ```
 
 ## TraceFormatter

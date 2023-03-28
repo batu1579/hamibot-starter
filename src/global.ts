@@ -2,13 +2,13 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-04 21:03:08
  * @LastEditor: BATU1579
- * @LastTime: 2022-11-28 13:58:09
+ * @LastTime: 2023-03-28 19:09:35
  * @FilePath: \\src\\global.ts
  * @Description: 全局常量和配置项验证
  */
 
 import { ConfigInvalidException } from "./lib/exception";
-import { LogLevel, logStack, Record, sendLog, setToken } from "./lib/logger";
+import { LogLevel, LOG_STACK, Record, sendLog, setToken } from "./lib/logger";
 
 export const PROJECT_NAME = "Untitled Script"
 
@@ -42,7 +42,7 @@ events.on("exit", () => {
     Record.info("Exit...");
 
     // send to pushplus
-    let collection = logStack.filter((frame) => {
+    let collection = LOG_STACK.filter((frame) => {
         return frame.getLevel() >= LogLevel.Log;
     });
 
