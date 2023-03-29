@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-05 04:00:16
  * @LastEditor: BATU1579
- * @LastTime: 2023-03-28 20:21:34
+ * @LastTime: 2023-03-29 16:22:59
  * @FilePath: \\src\\lib\\logger.ts
  * @Description: 存放关于日志和调试信息的预制方法。
  */
@@ -466,8 +466,12 @@ export class Record {
      * ```
      */
     public static log(message?: string, ...args: any[]): string {
-        // @ts-ignore
-        return Record.recLog(LoggerSchemes.log, util.format(message, ...args));
+        return Record.recLog(
+            LoggerSchemes.log,
+            DEFAULT_LOG_RECORD_CONFIG,
+            // @ts-ignore
+            util.format(message, ...args) as string,
+        );
     }
 
     /**
@@ -477,8 +481,12 @@ export class Record {
      * @return {string} 输出的日志信息。
      */
     public static verbose(message?: string, ...args: any[]): string {
-        // @ts-ignore
-        return Record.recLog(LoggerSchemes.debug, util.format(message, ...args));
+        return Record.recLog(
+            LoggerSchemes.debug,
+            DEFAULT_LOG_RECORD_CONFIG,
+            // @ts-ignore
+            util.format(message, ...args) as string,
+        );
     }
 
     /**
@@ -501,8 +509,12 @@ export class Record {
      * @return {string} 输出的日志信息。
      */
     public static info(message?: string, ...args: any[]): string {
-        // @ts-ignore
-        return Record.recLog(LoggerSchemes.info, util.format(message, ...args));
+        return Record.recLog(
+            LoggerSchemes.info,
+            DEFAULT_LOG_RECORD_CONFIG,
+            // @ts-ignore
+            util.format(message, ...args) as string,
+        );
     }
 
     /**
@@ -512,8 +524,12 @@ export class Record {
      * @return {string} 输出的日志信息。
      */
     public static warn(message?: string, ...args: any[]): string {
-        // @ts-ignore
-        return Record.recLog(LoggerSchemes.warn, util.format(message, ...args));
+        return Record.recLog(
+            LoggerSchemes.warn,
+            DEFAULT_LOG_RECORD_CONFIG,
+            // @ts-ignore
+            util.format(message, ...args) as string,
+        );
     }
 
     /**
@@ -523,8 +539,12 @@ export class Record {
      * @return {string} 输出的日志信息。
      */
     public static error(message?: string, ...args: any[]): string {
-        // @ts-ignore
-        return Record.recLog(LoggerSchemes.error, util.format(message, ...args));
+        return Record.recLog(
+            LoggerSchemes.error,
+            DEFAULT_LOG_RECORD_CONFIG,
+            // @ts-ignore
+            util.format(message, ...args) as string,
+        );
     }
 
     /**
@@ -553,7 +573,11 @@ export class Record {
         // @ts-ignore
         message = util.format(message, ...args);
 
-        return Record.recLog(LoggerSchemes.trace, `${message}\n${parsedTrace.toString()}`);
+        return Record.recLog(
+            LoggerSchemes.trace,
+            DEFAULT_LOG_RECORD_CONFIG,
+            `${message}\n${parsedTrace.toString()}`,
+        );
     }
 
 
@@ -584,7 +608,11 @@ export class Record {
         // @ts-ignore
         message = util.format(message, ...args);
 
-        return Record.recLog(LoggerSchemes.trace, `${message}\n${parsedTrace.toString(formatter)}`);
+        return Record.recLog(
+            LoggerSchemes.trace,
+            DEFAULT_LOG_RECORD_CONFIG,
+            `${message}\n${parsedTrace.toString(formatter)}`,
+        );
     }
 
     /**
@@ -601,19 +629,17 @@ export class Record {
         message?: string, ...args: any[]
     ): string {
         // @ts-ignore
-        return Record.recLog(scheme, util.format(message, ...args), config);
+        return Record.recLog(scheme, config, util.format(message, ...args) as string);
     }
 
     /**
      * @description: 记录日志核心方法，负责记录和输出日志数据。
      * @param {LoggerScheme} scheme 日志记录方案。
+     * @param {LogRecordConfig} config 日志记录设置。
      * @param {string} [logMessage] 日志信息。
-     * @param {LogRecordConfig} [config] 日志记录设置。
      * @return {string} 输出的日志信息。
      */
-    private static recLog(scheme: LoggerScheme, logMessage?: string, config?: LogRecordConfig): string {
-        config = config ?? DEFAULT_LOG_RECORD_CONFIG;
-
+    private static recLog(scheme: LoggerScheme, config: LogRecordConfig, logMessage?: string): string {
         // TODO(BATU1579): 自定义日志格式
         logMessage = `[${scheme.displayName}] [${getCallerName(config.skipCallerNumber)}]: ${logMessage}`;
 
