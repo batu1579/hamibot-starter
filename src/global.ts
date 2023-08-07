@@ -2,7 +2,7 @@
  * @Author: BATU1579
  * @CreateDate: 2022-02-04 21:03:08
  * @LastEditor: BATU1579
- * @LastTime: 2023-03-28 19:09:35
+ * @LastTime: 2023-08-07 08:06:32
  * @FilePath: \\src\\global.ts
  * @Description: 全局常量和配置项验证
  */
@@ -81,7 +81,7 @@ if (_TOKEN && _TOKEN !== "" && setToken(_TOKEN) == false) {
 }
 
 // show console
-if (typeof _SHOW_CONSOLE !== "string" || _SHOW_CONSOLE !== "true" && _SHOW_CONSOLE !== "false") {
+if (typeof _SHOW_CONSOLE !== "boolean") {
     throw new ConfigInvalidException("show console");
 }
 export const SHOW_CONSOLE = _SHOW_CONSOLE;

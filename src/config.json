@@ -7,11 +7,8 @@
     },
     {
         "label": "显示控制台(需要悬浮窗权限)",
-        "type": "select",
+        "type": "checkbox",
         "name": "_SHOW_CONSOLE",
-        "options": {
-            "true": "是",
-            "false": "否"
-        }
+        "value": true
     }
 ]
