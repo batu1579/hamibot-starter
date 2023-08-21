@@ -9,6 +9,6 @@
         "label": "显示控制台(需要悬浮窗权限)",
         "type": "checkbox",
         "name": "_SHOW_CONSOLE",
-        "value": true
+        "default": true
     }
 ]
